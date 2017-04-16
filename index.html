@@ -358,24 +358,14 @@
 
       
         
-          
-            <p>@echo off<br>echo Starting evernote…<br>start “” “C:\Program Files (x86)\Evernote\Evernote\Evernote.exe<br>echo Starting vscode…<br>start “” “C:\Program Files (x86)\Microsoft VS Code\Code.exe”<br>echo Starting Chrome…<br>start “” “C:\Program Files (x86)\Google\Chrome\Application\chrome.exe”</p>
-<p>另一种写法是（这种不推荐，可以用来理解）：</p>
-<p>@echo off<br>echo Starting evernote…<br>cd C:\Program Files (x86)\Evernote\Evernote<br>strat Evernote.exe<br>cd C:\Program Files (x86)\Microsoft VS Code<br>strat Code.exe<br>echo Starting Chrome…<br>cd C:\Program Files (x86)\Google\Chrome\Application<br>start chrome.exe</p>
-<p>存在的问题是，不能自动退出…</p>
-<p>方案1:删繁就简 自动退出失败</p>
-<p>start “” “C:\Program Files (x86)\Evernote\Evernote\Evernote.exe”<br>start “” “C:\Program Files (x86)\Microsoft VS Code\Code.exe”<br>start “” “C:\Program Files (x86)\Google\Chrome\Application\chrome.exe”</p>
-<p>方案2:taskkill杀死进程 自动退出失败 打不开vscode</p>
-<p>start “” “C:\Program Files (x86)\Evernote\Evernote\Evernote.exe”<br>start “” “C:\Program Files (x86)\Microsoft VS Code\Code.exe”<br>start “” “C:\Program Files (x86)\Google\Chrome\Application\chrome.exe”<br>taskkill /im cmd.exe</p>
-<p>方案3:到segmentfault提问…</p>
-<p>方案4:调整了下开启顺序 自动退出成功</p>
-<p>start “” “C:\Program Files (x86)\Google\Chrome\Application\chrome.exe”<br>start “ “ “C:\Program Files (x86)\Evernote\Evernote\Evernote.exe”<br>start “ “ “C:\Program Files (x86)\Microsoft VS Code\Code.exe”</p>
-<p>方案5:继续试验 自动退出成功</p>
-<p>@echo off<br>echo Starting evernote…<br>start “” “C:\Program Files (x86)\Evernote\Evernote\Evernote.exe”<br>echo Starting Chrome…<br>start “” “C:\Program Files (x86)\Google\Chrome\Application\chrome.exe”<br>echo Starting vscode…<br>start “” “C:\Program Files (x86)\Microsoft VS Code\Code.exe”</p>
-<p>由此可见，bat文件中应用程序的开启顺序可能也会导致exit命令的失效。</p>
-<p>PS:<br>     添加了pause命令后，会出现“按任意键以继续…”，但是会按任意键继续失败，更为严重的是，关闭cmd窗口后vscode也会同时关闭。这很有趣。</p>
-
-          
+          <p>使用脚本一键开启印象笔记，VSCode和Chrome时遇到的坑…<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/04/16/bat/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
