@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://frankkai.github.io/Better-Man/</loc>
+    
+    <lastmod>2017-05-21T12:19:51.797Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://frankkai.github.io/bat/</loc>
     
     <lastmod>2017-05-21T12:13:42.611Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>https://frankkai.github.io/frontend/</loc>
     
     <lastmod>2017-05-21T12:06:54.211Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://frankkai.github.io/better-man/</loc>
-    
-    <lastmod>2017-05-21T12:06:45.728Z</lastmod>
     
   </url>
   

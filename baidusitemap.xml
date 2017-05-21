@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>https://frankkai.github.io/Better-Man/</loc>
+    <lastmod>2017-05-21T12:19:51.797Z</lastmod>
+    <data>
+        <display>
+        <title>ES6神奇的import...from...命令</title>
+        <pubTime>2017-03-01T05:34:29.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+        <tag>ES6</tag>
+         
+         
+           
+             
+              <breadCrumb title="ES6" url="https://frankkai.github.io/categories/ES6/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://frankkai.github.io/bat/</loc>
     <lastmod>2017-05-21T12:13:42.611Z</lastmod>
     <data>
@@ -57,28 +79,6 @@
            
              
               <breadCrumb title="HEXO" url="https://frankkai.github.io/categories/HEXO/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://frankkai.github.io/better-man/</loc>
-    <lastmod>2017-05-21T12:06:45.728Z</lastmod>
-    <data>
-        <display>
-        <title>ES6神奇的import...from...命令</title>
-        <pubTime>2017-03-01T05:34:29.000Z</pubTime>
-        
-        <tag>前端</tag>
-         
-        <tag>ES6</tag>
-         
-         
-           
-             
-              <breadCrumb title="ES6" url="https://frankkai.github.io/categories/ES6/"/>
           
         </display>
     </data>
