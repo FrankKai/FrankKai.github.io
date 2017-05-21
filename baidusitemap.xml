@@ -4,30 +4,8 @@
 
     
   <url>
-    <loc>https://frankkai.github.io/Better-Man/</loc>
-    <lastmod>2017-05-21T12:22:51.219Z</lastmod>
-    <data>
-        <display>
-        <title>ES6神奇的import...from...命令</title>
-        <pubTime>2017-03-01T05:34:29.000Z</pubTime>
-        
-        <tag>前端</tag>
-         
-        <tag>ES6</tag>
-         
-         
-           
-             
-              <breadCrumb title="ES6" url="https://frankkai.github.io/categories/ES6/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://frankkai.github.io/bat/</loc>
-    <lastmod>2017-05-21T12:13:42.611Z</lastmod>
+    <lastmod>2017-05-21T12:33:10.442Z</lastmod>
     <data>
         <display>
         <title>.bat文件开启常用软件：start顺序很关键</title>
@@ -46,28 +24,8 @@
 
     
   <url>
-    <loc>https://frankkai.github.io/review/</loc>
-    <lastmod>2017-05-21T12:13:27.418Z</lastmod>
-    <data>
-        <display>
-        <title>搭建个人博客，迎接新生活</title>
-        <pubTime>2017-04-13T15:29:36.000Z</pubTime>
-        
-        <tag>反思</tag>
-         
-         
-           
-             
-              <breadCrumb title="生活" url="https://frankkai.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://frankkai.github.io/frontend/</loc>
-    <lastmod>2017-05-21T12:06:54.211Z</lastmod>
+    <lastmod>2017-05-21T12:33:06.838Z</lastmod>
     <data>
         <display>
         <title>HEXO博客二次体验</title>
@@ -87,7 +45,7 @@
     
   <url>
     <loc>https://frankkai.github.io/license/</loc>
-    <lastmod>2017-05-21T11:54:15.561Z</lastmod>
+    <lastmod>2017-05-21T12:33:00.311Z</lastmod>
     <data>
         <display>
         <title>什么是license和token？</title>
@@ -99,6 +57,48 @@
            
              
               <breadCrumb title="安全" url="https://frankkai.github.io/categories/%E5%AE%89%E5%85%A8/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://frankkai.github.io/review/</loc>
+    <lastmod>2017-05-21T12:32:52.476Z</lastmod>
+    <data>
+        <display>
+        <title>搭建个人博客，迎接新生活</title>
+        <pubTime>2017-04-13T15:29:36.000Z</pubTime>
+        
+        <tag>反思</tag>
+         
+         
+           
+             
+              <breadCrumb title="生活" url="https://frankkai.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://frankkai.github.io/Better-Man/</loc>
+    <lastmod>2017-05-21T12:32:45.596Z</lastmod>
+    <data>
+        <display>
+        <title>ES6神奇的import...from...命令</title>
+        <pubTime>2017-03-01T05:34:29.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+        <tag>ES6</tag>
+         
+         
+           
+             
+              <breadCrumb title="ES6" url="https://frankkai.github.io/categories/ES6/"/>
           
         </display>
     </data>
