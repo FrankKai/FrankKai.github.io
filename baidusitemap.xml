@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>https://frankkai.github.io/review/</loc>
+    <lastmod>2017-05-21T12:12:18.962Z</lastmod>
+    <data>
+        <display>
+        <title>搭建个人博客，迎接新生活</title>
+        <pubTime>2017-04-13T15:29:36.000Z</pubTime>
+        
+        <tag>反思</tag>
+         
+         
+           
+             
+              <breadCrumb title="生活" url="https://frankkai.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://frankkai.github.io/bat/</loc>
     <lastmod>2017-05-21T12:07:33.459Z</lastmod>
     <data>
@@ -79,26 +99,6 @@
            
              
               <breadCrumb title="安全" url="https://frankkai.github.io/categories/%E5%AE%89%E5%85%A8/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://frankkai.github.io/review/</loc>
-    <lastmod>2017-05-21T11:21:07.908Z</lastmod>
-    <data>
-        <display>
-        <title>搭建个人博客，迎接新生活</title>
-        <pubTime>2017-04-13T15:29:36.000Z</pubTime>
-        
-        <tag>反思</tag>
-         
-         
-           
-             
-              <breadCrumb title="生活" url="https://frankkai.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
           
         </display>
     </data>

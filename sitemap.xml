@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://frankkai.github.io/review/</loc>
+    
+    <lastmod>2017-05-21T12:12:18.962Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://frankkai.github.io/bat/</loc>
     
     <lastmod>2017-05-21T12:07:33.459Z</lastmod>
@@ -26,13 +33,6 @@
     <loc>https://frankkai.github.io/license/</loc>
     
     <lastmod>2017-05-21T11:54:15.561Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://frankkai.github.io/review/</loc>
-    
-    <lastmod>2017-05-21T11:21:07.908Z</lastmod>
     
   </url>
   
