@@ -4,8 +4,28 @@
 
     
   <url>
+    <loc>https://frankkai.github.io/review/</loc>
+    <lastmod>2017-05-21T12:46:22.783Z</lastmod>
+    <data>
+        <display>
+        <title>搭建个人博客，迎接新生活</title>
+        <pubTime>2017-04-13T15:29:36.000Z</pubTime>
+        
+        <tag>反思</tag>
+         
+         
+           
+             
+              <breadCrumb title="生活" url="https://frankkai.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://frankkai.github.io/license/</loc>
-    <lastmod>2017-05-21T12:43:10.069Z</lastmod>
+    <lastmod>2017-05-21T12:46:20.127Z</lastmod>
     <data>
         <display>
         <title>什么是license和token？</title>
@@ -24,8 +44,28 @@
 
     
   <url>
+    <loc>https://frankkai.github.io/frontend/</loc>
+    <lastmod>2017-05-21T12:46:12.335Z</lastmod>
+    <data>
+        <display>
+        <title>HEXO博客二次体验</title>
+        <pubTime>2017-03-01T04:53:07.000Z</pubTime>
+        
+        <tag>反思</tag>
+         
+         
+           
+             
+              <breadCrumb title="HEXO" url="https://frankkai.github.io/categories/HEXO/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://frankkai.github.io/Better-Man/</loc>
-    <lastmod>2017-05-21T12:42:40.072Z</lastmod>
+    <lastmod>2017-05-21T12:46:02.453Z</lastmod>
     <data>
         <display>
         <title>ES6神奇的import...from...命令</title>
@@ -47,7 +87,7 @@
     
   <url>
     <loc>https://frankkai.github.io/bat/</loc>
-    <lastmod>2017-05-21T12:41:50.227Z</lastmod>
+    <lastmod>2017-05-21T12:45:52.254Z</lastmod>
     <data>
         <display>
         <title>.bat文件开启常用软件：start顺序很关键</title>
@@ -59,46 +99,6 @@
            
              
               <breadCrumb title="Windows" url="https://frankkai.github.io/categories/Windows/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://frankkai.github.io/review/</loc>
-    <lastmod>2017-05-21T12:41:38.487Z</lastmod>
-    <data>
-        <display>
-        <title>搭建个人博客，迎接新生活</title>
-        <pubTime>2017-04-13T15:29:36.000Z</pubTime>
-        
-        <tag>反思</tag>
-         
-         
-           
-             
-              <breadCrumb title="生活" url="https://frankkai.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://frankkai.github.io/frontend/</loc>
-    <lastmod>2017-05-21T12:39:43.039Z</lastmod>
-    <data>
-        <display>
-        <title>HEXO博客二次体验</title>
-        <pubTime>2017-03-01T04:53:07.000Z</pubTime>
-        
-        <tag>反思</tag>
-         
-         
-           
-             
-              <breadCrumb title="HEXO" url="https://frankkai.github.io/categories/HEXO/"/>
           
         </display>
     </data>
