@@ -94,12 +94,12 @@
 <meta property="og:url" content="https://frankkai.github.io/license/index.html">
 <meta property="og:site_name" content="趁你还年轻的博客">
 <meta property="og:description" content="对license和token的简单思考">
-<meta property="og:image" content="https://frankkai.github.io/license/photo/license.png">
-<meta property="og:updated_time" content="2017-05-21T11:28:38.380Z">
+<meta property="og:image" content="https://frankkai.github.io/license/license/license.png">
+<meta property="og:updated_time" content="2017-05-21T11:29:44.340Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="什么是license和token？">
 <meta name="twitter:description" content="对license和token的简单思考">
-<meta name="twitter:image" content="https://frankkai.github.io/license/photo/license.png">
+<meta name="twitter:image" content="https://frankkai.github.io/license/license/license.png">
 
 
 
@@ -375,7 +375,7 @@
       
 
       
-        <p>对license和token的简单思考<br><img src="./photo/license.png"><br><a id="more"></a><br>　　token这个东西，在微信公众平台也看到过，然后现在在Qlik Sense的服务版也看到了，因此需要好好研究一下这个license和token到底是个什么东西了。<br>这是QS服务版关于license和token的介绍。<br>The License Enabling File (LEF) determines the number of available tokens. You use the tokens on different access types and allocate the access types to users. The License usage summary page displays the token availability and how the tokens are distributed to different access types. The licensing is designed to allow you to adjust license usage as required.<br>　　英语捉急的我，准备回家一点一点慢慢翻译，再结合网上找到资料进行研究。<br>　　license文件决定了可用token的数量。你可以在不同的权限下使用token，而且token也可以分配给不同的用户。license概要页说明了token的用法以及如何将token分配给权限。Liscensing的目的是让你根据需求调整license的使用情况。</p>
+        <p>对license和token的简单思考<br><img src="./license/license.png"><br><a id="more"></a><br>　　token这个东西，在微信公众平台也看到过，然后现在在Qlik Sense的服务版也看到了，因此需要好好研究一下这个license和token到底是个什么东西了。<br>这是QS服务版关于license和token的介绍。<br>The License Enabling File (LEF) determines the number of available tokens. You use the tokens on different access types and allocate the access types to users. The License usage summary page displays the token availability and how the tokens are distributed to different access types. The licensing is designed to allow you to adjust license usage as required.<br>　　英语捉急的我，准备回家一点一点慢慢翻译，再结合网上找到资料进行研究。<br>　　license文件决定了可用token的数量。你可以在不同的权限下使用token，而且token也可以分配给不同的用户。license概要页说明了token的用法以及如何将token分配给权限。Liscensing的目的是让你根据需求调整license的使用情况。</p>
 <p>单词：<br>　　license 许可证<br>　　token 令牌<br>　　个人理解是，当我们购买一款软件后，卖家会提供给我们一个license，拿到license之后，意味着我们拥有了软件的使用权。软件是被一个人用？还是可以被分配给多个人使用？这就涉及到了token这个东西，打个不成立的比方：某年某月，我和其余5个朋友合资买了一款NBA2K66游戏，此时我们大家一起获得了游戏的使用权，即拿到了游戏的license，而且我们在云游戏平台安装好这款游戏，和官方宣传一样，NBA2K66可以被6个人一起使用，即1个license包含了6个token，这6个token我们都为它分配了最高权限，即6个人都可以玩游戏中的所有模式。</p>
 <p>由点及面：<br>１.百度百科<br>　　license是版权许可证。相当于软件版权。软件版权在法律上称为“计算机软件著作权”。<br>　　token在计算机身份认证中是令牌（临时）的意思，访问令牌（Access token）表示用户权限，密保令牌（Security token），或者硬件令牌，例如U盾，或者叫做认证令牌或者加密令牌，一种计算机身份校验的物理设备，会话令牌（Session token）,交互会话中唯一身份标识符。<br>2.Jason_Fangh的博客<br>​<br>　　web开发中，Token是服务端生成的一串字符串，以作客户端进行请求的一个令牌，当第一次登录后，服务器生成一个Token便将此Token返回给客户端，以后客户端只需带上这个Token前来请求数据即可，无需再次带上用户名和密码。<br>3.大陶陶的博客<br>　　web安全中，Token，就是令牌，最大的特点就是随机性，不可预测。一般黑客或软件无法猜测出来。<br>　　Token一般用在两个地方: 1)防止表单重复提交、 2)anti csrf攻击（跨站点请求伪造）。<br>　　两者在原理上都是通过session token来实现的。如果应用于“anti csrf攻击”，则服务器端会对Token值进行验证，判断是否和session中的Token值相等，若相等，则可以证明请求有效，不是伪造的。 不过，如果应用于“防止表单重复提交”，服务器端第一次验证相同过后，会将session中的Token值更新下，若用户重复提交，第二次的验证判断将失败，因为用户提交的表单中的Token没变，但服务器端session中Token已经改变了。session token较为繁琐，因此可以使用cookie代替，但是cookie容易受到xss攻击，黑客将直接实现csrf攻击。<br>　　此外，要避免“加token但不进行校验”的情况，在session中增加了token，但服务端没有对token进行验证，根本起不到防范的作用。<br>　　还需注意的是，对数据库有改动的增删改操作，需要加token验证，对于查询操作，一定不要加token，防止攻击者通过查询操作获取token进行csrf攻击。但并不是这样攻击者就无法获得token，只是增大攻击成本而已。<br>​</p>
 <p>安全知识盲区：<br>1.xss攻击<br>XSS攻击：跨站脚本攻击(Cross Site Scripting)，为不和层叠样式表(Cascading Style Sheets, CSS)的缩写混淆，故将跨站脚本攻击缩写为XSS。<br>2.csrf攻击<br>CSRF（Cross-site request forgery）跨站请求伪造，也被称为“One Click Attack”或者Session Riding，通常缩写为CSRF或者XSRF，是一种对网站的恶意利用。尽管听起来像跨站脚本（XSS），但它与XSS非常不同，XSS利用站点内的信任用户，而CSRF则通过伪装来自受信任用户的请求来利用受信任的网站。与XSS攻击相比，CSRF攻击往往不大流行（因此对其进行防范的资源也相当稀少）和难以防范，所以被认为比XSS更具危险性。</p>
