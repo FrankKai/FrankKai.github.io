@@ -4,8 +4,28 @@
 
     
   <url>
+    <loc>https://frankkai.github.io/etl/</loc>
+    <lastmod>2017-05-22T13:46:30.670Z</lastmod>
+    <data>
+        <display>
+        <title>什么是ETL?</title>
+        <pubTime>2017-05-22T12:38:52.000Z</pubTime>
+        
+        <tag>ETL</tag>
+         
+         
+           
+             
+              <breadCrumb title="大数据" url="https://frankkai.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://frankkai.github.io/review/</loc>
-    <lastmod>2017-05-21T12:46:22.783Z</lastmod>
+    <lastmod>2017-05-22T12:37:54.579Z</lastmod>
     <data>
         <display>
         <title>搭建个人博客，迎接新生活</title>
@@ -24,61 +44,21 @@
 
     
   <url>
-    <loc>https://frankkai.github.io/license/</loc>
-    <lastmod>2017-05-21T12:46:20.127Z</lastmod>
-    <data>
-        <display>
-        <title>什么是license和token？</title>
-        <pubTime>2017-04-18T14:04:18.000Z</pubTime>
-        
-        <tag>程序员</tag>
-         
-         
-           
-             
-              <breadCrumb title="安全" url="https://frankkai.github.io/categories/%E5%AE%89%E5%85%A8/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://frankkai.github.io/frontend/</loc>
-    <lastmod>2017-05-21T12:46:12.335Z</lastmod>
+    <lastmod>2017-05-22T12:37:44.151Z</lastmod>
     <data>
         <display>
         <title>HEXO博客二次体验</title>
         <pubTime>2017-03-01T04:53:07.000Z</pubTime>
         
+        <tag>Hexo</tag>
+         
         <tag>反思</tag>
          
          
            
              
-              <breadCrumb title="HEXO" url="https://frankkai.github.io/categories/HEXO/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://frankkai.github.io/Better-Man/</loc>
-    <lastmod>2017-05-21T12:46:02.453Z</lastmod>
-    <data>
-        <display>
-        <title>ES6神奇的import...from...命令</title>
-        <pubTime>2017-03-01T05:34:29.000Z</pubTime>
-        
-        <tag>前端</tag>
-         
-        <tag>ES6</tag>
-         
-         
-           
-             
-              <breadCrumb title="ES6" url="https://frankkai.github.io/categories/ES6/"/>
+              <breadCrumb title="生活" url="https://frankkai.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
           
         </display>
     </data>
@@ -87,18 +67,58 @@
     
   <url>
     <loc>https://frankkai.github.io/bat/</loc>
-    <lastmod>2017-05-21T12:45:52.254Z</lastmod>
+    <lastmod>2017-05-22T12:36:35.751Z</lastmod>
     <data>
         <display>
         <title>.bat文件开启常用软件：start顺序很关键</title>
         <pubTime>2017-04-16T11:23:28.000Z</pubTime>
         
-        <tag>windows</tag>
+        <tag>Windows</tag>
          
          
            
              
-              <breadCrumb title="Windows" url="https://frankkai.github.io/categories/Windows/"/>
+              <breadCrumb title="操作系统" url="https://frankkai.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://frankkai.github.io/license/</loc>
+    <lastmod>2017-05-22T12:35:41.869Z</lastmod>
+    <data>
+        <display>
+        <title>什么是license和token？</title>
+        <pubTime>2017-04-18T14:04:18.000Z</pubTime>
+        
+        <tag>加密</tag>
+         
+         
+           
+             
+              <breadCrumb title="信息安全" url="https://frankkai.github.io/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://frankkai.github.io/Better-Man/</loc>
+    <lastmod>2017-05-22T12:33:12.504Z</lastmod>
+    <data>
+        <display>
+        <title>ES6神奇的import...from...命令</title>
+        <pubTime>2017-03-01T05:34:29.000Z</pubTime>
+        
+        <tag>Javascript</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="https://frankkai.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
           
         </display>
     </data>

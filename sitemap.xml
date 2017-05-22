@@ -2,37 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://frankkai.github.io/review/</loc>
+    <loc>https://frankkai.github.io/etl/</loc>
     
-    <lastmod>2017-05-21T12:46:22.783Z</lastmod>
+    <lastmod>2017-05-22T13:46:30.670Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://frankkai.github.io/license/</loc>
+    <loc>https://frankkai.github.io/review/</loc>
     
-    <lastmod>2017-05-21T12:46:20.127Z</lastmod>
+    <lastmod>2017-05-22T12:37:54.579Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://frankkai.github.io/frontend/</loc>
     
-    <lastmod>2017-05-21T12:46:12.335Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://frankkai.github.io/Better-Man/</loc>
-    
-    <lastmod>2017-05-21T12:46:02.453Z</lastmod>
+    <lastmod>2017-05-22T12:37:44.151Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://frankkai.github.io/bat/</loc>
     
-    <lastmod>2017-05-21T12:45:52.254Z</lastmod>
+    <lastmod>2017-05-22T12:36:35.751Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://frankkai.github.io/license/</loc>
+    
+    <lastmod>2017-05-22T12:35:41.869Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://frankkai.github.io/Better-Man/</loc>
+    
+    <lastmod>2017-05-22T12:33:12.504Z</lastmod>
     
   </url>
   
