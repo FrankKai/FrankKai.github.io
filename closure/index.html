@@ -97,7 +97,7 @@
 <meta property="og:image" content="https://frankkai.github.io/closure/closure.jpg">
 <meta property="og:image" content="https://frankkai.github.io/closure/demo1.jpg">
 <meta property="og:image" content="https://frankkai.github.io/closure/demo2.jpg">
-<meta property="og:updated_time" content="2017-05-24T09:35:44.240Z">
+<meta property="og:updated_time" content="2017-05-24T09:37:33.809Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入理解闭包原理">
 <meta name="twitter:description" content="闭包原理是什么？闭包应用场景是什么？">
@@ -387,7 +387,7 @@
 <pre><code>这里，先定义匿名函数，然后将立即执行结果返回给数组。
 </code></pre><p>但其实说实话，到这里我还不是很懂，因为js高设并没有将闭包与与变量的问题与之前的作用域链的配置机制联系在一起。其实这里，需要文章开头的那句：闭包是指，有权访问另一个函数作用域的变量的函数。<br>　　在闭包问题例子中，这个函数指的是匿名函数<code>function(){return i;};</code>，它可以访问createFunctions()函数作用域中的变量i，但是访问时，由于每个函数的作用域链中都保存着createFunctions()函数的活动对象，所以他们引用的都是同一个变量i。<br>　　这句很关键！！！意思是，调用createFunctions()函数时，会产生执行环境，作用域链，以及createFunction()函数的活动对象，这个函数活动完之后，才轮的着匿名函数活动，而当匿名函数活动时，由于匿名函数的作用域链上有createFunction()函数的活动对象，因此它未被销毁，此时内存中的i已经成为了10，所以每次执行匿名函数，函数返回值都是i=10。<br>　　所以说，闭包原理是：作用域链上的活动对象未被销毁，变量存在内存中，导致闭包函数调用活动对象函数中的变量时，变量值发生错误，这很像web缓存问题，开发过程中，为了刷新数据或者资源，需要清理缓存，而闭包类似一种不能被清理的缓存。<br>　　暂时的闭包问题解决方案是，立即执行函数(IFE)。<br>    后续的闭包问题和解觉方案继续探索。<br>　　为什么必须有但凡出现闭包的地方都有return语句呢？引用js秘密花园的一段话：</p>
 <blockquote>
-<p>闭包是 JavaScript 一个非常重要的特性，这意味着当前作用域总是能够访问外部作用域中的变量。 因为 函数 是 JavaScript 中唯一拥有自身作用域的结构，因此闭包的创建依赖于函数。<br>    知乎上的答案众说纷纭，不如回去研读你不知道的javascript，来深入理解闭包的工作原理。至于闭包的应用场景，需要继续探索。</p>
+<p>闭包是 JavaScript 一个非常重要的特性，这意味着当前作用域总是能够访问外部作用域中的变量。 因为 函数 是 JavaScript 中唯一拥有自身作用域的&gt;结构，因此闭包的创建依赖于函数。<br>　　知乎上的答案众说纷纭，不如回去研读你不知道的javascript，来深入理解闭包的工作原理。至于闭包的应用场景，需要继续探索。</p>
 </blockquote>
 
       
