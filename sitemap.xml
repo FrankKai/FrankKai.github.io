@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://frankkai.github.io/closure/</loc>
+    
+    <lastmod>2017-05-24T07:52:12.780Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://frankkai.github.io/event/</loc>
+    
+    <lastmod>2017-05-24T04:35:08.116Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://frankkai.github.io/etl/</loc>
     
     <lastmod>2017-05-22T13:55:38.744Z</lastmod>

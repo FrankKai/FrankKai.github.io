@@ -4,6 +4,41 @@
 
     
   <url>
+    <loc>https://frankkai.github.io/closure/</loc>
+    <lastmod>2017-05-24T07:52:12.780Z</lastmod>
+    <data>
+        <display>
+        <title>深入理解闭包原理</title>
+        <pubTime>2017-05-24T04:35:44.000Z</pubTime>
+        
+        <tag>Javascript</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="https://frankkai.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://frankkai.github.io/event/</loc>
+    <lastmod>2017-05-24T04:35:08.116Z</lastmod>
+    <data>
+        <display>
+        <title>事件对象</title>
+        <pubTime>2017-05-24T04:28:28.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://frankkai.github.io/etl/</loc>
     <lastmod>2017-05-22T13:55:38.744Z</lastmod>
     <data>
@@ -51,9 +86,9 @@
         <title>HEXO博客二次体验</title>
         <pubTime>2017-03-01T04:53:07.000Z</pubTime>
         
-        <tag>Hexo</tag>
-         
         <tag>反思</tag>
+         
+        <tag>Hexo</tag>
          
          
            

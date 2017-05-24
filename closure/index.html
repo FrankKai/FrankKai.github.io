@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="ETL," />
+  <meta name="keywords" content="Javascript," />
 
 
 
@@ -87,17 +87,21 @@
 
 
 
-<meta name="keywords" content="ETL">
+<meta name="description" content="闭包原理是什么？闭包应用场景是什么？">
+<meta name="keywords" content="Javascript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="什么是ETL?">
-<meta property="og:url" content="https://frankkai.github.io/etl/index.html">
+<meta property="og:title" content="深入理解闭包原理">
+<meta property="og:url" content="https://frankkai.github.io/closure/index.html">
 <meta property="og:site_name" content="趁你还年轻的博客">
-<meta property="og:image" content="https://frankkai.github.io/etl/etl.png">
-<meta property="og:image" content="https://frankkai.github.io/etl/transform.jpg">
-<meta property="og:updated_time" content="2017-05-22T13:55:38.744Z">
+<meta property="og:description" content="闭包原理是什么？闭包应用场景是什么？">
+<meta property="og:image" content="https://frankkai.github.io/closure/closure.jpg">
+<meta property="og:image" content="https://frankkai.github.io/closure/demo1.jpg">
+<meta property="og:image" content="https://frankkai.github.io/closure/demo2.jpg">
+<meta property="og:updated_time" content="2017-05-24T07:52:12.780Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="什么是ETL?">
-<meta name="twitter:image" content="https://frankkai.github.io/etl/etl.png">
+<meta name="twitter:title" content="深入理解闭包原理">
+<meta name="twitter:description" content="闭包原理是什么？闭包应用场景是什么？">
+<meta name="twitter:image" content="https://frankkai.github.io/closure/closure.jpg">
 
 
 
@@ -125,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="https://frankkai.github.io/etl/"/>
+  <link rel="canonical" href="https://frankkai.github.io/closure/"/>
 
 
 
 
 
-  <title> 什么是ETL? | 趁你还年轻的博客 </title>
+  <title> 深入理解闭包原理 | 趁你还年轻的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -269,7 +273,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://frankkai.github.io/etl/">
+    <link itemprop="mainEntityOfPage" href="https://frankkai.github.io/closure/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="趁你还年轻">
@@ -290,7 +294,7 @@
             
             
               
-                什么是ETL?
+                深入理解闭包原理
               
             
           </h1>
@@ -305,8 +309,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-22T20:38:52+08:00">
-                2017-05-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T12:35:44+08:00">
+                2017-05-24
               </time>
             
 
@@ -328,8 +332,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/大数据/" itemprop="url" rel="index">
-                    <span itemprop="name">大数据</span>
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
                   </a>
                 </span>
 
@@ -346,7 +350,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a class="cloud-tie-join-count" href="/etl/#comments" itemprop="discussionUrl">
+                <a class="cloud-tie-join-count" href="/closure/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count join-count" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -373,34 +377,11 @@
       
 
       
-        <p><img src="/etl/etl.png" style="width:80%;margin:20px auto 0;"><br><a id="more"></a><br>　　下午开了部门会议，ETL组和前端组都有参加。ETL组的一个学姐和大家分享了，ETL工具informatic和kettle的简单介绍和使用。最主要的收获是kettle工具开源，学习成本低，面向用户友好。<br>　　作为前端组的我，暂时知道这么多就够了，但是我是真不明白ETL到底是什么意思，只知道这是英文字母首写，Extract（抽取），transform（转换）和load（加载）这些单词的字面意思。对于单词后面的意思没做过多深入。正好朋友那有本《数据仓库设计：现代原理与方法》，反正闲来无事，拿来读读也未尝不可。<br>　　下面我将记录我认为比较重要的几句话。<br>提取：</p>
-<pre><code>1. 提取阶段从数据源中获取相关数据，第一次填充数据仓库时可以静态提取。
-2. 增量提取用于定时更新数据仓库，基于操作型DBMS维护的日志，时间戳会让提取更顺畅。
-3. 提取过程也可以基于数据源驱动的，类似QlikSense中的ODBC和OLEDB。
-4. 提取数据时要注意数据的质量，主要体现在数据准确，数据格式，数据清晰程度三个方面。
-</code></pre><p>清洗：</p>
-<pre><code>1. 清洗的目的是提高数据质量
-2. 哪些情况会使数据变脏：
-    数据重复，例如快递系统多次记录一个用户。
-    关联错误，比如地址和邮编。
-    缺少数据，比如性别。
-    意外字段，比如使用socialSecurityNumber字段存储用户的电话号码。
-    不可能值，比如邮寄时间为2017-22-5
-    命名差异，比如杭州市拱墅区和杭州拱墅的不一致。
-    输入错误，比如错误输入电话号码。
-3. ETL工具的清洗功能主要是：纠正，均质化。使用特殊字典纠正错误或同义词，基于规则强制实现域的规则，定义值间关联。
-</code></pre><p>转换：</p>
-<pre><code>1. 自由文本可能含有隐藏价值信息。例如JS缩写，没有标明这是一种大前端领域语言。
-2. 为个体数据可以使用不同格式。例如日期可以存储为2017/5/22或者2017-5-22。
-3. 转换 过程，存储格式和度量单位
-4. 匹配 过程，不同数据源相同名字字段匹配，QlikSense可以自动匹配，除非加qualify，为字段添加表名。
-5. 选择 过程，减少数据字段和记录数量。
-</code></pre><p><img src="/etl/transform.jpg" style="width:80%;margin:20px auto 0;"><br>加载：</p>
-<pre><code>1. 刷新。
-　　彻底重写数据仓库数据，这意味着替换旧数据。刷新通常与静态提取一起使用，以第一次填充数据仓库。
-2. 更新。
-　　只将对数据源数据的改动添加到数据仓库中。执行更新时，通常不会删除或者更改现有的数据。这种技术与增量提取一起使用来定期更新数据仓库。
-</code></pre>
+        <p>闭包原理是什么？闭包应用场景是什么？<br><img src="/closure/closure.jpg" style="width:80%;margin:20px auto 0;"><br><a id="more"></a><br>　　从一年前刚入门前端，就知道闭包是javascript语言中较为抽象和难理解的一个知识点，自己也看相关的书籍和博客，但是可能因为基础比较差的原因，一直对闭包都是一知半解，没有完全摸透闭包的原理和闭包的应用场景，因此准备对闭包做一个长达一周的深入学习。主要参考2本书，js高级程序设计，你不知道的javascript，对闭包做一个深入理解和学习。<br>　　学习闭包前，首先需要了解执行环境和作用域链，引用js高设的一段总结：内部环境可以通过作用域链访问外部环境，而外部环境不能通过作用域链访问内部环境。每个环境都可以沿着作用域链，向上查询变量和函数名。举个简单的例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var myPC = thinkPad;</div><div class="line">function changePC()&#123;</div><div class="line">    var herPC = MacAirpro;</div><div class="line">    function swapPC()&#123;</div><div class="line">        var tempPC = myPC;</div><div class="line">        myPC = herPC; </div><div class="line">        herPC = myPC;//swap()执行环境，可以访问tempPC,swapPC(),herPC,chagnePC(),myPC和window。</div><div class="line">    &#125;</div><div class="line">    swapPC();//changePC()执行环境，可以访问herPC,swapPC(),changePC(),myPC和window。</div><div class="line">&#125;</div><div class="line">changePC();//全局执行环境，可以访问myPC,changePC和window。</div></pre></td></tr></table></figure></p>
+<p>　　理解作用域链，是理解闭包的第一步，如果这一步不理解，需要认真研读js高设（第3版）的73,74页。<br>　　上面我们理解了执行环境和作用域链，但是为了理解闭包，还有几个关键词需要理解，活动对象，变量对象。<br>什么是活动对象？<br>　　当调用已经定义好的函数时，会创建一个由arguments和其他命名参数的值构成的活动对象，一般来说分为2种，一种是普通活动对象，一种是闭包活动对象。当闭包活动对象存在时，至少有一个普通活动对象在它的作用域链上，只有当闭包活动对象对应的函数被销毁或者叫接触引用时，才能将普通对象的内存释放。<br>　　举1个例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">function compare(value1,value2)&#123;</div><div class="line">    if(value1&lt;value2)&#123;</div><div class="line">        return -1;</div><div class="line">    &#125;else if(value1&gt;value2)&#123;</div><div class="line">        return 1;</div><div class="line">    &#125;else&#123;</div><div class="line">        return 0;</div><div class="line">    &#125;</div><div class="line">&#125;    </div><div class="line">var result = compare(1,9);</div></pre></td></tr></table></figure></p>
+<p>　　当compare(1,9)被调用时，回立刻产生compare函数的执行环境及其作用域链，本地的活动对象会立刻产生一个包含1和9的arguments的数组，value1=1和value2=2，处于作用域链的第一位。<br>形象直观的表示出来就是。<br><img src="/closure/demo1.jpg" style="width:80%;margin:20px auto 0;"><br>再看1个例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">function createComparisonFunction(propertyName)&#123;</div><div class="line">    return function(object1,object2)&#123;</div><div class="line">        var value1 = object1[propertyName];</div><div class="line">        var value2 = object2[propertyName];</div><div class="line">            if(value1&lt;value2)&#123;</div><div class="line">                return -1;</div><div class="line">            &#125;else if(value1&gt;value2)&#123;</div><div class="line">                return 1;</div><div class="line">            &#125;else&#123;</div><div class="line">                return 0;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">var compare = createComparisonFunction(&quot;name&quot;);</div><div class="line">var result = compare(&#123;name:&quot;Frank&quot;&#125;,&#123;name:&quot;Rose&quot;&#125;);</div></pre></td></tr></table></figure></p>
+<p>　　在这个例子中，有一句非常重要的话，createComparisonFunction()函数执行完毕后，其活动对象也不会被销毁，因为匿名函数的作用域链仍然在引用这个活动对象，这就产生了闭包，因为正常情况下，当函数执行完毕，局部的活动对象会被销毁，在内存中仅保存全局的变量对象，若想释放内存，需要将新创建的函数设置为null。<br>下图形象展示了闭包的活动对象。<br><img src="/closure/demo2.jpg" style="width:80%;margin:20px auto 0;"><br>学习完活动对象，那么什么是变量对象呢？<br>　　其实在上面2张图中就写明了变量对象是什么？目前我们知道的变量对象只有全局变量对象，即window对象下的对象。<br>但是细心的你会发现，这和我们平时在网上看到的哪些闭包题目并不一样，对，这就是我们后面要研究的内容：闭包与变量。<br>　　闭包返回的是整个变量对象，而不是某个特殊的变量，而且闭包只能取得包含函数中任何变量的最后一个值。</p>
+
       
     </div>
 
@@ -428,7 +409,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/ETL/" rel="tag"># ETL</a>
+            <a href="/tags/Javascript/" rel="tag"># Javascript</a>
           
         </div>
       
@@ -441,8 +422,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/license/" rel="next" title="什么是license和token？">
-                <i class="fa fa-chevron-left"></i> 什么是license和token？
+              <a href="/event/" rel="next" title="事件对象">
+                <i class="fa fa-chevron-left"></i> 事件对象
               </a>
             
           </div>
@@ -450,10 +431,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/event/" rel="prev" title="事件对象">
-                事件对象 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
