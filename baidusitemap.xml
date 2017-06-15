@@ -3,6 +3,51 @@
 
 
     
+    
+  <url>
+    <loc>https://frankkai.github.io/es6-object/</loc>
+    <lastmod>2017-05-26T09:11:25.834Z</lastmod>
+    <data>
+        <display>
+        <title>小清新ES6-Object新语法</title>
+        <pubTime>2017-05-25T10:48:12.000Z</pubTime>
+        
+        <tag>ES6</tag>
+         
+        <tag>Javascript</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="https://frankkai.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://frankkai.github.io/es6-class/</loc>
+    <lastmod>2017-05-25T10:11:00.635Z</lastmod>
+    <data>
+        <display>
+        <title>ES6-Class</title>
+        <pubTime>2017-05-25T10:05:18.000Z</pubTime>
+        
+        <tag>ES6</tag>
+         
+        <tag>Javascript</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="https://frankkai.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
   <url>
     <loc>https://frankkai.github.io/closure/</loc>
     <lastmod>2017-05-25T07:17:03.499Z</lastmod>
@@ -18,21 +63,6 @@
              
               <breadCrumb title="前端" url="https://frankkai.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://frankkai.github.io/event/</loc>
-    <lastmod>2017-05-24T04:35:08.116Z</lastmod>
-    <data>
-        <display>
-        <title>事件对象</title>
-        <pubTime>2017-05-24T04:28:28.000Z</pubTime>
-        
-         
-           
         </display>
     </data>
     </url>
