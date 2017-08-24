@@ -3,6 +3,26 @@
 
 
     
+  <url>
+    <loc>https://frankkai.github.io/Better-Man/</loc>
+    <lastmod>2017-08-24T09:12:50.417Z</lastmod>
+    <data>
+        <display>
+        <title>ES6神奇的import...from...命令</title>
+        <pubTime>2017-03-01T05:34:29.000Z</pubTime>
+        
+        <tag>Javascript</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="https://frankkai.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
     
   <url>
     <loc>https://frankkai.github.io/closure/</loc>
@@ -120,26 +140,6 @@
            
              
               <breadCrumb title="信息安全" url="https://frankkai.github.io/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://frankkai.github.io/Better-Man/</loc>
-    <lastmod>2017-05-22T12:33:12.504Z</lastmod>
-    <data>
-        <display>
-        <title>ES6神奇的import...from...命令</title>
-        <pubTime>2017-03-01T05:34:29.000Z</pubTime>
-        
-        <tag>Javascript</tag>
-         
-         
-           
-             
-              <breadCrumb title="前端" url="https://frankkai.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
           
         </display>
     </data>
