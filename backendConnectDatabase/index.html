@@ -94,12 +94,12 @@
 <meta property="og:url" content="https://frankkai.github.io/backendConnectDatabase/index.html">
 <meta property="og:site_name" content="趁你还年轻的博客">
 <meta property="og:description" content="服务器内部的Back-End与Database之间的通信方式（初衷），以及nodejs服务端常用的2个操作和管理MongoDB的模块的对比（重点）…">
-<meta property="og:image" content="http://ov6jc8fwp.bkt.clouddn.com/CORS.png-test">
-<meta property="og:updated_time" content="2017-08-26T09:55:51.582Z">
+<meta property="og:image" content="http://ov6jc8fwp.bkt.clouddn.com/dayabase-backend.png-test">
+<meta property="og:updated_time" content="2017-08-26T09:58:13.083Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Back-End与Database如何通信，mongoose与mongodb模块的区别">
 <meta name="twitter:description" content="服务器内部的Back-End与Database之间的通信方式（初衷），以及nodejs服务端常用的2个操作和管理MongoDB的模块的对比（重点）…">
-<meta name="twitter:image" content="http://ov6jc8fwp.bkt.clouddn.com/CORS.png-test">
+<meta name="twitter:image" content="http://ov6jc8fwp.bkt.clouddn.com/dayabase-backend.png-test">
 
 
 
@@ -380,7 +380,7 @@
       
 
       
-        <p>服务器内部的Back-End与Database之间的通信方式（初衷），以及nodejs服务端常用的2个操作和管理MongoDB的模块的对比（重点）…<br><img src="http://ov6jc8fwp.bkt.clouddn.com/CORS.png-test" style="width:80%;margin:20px auto 0;"><br><a id="more"></a><br>　　上一篇博客我们介绍了Client与Back-End如何通信，成功打通了客户端到服务器端的。<br>　　现在我们来研究一下服务器内部的Back-End与Database之间的通信方式（初衷），以及nodejs服务端常用的2个操作和管理MongoDB的模块的对比（重点）。<br>　　下面关于mongoose和mongodb的对比中包含了Back-End与Database建立通信的方式，因此我们不单独拿出来讲。<br>　　简单说一下的话，就是数据库开一个默认监听端口出来，然后Back-End端调用接口去和默认监听端口建立连接。（通信内部协议我们不去深入。）</p>
+        <p>服务器内部的Back-End与Database之间的通信方式（初衷），以及nodejs服务端常用的2个操作和管理MongoDB的模块的对比（重点）…<br><img src="http://ov6jc8fwp.bkt.clouddn.com/dayabase-backend.png-test" style="width:80%;margin:20px auto 0;"><br><a id="more"></a><br>　　上一篇博客我们介绍了Client与Back-End如何通信，成功打通了客户端到服务器端的。<br>　　现在我们来研究一下服务器内部的Back-End与Database之间的通信方式（初衷），以及nodejs服务端常用的2个操作和管理MongoDB的模块的对比（重点）。<br>　　下面关于mongoose和mongodb的对比中包含了Back-End与Database建立通信的方式，因此我们不单独拿出来讲。<br>　　简单说一下的话，就是数据库开一个默认监听端口出来，然后Back-End端调用接口去和默认监听端口建立连接。（通信内部协议我们不去深入。）</p>
 <p>　　Ok，现在开始分析mongoose和mongdb模块。</p>
 <p>###一.初步分析mongoose和mongodb模块</p>
 <blockquote>
