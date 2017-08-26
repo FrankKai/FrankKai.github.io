@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://frankkai.github.io/backendConnectDatabase/</loc>
+    
+    <lastmod>2017-08-26T09:55:51.582Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://frankkai.github.io/clientConnectServer/</loc>
     
     <lastmod>2017-08-25T17:32:21.661Z</lastmod>

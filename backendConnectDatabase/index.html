@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="加密," />
+  <meta name="keywords" content="nodejs," />
 
 
 
@@ -87,19 +87,19 @@
 
 
 
-<meta name="description" content="对license和token的简单思考">
-<meta name="keywords" content="加密">
+<meta name="description" content="服务器内部的Back-End与Database之间的通信方式（初衷），以及nodejs服务端常用的2个操作和管理MongoDB的模块的对比（重点）…">
+<meta name="keywords" content="nodejs">
 <meta property="og:type" content="article">
-<meta property="og:title" content="什么是license和token？">
-<meta property="og:url" content="https://frankkai.github.io/license/index.html">
+<meta property="og:title" content="Back-End与Database如何通信，mongoose与mongodb模块的区别">
+<meta property="og:url" content="https://frankkai.github.io/backendConnectDatabase/index.html">
 <meta property="og:site_name" content="趁你还年轻的博客">
-<meta property="og:description" content="对license和token的简单思考">
-<meta property="og:image" content="https://frankkai.github.io/license/license.png">
-<meta property="og:updated_time" content="2017-05-22T12:35:41.869Z">
+<meta property="og:description" content="服务器内部的Back-End与Database之间的通信方式（初衷），以及nodejs服务端常用的2个操作和管理MongoDB的模块的对比（重点）…">
+<meta property="og:image" content="http://ov6jc8fwp.bkt.clouddn.com/CORS.png-test">
+<meta property="og:updated_time" content="2017-08-26T09:55:51.582Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="什么是license和token？">
-<meta name="twitter:description" content="对license和token的简单思考">
-<meta name="twitter:image" content="https://frankkai.github.io/license/license.png">
+<meta name="twitter:title" content="Back-End与Database如何通信，mongoose与mongodb模块的区别">
+<meta name="twitter:description" content="服务器内部的Back-End与Database之间的通信方式（初衷），以及nodejs服务端常用的2个操作和管理MongoDB的模块的对比（重点）…">
+<meta name="twitter:image" content="http://ov6jc8fwp.bkt.clouddn.com/CORS.png-test">
 
 
 
@@ -127,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="https://frankkai.github.io/license/"/>
+  <link rel="canonical" href="https://frankkai.github.io/backendConnectDatabase/"/>
 
 
 
 
 
-  <title> 什么是license和token？ | 趁你还年轻的博客 </title>
+  <title> Back-End与Database如何通信，mongoose与mongodb模块的区别 | 趁你还年轻的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -271,7 +271,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://frankkai.github.io/license/">
+    <link itemprop="mainEntityOfPage" href="https://frankkai.github.io/backendConnectDatabase/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="趁你还年轻">
@@ -292,7 +292,7 @@
             
             
               
-                什么是license和token？
+                Back-End与Database如何通信，mongoose与mongodb模块的区别
               
             
           </h1>
@@ -307,8 +307,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-18T22:04:18+08:00">
-                2017-04-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-26T17:52:00+08:00">
+                2017-08-26
               </time>
             
 
@@ -330,8 +330,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/信息安全/" itemprop="url" rel="index">
-                    <span itemprop="name">信息安全</span>
+                  <a href="/categories/后端/" itemprop="url" rel="index">
+                    <span itemprop="name">后端</span>
                   </a>
                 </span>
 
@@ -348,7 +348,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a class="cloud-tie-join-count" href="/license/#comments" itemprop="discussionUrl">
+                <a class="cloud-tie-join-count" href="/backendConnectDatabase/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count join-count" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -380,11 +380,42 @@
       
 
       
-        <p>对license和token的简单思考<br><img src="/license/license.png" style="width:65%;margin:20px auto 0;"><br><a id="more"></a><br>　　token这个东西，在微信公众平台也看到过，然后现在在Qlik Sense的服务版也看到了，因此需要好好研究一下这个license和token到底是个什么东西了。<br>这是QS服务版关于license和token的介绍。<br>The License Enabling File (LEF) determines the number of available tokens. You use the tokens on different access types and allocate the access types to users. The License usage summary page displays the token availability and how the tokens are distributed to different access types. The licensing is designed to allow you to adjust license usage as required.<br>　　英语捉急的我，准备回家一点一点慢慢翻译，再结合网上找到资料进行研究。<br>　　license文件决定了可用token的数量。你可以在不同的权限下使用token，而且token也可以分配给不同的用户。license概要页说明了token的用法以及如何将token分配给权限。Liscensing的目的是让你根据需求调整license的使用情况。</p>
-<p>单词：<br>　　license 许可证<br>　　token 令牌<br>　　个人理解是，当我们购买一款软件后，卖家会提供给我们一个license，拿到license之后，意味着我们拥有了软件的使用权。软件是被一个人用？还是可以被分配给多个人使用？这就涉及到了token这个东西，打个不成立的比方：某年某月，我和其余5个朋友合资买了一款NBA2K66游戏，此时我们大家一起获得了游戏的使用权，即拿到了游戏的license，而且我们在云游戏平台安装好这款游戏，和官方宣传一样，NBA2K66可以被6个人一起使用，即1个license包含了6个token，这6个token我们都为它分配了最高权限，即6个人都可以玩游戏中的所有模式。</p>
-<p>由点及面：<br>１.百度百科<br>　　license是版权许可证。相当于软件版权。软件版权在法律上称为“计算机软件著作权”。<br>　　token在计算机身份认证中是令牌（临时）的意思，访问令牌（Access token）表示用户权限，密保令牌（Security token），或者硬件令牌，例如U盾，或者叫做认证令牌或者加密令牌，一种计算机身份校验的物理设备，会话令牌（Session token）,交互会话中唯一身份标识符。<br>2.Jason_Fangh的博客<br>​<br>　　web开发中，Token是服务端生成的一串字符串，以作客户端进行请求的一个令牌，当第一次登录后，服务器生成一个Token便将此Token返回给客户端，以后客户端只需带上这个Token前来请求数据即可，无需再次带上用户名和密码。<br>3.大陶陶的博客<br>　　web安全中，Token，就是令牌，最大的特点就是随机性，不可预测。一般黑客或软件无法猜测出来。<br>　　Token一般用在两个地方: 1)防止表单重复提交、 2)anti csrf攻击（跨站点请求伪造）。<br>　　两者在原理上都是通过session token来实现的。如果应用于“anti csrf攻击”，则服务器端会对Token值进行验证，判断是否和session中的Token值相等，若相等，则可以证明请求有效，不是伪造的。 不过，如果应用于“防止表单重复提交”，服务器端第一次验证相同过后，会将session中的Token值更新下，若用户重复提交，第二次的验证判断将失败，因为用户提交的表单中的Token没变，但服务器端session中Token已经改变了。session token较为繁琐，因此可以使用cookie代替，但是cookie容易受到xss攻击，黑客将直接实现csrf攻击。<br>　　此外，要避免“加token但不进行校验”的情况，在session中增加了token，但服务端没有对token进行验证，根本起不到防范的作用。<br>　　还需注意的是，对数据库有改动的增删改操作，需要加token验证，对于查询操作，一定不要加token，防止攻击者通过查询操作获取token进行csrf攻击。但并不是这样攻击者就无法获得token，只是增大攻击成本而已。<br>​</p>
-<p>安全知识盲区：<br>1.xss攻击<br>XSS攻击：跨站脚本攻击(Cross Site Scripting)，为不和层叠样式表(Cascading Style Sheets, CSS)的缩写混淆，故将跨站脚本攻击缩写为XSS。<br>2.csrf攻击<br>CSRF（Cross-site request forgery）跨站请求伪造，也被称为“One Click Attack”或者Session Riding，通常缩写为CSRF或者XSRF，是一种对网站的恶意利用。尽管听起来像跨站脚本（XSS），但它与XSS非常不同，XSS利用站点内的信任用户，而CSRF则通过伪装来自受信任用户的请求来利用受信任的网站。与XSS攻击相比，CSRF攻击往往不大流行（因此对其进行防范的资源也相当稀少）和难以防范，所以被认为比XSS更具危险性。</p>
-<p>总结：<br>1.常见的token可以分为Access token和Session token两种，前者是软件用户权限，后者则是网站通信令牌。<br>2.Session token在web安全领域发挥着重要的作用。</p>
+        <p>服务器内部的Back-End与Database之间的通信方式（初衷），以及nodejs服务端常用的2个操作和管理MongoDB的模块的对比（重点）…<br><img src="http://ov6jc8fwp.bkt.clouddn.com/CORS.png-test" style="width:80%;margin:20px auto 0;"><br><a id="more"></a><br>　　上一篇博客我们介绍了Client与Back-End如何通信，成功打通了客户端到服务器端的。<br>　　现在我们来研究一下服务器内部的Back-End与Database之间的通信方式（初衷），以及nodejs服务端常用的2个操作和管理MongoDB的模块的对比（重点）。<br>　　下面关于mongoose和mongodb的对比中包含了Back-End与Database建立通信的方式，因此我们不单独拿出来讲。<br>　　简单说一下的话，就是数据库开一个默认监听端口出来，然后Back-End端调用接口去和默认监听端口建立连接。（通信内部协议我们不去深入。）</p>
+<p>　　Ok，现在开始分析mongoose和mongdb模块。</p>
+<p>###一.初步分析mongoose和mongodb模块</p>
+<blockquote>
+<p>关于mongoose的详情：<br>　　mongoose 是个 odm。odm 的概念对应 sql 中的 orm。也就是 ruby on rails 中的 activerecord 那一层。orm 全称是 Object-Relational Mapping，对象关系映射；而 odm 是 Object-Document Mapping，对象文档映射。<br>　　它的作用就是，在程序代码中，定义一下数据库中的数据格式，然后取数据时通过它们，可以把数据库中的 document 映射成程序中的一个对象，这个对象有 .save .update 等一系列方法，和 .title .author 等一系列属性。在调用这些方法时，odm 会根据你调用时所用的条件，自动转换成相应的 mongodb shell 语句帮你发送出去。自然地，在程序中链式调用一个个的方法要比手写数据库操作语句具有更大的灵活性和便利性。</p>
+</blockquote>
+<p>用一段代码来说明mongoose的作用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">var mongoose = require(&apos;mongoose&apos;);</div><div class="line">mongoose.connect(&apos;mongodb://localhost:27017/myproject&apos;);</div><div class="line">var db = mongoose.connection;</div><div class="line">db.on(&apos;error&apos;, console.error.bind(console, &apos;connection error:&apos;));</div><div class="line">db.once(&apos;open&apos;, function() &#123;</div><div class="line">  // we&apos;re connected!</div><div class="line">  var userSchema=new mongoose.Schema(&#123;</div><div class="line">    user:&#123; username:String,</div><div class="line">         password:String</div><div class="line">         &#125;,</div><div class="line">    contents:&#123;</div><div class="line">         title:String,</div><div class="line">         poster:String,</div><div class="line">         post:String,</div><div class="line">         time:Date,</div><div class="line">         imgs:[],</div><div class="line">         comment:[]</div><div class="line">     &#125;</div><div class="line">    &#125;);</div><div class="line">    var User = mongoose.model(&apos;user&apos;, userSchema);</div><div class="line">    var Frank = new User(&#123;</div><div class="line">        user:&#123; username:&apos;Frank&apos;,</div><div class="line">            password:&apos;12345678&apos;</div><div class="line">            &#125;,</div><div class="line">    &#125;);</div><div class="line">    console.log(Frank.user);</div><div class="line">    Frank.save(function (err) &#123;</div><div class="line">        console.log(&apos;保存成功&apos;);</div><div class="line">      &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>　　<br>　　我们将数据，也就是Frank的个人信息保存mongodb://localhost:27017/myproject的user model中。<br>　　这句话的直观意思是：我们将一个document，保存到myproject数据库的users collection中。<br>　　不知道聪明的你发现没有？<br>　　<strong>此处最巧妙的地方在于，model自动为我们创建了users这个collection。</strong><br>　　所以可以理解model为document+collection的集大成者。<br>　　由此可见，<strong>mongoose是一个elegant mongodb object modeling for nodejs。</strong><br>那么如何理解mongodb这个模块，它和mongoose有何异同？</p>
+<p>看下下面这段代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">var MongoClient = require(&apos;mongodb&apos;).MongoClient,</div><div class="line">    assert=require(&apos;assert&apos;);</div><div class="line">var url = &apos;mongodb://localhost:27017/myproject&apos;;</div><div class="line">MongoClient.connect(url,function(err,db)&#123;</div><div class="line">    assert.equal(null,err);</div><div class="line">    console.log(&quot;成功连接到服务器&quot;);</div><div class="line">    insertDocuments(db,function()&#123;</div><div class="line">        db.close();</div><div class="line">    &#125;);</div><div class="line">   // db.close();</div><div class="line">&#125;);</div><div class="line">var insertDocuments = function(db,callback)&#123;</div><div class="line">    var collection = db.collection(&apos;documents&apos;);</div><div class="line">    collection.insertMany([</div><div class="line">        &#123;a:1&#125;,</div><div class="line">        &#123;a:2&#125;,</div><div class="line">        &#123;a:3&#125;</div><div class="line">    ],function(err,result)&#123;</div><div class="line">        assert.equal(err,null);</div><div class="line">        assert.equal(3,result.result.n);</div><div class="line">        assert.equal(3,result.ops.length);</div><div class="line">        console.log(&quot;成功插入3个文档到集合！&quot;);</div><div class="line">        callback(result);</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>　　聪明的你一下就看出来了，mongodb模块中的命令更像是mongodb-shell中的命令。<br>　　所以这也是mongdb模块被称作MongoDB数据库的驱动的原因，说白了就是官方提供的一种管理和操作MongoDB数据库的nodejs接口。<br><strong>mongodb是一个MongoDB官方为nodejs语言用户开发的本地驱动，除了mongodb这个nodejs驱动，MongoDB还提供了众多语言的驱动，包括Python，Php等等。</strong></p>
+<p>总结一下：</p>
+<blockquote>
+<p>MongoDB：mongodb核心服务启动：mongod命令，开放27017端口允许建立连接.<br>mongodb npm：管理数据库开关，collections和documents等，通过27017端口连接数据库。<br>mongoose npm：数据库中集合的创建和管理，通过27017端口连接数据库。</p>
+</blockquote>
+<p>PS：可以使用mongo命令开启MongoDB shell窗口，直接对话数据库</p>
+<p>其实到这里还是对二者有些难以区分，请看这句话：</p>
+<p>　　Let’s face it, writing MongoDB validation, casting and business logic boilerplate is a drag. That’s why we wrote Mongoose.</p>
+<p>从这句话我们可以分析出来，如果只是使用mongodb的话，我们可能需要对数据进行验证，计算以及写复杂的业务逻辑，说白了就是处理collections里的documents比较麻烦，而moogose正好解决了这个问题。</p>
+<p>###二.进阶分析mongoose和mongodb模块<br>下面引用一段stackoverflow上的大神一段话：</p>
+<blockquote>
+<p>I assume you already know that MongoDB is a NoSQL database system which stores data in the form of BSON documents. Your question, however is about the packages for Node.js.<br><strong>In terms of Node.js, <a href="https://www.npmjs.com/package/mongodb" target="_blank" rel="external">mongodb</a> is the native driver for interacting with a mongodb instance and <a href="https://www.npmjs.com/package/mongoose" target="_blank" rel="external">mongoose</a> is an Object modeling tool for MongoDB.</strong><br>Mongoose is built upon the MongoDB driver to provide programmers with a way to model their data.<br>EDIT: I do not want to comment on which is better, as this would make this answer opinionated. However I will list some advantages and disadvantages of using both approaches.<br>Using Mongoose, a user can define the schema for the documents in a particular collection. <strong>It provides a lot of convenience in the creation and management of data in MongoDB</strong>. On the downside, learning mongoose can take some time, and has some limitations in handling schemas that are quite complex.<br>However, if your collection schema is unpredictable, or you want a Mongo-shell like experience inside Node.js, then go ahead and use the MongoDB driver. It is the simplest to pick up. <strong>The downside here is that you will have to write larger amounts of code for validating the data, and the risk of errors is higher.</strong></p>
+</blockquote>
+<p>他给出了mongoose和mongodb的适用场景和优缺点。</p>
+<p>关键处已做加粗标记，但是为了对比清晰些，这里我再列个表格。<br>| Tables        |数据可预测性      | 优点 |缺点|<br>| ————- |:————-:| :—–:| :—–:|<br>| mongoose      | 可预测 | <strong>creation and management of data</strong>|handling schemas that are quite complex|<br>|mongodb  | 不可预测     |   Mongo-shell like experience |<strong>write larger amounts of code for validating the data</strong>|</p>
+<p>所以由此可以看出，我们应该结合具体的业务场景，在二者之间做一个合适的选择。</p>
+<p>###三.思考与总结</p>
+<p><strong>1.个人认为，数据类型一般来说都是可预测的。</strong></p>
+<p>举个简单的例子：用户的账号和密码，一般来说都是字符串类型。</p>
+<p>此时使用mongoose就可以清晰得定义users的username和password为string类型；若不预先定义，那么需要去判断username和password是否符合存储要求。</p>
+<p><strong>2.这有些类似于关系型数据库中的数据类型定义，为什么要在Back-end定义数据类型呢？不能像关系型数据库一样，在数据库中定义表的字段时候声明数据类型吗？</strong></p>
+<p>答案是不行。</p>
+<p>因为mongodb中的所有数据都是binary的，因此需要mongoose去做一个数据类型的定义，主要方法就是将document映射成一个对象。</p>
+<p><strong>3.二者都是通过MongoDB的27017默认监听端口进行连接，从而进行后续的集合和文档的定义，创建等操作。</strong></p>
+<p>道路是曲折的，但前途是光明的！</p>
+<p>努力成为优秀的大前端工程师！</p>
+<p>参考：<br><a href="https://segmentfault.com/q/1010000010864304?_ea=2441566" target="_blank" rel="external">https://segmentfault.com/q/1010000010864304?_ea=2441566</a><br><a href="https://stackoverflow.com/questions/28712248/difference-between-mongodb-and-mongoose?answertab=votes" target="_blank" rel="external">https://stackoverflow.com/questions/28712248/difference-between-mongodb-and-mongoose?answertab=votes</a><br><a href="https://gxnotes.com/article/168202.html" target="_blank" rel="external">https://gxnotes.com/article/168202.html</a><br><a href="https://github.com/alsotang/node-lessons/tree/master/lesson15" target="_blank" rel="external">https://github.com/alsotang/node-lessons/tree/master/lesson15</a></p>
 
       
     </div>
@@ -413,7 +444,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/加密/" rel="tag"># 加密</a>
+            <a href="/tags/nodejs/" rel="tag"># nodejs</a>
           
         </div>
       
@@ -426,8 +457,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/bat/" rel="next" title=".bat文件开启常用软件：start顺序很关键">
-                <i class="fa fa-chevron-left"></i> .bat文件开启常用软件：start顺序很关键
+              <a href="/clientConnectServer/" rel="next" title="客户端（vue框架）与服务器（koa框架）通信及服务器跨域配置">
+                <i class="fa fa-chevron-left"></i> 客户端（vue框架）与服务器（koa框架）通信及服务器跨域配置
               </a>
             
           </div>
@@ -435,10 +466,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/etl/" rel="prev" title="什么是ETL?">
-                什么是ETL? <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

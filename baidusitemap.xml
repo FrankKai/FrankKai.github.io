@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>https://frankkai.github.io/backendConnectDatabase/</loc>
+    <lastmod>2017-08-26T09:55:51.582Z</lastmod>
+    <data>
+        <display>
+        <title>Back-End与Database如何通信，mongoose与mongodb模块的区别</title>
+        <pubTime>2017-08-26T09:52:00.000Z</pubTime>
+        
+        <tag>nodejs</tag>
+         
+         
+           
+             
+              <breadCrumb title="后端" url="https://frankkai.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://frankkai.github.io/clientConnectServer/</loc>
     <lastmod>2017-08-25T17:32:21.661Z</lastmod>
     <data>
@@ -109,9 +129,9 @@
         <title>HEXO博客二次体验</title>
         <pubTime>2017-03-01T04:53:07.000Z</pubTime>
         
-        <tag>Hexo</tag>
-         
         <tag>反思</tag>
+         
+        <tag>Hexo</tag>
          
          
            
