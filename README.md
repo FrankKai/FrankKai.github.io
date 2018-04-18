@@ -1,5 +1,4 @@
-# FrankKai.github.io
-基于Hexo搭建的Next主题个人博客
+# 趁你还年轻的博客
 
 博客主站由于更新博客操作比较繁琐，因此采用issues的形式展示博客。
 除了下列列出的文章之外，目前在简书，segmentFault和gitbook会有一些其他内容的博客，后续我会陆续迁移到这里。
