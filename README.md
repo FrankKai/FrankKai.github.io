@@ -21,7 +21,7 @@ FrontEnd：
   - [什么是Web Workers?](https://github.com/FrankKai/FrankKai.github.io/issues/17)
 - Git
   - [关于Git那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/39)
-  - [git与ssh公钥之间的那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/12)
+  - [Git与ssh秘钥之间的那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/12)
 - 前端安全
   - [记一次简单的DOM XSS攻击实验](https://github.com/FrankKai/FrankKai.github.io/issues/9)
   - [网站防嵌套猜想及实验验证](https://github.com/FrankKai/FrankKai.github.io/issues/33)
