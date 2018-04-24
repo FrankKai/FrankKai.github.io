@@ -45,6 +45,7 @@ NodeJS:
 - [API网关express-gateway初体验](https://github.com/FrankKai/FrankKai.github.io/issues/20)
 - [koa2如何设置和清除cookie](https://github.com/FrankKai/FrankKai.github.io/issues/29)
 - [饿了么大前端题目解析：JS基础问题](https://github.com/FrankKai/FrankKai.github.io/issues/40)
+- [关于npm那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/41)
 
 Others:
   - [Something more important than code](https://github.com/FrankKai/FrankKai.github.io/issues/16)
