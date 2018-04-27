@@ -58,3 +58,4 @@ Others:
   - [更新APP-执行滚动更新](https://github.com/FrankKai/FrankKai.github.io/issues/26)
   - [原来命令行也是门艺术](https://github.com/FrankKai/FrankKai.github.io/issues/27)
   - [持续集成工具Jenkins初体验](https://github.com/FrankKai/FrankKai.github.io/issues/28)
+  - [关于MongoDB那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/43)
