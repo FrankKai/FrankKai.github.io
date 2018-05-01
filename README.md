@@ -41,7 +41,7 @@ FrontEnd：
   - [简单前端性能优化之Waterfall](https://github.com/FrankKai/FrankKai.github.io/issues/36)
   - [前端性能优化之imagebase64](https://github.com/FrankKai/FrankKai.github.io/issues/37)
 - 前端工程化
-  - [[译]什么是CSS Modules ？我们为什么需要他们？](https://github.com/FrankKai/FrankKai.github.io/issues/45)
+  - [【译】什么是CSS Modules ？我们为什么需要他们？](https://github.com/FrankKai/FrankKai.github.io/issues/45)
   
 NodeJS:
 - [API网关express-gateway初体验](https://github.com/FrankKai/FrankKai.github.io/issues/20)
