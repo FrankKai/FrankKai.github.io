@@ -29,7 +29,7 @@ FrontEnd：
 - 前端安全
   - [记一次简单的DOM XSS攻击实验](https://github.com/FrankKai/FrankKai.github.io/issues/9)
   - [网站防嵌套猜想及实验验证](https://github.com/FrankKai/FrankKai.github.io/issues/33)
-  - [web安全之敏感数据格式HAR](https://github.com/FrankKai/FrankKai.github.io/issues/54)
+  - [web安全之敏感数据格式HAR](https://github.com/FrankKai/FrankKai.github.io/issues/54)
   
 - 前端框架
   - [大厂前端技术栈探索和思考](https://github.com/FrankKai/FrankKai.github.io/issues/15)
