@@ -31,10 +31,10 @@ FrontEnd：
   - [【译】Presentational and Container Components](https://github.com/FrankKai/FrankKai.github.io/issues/13)
   - [react-redux api 中文翻译](https://github.com/FrankKai/FrankKai.github.io/issues/2)
   - [异步优先队列$nextTick的踩坑](https://github.com/FrankKai/FrankKai.github.io/issues/30)
-  - [框架使用过程中的微小发现](https://github.com/FrankKai/FrankKai.github.io/issues/31)
-  - [前端开发神器之ngrok](https://github.com/FrankKai/FrankKai.github.io/issues/32)
+  - [Vue踩坑记录](https://github.com/FrankKai/FrankKai.github.io/issues/31)
   - [AngularJS踩坑记录](https://github.com/FrankKai/FrankKai.github.io/issues/47)
   - [react踩坑记录](https://github.com/FrankKai/FrankKai.github.io/issues/53)
+  - [vue的重中之重之h(createElement)函数](https://github.com/FrankKai/FrankKai.github.io/issues/57)
 - 前端面试
   - [一些特别棒的面试题[0]](https://github.com/FrankKai/FrankKai.github.io/issues/3)
   - [一些特别棒的面试题[1]](https://github.com/FrankKai/FrankKai.github.io/issues/5)
@@ -46,6 +46,7 @@ FrontEnd：
 - 前端工程化
   - [【译】什么是CSS Modules ？我们为什么需要他们？](https://github.com/FrankKai/FrankKai.github.io/issues/45)
   - [前端领域的BEM到底是什么](https://github.com/FrankKai/FrankKai.github.io/issues/46)
+  - [前端开发神器之ngrok](https://github.com/FrankKai/FrankKai.github.io/issues/32)
   
 NodeJS:
 - [API网关express-gateway初体验](https://github.com/FrankKai/FrankKai.github.io/issues/20)
