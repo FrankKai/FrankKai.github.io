@@ -14,7 +14,7 @@ FrontEnd：
   - [深度剖析0.1 +0.2===0.30000000000000004的原因](https://github.com/FrankKai/FrankKai.github.io/issues/7)
   - [如何解决0.1 +0.2===0.30000000000000004类问题](https://github.com/FrankKai/FrankKai.github.io/issues/11)
   - [从规范去看Function.prototype.apply到底是怎么工作的？](https://github.com/FrankKai/FrankKai.github.io/issues/1)
-  - [从规范去看Function.prototype.call到底是怎么工作的？](https://github.com/FrankKai/FrankKai.github.io/issues/59)
+  - [从规范去看Function.prototype.call到底是怎么工作的？](https://github.com/FrankKai/FrankKai.github.io/issues/59)
   - [Javascript对象的深浅拷贝](https://github.com/FrankKai/FrankKai.github.io/issues/19)
   - [【译】ES8发布及主要新特性介绍](https://github.com/FrankKai/FrankKai.github.io/issues/14)
   - [为什么typeof null→"object" ?](https://github.com/FrankKai/FrankKai.github.io/issues/34)
