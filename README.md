@@ -39,7 +39,7 @@ FrontEnd：
   - [异步优先队列$nextTick的踩坑](https://github.com/FrankKai/FrankKai.github.io/issues/30)
   - [Vue踩坑记录](https://github.com/FrankKai/FrankKai.github.io/issues/31)
   - [AngularJS踩坑记录](https://github.com/FrankKai/FrankKai.github.io/issues/47)
-  - [react踩坑记录](https://github.com/FrankKai/FrankKai.github.io/issues/53)
+  - [React踩坑记录](https://github.com/FrankKai/FrankKai.github.io/issues/53)
   - [vue的重中之重之h(createElement)函数](https://github.com/FrankKai/FrankKai.github.io/issues/57)
   
 - 前端面试
@@ -60,12 +60,15 @@ FrontEnd：
   - [PostCSS真的太好用了！](https://github.com/FrankKai/FrankKai.github.io/issues/44  )
   
 NodeJS:
-- [API网关express-gateway初体验](https://github.com/FrankKai/FrankKai.github.io/issues/20)
-- [koa2如何设置和清除cookie](https://github.com/FrankKai/FrankKai.github.io/issues/29)
-- [饿了么大前端题目解析：JS基础问题](https://github.com/FrankKai/FrankKai.github.io/issues/40)
 - [关于npm那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/41)
+- [如何理解package.json中的proxy字段？](https://github.com/FrankKai/FrankKai.github.io/issues/60)
+- [饿了么大前端题目解析：JS基础问题](https://github.com/FrankKai/FrankKai.github.io/issues/40)
+- [koa2如何设置和清除cookie](https://github.com/FrankKai/FrankKai.github.io/issues/29)
+- [API网关express-gateway初体验](https://github.com/FrankKai/FrankKai.github.io/issues/20)
 
 Others:
+  - [原来命令行也是门艺术](https://github.com/FrankKai/FrankKai.github.io/issues/27)
+  - [关于MongoDB那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/43)
   - [Something more important than code](https://github.com/FrankKai/FrankKai.github.io/issues/16)
   - [字符串base64编解码的多种语言实现](https://github.com/FrankKai/FrankKai.github.io/issues/4)
   - [创建集群-使用Minikube建立一个集群](https://github.com/FrankKai/FrankKai.github.io/issues/21)
@@ -74,6 +77,5 @@ Others:
   - [公开APP-使用Service来公开你的应用](https://github.com/FrankKai/FrankKai.github.io/issues/24)
   - [伸缩APP-运行多个APP实例](https://github.com/FrankKai/FrankKai.github.io/issues/25)
   - [更新APP-执行滚动更新](https://github.com/FrankKai/FrankKai.github.io/issues/26)
-  - [原来命令行也是门艺术](https://github.com/FrankKai/FrankKai.github.io/issues/27)
   - [持续集成工具Jenkins初体验](https://github.com/FrankKai/FrankKai.github.io/issues/28)
-  - [关于MongoDB那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/43)
+
