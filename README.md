@@ -5,6 +5,10 @@
 除了下列列出的文章之外，目前在简书，segmentFault和gitbook会有一些其他内容的博客，后续我会陆续迁移到这里。
 
 FrontEnd：
+- HTML
+  - [[译]HTML进阶之Data attributes](https://github.com/FrankKai/FrankKai.github.io/issues/72)
+  - [[译]HTML进阶之Content categories](https://github.com/FrankKai/FrankKai.github.io/issues/73)
+  - [[译]HTML进阶之HTML5 Content Editable](https://github.com/FrankKai/FrankKai.github.io/issues/74)
 - CSS
   - [你真的理解浏览器盒模型吗？](https://github.com/FrankKai/FrankKai.github.io/issues/38)
   - [我不知道的CSS，你知道吗？](https://github.com/FrankKai/FrankKai.github.io/issues/6)
