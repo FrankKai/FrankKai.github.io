@@ -9,6 +9,7 @@ FrontEnd：
   - [[译]HTML进阶之Data attributes](https://github.com/FrankKai/FrankKai.github.io/issues/72)
   - [[译]HTML进阶之Content categories](https://github.com/FrankKai/FrankKai.github.io/issues/73)
   - [[译]HTML进阶之HTML5 Content Editable](https://github.com/FrankKai/FrankKai.github.io/issues/74)
+  - [[译]HTML Timers](https://github.com/FrankKai/FrankKai.github.io/issues/67)
 - CSS
   - [你真的理解浏览器盒模型吗？](https://github.com/FrankKai/FrankKai.github.io/issues/38)
   - [我不知道的CSS，你知道吗？](https://github.com/FrankKai/FrankKai.github.io/issues/6)
@@ -22,6 +23,7 @@ FrontEnd：
   - [Javascript对象的深浅拷贝](https://github.com/FrankKai/FrankKai.github.io/issues/19)
   - [【译】ES8发布及主要新特性介绍](https://github.com/FrankKai/FrankKai.github.io/issues/14)
   - [为什么typeof null→"object" ?](https://github.com/FrankKai/FrankKai.github.io/issues/34)
+  - [IIFE(立即执行函数)那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/69)
   
 - HTTP
   - [什么是resquest／response拦截器？](https://github.com/FrankKai/FrankKai.github.io/issues/18)
@@ -49,7 +51,7 @@ FrontEnd：
 - 前端面试
   - [一些特别棒的面试题[0]](https://github.com/FrankKai/FrankKai.github.io/issues/3)
   - [一些特别棒的面试题[1]](https://github.com/FrankKai/FrankKai.github.io/issues/5)
-  - [一些特别棒的面试题[2]](https://github.com/FrankKai/FrankKai.github.io/issues/66) 
+  - [一些特别棒的面试题[2]](https://github.com/FrankKai/FrankKai.github.io/issues/66)
   
 - 前端性能
   - [CSS3动画卡顿性能优化解决方案](https://github.com/FrankKai/FrankKai.github.io/issues/8)
