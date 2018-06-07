@@ -25,6 +25,7 @@ FrontEnd：
   - [【译】ES8发布及主要新特性介绍](https://github.com/FrankKai/FrankKai.github.io/issues/14)
   - [为什么typeof null→"object" ?](https://github.com/FrankKai/FrankKai.github.io/issues/34)
   - [IIFE(立即执行函数)那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/69)
+  - [es6+ 常用语法](https://github.com/FrankKai/FrankKai.github.io/issues/76)
   
 - HTTP
   - [什么是resquest／response拦截器？](https://github.com/FrankKai/FrankKai.github.io/issues/18)
@@ -74,6 +75,7 @@ NodeJS:
 - [饿了么大前端题目解析：JS基础问题](https://github.com/FrankKai/FrankKai.github.io/issues/40)
 - [koa2如何设置和清除cookie](https://github.com/FrankKai/FrankKai.github.io/issues/29)
 - [API网关express-gateway初体验](https://github.com/FrankKai/FrankKai.github.io/issues/20)
+- [node 标准库常用语法](https://github.com/FrankKai/FrankKai.github.io/issues/77)
 
 Others:
   - [原来命令行也是门艺术](https://github.com/FrankKai/FrankKai.github.io/issues/27)
