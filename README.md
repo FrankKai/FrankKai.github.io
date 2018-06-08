@@ -45,7 +45,7 @@ FrontEnd：
   - [【译】Presentational and Container Components](https://github.com/FrankKai/FrankKai.github.io/issues/13)
   - [react-redux api 中文翻译](https://github.com/FrankKai/FrankKai.github.io/issues/2)
   - [异步优先队列$nextTick的踩坑](https://github.com/FrankKai/FrankKai.github.io/issues/30)
-  - [Vue踩坑记录](https://github.com/FrankKai/FrankKai.github.io/issues/31)
+  - [Vue踩坑记录](https://github.com/FrankKai/FrankKai.github.io/issues/31)
   - [AngularJS踩坑记录](https://github.com/FrankKai/FrankKai.github.io/issues/47)
   - [React踩坑记录](https://github.com/FrankKai/FrankKai.github.io/issues/53)
   - [vue的重中之重之h(createElement)函数](https://github.com/FrankKai/FrankKai.github.io/issues/57)
@@ -78,6 +78,7 @@ NodeJS:
 - [node 标准库常用语法](https://github.com/FrankKai/FrankKai.github.io/issues/77)
 
 Others:
+  - [常用shell命令集](https://github.com/FrankKai/FrankKai.github.io/issues/42)
   - [原来命令行也是门艺术](https://github.com/FrankKai/FrankKai.github.io/issues/27)
   - [关于MongoDB那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/43)
   - [Something more important than code](https://github.com/FrankKai/FrankKai.github.io/issues/16)
