@@ -68,6 +68,7 @@ FrontEnd：
   - [如何优雅地使用webpack的devtool进行debug？](https://github.com/FrankKai/FrankKai.github.io/issues/58)
   - [PostCSS真的太好用了！](https://github.com/FrankKai/FrankKai.github.io/issues/44  )
   - [create-react-app如何使用less/sass和react-css-modules?](https://github.com/FrankKai/FrankKai.github.io/issues/61)
+  - [chrome控制台常用高级console指令](https://github.com/FrankKai/FrankKai.github.io/issues/84)
   
 NodeJS:
 - [关于npm那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/41)
