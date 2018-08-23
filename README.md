@@ -49,6 +49,7 @@ FrontEnd：
   - [AngularJS踩坑记录](https://github.com/FrankKai/FrankKai.github.io/issues/47)
   - [React踩坑记录](https://github.com/FrankKai/FrankKai.github.io/issues/53)
   - [vue的重中之重之h(createElement)函数](https://github.com/FrankKai/FrankKai.github.io/issues/57)
+  - [一次简单的Virtual DOM实验](https://github.com/FrankKai/FrankKai.github.io/issues/88)
   
 - 前端面试
   - [一些特别棒的面试题[0]](https://github.com/FrankKai/FrankKai.github.io/issues/3)
