@@ -81,6 +81,7 @@ FrontEnd：
   - [PostCSS真的太好用了！](https://github.com/FrankKai/FrankKai.github.io/issues/44  )
   - [create-react-app如何使用less/sass和react-css-modules?](https://github.com/FrankKai/FrankKai.github.io/issues/61)
   - [chrome控制台常用高级console指令](https://github.com/FrankKai/FrankKai.github.io/issues/84)
+  - [如何使用Chrome DevTools为代码打断点](https://github.com/FrankKai/FrankKai.github.io/issues/101)
 
 - Canvas
   - [Canvas小册](https://github.com/FrankKai/FrankKai.github.io/issues/80)
