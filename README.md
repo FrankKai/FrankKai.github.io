@@ -28,6 +28,7 @@ FrontEnd：
   - [为什么typeof null→"object" ?](https://github.com/FrankKai/FrankKai.github.io/issues/34)
   - [IIFE(立即执行函数)那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/69)
   - [es6+ 常用语法](https://github.com/FrankKai/FrankKai.github.io/issues/76)
+  - [es6必会之let && const](https://github.com/FrankKai/FrankKai.github.io/issues/108)
   
 - 前端通信机制
   - [什么是resquest／response拦截器？](https://github.com/FrankKai/FrankKai.github.io/issues/18)
@@ -57,6 +58,8 @@ FrontEnd：
   - [一次简单的Virtual DOM实验](https://github.com/FrankKai/FrankKai.github.io/issues/88)
   - [vue源码中"好的写法"](https://github.com/FrankKai/FrankKai.github.io/issues/86)
   - [前端单元测试那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/85)
+  - [Vuex那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/106)
+  - [TypeScript入门](https://github.com/FrankKai/FrankKai.github.io/issues/105)
   
 - 前端面试
   - [一些特别棒的面试题[0]](https://github.com/FrankKai/FrankKai.github.io/issues/3)
