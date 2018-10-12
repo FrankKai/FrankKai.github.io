@@ -40,6 +40,7 @@ FrontEnd：
 - Git
   - [关于Git那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/39)
   - [Git与ssh秘钥之间的那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/12)
+  - [如何理解git rebase？](https://github.com/FrankKai/FrankKai.github.io/issues/112)
   
 - 前端安全
   - [记一次简单的DOM XSS攻击实验](https://github.com/FrankKai/FrankKai.github.io/issues/9)
