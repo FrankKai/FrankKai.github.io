@@ -101,6 +101,7 @@ NodeJS:
 - [node 标准库常用语法](https://github.com/FrankKai/FrankKai.github.io/issues/77)
 
 Others:
+  - [vim 编辑器必知必会](https://github.com/FrankKai/FrankKai.github.io/issues/117)
   - [常用shell命令集](https://github.com/FrankKai/FrankKai.github.io/issues/42)
   - [原来命令行也是门艺术](https://github.com/FrankKai/FrankKai.github.io/issues/27)
   - [关于MongoDB那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/43)
