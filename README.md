@@ -62,6 +62,7 @@ FrontEnd：
   - [前端单元测试那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/85)
   - [Vuex那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/106)
   - [TypeScript入门](https://github.com/FrankKai/FrankKai.github.io/issues/105)
+  - [深入理解slot算法和shadow DOM](https://github.com/FrankKai/FrankKai.github.io/issues/125)
   
 - 前端面试
   - [一些特别棒的面试题[0]](https://github.com/FrankKai/FrankKai.github.io/issues/3)
