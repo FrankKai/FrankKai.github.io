@@ -14,6 +14,7 @@ FrontEnd：
   - [一些低调的HTML5标签](https://github.com/FrankKai/FrankKai.github.io/issues/83)
   - [一些低调的HTML5属性](https://github.com/FrankKai/FrankKai.github.io/issues/81)
   - [一些低调的浏览器事件](https://github.com/FrankKai/FrankKai.github.io/issues/96)
+  - [如何理解语义(semantic)化？](https://github.com/FrankKai/FrankKai.github.io/issues/126)
 - CSS
   - [你真的理解浏览器盒模型吗？](https://github.com/FrankKai/FrankKai.github.io/issues/38)
   - [我不知道的CSS，你知道吗？](https://github.com/FrankKai/FrankKai.github.io/issues/6)
