@@ -18,7 +18,7 @@ FrontEnd：
 - CSS
   - [你真的理解浏览器盒模型吗？](https://github.com/FrankKai/FrankKai.github.io/issues/38)
   - [我不知道的CSS，你知道吗？](https://github.com/FrankKai/FrankKai.github.io/issues/6)
-  - [什么是CSS layout？](https://github.com/FrankKai/FrankKai.github.io/issues/132)
+  - [简单理解CSS layout和Flex布局](https://github.com/FrankKai/FrankKai.github.io/issues/132)
   
 - EcmaScript
   - [你真的理解==和===的区别吗？](https://github.com/FrankKai/FrankKai.github.io/issues/10)
