@@ -107,6 +107,13 @@ social:
     微博: https://weibo.com/u/3899061925
     知乎: https://www.zhihu.com/people/ting-zhao-wu-yue-tian-da-lan-qiu/activities
     segmentFault: https://segmentfault.com/u/chennihuannianqing
+
+use_motion: true
+three_waves: true
+
+auto_excerpt:
+  enable: true
+  length: 150
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
