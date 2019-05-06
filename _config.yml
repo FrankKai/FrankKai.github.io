@@ -7,13 +7,13 @@ title: 趁你还年轻的博客
 subtitle:
 description:
 keywords:
-author: FrankKai
-language:
+author: Frank Kai
+language: zh-Hans
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: https://FrankKai.github.io
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -73,7 +73,33 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: maupassant
+theme: next
+scheme: Pisces
+
+# 菜单别名
+menu:
+  home: 首页
+  archives: 归档
+  categories: 分类
+  tags: 标签
+  about: 关于
+
+# 菜单按钮
+menu_icons:
+  enable: true
+  # Icon Mapping.
+  home: home
+  about: user
+  categories: th
+  tags: tags
+  archives: archive
+
+# 侧边栏位置
+sidebar:
+  position: left
+  display: post
+
+avatar: https://avatars3.githubusercontent.com/u/19262750?s=460&v=4
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
