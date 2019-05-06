@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1.平时有遇到过跨域问题吗？说到跨域问题，就一定要说到同源，什么是同源，相同协议，相同域名，相同端口，即为同源。不同源之间的通信就会有跨域问题，一般来说是客户端访问服务器，服务器上去配置跨域。我遇到的跨域问题都是后端去配置一下就可以解决的，比如我前端在用vue的官方推荐异步请求库axios，去请求后端的koa开启的后端服务时，就会遇到跨域的问题，例如koa使用依赖koa-cors就可以，具体的话，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一些特别棒的面试题[1]">
+<meta property="og:url" content="https://FrankKai.github.io/2019/05/06/一些特别棒的面试题[1]/index.html">
+<meta property="og:site_name" content="趁你还年轻的博客">
+<meta property="og:description" content="1.平时有遇到过跨域问题吗？说到跨域问题，就一定要说到同源，什么是同源，相同协议，相同域名，相同端口，即为同源。不同源之间的通信就会有跨域问题，一般来说是客户端访问服务器，服务器上去配置跨域。我遇到的跨域问题都是后端去配置一下就可以解决的，比如我前端在用vue的官方推荐异步请求库axios，去请求后端的koa开启的后端服务时，就会遇到跨域的问题，例如koa使用依赖koa-cors就可以，具体的话，">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://user-images.githubusercontent.com/19262750/36886276-8dd34e86-1e26-11e8-9694-63e5b9e815d5.gif">
+<meta property="og:updated_time" content="2019-05-06T04:39:42.732Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一些特别棒的面试题[1]">
+<meta name="twitter:description" content="1.平时有遇到过跨域问题吗？说到跨域问题，就一定要说到同源，什么是同源，相同协议，相同域名，相同端口，即为同源。不同源之间的通信就会有跨域问题，一般来说是客户端访问服务器，服务器上去配置跨域。我遇到的跨域问题都是后端去配置一下就可以解决的，比如我前端在用vue的官方推荐异步请求库axios，去请求后端的koa开启的后端服务时，就会遇到跨域的问题，例如koa使用依赖koa-cors就可以，具体的话，">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/19262750/36886276-8dd34e86-1e26-11e8-9694-63e5b9e815d5.gif">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://FrankKai.github.io/2019/05/06/一些特别棒的面试题[1]/">
+
+
+
+
+
+  <title>一些特别棒的面试题[1] | 趁你还年轻的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">趁你还年轻的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://FrankKai.github.io/2019/05/06/一些特别棒的面试题[1]/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Frank Kai">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/19262750?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="趁你还年轻的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">一些特别棒的面试题[1]</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-06T12:39:42+08:00">
+                2019-05-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>1.平时有遇到过跨域问题吗？</strong><br>说到跨域问题，就一定要说到同源，什么是同源，相同协议，相同域名，相同端口，即为同源。<br>不同源之间的通信就会有跨域问题，一般来说是客户端访问服务器，服务器上去配置跨域。<br>我遇到的跨域问题都是后端去配置一下就可以解决的，比如我前端在用vue的官方推荐异步请求库axios，去请求后端的koa开启的后端服务时，就会遇到跨域的问题，例如koa使用依赖koa-cors就可以，具体的话，就是Access-Control-Allow-Origin: 源名，可以为*或者是特殊的源。或者是传统的maven或者nginx上，也可以很方便的配置跨域。<br>JSONP有用过吗？JSONP没用过，但是原理貌似是通过js加载一个script DOM标签进来，然后在新的script的src中引入想要执行的代码。<br>其实跨域问题在后端中也有类似的，只不过是叫做进程间通信，有IPC，RPC等等方式进行进程间通信。</p>
+<p><strong>2.下面这段代码最终输出什么？</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">let O = function(name)&#123;</span><br><span class="line"> this.name = name || &apos;world&apos;;</span><br><span class="line">&#125;;</span><br><span class="line">O.prototype.hello = function()&#123;</span><br><span class="line"> return function()&#123;</span><br><span class="line">  console.log(&apos;hello &apos; + this.name);</span><br><span class="line"> &#125;;</span><br><span class="line">&#125;;</span><br><span class="line">let o = new O;</span><br><span class="line">let hello = o.hello();</span><br><span class="line">hello();</span><br></pre></td></tr></table></figure></p>
+<p>年轻的我的答案是：hello world。<br>答案显然是不对的，因为这是一道陷阱题，陷阱就在于O.prototype.hello调用后，return的是一个函数，这么做的话，在执行新实例o的hello方法是，this其实已经变成了window。<br>那么答案是hello undefined吗？<br>年轻的你又错了，并不是。<br>而是 hello     。<br>请注意，是hello     ，而不是hello undefined，而是空字符串<br>原因就在于window.name是事先是有定义的，而且其值为空。<br>不信的话你可以在控制台打印window.name，返回的是””，你再打印window.yourname试试看，比如window.frank，返回的就是undefined了。<br>而我在工作中，遇到的更多的常见的像上面一样的工厂函数式的写法是这样的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let O = function(name)&#123;</span><br><span class="line"> this.name = name || &apos;world&apos;;</span><br><span class="line">&#125;;</span><br><span class="line">O.prototype.hello = function()&#123;</span><br><span class="line">  console.log(&apos;hello &apos; + this.name);</span><br><span class="line">&#125;;</span><br><span class="line">let o = new O(&quot;frank&quot;);</span><br><span class="line">let hello = o.hello(&quot;frank&quot;);</span><br></pre></td></tr></table></figure></p>
+<p>打印结果为：hello frank。<br>如果不传入frank的话，打印出的是默认值hello world。</p>
+<p><strong>3.[“1”,”2”,”3”].map(parseInt)返回的是什么？</strong><br>A. [1,2,3] B.[“1”,”2”,”3”] C.[1,1,1] D.其他</p>
+<p>这特么又是一道陷阱题，还好我之前在看MDN的map函数时，看到过这个陷阱。<br>正确答案是D：其他。<br>其他的具体值为多少？[1,NaN,NaN]。<br>不敢相信吧，为什么不是可爱的[1,2,3]呢？<br>因为map函数有3个参数，callback，index和array，parseInt有2个参数，string和radix（进制），只传入parseInt到map中的话，会自动忽略第三个参数array，但是不会忽略index，所以就会把0,1,2作为第二个参数传给parseInt。<br>如果还不明白的话，我们把[“1”,”2”,”3”].map(parseInt)的每一步都拆开来。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">parseInt(&quot;1&quot;,0) 此时将字符&quot;1&quot;转换为O进制数，由于0进制数不存在，所以返回Number类型的1。</span><br><span class="line">parseInt(&quot;2&quot;,1) 此时将字符&quot;2&quot;转换为1进制数，由于超出进制数1，所以返回NaN。</span><br><span class="line">parseInt(&quot;3&quot;,2) 此时将字符&quot;3&quot;转换为2进制数，由于超出进制数2，所以返回NaN。</span><br></pre></td></tr></table></figure>
+<p>至此，真相大白。<br>那么常用的非陷阱式map写法是怎样的呢？<br>像这样：<code>[&quot;1&quot;,&quot;2&quot;,&quot;3&quot;].map(x=&gt;parseInt(x))</code><br>传一个完整的函数进去，有形参，有callback，这样就不会造成因为参数传入错误而造成结果错误了，最后返回一个漂漂亮亮的经由纯函数处理后的新数组回来。</p>
+<p>其实这里如果再深入的话，可以再考察纯函数是什么？<br>纯函数其实就是一个不改变输入，但是可以借助输入，产生一个以输入为原材料，经过加工处理后，输出一个全新的输出的函数，关键在于不改变输入，纯函数是编写redux的reducer必须具备的技能点。</p>
+<p>刚才公司的大牛过来，说他从来不用parseInt，他用加号，+”1” 返回1，+”2”返回2。大牛果然大牛，黑科技是真的多。</p>
+<p><strong>4.下面代码中“入库”的颜色是？</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul class=&quot;list&quot; id=&quot;list&quot;&gt;</span><br><span class="line"> &lt;li class=&quot;favorite&quot;&gt;</span><br><span class="line">  &lt;span&gt;出库&lt;/span&gt;</span><br><span class="line"> &lt;/li&gt;</span><br><span class="line"> &lt;li class=&quot;favorite&quot;&gt;</span><br><span class="line">  &lt;span class=&quot;highlight&quot;&gt;入库&lt;/span&gt;</span><br><span class="line"> &lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">#list .favorite:not(#list) .highlight&#123;</span><br><span class="line"> color: red;</span><br><span class="line">&#125;</span><br><span class="line">#list .highlight:nth-of-type(1):nth-last-of-type(1)&#123;</span><br><span class="line"> color: blue;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure></p>
+<p>A.    red    B.blue    C.black<br>我的答案是：我猜一下，可能是A，因为A的权重是最大的，伪类选择器的权值应该比较小吧。<br>面试官发来一个👍，明天可以来公司面谈吗？<br>这道题的解答到此为止，因为我是真的真的对CSS不感兴趣，各位看官老爷请原谅我。</p>
+<p><strong>5.说下下面两种font-size单位的异同？</strong><br>em rem</p>
+<p>二者的为了保证用户修改字体大小时，保持垂直方向上的字体大小一致。与px不同，二者都是字体计算大小单位，也就是说，需要通过计算得出其大小，转换成px，微信小程序的rpx也是这样，最后还是转换成了px，可能是借鉴了rem的思想吧。<br>但是em相对于继承来的父元素，rem相对于根元素。听大牛说，rem在国内使用比较多，我自己也觉得rem使用起来更简单，为根元素的font-size赋一个初始值，再配合css的媒体查询，可以动态的改变这个全局的单位，可以说是牵一发而动全身，使用起来非常方便，而em的可阅读性就很差了，有的时候为了算字体大小，需要一级一级找上去，非常不直观。</p>
+<p>现代的常用的浏览器，1rem等于16px。<br>举2个 rem和em例子对比下。<br>html简写结构如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;div&gt;&lt;/div&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<p>rem 例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">html &#123; font-size:62.5%; &#125;  /* =10px */</span><br><span class="line">body &#123; font-size: 2.0rem; &#125; /* =20px */</span><br><span class="line">div   &#123; font-size: 1.0rem; &#125; /* =10px */</span><br></pre></td></tr></table></figure></p>
+<p>em 例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">html &#123; font-size:62.5%; &#125;  /* =10px */</span><br><span class="line">body &#123; font-size: 2.0em; &#125; /* =20px */</span><br><span class="line">div   &#123; font-size: 1.0em; &#125; /* =20px */</span><br></pre></td></tr></table></figure></p>
+<p>MDN的font-size章节给出了em和rem的非常好的解释，英文原版非常直观，我这里再贴一下：</p>
+<blockquote>
+<p>em<br>Represents the calculated font-size of the element. If used on the font-size property itself, it represents the inherited font-size of the element.<br>rem<br>Represents the font-size of the root element (typically <html>). When used within the root element font-size, it represents its initial value (a common browser default is 16px, but user-defined preferences may modify this).</html></p>
+</blockquote>
+<p>其实em和rem与MVVM框架的组件间通信有些类似，都有逐级继承和全局影响的概念。em是逐级传递的，也就是继承，框架中用props和事件订阅发布的方式也是这样，爷，父，孙的传递都是要一级一级去传递的，爷爷想直接传授点技能给孙子必须先传授给父亲，<strong>爷爷→父亲→孙子</strong>；而rem就和框架中的状态管理库很像，例如vuex和redux，抽取出一个全局的状态树，不用一级一级的去很复杂的去继承，爷爷想教教孙子，直接就可以传授给孙子，<strong>爷爷→孙子</strong>。</p>
+<p><strong>6.只用一个div 实现定时红绿灯</strong><br><img src="https://user-images.githubusercontent.com/19262750/36886276-8dd34e86-1e26-11e8-9694-63e5b9e815d5.gif" alt="default"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;zh-cn&quot;&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta charset=&quot;utf-8&quot; /&gt;</span><br><span class="line">        &lt;title&gt;仅用一个DIV实现红绿灯&lt;/title&gt;</span><br><span class="line">        &lt;style&gt;</span><br><span class="line">        	@keyframes light&#123;</span><br><span class="line">        		0%&#123;</span><br><span class="line">        			background-color: green;</span><br><span class="line">        			left: 0;</span><br><span class="line">        		&#125;</span><br><span class="line">        		33.3%&#123;</span><br><span class="line">        			background-color: green;</span><br><span class="line">        			left: 0;</span><br><span class="line">        		&#125;</span><br><span class="line">        		33.4%&#123;</span><br><span class="line">        			background-color: yellow;</span><br><span class="line">        			left: 200px;</span><br><span class="line">        		&#125;</span><br><span class="line">        		66.6%&#123;</span><br><span class="line">        			background-color: yellow;</span><br><span class="line">        			left: 200px;</span><br><span class="line">        		&#125;</span><br><span class="line">        		66.7%&#123;</span><br><span class="line">        			background-color: red;</span><br><span class="line">        			left: 400px;</span><br><span class="line">        		&#125;</span><br><span class="line">        		99.9%&#123;</span><br><span class="line">	       			background-color: red;</span><br><span class="line">        			left: 400px;</span><br><span class="line">        		&#125;</span><br><span class="line">        	&#125;</span><br><span class="line">        	.traffic-light&#123;</span><br><span class="line">        		position: relative;</span><br><span class="line">        		width: 200px;</span><br><span class="line">        		height: 200px;</span><br><span class="line">        		border-radius: 50%;</span><br><span class="line">        		animation: light 3s ease-in-out 0s infinite;</span><br><span class="line">        	&#125;</span><br><span class="line">        	.container&#123;</span><br><span class="line">        		width: 600px;</span><br><span class="line">        		border:10px solid #000;</span><br><span class="line">        		border-radius: 20% 20%;</span><br><span class="line">        	&#125;</span><br><span class="line">        &lt;/style&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">    	&lt;div class=&quot;container&quot;&gt;</span><br><span class="line">    		&lt;div class=&quot;traffic-light&quot;&gt;&lt;/div&gt;</span><br><span class="line">    	&lt;/div&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/06/【译】什么是CSS Modules ？我们为什么需要他们？/" rel="next" title="【译】什么是CSS Modules ？我们为什么需要他们？">
+                <i class="fa fa-chevron-left"></i> 【译】什么是CSS Modules ？我们为什么需要他们？
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/06/一些特别棒的面试题[0]/" rel="prev" title="一些特别棒的面试题[0]">
+                一些特别棒的面试题[0] <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://avatars3.githubusercontent.com/u/19262750?s=460&v=4" alt="Frank Kai">
+            
+              <p class="site-author-name" itemprop="name">Frank Kai</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/FrankKai" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/cnhnq" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-globe"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/u/3899061925" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-globe"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/ting-zhao-wu-yue-tian-da-lan-qiu/activities" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://segmentfault.com/u/chennihuannianqing" target="_blank" title="segmentFault">
+                      
+                        <i class="fa fa-fw fa-globe"></i>segmentFault</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Frank Kai</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

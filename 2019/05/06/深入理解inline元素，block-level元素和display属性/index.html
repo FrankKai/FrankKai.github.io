@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="行内元素和块级元素有什么异同？  可能你觉得这是一个老掉牙的问题，但其实并没有那么简单。 对于初学者来说，当遇到面试官问到这个问题的时候，脑海里的第一印象是css的display属性，值为inline时为行内元素，值为block时为块级元素，那值为inline-block时呢，元素是块级行内元素吗？ 其实我们看问题的角度从一开始就错了，错误地站在了css的角度，而真正正确的是站在html的角度。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深入理解inline元素，block-level元素和display属性">
+<meta property="og:url" content="https://FrankKai.github.io/2019/05/06/深入理解inline元素，block-level元素和display属性/index.html">
+<meta property="og:site_name" content="趁你还年轻的博客">
+<meta property="og:description" content="行内元素和块级元素有什么异同？  可能你觉得这是一个老掉牙的问题，但其实并没有那么简单。 对于初学者来说，当遇到面试官问到这个问题的时候，脑海里的第一印象是css的display属性，值为inline时为行内元素，值为block时为块级元素，那值为inline-block时呢，元素是块级行内元素吗？ 其实我们看问题的角度从一开始就错了，错误地站在了css的角度，而真正正确的是站在html的角度。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://user-images.githubusercontent.com/19262750/40956726-5a3be70c-68c4-11e8-8e39-da0dde23a651.png">
+<meta property="og:updated_time" content="2019-05-06T04:39:42.735Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深入理解inline元素，block-level元素和display属性">
+<meta name="twitter:description" content="行内元素和块级元素有什么异同？  可能你觉得这是一个老掉牙的问题，但其实并没有那么简单。 对于初学者来说，当遇到面试官问到这个问题的时候，脑海里的第一印象是css的display属性，值为inline时为行内元素，值为block时为块级元素，那值为inline-block时呢，元素是块级行内元素吗？ 其实我们看问题的角度从一开始就错了，错误地站在了css的角度，而真正正确的是站在html的角度。">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/19262750/40956726-5a3be70c-68c4-11e8-8e39-da0dde23a651.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://FrankKai.github.io/2019/05/06/深入理解inline元素，block-level元素和display属性/">
+
+
+
+
+
+  <title>深入理解inline元素，block-level元素和display属性 | 趁你还年轻的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">趁你还年轻的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://FrankKai.github.io/2019/05/06/深入理解inline元素，block-level元素和display属性/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Frank Kai">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/19262750?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="趁你还年轻的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">深入理解inline元素，block-level元素和display属性</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-06T12:39:42+08:00">
+                2019-05-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>行内元素和块级元素有什么异同？</p>
+</blockquote>
+<p><em>可能你觉得这是一个老掉牙的问题，但其实并没有那么简单。</em></p>
+<p>对于初学者来说，当遇到面试官问到这个问题的时候，脑海里的第一印象是css的display属性，值为inline时为行内元素，值为block时为块级元素，那值为inline-block时呢，元素是块级行内元素吗？</p>
+<p>其实我们看问题的角度从一开始就错了，错误地站在了css的角度，而真正正确的是站在html的角度。因为这里的元素，本质上是指html的DOM元素。</p>
+<p>下面我们就3个原理展开深入：</p>
+<ul>
+<li>深入理解inline元素</li>
+<li>深入理解block-level元素</li>
+<li>深入理解display属性</li>
+</ul>
+<p>并且提出两个问题：</p>
+<ul>
+<li>行内元素和块级元素有什么异同？</li>
+<li><p>css属性display如何影响元素？</p>
+<h3 id="深入理解inline-元素"><a href="#深入理解inline-元素" class="headerlink" title="深入理解inline 元素"></a>深入理解inline 元素</h3><p>在HTML中，行内元素是那些仅仅占据定义元素边界的标签空间的元素，而不是去破坏内容流。在这篇文章中，我们将检查HTML行内元素并且与block做对比。</p>
+<blockquote>
+<p>一个行内元素不会在a new line开始，而且仅仅占据必要的元素宽度空间，不会多占空间。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="inline-vs-block-level-元素：示范"><a href="#inline-vs-block-level-元素：示范" class="headerlink" title="inline vs block-level 元素：示范"></a>inline vs block-level 元素：示范</h3><p>用一个简单例子来示范就好。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.highlight &#123;</span><br><span class="line">  font-weight:bold;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Inline</strong><br>首先，让我们看一下下面的inline元素的示范：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;The following span is an &lt;span class=&quot;highlight&quot;&gt;inline element&lt;/span&gt;;</span><br><span class="line">its background has been colored to display both the beginning and end of</span><br><span class="line">the inline element&apos;s influence.&lt;/p&gt;</span><br></pre></td></tr></table></figure></p>
+<p>在这个例子中，</p><p>(段落)块级元素包含一些文本。在text文本内部有一个<span>行内元素。因为<span>标签是行内的，所以段落正确地绘制出一个单个的，没有断开的文本流，就系那个下面这样。</span></span></p>
+<blockquote>
+<p>The following span is an <strong>inline element</strong>; its background has been colored to display both the beginning and end of the inline element’s influence.</p>
+</blockquote>
+<p><strong>block-level</strong><br>现在把<code>&lt;span&gt;</code>替换成<code>&lt;div&gt;</code>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;The following div is an &lt;div class=&quot;highlight&quot;&gt;block-level element;&lt;/div&gt;</span><br><span class="line">its background has been colored to display both the beginning and end of</span><br><span class="line">the block-level element&apos;s influence.&lt;/p&gt;</span><br></pre></td></tr></table></figure></p>
+<p>绘制完之后是这样的：</p>
+<blockquote>
+<p>The following div is an<br>block-level element;<br>its background has been colored to display both the beginning and end of the block-level element’s influence.<br>看到差异了吗？<div>元素改变了text的layout，将文本切分成了3个片段：在<div>之前的text，<div>的text，在<div>之后的text。</div></div></div></div></p>
+</blockquote>
+<h4 id="改变元素的level"><a href="#改变元素的level" class="headerlink" title="改变元素的level"></a>改变元素的level</h4><p>你可以使用CSS的display属性改变元素的level。<br>inline blocks 通过将display的值从inline改为block，你可以告诉浏览器将一个inline元素，渲染成block box而不是inline box。改了属性值以后，不一定会完全呈现，它可能还是表现成行内元素，所以一定要看看结果。</p>
+<h3 id="概念上的区别"><a href="#概念上的区别" class="headerlink" title="概念上的区别"></a>概念上的区别</h3><p>简而言之，在概念上inline和block-level元素有以下区别：</p>
+<ul>
+<li><strong>Content model</strong><br>总体来说，行内元素也许仅仅包含数据和其他的行内元素。<strong>你不能在inline elements内部添加block elements</strong>。</li>
+<li><strong>Formatting</strong><br>默认情况下，行内元素不会在文档流的开始位置强制生成一个新行。Block元素的话，正好与之相反，会很显著地break一行(但是，这可以使用CSS去改变。)</li>
+</ul>
+<h3 id="块级元素列表"><a href="#块级元素列表" class="headerlink" title="块级元素列表"></a>块级元素列表</h3><p>下面的元素默认是inline的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;a&gt;</span><br><span class="line">&lt;abbr&gt;</span><br><span class="line">&lt;acronym&gt;</span><br><span class="line">&lt;b&gt;</span><br><span class="line">&lt;bdo&gt;</span><br><span class="line">&lt;big&gt;</span><br><span class="line">&lt;br&gt;</span><br><span class="line">&lt;button&gt;</span><br><span class="line">&lt;cite&gt;</span><br><span class="line">&lt;code&gt;</span><br><span class="line">&lt;dfn&gt;</span><br><span class="line">&lt;em&gt;</span><br><span class="line">&lt;i&gt;</span><br><span class="line">&lt;img&gt;</span><br><span class="line">&lt;input&gt;</span><br><span class="line">&lt;kbd&gt;</span><br><span class="line">&lt;label&gt;</span><br><span class="line">&lt;map&gt;</span><br><span class="line">&lt;object&gt;</span><br><span class="line">&lt;q&gt;</span><br><span class="line">&lt;samp&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">&lt;select&gt;</span><br><span class="line">&lt;small&gt;</span><br><span class="line">&lt;span&gt;</span><br><span class="line">&lt;strong&gt;</span><br><span class="line">&lt;sub&gt;</span><br><span class="line">&lt;sup&gt;</span><br><span class="line">&lt;textarea&gt;</span><br><span class="line">&lt;time&gt;</span><br><span class="line">&lt;tt&gt;</span><br><span class="line">&lt;var&gt;</span><br></pre></td></tr></table></figure></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Inline_elements" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/HTML/Inline_elements</a></p>
+<h3 id="深入理解block-level元素"><a href="#深入理解block-level元素" class="headerlink" title="深入理解block-level元素"></a>深入理解block-level元素</h3><p>HTML元素通常要么是”block-level”元素，要么是”inline elements”。</p>
+<ul>
+<li>一个block-level元素，会占据它的父元素，也就是容器的全部空间，从而新建了一个”block”。这篇文章帮助我们去解释这意味着什么。</li>
+</ul>
+<p>浏览器一般会在block-level元素前后展示一个新行。我们可以把它想象成一个box stack(盒子栈)。</p>
+<blockquote>
+<p>一个block-level元素通常从一个新的行开始，占据可用空间的全部宽度。(从左到右尽可能的拉伸)。</p>
+</blockquote>
+<p>下面的例子示范了block-level元素的影响：</p>
+<p><strong>HTML</strong><br><code>&lt;p&gt;This paragraph is a block-level element; its background has been colored to display the paragraph&#39;s parent element.&lt;/p&gt;</code></p>
+<p><strong>CSS</strong><br><code>p { background-color: #8ABB55; }</code></p>
+<p><img src="https://user-images.githubusercontent.com/19262750/40956726-5a3be70c-68c4-11e8-8e39-da0dde23a651.png" alt="image"></p>
+<h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><ul>
+<li>Block-Level 元素只能在<body>元素内部生效。</body></li>
+</ul>
+<h3 id="Block-level-vs-inline"><a href="#Block-level-vs-inline" class="headerlink" title="Block-level vs inline"></a>Block-level vs inline</h3><p>这里有一对行内元素和块级元素之间的区别。</p>
+<ul>
+<li>Formatting<br>默认情况下，block-level元素从新的一行开始，但是inline元素可以从一行内的任何位置开始。</li>
+<li>Content model<br>总体而言，<strong>block-level元素也许包含inline元素和其他的block-level元素。</strong>从这个角度去看，block-level元素要比inline 元素”larger”。</li>
+</ul>
+<p>block-level 与inline 元素之间的区别用于HTML4.01以下的规范。</p>
+<p>在HTML5中，这个两者之间的区别，由于content categories所以变得更为复杂了。</p>
+<ul>
+<li>“block-level”目录大致对应于HTML5中的flow content</li>
+<li>“inline”目录大致对应于HTML5中的phrasing content等</li>
+</ul>
+<h3 id="块级元素"><a href="#块级元素" class="headerlink" title="块级元素"></a>块级元素</h3><p>下面的列表是一个复杂的HTML块级元素列表（尽管”block-level”在HTML5中没有明确定义给任何元素。）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line">&lt;address&gt;</span><br><span class="line">Contact information.//联系信息</span><br><span class="line"></span><br><span class="line">&lt;article&gt;</span><br><span class="line">Article content.//文章内容</span><br><span class="line"></span><br><span class="line">&lt;aside&gt;</span><br><span class="line">Aside content.//旁边内容</span><br><span class="line"></span><br><span class="line">&lt;blockquote&gt;</span><br><span class="line">Long (&quot;block&quot;) quotation.//长块引用</span><br><span class="line"></span><br><span class="line">&lt;canvas&gt;</span><br><span class="line">Drawing canvas.//绘制canvas</span><br><span class="line"></span><br><span class="line">&lt;dd&gt;</span><br><span class="line">Describes a term in a description list.//在说明列表中介绍单个term</span><br><span class="line"></span><br><span class="line">&lt;div&gt;</span><br><span class="line">Document division.//文档格</span><br><span class="line"></span><br><span class="line">&lt;dl&gt;</span><br><span class="line">Description list.//说明列表</span><br><span class="line"></span><br><span class="line">&lt;dt&gt;</span><br><span class="line">Description list term.//说明列表某一项</span><br><span class="line"></span><br><span class="line">&lt;fieldset&gt;</span><br><span class="line">Field set label.//设置label的field</span><br><span class="line"></span><br><span class="line">&lt;figcaption&gt;</span><br><span class="line">Figure caption.//图标题</span><br><span class="line"></span><br><span class="line">&lt;figure&gt;</span><br><span class="line">Groups media content with a caption (see &lt;figcaption&gt;).//媒体内容与标题分开</span><br><span class="line"></span><br><span class="line">&lt;footer&gt;</span><br><span class="line">Section or page footer.//部分或者是page的页脚</span><br><span class="line"></span><br><span class="line">&lt;form&gt;</span><br><span class="line">Input form.//输入表单</span><br><span class="line"></span><br><span class="line">&lt;h1&gt;, &lt;h2&gt;, &lt;h3&gt;, &lt;h4&gt;, &lt;h5&gt;, &lt;h6&gt;</span><br><span class="line">Heading levels 1-6.//标题</span><br><span class="line"></span><br><span class="line">&lt;header&gt;</span><br><span class="line">Section or page header.//章节或者page的页头</span><br><span class="line"></span><br><span class="line">&lt;hgroup&gt;</span><br><span class="line">Groups header information.//Group的头部信息</span><br><span class="line"></span><br><span class="line">&lt;hr&gt;</span><br><span class="line">Horizontal rule (dividing line).//横向规则</span><br><span class="line"></span><br><span class="line">&lt;li&gt;</span><br><span class="line">List item.//列表条目</span><br><span class="line"></span><br><span class="line">&lt;main&gt;</span><br><span class="line">Contains the central content unique to this document.//包含当前文档的中心唯一内容</span><br><span class="line"></span><br><span class="line">&lt;nav&gt;</span><br><span class="line">Contains navigation links.//包含导航链接</span><br><span class="line"></span><br><span class="line">&lt;noscript&gt;</span><br><span class="line">Content to use if scripting is not supported or turned off.//如果scripting不被支持或者关闭时使用</span><br><span class="line"></span><br><span class="line">&lt;ol&gt;</span><br><span class="line">Ordered list.//有序列表</span><br><span class="line"></span><br><span class="line">&lt;output&gt;</span><br><span class="line">Form output.//表单输出</span><br><span class="line"></span><br><span class="line">&lt;p&gt;</span><br><span class="line">Paragraph.//段落</span><br><span class="line"></span><br><span class="line">&lt;pre&gt;</span><br><span class="line">Preformatted text.//预先格式化的文本</span><br><span class="line"></span><br><span class="line">&lt;section&gt;</span><br><span class="line">Section of a web page.//一个web page的章节</span><br><span class="line"></span><br><span class="line">&lt;table&gt;</span><br><span class="line">Table.//表格</span><br><span class="line"></span><br><span class="line">&lt;tfoot&gt;</span><br><span class="line">Table footer//表格脚</span><br><span class="line"></span><br><span class="line">&lt;ul&gt;</span><br><span class="line">Unordered list.//无序列表</span><br><span class="line"></span><br><span class="line">&lt;video&gt;</span><br><span class="line">Video player.//视频播放器</span><br></pre></td></tr></table></figure></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Block-level_elements" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/HTML/Block-level_elements</a></p>
+<h3 id="深入理解display属性"><a href="#深入理解display属性" class="headerlink" title="深入理解display属性"></a>深入理解display属性</h3><p>display CSS属性指明了元素渲染盒子的类型。在HTML中，默认display属性值取自HTML规范或浏览器/用户默认样式表中描述的行为。XML默认值是inline，包括SVG元素也是。</p>
+<p>除了各种各样的display盒类型之外，none 值使得你关闭元素的展示。当你使用none，所有的后裔元素也都关闭了展示。<strong>尽管element不能在document tree中展示，但是它依然会被渲染。</strong></p>
+<p>关于display值，有以下几种分类：</p>
+<ul>
+<li><code>&lt;display-outside&gt;</code><br>指明了元素外部的展现类型，这基本是它在流式布局中的作用。例如inline，block</li>
+<li><code>&lt;display-inside&gt;</code><br>指明了元素内部的展现类型，定义了布局formatting context的类型（假设它是一个不可替换的元素）。例如table，flex，grid</li>
+<li><code>&lt;display-listitem&gt;</code><br>元素生成了用来存放内容的块盒子以及一个分离的list-item行内盒子。例如list-item</li>
+<li><code>&lt;display-internal&gt;</code><br>一些布局模型，例如table和ruby，有复杂的内部结构，有几个不同的角色，他们的孩子和后代可以填补。这一步跟定义了那些”internal”display值，它只在特定的layout mode下才生效。<br>除非有特殊声明，否则inner和outer display类型都可以设置为下面的关键字。<br>例如：table-row-group，table-header-group等等</li>
+<li><code>&lt;display-box&gt;</code><br>是否展示box。例如none，contents（实验中）</li>
+<li><code>&lt;display-legacy&gt;</code><br>CSS2 使用单关键字的语法为display属性设置值，在同一个layout模型中，为块级元素和行内元素引用分离的关键词。例如inline-block，inline-table等等。</li>
+<li>Global</li>
+</ul>
+<p>最好只为display设置一个值，因为组合的方式还不被一些浏览器支持。</p>
+<p>关于这部分，我将挑选常见的inline，block，table，inline-block，flex以及grid进行举例。</p>
+<ul>
+<li><code>&lt;display-outside&gt;</code><ul>
+<li>inline 这个元素生成一个或者多个行内盒子</li>
+<li>block 这个元素生成一个块元素盒子</li>
+</ul>
+</li>
+<li><code>&lt;display-inside&gt;</code><ul>
+<li>table 元素就像<code>&lt;table&gt;</code> HTML标签一样表现。它定义了一个block-level盒子。</li>
+<li><strong>flex 元素表现形式是块级元素，根据flexbox model绘制自己的内容</strong>。</li>
+<li>grid 元素表现得像块级元素，根据grid model绘制自己的内容。</li>
+</ul>
+</li>
+<li><code>&lt;display-legacy&gt;</code><ul>
+<li><strong>inline-block 元素生成一个块元素盒子，它会被周围的内容包裹，就仿佛它是一个单inline box一样。等价于inline flow-root</strong>。</li>
+</ul>
+</li>
+</ul>
+<p>由于display-legacy类型较为有趣，因此将其全部进行翻译。</p>
+<ul>
+<li>inline-table inline-table在HTML中没有直接的mapping。它表现地就像<table> HTML标签一样，但是是一个inline box，而不是block-level盒子。在table盒子内部是块级内容。等价于inline table。</table></li>
+<li>inline-flex 行内元素表现，布局内容时根据flexbox模型布局。等价于inline flex。</li>
+<li>inline-grid 行内元素展现，布局内容时根据grid模型。</li>
+</ul>
+<p>由于display-inside部分的flow-root于inline-block有关，因此也添加进来。</p>
+<ul>
+<li>flow-root 元素生成一个block元素，以建立一个新的块格式上下文(Block Formatting Context)。</li>
+</ul>
+<h3 id="无障碍考虑"><a href="#无障碍考虑" class="headerlink" title="无障碍考虑"></a>无障碍考虑</h3><ul>
+<li>display：none<br>使用无显示值或元素上的内容将从可访问性树中删除它。这将导致元素及其所有后代元素不再通过屏幕阅读技术进行通告。 如果你想直观地隐藏元素，更容易获得的替代方法是使用一组属性将它从屏幕上直观地移除，但通过辅助技术（如屏幕阅读器）保持它可解析。</li>
+<li>Tables<br>将表格元素的显示值更改为块，网格或弹性将改变其在辅助功能树中的表示。这将导致表格不再被屏幕阅读技术正确地宣布。</li>
+</ul>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/display" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/display</a></p>
+<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><ul>
+<li><strong>行内元素和块级元素有什么异同？</strong><br>Content Model和Formatting上的区别，<ul>
+<li>块级元素的后代元素既可以是行内元素也可以是块级元素，行内元素的后代只能是行内元素。</li>
+<li>块级元素会格式化成3行，before，current，after，行内元素仅在当前行显示，不会破坏格式。</li>
+</ul>
+</li>
+<li><strong>css属性display如何影响元素？</strong><br>大多数情况是通过修改<code>&lt;display-outside&gt;</code>，<code>&lt;display-inside&gt;</code>这两个属性值去改变元素外部的<strong>流式布局</strong>和元素内部的<strong>formatting context</strong>，其中formatting context会根据model类型进行渲染。</li>
+</ul>
+<p>因此文章开头的问题就迎刃而解了。</p>
+<ul>
+<li><strong>display值从inline更改为block的原理？</strong><br>本质上是改变了<code>&lt;display-outside&gt;</code>，改变了元素的流式布局，也就是从生成1个inline盒子，变为生成一个block盒子。反之同理。</li>
+<li><strong>display值从block更改为inline-block的原理？</strong><br>本质上是改变了<code>&lt;display-outside&gt;</code>，<code>&lt;display-inside&gt;</code>。修改前为block null，修改后为inline flow-root，从生成一个block盒子，变为生成一个inline盒子，同时这个盒子按照flow-root的方式渲染(创建一个新的block formatting context)。</li>
+</ul>
+<h3 id="Q-amp-A"><a href="#Q-amp-A" class="headerlink" title="Q&amp;A"></a>Q&amp;A</h3><p>上文提到了model，display值为flexbox时为flexbox model，display值为grid时为grid model。由此引申出2个问题：</p>
+<ul>
+<li>什么是flexbox model和grid model？<br>CSS3的flexbox model，和grid model。</li>
+<li>display值为inline，block以及inline-block时根据什么model进行渲染？<br>inline box model，block box model，inline block(flow-root BFC) model。</li>
+<li>总计有多少种model，有何异同？<br>粗略理解为inline，block，flexbox，girdbox等等。实际上是由<code>&lt;display-outside&gt;</code>，<code>&lt;display-inside&gt;</code>共同决定。</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/06/我不知道的CSS，你知道吗？/" rel="next" title="我不知道的CSS，你知道吗？">
+                <i class="fa fa-chevron-left"></i> 我不知道的CSS，你知道吗？
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/06/饿了么大前端题目解析：JS基础问题/" rel="prev" title="饿了么大前端题目解析：JS基础问题">
+                饿了么大前端题目解析：JS基础问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://avatars3.githubusercontent.com/u/19262750?s=460&v=4" alt="Frank Kai">
+            
+              <p class="site-author-name" itemprop="name">Frank Kai</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/FrankKai" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/cnhnq" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-globe"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/u/3899061925" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-globe"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/ting-zhao-wu-yue-tian-da-lan-qiu/activities" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://segmentfault.com/u/chennihuannianqing" target="_blank" title="segmentFault">
+                      
+                        <i class="fa fa-fw fa-globe"></i>segmentFault</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#深入理解inline-元素"><span class="nav-number">1.</span> <span class="nav-text">深入理解inline 元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#inline-vs-block-level-元素：示范"><span class="nav-number">2.</span> <span class="nav-text">inline vs block-level 元素：示范</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#改变元素的level"><span class="nav-number">2.1.</span> <span class="nav-text">改变元素的level</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#概念上的区别"><span class="nav-number">3.</span> <span class="nav-text">概念上的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#块级元素列表"><span class="nav-number">4.</span> <span class="nav-text">块级元素列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深入理解block-level元素"><span class="nav-number">5.</span> <span class="nav-text">深入理解block-level元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用法"><span class="nav-number">6.</span> <span class="nav-text">用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Block-level-vs-inline"><span class="nav-number">7.</span> <span class="nav-text">Block-level vs inline</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#块级元素"><span class="nav-number">8.</span> <span class="nav-text">块级元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深入理解display属性"><span class="nav-number">9.</span> <span class="nav-text">深入理解display属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#无障碍考虑"><span class="nav-number">10.</span> <span class="nav-text">无障碍考虑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Summary"><span class="nav-number">11.</span> <span class="nav-text">Summary</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-amp-A"><span class="nav-number">12.</span> <span class="nav-text">Q&amp;A</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Frank Kai</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

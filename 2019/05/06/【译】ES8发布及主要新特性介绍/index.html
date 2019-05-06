@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="原文链接：ES8 was Released and here are its Main New Features 第8版EcmaScript规范新特性介绍  2017年6月末，TC39官方发布了EcmaScript8，也叫EcmaScript2017。去年似乎就有很多关于EcmaScript的讨论。这没什么好奇怪的，因为现在每年都会有新的ES标准发布出来。2015年发布了ES6，2016年发布了E">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【译】ES8发布及主要新特性介绍">
+<meta property="og:url" content="https://FrankKai.github.io/2019/05/06/【译】ES8发布及主要新特性介绍/index.html">
+<meta property="og:site_name" content="趁你还年轻的博客">
+<meta property="og:description" content="原文链接：ES8 was Released and here are its Main New Features 第8版EcmaScript规范新特性介绍  2017年6月末，TC39官方发布了EcmaScript8，也叫EcmaScript2017。去年似乎就有很多关于EcmaScript的讨论。这没什么好奇怪的，因为现在每年都会有新的ES标准发布出来。2015年发布了ES6，2016年发布了E">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2976869-86e9b0ba6ae452b5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2976869-f29386b0e9aa0fe4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2976869-447c006a3f1b2d72.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2976869-91afe95cec5bdfa0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2976869-34c8bb772407af7d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2976869-7f25ac5340008120.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2976869-cd8524d10beaabd9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2976869-26351740d17b402d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-05-06T04:39:42.731Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【译】ES8发布及主要新特性介绍">
+<meta name="twitter:description" content="原文链接：ES8 was Released and here are its Main New Features 第8版EcmaScript规范新特性介绍  2017年6月末，TC39官方发布了EcmaScript8，也叫EcmaScript2017。去年似乎就有很多关于EcmaScript的讨论。这没什么好奇怪的，因为现在每年都会有新的ES标准发布出来。2015年发布了ES6，2016年发布了E">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2976869-86e9b0ba6ae452b5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://FrankKai.github.io/2019/05/06/【译】ES8发布及主要新特性介绍/">
+
+
+
+
+
+  <title>【译】ES8发布及主要新特性介绍 | 趁你还年轻的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">趁你还年轻的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://FrankKai.github.io/2019/05/06/【译】ES8发布及主要新特性介绍/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Frank Kai">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/19262750?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="趁你还年轻的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">【译】ES8发布及主要新特性介绍</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-06T12:39:42+08:00">
+                2019-05-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>原文链接：<a href="https://hackernoon.com/es8-was-released-and-here-are-its-main-new-features-ee9c394adf66" target="_blank" rel="noopener">ES8 was Released and here are its Main New Features </a><br>第8版EcmaScript规范新特性介绍</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2976869-86e9b0ba6ae452b5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>2017年6月末，TC39官方发布了EcmaScript8，也叫EcmaScript2017。去年似乎就有很多关于EcmaScript的讨论。这没什么好奇怪的，因为现在每年都会有新的ES标准发布出来。2015年发布了ES6，2016年发布了ES7，但是还人记得ES5是什么时候发布的吗？答案是：2009年。而这一年，JavaScript还没有开始兴风作浪。<br>所以我们必须紧跟Javascript的发展脚步。在我们的日常开发工作中，学习新特性，运用新特性。<br>如果你足够厉害，深呼吸，然后去看新标准的web版或者PDF版本。如果还没那么厉害的话，这篇文章就很适合你，我们将通过代码示例，详细得阐述和介绍主要的ES8新特性。<br>这篇文章已经被Jason Cheng翻译成了中文版本。（我不管，我还要翻译一遍）</p>
+<p>###String padding<br>这一部分将2个新的函数添加到了String类：padStart和padEnd。<br>就像字面意思一样，这些函数的目的是为了填补字符串的前面或者后面，目的是让结果字符串可以达到规定的长度。你可以使用特殊的字符或者字符串填补，也可以用默认的空格去填补。这里给出了函数的语法声明：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">str.padStart(targetLength [, padString])</span><br><span class="line">str.padEnd(targetLength [, padString])</span><br></pre></td></tr></table></figure></p>
+<p>如你所见，第一个参数是<code>targetLength</code>，是结果字母串的目标长度。第二个参数是可选的<code>padString</code>，决定了用什么字符或字符串源去填充字符串。默认使用空格填充。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&apos;es8&apos;.padStart(2);          // &apos;es8&apos;</span><br><span class="line">&apos;es8&apos;.padStart(5);          // &apos;  es8&apos;</span><br><span class="line">&apos;es8&apos;.padStart(6, &apos;woof&apos;);  // &apos;wooes8&apos;</span><br><span class="line">&apos;es8&apos;.padStart(14, &apos;wow&apos;);  // &apos;wowwowwowwoes8&apos;</span><br><span class="line">&apos;es8&apos;.padStart(7, &apos;0&apos;);     // &apos;0000es8&apos;</span><br><span class="line">&apos;es8&apos;.padEnd(2);          // &apos;es8&apos;</span><br><span class="line">&apos;es8&apos;.padEnd(5);          // &apos;es8  &apos;</span><br><span class="line">&apos;es8&apos;.padEnd(6, &apos;woof&apos;);  // &apos;es8woo&apos;</span><br><span class="line">&apos;es8&apos;.padEnd(14, &apos;wow&apos;);  // &apos;es8wowwowwowwo&apos;</span><br><span class="line">&apos;es8&apos;.padEnd(7, &apos;6&apos;);     // &apos;es86666&apos;</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2976869-f29386b0e9aa0fe4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="浏览器对String Padding的兼容性"></p>
+<p>###Object.values 和 Object.entries<br><code>Object.values</code>方法可以返回由给定对象自身的可枚举的属性值组成的数组，枚举顺序和<code>for in</code>循环的一样。函数声明很简单：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Object.values(obj)</span><br></pre></td></tr></table></figure></p>
+<p><code>obj</code>参数是即将处理的对象。可以是对象，也可以是数组（数组其实可以转换成带索引值的对象，例如[10, 20, 30] -&gt; { 0: 10, 1: 20, 2: 30 }）。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const obj = &#123; x: &apos;xxx&apos;, y: 1 &#125;;</span><br><span class="line">Object.values(obj); // [&apos;xxx&apos;, 1]</span><br><span class="line"></span><br><span class="line">const obj = [&apos;e&apos;, &apos;s&apos;, &apos;8&apos;]; // same as &#123; 0: &apos;e&apos;, 1: &apos;s&apos;, 2: &apos;8&apos; &#125;;</span><br><span class="line">Object.values(obj); // [&apos;e&apos;, &apos;s&apos;, &apos;8&apos;]</span><br><span class="line"></span><br><span class="line">// when we use numeric keys, the values returned in a numerical </span><br><span class="line">// order according to the keys</span><br><span class="line">const obj = &#123; 10: &apos;xxx&apos;, 1: &apos;yyy&apos;, 3: &apos;zzz&apos; &#125;;</span><br><span class="line">Object.values(obj); // [&apos;yyy&apos;, &apos;zzz&apos;, &apos;xxx&apos;]</span><br><span class="line">Object.values(&apos;es8&apos;); // [&apos;e&apos;, &apos;s&apos;, &apos;8&apos;]</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2976869-447c006a3f1b2d72.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="浏览器对Object.values的兼容性"></p>
+<p><code>Object.entries</code>方法同样也返回对象的可枚举属性，但时会包裹在<code>[key,value]</code>这样的名值对里，元素顺序和Object.values的顺序是一样的。函数声明很简单：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const obj = &#123; x: &apos;xxx’, y: 1 &#125;;</span><br><span class="line">Object.entries(obj); // [[’x’, &apos;xxx’], [’y’, 1]]</span><br><span class="line"></span><br><span class="line">const obj = [’e’, &apos;s’, &apos;8’];</span><br><span class="line">Object.entries(obj); // [[’0’, &apos;e’], [’1’, &apos;s’], [’2’, &apos;8’]]</span><br><span class="line"></span><br><span class="line">const obj = &#123; 10: &apos;xxx’, 1: &apos;yyy’, 3: &apos;zzz&apos; &#125;;</span><br><span class="line">Object.entries(obj); // [[’1’, &apos;yyy’], [’3’, &apos;zzz’], [’10’, &apos;xxx’]]</span><br><span class="line">Object.entries(&apos;es8&apos;); // [[&apos;0&apos;, &apos;e&apos;], [&apos;1&apos;, &apos;s&apos;], [&apos;2&apos;, &apos;8&apos;]]</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2976869-91afe95cec5bdfa0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="浏览器对Object.entries的兼容性"></p>
+<p>###Object.getOwnPropertyDescriptors</p>
+<p><code>getOwnPropertyDescriptors</code>方法返回自身的属性描述符集合。一个自身的属性描述符，由对象直接定义，而且继承自对象的原型。函数声明如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Object.getOwnPropertyDescriptors(obj)</span><br></pre></td></tr></table></figure></p>
+<p><code>obj</code>是源对象。描述对象返回结果中，主要包括键值：configurable, enumerable, writable, get, set and value。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">const obj = &#123; </span><br><span class="line">  get es7() &#123; return 777; &#125;,</span><br><span class="line">  get es8() &#123; return 888; &#125;</span><br><span class="line">&#125;;</span><br><span class="line">Object.getOwnPropertyDescriptors(obj);</span><br><span class="line">// &#123;</span><br><span class="line">//   es7: &#123;</span><br><span class="line">//     configurable: true,</span><br><span class="line">//     enumerable: true,</span><br><span class="line">//     get: function es7()&#123;&#125;, //the getter function</span><br><span class="line">//     set: undefined</span><br><span class="line">//   &#125;,</span><br><span class="line">//   es8: &#123;</span><br><span class="line">//     configurable: true,</span><br><span class="line">//     enumerable: true,</span><br><span class="line">//     get: function es8()&#123;&#125;, //the getter function</span><br><span class="line">//     set: undefined</span><br><span class="line">//   &#125;</span><br><span class="line">// &#125;</span><br></pre></td></tr></table></figure></p>
+<p>描述对象返回数据对于高级功能修饰符来说很重要。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2976869-34c8bb772407af7d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="浏览器对Object.getOwnPropertyDescriptors(obj)的兼容性"></p>
+<p>###Trailing commas函数参数列表后的逗号<br>当我们在参数列表后面添加一个逗号的时候，编译器会报语法错误（SyntaxError），但是Trailing commas的出现，可以使得不报错。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function es8(var1, var2, var3,) &#123;</span><br><span class="line">  // ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>像函数声明那样，加了多余逗号的函数同样可以进行函数调用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">es8(10, 20, 30,);</span><br></pre></td></tr></table></figure></p>
+<p>这个特性是受到了对象字面量和数组字面量的启发，例如<code>[10,20,30,]</code>和<code>{x:1,}</code>。</p>
+<p>###Async functions<br><code>async function</code>声明定义了异步函数，它可以返回一个异步的对象。从原理上来说，异步函数的工作原理更像构造函数，但是它们不能被翻译成构造函数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function fetchTextByPromise() &#123;</span><br><span class="line">  return new Promise(resolve =&gt; &#123; </span><br><span class="line">    setTimeout(() =&gt; &#123; </span><br><span class="line">      resolve(&quot;es8&quot;);</span><br><span class="line">    &#125;, 2000);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line">async function sayHello() &#123; </span><br><span class="line">  const externalFetchedText = await fetchTextByPromise();</span><br><span class="line">  console.log(`Hello, $&#123;externalFetchedText&#125;`); // Hello, es8</span><br><span class="line">&#125;</span><br><span class="line">sayHello();</span><br></pre></td></tr></table></figure></p>
+<p>调用<code>sayHello</code>函数后，将在2秒后打印出<code>Hello,es8</code>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">console.log(1);</span><br><span class="line">sayHello();</span><br><span class="line">console.log(2);</span><br></pre></td></tr></table></figure></p>
+<p>1,2会立刻打印，但是Hello,es8会在2秒后打印。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1 // immediately</span><br><span class="line">2 // immediately</span><br><span class="line">Hello, es8 // after 2 seconds</span><br></pre></td></tr></table></figure></p>
+<p>这是因为函数调用不会阻塞流。<br>注意<code>async function</code>总是返回一个promise对象，而且<code>await</code>关键字只能在用<code>async</code>关键字声明的函数中使用。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2976869-7f25ac5340008120.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="浏览器对Async functions的兼容性"></p>
+<p>###Shared meomory and atomics<br>当内存被共享时，多个线程可以在内存中读写相同的数据。原子操作确保预测值的可读和可写，在下一个线程开启前操作未结束，不会导致开启新的线程发生中断。这一部分介绍了一个新的构造器<code>ShareArrayBuffer</code>和带有静态方法的名称空间对象<code>Atomics</code>。<br><code>Atomic</code>对象是一个类似于有很多方法的<code>Math</code>对象，可以向一个构造器一样去使用。这个对象的静态方法如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">add / sub---add / 在一个特定位置上减去一个值</span><br><span class="line">and/or/xor---与，或，异或</span><br><span class="line">load---获取特定位置的值</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2976869-cd8524d10beaabd9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="浏览器兼容性"></p>
+<p>###取消模板文字限制<br>使用带标记的模板文字(ES6)，我们可以做一些事情，比如声明一个模板解析函数，并根据我们的逻辑返回一个值:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">const esth = 8;</span><br><span class="line">helper`ES $&#123;esth&#125; is `;</span><br><span class="line">function helper(strs, ...keys) &#123;</span><br><span class="line">  const str1 = strs[0]; // ES</span><br><span class="line">  const str2 = strs[1]; // is</span><br><span class="line">  let additionalPart = &apos;&apos;;</span><br><span class="line">  if (keys[0] == 8) &#123; // 8</span><br><span class="line">    additionalPart = &apos;awesome&apos;;</span><br><span class="line">  &#125;</span><br><span class="line">  else &#123;</span><br><span class="line">    additionalPart = &apos;good&apos;;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  return `$&#123;str1&#125; $&#123;keys[0]&#125; $&#123;str2&#125; $&#123;additionalPart&#125;.`;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>返回的值将是→ ES 8 is awesome.<br>对于esth中的7的值，返回的值将是→ ES 7 is good.<br>但是对于包含\u或\b子字符串的模板有一个限制。ES9将处理这个逃逸问题。在MDN网站或TC39文档中阅读更多相关信息。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2976869-26351740d17b402d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="浏览器兼容性"></p>
+<p>###总结<br>JavaScript在生产中，但它总是不断更新。在规范中关于是否采用新特性的讨论过程是非常缜密的。在最后阶段，TC39委员会确认了这些特性，并由核心开发人员实现。它们中的大多数已经是Typescript、浏览器或其他多填充部分的一部分，所以现在就可以尝试它们了。</p>
+<p>其他链接：<br>ES8web版：<a href="https://www.ecma-international.org/ecma-262/8.0/index.html" target="_blank" rel="noopener">https://www.ecma-international.org/ecma-262/8.0/index.html</a><br>ES8PDF版：<a href="https://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf" target="_blank" rel="noopener">https://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf</a><br>JsonCheng中文版：<a href="https://github.com/xitu/gold-miner/blob/master/TODO/es8-was-released-and-here-are-its-main-new-features.md" target="_blank" rel="noopener">https://github.com/xitu/gold-miner/blob/master/TODO/es8-was-released-and-here-are-its-main-new-features.md</a><br>高级功能修饰符：<a href="https://hackernoon.com/all-you-need-to-know-about-decorators-a-case-study-4a7e776b22a6" target="_blank" rel="noopener">https://hackernoon.com/all-you-need-to-know-about-decorators-a-case-study-4a7e776b22a6</a><br>MDN官网：<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals</a><br>TC39文档：<a href="https://tc39.github.io/proposal-template-literal-revision/" target="_blank" rel="noopener">https://tc39.github.io/proposal-template-literal-revision/</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/06/vue的重中之重之h(createElement)函数/" rel="next" title="vue的重中之重之h(createElement)函数">
+                <i class="fa fa-chevron-left"></i> vue的重中之重之h(createElement)函数
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/06/PostCSS真的太好用了！/" rel="prev" title="PostCSS真的太好用了！">
+                PostCSS真的太好用了！ <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://avatars3.githubusercontent.com/u/19262750?s=460&v=4" alt="Frank Kai">
+            
+              <p class="site-author-name" itemprop="name">Frank Kai</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/FrankKai" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/cnhnq" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-globe"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/u/3899061925" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-globe"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/ting-zhao-wu-yue-tian-da-lan-qiu/activities" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://segmentfault.com/u/chennihuannianqing" target="_blank" title="segmentFault">
+                      
+                        <i class="fa fa-fw fa-globe"></i>segmentFault</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Frank Kai</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

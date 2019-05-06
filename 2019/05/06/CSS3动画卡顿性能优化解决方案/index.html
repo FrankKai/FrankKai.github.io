@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="最近在开发小程序，与vue类似，它们都有生命周期这回事。  onLoad  监听页面加载onReady 监听页面初次渲染完成onShow 监听页面显示  到底是什么意思？ 所以这又触碰到了我的知识盲区，不过项目在磕磕绊绊中完成的差不多了，但是遇到了CSS3动画渲染的性能问题，所以我也是被逼的，再回过头来从浏览器渲染网页的流程出发，去找动画卡顿的症结。 浏览器渲染网页的流程如下：  使用 HTML">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS3动画卡顿性能优化解决方案">
+<meta property="og:url" content="https://FrankKai.github.io/2019/05/06/CSS3动画卡顿性能优化解决方案/index.html">
+<meta property="og:site_name" content="趁你还年轻的博客">
+<meta property="og:description" content="最近在开发小程序，与vue类似，它们都有生命周期这回事。  onLoad  监听页面加载onReady 监听页面初次渲染完成onShow 监听页面显示  到底是什么意思？ 所以这又触碰到了我的知识盲区，不过项目在磕磕绊绊中完成的差不多了，但是遇到了CSS3动画渲染的性能问题，所以我也是被逼的，再回过头来从浏览器渲染网页的流程出发，去找动画卡顿的症结。 浏览器渲染网页的流程如下：  使用 HTML">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2976869-aac6cda7e28a0158.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/512">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2976869-99b715315895e7c3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/256">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2976869-700706c8f7fa7a63.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/768">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2976869-5a41dae8f2dbbc65.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/768">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2976869-846dea4fe0ed9b36.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/768">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2976869-417a20a6fc673650.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/768">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2976869-3deb4c3292e97bb4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2976869-a03c29bb6c2fc37c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-05-06T04:39:42.730Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS3动画卡顿性能优化解决方案">
+<meta name="twitter:description" content="最近在开发小程序，与vue类似，它们都有生命周期这回事。  onLoad  监听页面加载onReady 监听页面初次渲染完成onShow 监听页面显示  到底是什么意思？ 所以这又触碰到了我的知识盲区，不过项目在磕磕绊绊中完成的差不多了，但是遇到了CSS3动画渲染的性能问题，所以我也是被逼的，再回过头来从浏览器渲染网页的流程出发，去找动画卡顿的症结。 浏览器渲染网页的流程如下：  使用 HTML">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2976869-aac6cda7e28a0158.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/512">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://FrankKai.github.io/2019/05/06/CSS3动画卡顿性能优化解决方案/">
+
+
+
+
+
+  <title>CSS3动画卡顿性能优化解决方案 | 趁你还年轻的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">趁你还年轻的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://FrankKai.github.io/2019/05/06/CSS3动画卡顿性能优化解决方案/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Frank Kai">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/19262750?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="趁你还年轻的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CSS3动画卡顿性能优化解决方案</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-06T12:39:42+08:00">
+                2019-05-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://upload-images.jianshu.io/upload_images/2976869-aac6cda7e28a0158.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/512" alt="CSS3 Transition"></p>
+<p>最近在开发小程序，与vue类似，它们都有生命周期这回事。</p>
+<blockquote>
+<p>onLoad  监听页面加载<br>onReady 监听页面初次渲染完成<br>onShow 监听页面显示</p>
+</blockquote>
+<p>到底是什么意思？</p>
+<p>所以这又触碰到了我的知识盲区，不过项目在磕磕绊绊中完成的差不多了，但是遇到了CSS3动画渲染的性能问题，所以我也是被逼的，再回过头来从浏览器渲染网页的流程出发，去找动画卡顿的症结。</p>
+<p>浏览器渲染网页的流程如下：</p>
+<blockquote>
+<p>使用 HTML 创建文档对象模型（DOM）<br>使用 CSS 创建 CSS 对象模型（CSSOM）<br>基于 DOM 和 CSSOM 执行脚本（Scripts）<br>合并 DOM 和 CSSOM 形成渲染树（Render Tree）<br>使用渲染树布局（Layout）所有元素<br>渲染（Paint）所有元素</p>
+</blockquote>
+<p>可以结合Alon的这篇<a href="http://jinlong.github.io/2017/05/08/optimising-the-front-end-for-the-browser/" target="_blank" rel="noopener">前端性能优化</a>和安卓开发者选项的显示页面布局。</p>
+<p>安卓开发者选项的显示页面布局</p>
+<blockquote>
+<p>如何判断手机app是native，webview还是hybird?<br>简单说下，app中的一大块是白色的没有红线标记出来的，但是上面有按钮，图片等时，就是webview，也就是通过一个伪浏览器去请求到的数据，断网时打开app没有任何东西显示在上面</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/2976869-99b715315895e7c3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/256" alt="小程序为hybird式开发"></p>
+<p><strong>onLoad 监听页面加载</strong><br>在渲染完界面之后，也就是通过.json中的配置项生成native界面后，开始渲染webview的部分，一个页面只会调用一次。<br><strong>onReady 监听页面初次渲染完成</strong><br>一个页面只会调用一次，代表页面已经准备妥当，可以和视图层进行交互。<br><strong>onShow 监听页面显示</strong><br>每次打开页面都会去调用其中的函数。</p>
+<p>###我们的动画应该放在哪里？<br>应该放在onShow里，因为这样我每次打开都能看到动画。</p>
+<p>###为什么会卡顿？</p>
+<p>有一个前提必须要提，前端开发者们都知道，浏览器是单线程运行的。<br>但是我们要明确以下几个概念：单线程，主线程和合成线程。</p>
+<p>虽然说浏览器执行js是单线程执行（注意，是执行，并不是说浏览器只有1个线程，而是运行时，runing），但实际上浏览器的2个重要的执行线程，这 2 个线程协同工作来渲染一个网页：主线程和合成线程。</p>
+<p>一般情况下，主线程负责：运行 JavaScript；计算 HTML 元素的 CSS 样式；页面的布局；将元素绘制到一个或多个位图中；将这些位图交给合成线程。</p>
+<p>相应地，合成线程负责：通过 GPU 将位图绘制到屏幕上；通知主线程更新页面中可见或即将变成可见的部分的位图；计算出页面中哪部分是可见的；计算出当你在滚动页面时哪部分是即将变成可见的；当你滚动页面时将相应位置的元素移动到可视区域。</p>
+<p>###那么为什么会造成动画卡顿呢？<br>原因就是主线程和合成线程的调度不合理。</p>
+<p>下面来详细说一下调度不合理的原因。</p>
+<blockquote>
+<p>在使用height，width，margin，padding作为transition的值时，会造成浏览器主线程的工作量较重，例如从margin-left：-20px渲染到margin-left:0，主线程需要计算样式margin-left:-19px,margin-left:-18px，一直到margin-left:0，而且每一次主线程计算样式后，合成进程都需要绘制到GPU然后再渲染到屏幕上，前后总共进行20次主线程渲染，20次合成线程渲染，20+20次，总计40次计算。</p>
+</blockquote>
+<p>主线程的渲染流程，可以参考浏览器渲染网页的流程：</p>
+<blockquote>
+<p>使用 HTML 创建文档对象模型（DOM）<br>使用 CSS 创建 CSS 对象模型（CSSOM）<br><strong>基于 DOM 和 CSSOM 执行脚本（Scripts）<br>合并 DOM 和 CSSOM 形成渲染树（Render Tree）<br>使用渲染树布局（Layout）所有元素<br>渲染（Paint）所有元素</strong></p>
+</blockquote>
+<p>也就是说，主线程每次都需要执行Scripts，Render Tree ,Layout和Paint这四个阶段的计算。</p>
+<blockquote>
+<p>而如果使用transform的话，例如tranform:translate(-20px,0)到transform:translate(0,0)，主线程只需要进行一次tranform:translate(-20px,0)到transform:translate(0,0)，然后合成线程去一次将-20px转换到0px，这样的话，总计1+20计算。</p>
+</blockquote>
+<p>可能会有人说，这才提升了19次，有什么好性能提升的？</p>
+<p>假设一次10ms。</p>
+<p>那么就减少了约190ms的耗时。</p>
+<p>会有人说，辣鸡，才190ms，无所谓。</p>
+<p>那么如果margin-left是从-200px到0呢，一次10ms，10ms*199≈2s。</p>
+<p>还会有人说，辣鸡，也就2s，无所谓。</p>
+<p>你忘了单线程这回事了吗？</p>
+<p>如果网页有3个动画，3*2s=6s，就是6s的性能提升。<br>由于数据是猜测的，所以暂时不考虑其真实性，文章后面我使用chrome devtools的performance做了一个实验。</p>
+<p>要知道，在”客户至上”的今天，好的用户体验是所有产品的必须遵守的一条规则，无论是对于开发者还是产品经理，追求极致的性能都是我们打造一个好的产品所必备的品质。</p>
+<p>可能看了我的略不专业的分析后，大家对主线程，合成线程以及它们在2种性能不同动画方案上的工作流程还不是很了解，可以去看一篇翻译过来的博客（英文原版链接已经失效了）：<a href="http://sy-tang.github.io/2014/05/14/CSS%20animations%20and%20transitions%20performance-%20looking%20inside%20the%20browser/" target="_blank" rel="noopener">深入浏览器理解CSS animations 和 transitions的性能问题</a></p>
+<p>这篇文章完美讲述了浏览器主线程和合成线程的区别，并且举了一个高度从100px变化到200px的2种动画方案的对比，对主线程和合成线程的整个工作流程做了很详尽的讲解，真心建议认真阅读一遍。</p>
+<p>回过头来总结下，css3动画卡顿的解决方案：<br><strong>在使用css3 transtion做动画效果时，优先选择transform，尽量不要使用height，width，margin和padding。</strong></p>
+<p>transform为我们提供了丰富的api，例如scale，translate，rotate等等，但是在使用时需要考虑兼容性。但其实对于大多数css3来说，mobile端支持性较好，desktop端支持性需要格外注意。</p>
+<hr>
+<p>补充：为了增强本文的说服力，特地回家做了一个实验，代码如下。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;utf-8&quot; /&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;title&gt;Page Title&lt;/title&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;</span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    .margin-transition&#123;</span><br><span class="line">      /* margin-left: 0; */</span><br><span class="line">      background: rgba(0,0,255,0.3);</span><br><span class="line">      transition: margin-left 1s;</span><br><span class="line">    &#125;</span><br><span class="line">    .transform-transition&#123;</span><br><span class="line">      /* transform: translate(0,0); */</span><br><span class="line">      background: rgba(0,255,0,0.3);</span><br><span class="line">      transition: transform 1s;</span><br><span class="line">    &#125;</span><br><span class="line">    .common&#123;</span><br><span class="line">      height: 300px;</span><br><span class="line">      width: 300px;</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;div class=&quot;margin-transition common&quot; id=&quot;marginTransition&quot;&gt;</span><br><span class="line">    &lt;p&gt;transition:margin-left 1s&lt;/p&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">  &lt;div class=&quot;transform-transition common&quot; id=&quot;transformTransition&quot;&gt;</span><br><span class="line">      &lt;p&gt;transition:tranform 1s&lt;/p&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">  &lt;button id=&quot;control&quot;&gt;见证奇迹&lt;/button&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">      var btn = document.getElementById(&apos;control&apos;);</span><br><span class="line">      var marginTransition = document.getElementById(&apos;marginTransition&apos;);</span><br><span class="line">      var transformTransition = document.getElementById(&apos;transformTransition&apos;);</span><br><span class="line">      btn.addEventListener(&quot;click&quot;,function()&#123;</span><br><span class="line">        console.log(marginTransition.style,transformTransition.style)</span><br><span class="line">        marginTransition.style.marginLeft = &quot;500px&quot;;</span><br><span class="line">        transformTransition.style.transform = &quot;translate(500px,0)&quot;</span><br><span class="line">      &#125;)</span><br><span class="line">  &lt;/script&gt;  </span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<p>我将主要借助chrome devtools的performance工具对比二者的性能差异。<br>先来看margin动画，动态修改DOM节点的margin-left值从0到500px;。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">transition: margin-left 1s;</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2976869-700706c8f7fa7a63.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/768" alt="margin动画实验"><br><img src="http://upload-images.jianshu.io/upload_images/2976869-5a41dae8f2dbbc65.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/768" alt="margin动画总耗时"><br><img src="http://upload-images.jianshu.io/upload_images/2976869-846dea4fe0ed9b36.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/768" alt="margin动画GPU使用率"></p>
+<p>再来看下transform动画，动态修改DOM节点的transform值从translate(0,0)到translate(500px,0)。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">transition: transform 1s;</span><br></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/2976869-417a20a6fc673650.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/768" alt="transform动画实验"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2976869-3deb4c3292e97bb4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="transform动画总耗时"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2976869-a03c29bb6c2fc37c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="transform动画GPU使用率"></p>
+<p>可能图片不是很好地能说明性能差异，那么我们来列一张耗时对比表，方便我们计算。</p>
+<table>
+<thead>
+<tr>
+<th>耗时</th>
+<th style="text-align:center">margin</th>
+<th style="text-align:right">transform</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Summery</td>
+<td style="text-align:center">3518ms</td>
+<td style="text-align:right">2286ms</td>
+</tr>
+<tr>
+<td>Scripting</td>
+<td style="text-align:center">1.8ms</td>
+<td style="text-align:right">2.9ms</td>
+</tr>
+<tr>
+<td>Rendering</td>
+<td style="text-align:center">22.5ms</td>
+<td style="text-align:right">6.9ms</td>
+</tr>
+<tr>
+<td>Painting</td>
+<td style="text-align:center">9.7ms</td>
+<td style="text-align:right">1.6ms</td>
+</tr>
+<tr>
+<td>Other</td>
+<td style="text-align:center">39.3ms</td>
+<td style="text-align:right">25.2ms</td>
+</tr>
+<tr>
+<td>Idle( browser is waiting on the CPU or GPU to do some processing)</td>
+<td style="text-align:center">3444.4ms</td>
+<td style="text-align:right">2249.8ms</td>
+</tr>
+<tr>
+<td><strong>GPU使用率</strong></td>
+<td style="text-align:center">4.1MB</td>
+<td style="text-align:right">1.7MB</td>
+</tr>
+</tbody>
+</table>
+<p>通过上表我们可以计算出明margin，transform与transition组合实现CSS3动画效果时的性能差异参数。</p>
+<table>
+<thead>
+<tr>
+<th>关键性能参数</th>
+<th style="text-align:center">margin</th>
+<th style="text-align:right">transform</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>实际动画耗时（总时间 减去 空闲时间）</strong></td>
+<td style="text-align:center">73.6ms</td>
+<td style="text-align:right">36.2ms</td>
+</tr>
+</tbody>
+</table>
+<p>计算得出，transform动画耗时约等于margin动画耗时的0.49倍，性能优化50%。</p>
+<p>由于我对Other的所做的具体事情不是很清楚，所以这里的实际动画时间也有可能还要减掉Other中的时间，下表是我们减掉后的数据。</p>
+<table>
+<thead>
+<tr>
+<th>关键性能参数</th>
+<th style="text-align:center">margin</th>
+<th style="text-align:right">transform</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>实际动画耗时（总时间 减去 其他时间和空闲时间）</strong></td>
+<td style="text-align:center">34.3ms</td>
+<td style="text-align:right">11ms</td>
+</tr>
+</tbody>
+</table>
+<p>计算得出，transform动画耗时约等于margin动画耗时的0.32倍，性能优化接近70%。</p>
+<p>也就是说，无论我们减去还是不减去Other的时间，我们采用transform实现动画的方式都比margin动画快。</p>
+<p>不精确的得出一个小结论：<strong>transform比margin性能好50%~70%</strong>。</p>
+<p>虽然会有50%~70%的性能提升，但是需要注意硬件差异，硬件好的情况下可能不能发现卡顿或者其他的一些性能上的问题。<br>例如在开发小程序的过程中，模拟器是位于desktop端的，因此它的硬件性能性能更好，例如CPU，GPU。但是一旦在mobile端运行，例如ios或者android上运行时，就可能会出现性能问题，这就是因为移动端的硬件条件逊于PC端导致的。</p>
+<p>所以说，性能问题是一直存在的，只不过硬件差异会导致性能影响的程度不同。</p>
+<p>所以我们再次回过头来，总结出css3动画卡顿的解决方案：<br><strong>在使用css3 transtion做动画效果时，优先选择transform，尽量不要使用height，width，margin和padding。</strong></p>
+<p>That’s it !</p>
+<p>参考：<br><a href="http://sy-tang.github.io/2014/05/14/CSS%20animations%20and%20transitions%20performance-%20looking%20inside%20the%20browser/" target="_blank" rel="noopener">http://sy-tang.github.io/2014/05/14/CSS%20animations%20and%20transitions%20performance-%20looking%20inside%20the%20browser/</a><br><a href="http://jinlong.github.io/2017/05/08/optimising-the-front-end-for-the-browser/" target="_blank" rel="noopener">http://jinlong.github.io/2017/05/08/optimising-the-front-end-for-the-browser/</a><br><a href="http://blog.csdn.net/yeana1/article/details/52756871" target="_blank" rel="noopener">http://blog.csdn.net/yeana1/article/details/52756871</a><br><a href="https://www.jianshu.com/p/b70b72de3c32" target="_blank" rel="noopener">https://www.jianshu.com/p/b70b72de3c32</a><br><a href="https://developers.google.com/web/tools/chrome-devtools/evaluate-performance/" target="_blank" rel="noopener">https://developers.google.com/web/tools/chrome-devtools/evaluate-performance/</a><br><a href="http://blogs.adobe.com/webplatform/2014/03/18/css-animations-and-transitions-performance/" target="_blank" rel="noopener">http://blogs.adobe.com/webplatform/2014/03/18/css-animations-and-transitions-performance/</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/06/Git与ssh秘钥之间的那些事儿/" rel="next" title="Git与ssh秘钥之间的那些事儿">
+                <i class="fa fa-chevron-left"></i> Git与ssh秘钥之间的那些事儿
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/06/Javascript对象的深浅拷贝/" rel="prev" title="Javascript对象的深浅拷贝">
+                Javascript对象的深浅拷贝 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://avatars3.githubusercontent.com/u/19262750?s=460&v=4" alt="Frank Kai">
+            
+              <p class="site-author-name" itemprop="name">Frank Kai</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/FrankKai" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/cnhnq" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-globe"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/u/3899061925" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-globe"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/ting-zhao-wu-yue-tian-da-lan-qiu/activities" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://segmentfault.com/u/chennihuannianqing" target="_blank" title="segmentFault">
+                      
+                        <i class="fa fa-fw fa-globe"></i>segmentFault</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Frank Kai</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

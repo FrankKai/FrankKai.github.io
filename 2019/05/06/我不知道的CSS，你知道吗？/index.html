@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="经历过几次面试后，才深知精通css对于前端开发的重要性，这个issue将集中针对css展开进攻，提升自己的薄弱的css基础。参考资料：《CSS世界》MDN CSS规范验证工具：Chrome 本地HTML 1.ex是什么？这是一个相对长度单位，相对谁呢？相对的是”x”，x指的是英文小写字母的”爱克斯”，而不是拼音里的”西”。就是说1ex就等于一个英文字母”x”的长度，那么一个”x”的长度，也就是1e">
+<meta property="og:type" content="article">
+<meta property="og:title" content="我不知道的CSS，你知道吗？">
+<meta property="og:url" content="https://FrankKai.github.io/2019/05/06/我不知道的CSS，你知道吗？/index.html">
+<meta property="og:site_name" content="趁你还年轻的博客">
+<meta property="og:description" content="经历过几次面试后，才深知精通css对于前端开发的重要性，这个issue将集中针对css展开进攻，提升自己的薄弱的css基础。参考资料：《CSS世界》MDN CSS规范验证工具：Chrome 本地HTML 1.ex是什么？这是一个相对长度单位，相对谁呢？相对的是”x”，x指的是英文小写字母的”爱克斯”，而不是拼音里的”西”。就是说1ex就等于一个英文字母”x”的长度，那么一个”x”的长度，也就是1e">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://user-images.githubusercontent.com/19262750/36015989-ebcb0488-0dab-11e8-8f5e-7f34f352dc2a.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/19262750/39682818-b22b31f8-51e4-11e8-883a-c04e1e82fac9.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/19262750/39688713-96c12ae0-5206-11e8-9ff2-06926e3dab33.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/19262750/39688677-66d2cd16-5206-11e8-8f1b-13e87b27bba5.png">
+<meta property="og:updated_time" content="2019-05-06T04:39:42.735Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="我不知道的CSS，你知道吗？">
+<meta name="twitter:description" content="经历过几次面试后，才深知精通css对于前端开发的重要性，这个issue将集中针对css展开进攻，提升自己的薄弱的css基础。参考资料：《CSS世界》MDN CSS规范验证工具：Chrome 本地HTML 1.ex是什么？这是一个相对长度单位，相对谁呢？相对的是”x”，x指的是英文小写字母的”爱克斯”，而不是拼音里的”西”。就是说1ex就等于一个英文字母”x”的长度，那么一个”x”的长度，也就是1e">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/19262750/36015989-ebcb0488-0dab-11e8-8f5e-7f34f352dc2a.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://FrankKai.github.io/2019/05/06/我不知道的CSS，你知道吗？/">
+
+
+
+
+
+  <title>我不知道的CSS，你知道吗？ | 趁你还年轻的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">趁你还年轻的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://FrankKai.github.io/2019/05/06/我不知道的CSS，你知道吗？/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Frank Kai">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/19262750?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="趁你还年轻的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">我不知道的CSS，你知道吗？</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-06T12:39:42+08:00">
+                2019-05-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>经历过几次面试后，才深知精通css对于前端开发的重要性，这个issue将集中针对css展开进攻，提升自己的薄弱的css基础。<br>参考资料：《CSS世界》<a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" rel="noopener">MDN</a> <a href="https://www.w3.org/standards/techs/css#w3c_all" target="_blank" rel="noopener">CSS规范</a><br>验证工具：Chrome 本地HTML</p>
+<p><img src="https://user-images.githubusercontent.com/19262750/36015989-ebcb0488-0dab-11e8-8f5e-7f34f352dc2a.png" alt="image"><br><strong>1.ex是什么？</strong><br>这是一个相对长度单位，相对谁呢？相对的是”x”，x指的是英文小写字母的”爱克斯”，而不是拼音里的”西”。就是说1ex就等于一个英文字母”x”的长度，那么一个”x”的长度，也就是1ex等于多少呢？是个确切的数字吗？是因字体而异的，在许多字体中1ex ≈ 0.5em。</p>
+<blockquote>
+<p>chrome64: 8.64px<br>firefox57:   8.6333px<br>ie11:          7.13px<br>edge41:     7.13px</p>
+</blockquote>
+<p>下面是默认字体的1ex的高度，如果把浏览器字体都改为“Microsoft YaHei”，那么1ex就约等于8.6px。<br>思考：<br>暂时没有想到好的使用场景，如果是需要做一些相对当前使用字体的属性值的计算，可以去使用ex。<br>代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;zh-cn&quot;&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta charset=&quot;utf-8&quot; /&gt;</span><br><span class="line">        &lt;title&gt;ex是什么？&lt;/title&gt;</span><br><span class="line">        &lt;style&gt;</span><br><span class="line">            html&#123;font-family:&quot;Microsoft YaHei&quot;&#125;</span><br><span class="line">            h1&#123;margin:10px 0;font-size:16px;&#125;</span><br><span class="line">            .x&#123;overflow:hidden;height:1ex;background:#aaa;&#125;</span><br><span class="line">        &lt;/style&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;h1&gt;定义一条与字母x高度相同的线：&lt;/h1&gt;</span><br><span class="line">        &lt;div&gt;xxxx&lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;x&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<p><strong>2.ch是什么?</strong><br>现在已经有了垂直方向的相对长度单位ex了，那么水平方向有没有呢？当然是有的，ch就是这样一个水平方向的相对长度单位，它的大小等于当前字体的”0”（Unicode：U+0030）的宽度，微软雅黑字体的“0”的宽度为9.375px，也就是1ch ≈9.375px。<br>思考：<br>暂时没有想到好的使用场景，如果是需要做一些水平方向的相对当前使用字体的属性值的计算，可以去使用ch。<br>代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;utf-8&quot; /&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">    &lt;title&gt;ch是什么？&lt;/title&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        html&#123;</span><br><span class="line">            /* font-size: 12px; */</span><br><span class="line">            font-family: &quot;Microsoft YaHei&quot;</span><br><span class="line">        &#125;</span><br><span class="line">        .traffic-light&#123;</span><br><span class="line">            height: 1rem;</span><br><span class="line">            width: 1ch;</span><br><span class="line">            background: rgba(255,0,0,1);</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class=&quot;traffic-light&quot;&gt;</span><br><span class="line">        0</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<p><strong>3.resolution是什么？</strong><br>这是css中的数据类型，在媒体查询时用来描述一个分辨率。在屏幕上，与CSS中的英尺，厘米，或者像素有关，而与物理单位无关。<br>常见单位：dpi（dots per inch） dpcm（dots per cm） dppx（dots per px）。<br>转换关系：<br>1英尺等于2.53厘米，所以1dpcm ≈ 2.54dpi。<br>css中1in:1px = 1:96，所以1dppx = 96dpi。<br>例子：各种分辨率下的1像素的直线。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;hairline-border&quot;&gt;text&lt;/div&gt;</span><br><span class="line">.hairline-border &#123;</span><br><span class="line">  box-shadow: 0 0 0 1px;</span><br><span class="line">&#125;</span><br><span class="line">@media (min-resolution: 2dppx) &#123;</span><br><span class="line">  .hairline-border &#123;</span><br><span class="line">    box-shadow: 0 0 0 0.5px;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">@media (min-resolution: 3dppx) &#123;</span><br><span class="line">  .hairline-border &#123;</span><br><span class="line">    box-shadow: 0 0 0 0.33333333px;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">@media (min-resolution: 4dppx) &#123;</span><br><span class="line">  .hairline-border &#123;</span><br><span class="line">    box-shadow: 0 0 0 0.25px;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>4.不要用!important</strong><br>demo地址：<a href="http://jsbin.com/wakequje/1/edit?html,css,output" target="_blank" rel="noopener">http://jsbin.com/wakequje/1/edit?html,css,output</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">  &lt;title&gt;!important&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div class=&quot;foo&quot;&gt;</span><br><span class="line">  Lorem &lt;span class=&quot;bar&quot;&gt;ipsum&lt;/span&gt; dolor sit amet…</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">html &#123;</span><br><span class="line">  font: 2em/1.5 sans-serif;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.foo .bar &#123;</span><br><span class="line">  color: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.bar.bar.bar.bar.bar.bar.bar.bar&#123;</span><br><span class="line">  color: green; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>不提倡的写法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.bar&#123;</span><br><span class="line">  color: green !important;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>MDN优质资料：<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity" target="_blank" rel="noopener">优先级</a></p>
+<blockquote>
+<p>使用 !important 是一个坏习惯，应该尽量避免，因为这破坏了样式表中的固有的级联规则，使得调试找bug变得更加困难了。</p>
+</blockquote>
+<p>一些比!important更好的方法：<br>1.更好地利用css级联关系<br>2.增加元素权重，增加更详细的父级选择器<br><strong>3.当没有其他可以选择的父选择器时，重复多次选择自身增加权重（此comment的原因所在）</strong></p>
+<p>其实只要写成<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.bar.bar&#123;</span><br><span class="line">  color: green; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>就好了，多写几个.bar是为了提升代码可读性。</p>
+<p><strong>5.子元素浮动导致父元素塌陷怎么处理？</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">overflow:hidden;</span><br></pre></td></tr></table></figure></p>
+<p>or<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">display:inline-block;</span><br></pre></td></tr></table></figure></p>
+<p>为父元素添加<code>overflow:hidden</code>(常用)或者是<code>display:inline-block</code>（常用）。<br>除此之外，也可以是auto、scroll; table-cell、table-caption、inline-block。<br>或者position的值不为relative或static，或者float的值不为none，或者是<html>根元素。</html></p>
+<p>本质上，这是激活了元素的BFC，所谓BFC，其实就是Block Format Context，如果一个元素具有BFC，那么内部子元素无论有什么骚操作，无论是float,absolute,fixed,z-index等等等等，都不会对外部的元素有任何影响。</p>
+<p>本质上大家最常用的clear:both，也是为当前元素激活了BFC。</p>
+<p>除此之外，BFC还可以去除margin重叠。</p>
+<p>题外话：随着浏览器厂商对flex，grid兼容性的进一步支持，BFC依旧很重要，哈哈。</p>
+<p><strong>6.::placeholder是什么意思？</strong><br>这是一个实验性的css技术，这个css伪元素代表这form元素的placeholder的文字内容。<br>只有适用于:: first-line伪元素的CSS属性的子集可以在其选择器中使用:: placeholder的规则中使用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input placeholder=&quot;Type something here!&quot;&gt;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">input::placeholder &#123;</span><br><span class="line">    color: red;</span><br><span class="line">    font-size: 1.2em;</span><br><span class="line">    font-style: italic;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://user-images.githubusercontent.com/19262750/39682818-b22b31f8-51e4-11e8-883a-c04e1e82fac9.png" alt="image"></p>
+<p><strong>7.:fullscreen是什么意思？</strong><br>这是一个实验性的技术。这个:fullscreen伪元素会使得元素在浏览器的全屏模式下去显示。</p>
+<p>那么如何触发浏览器的全屏模式呢？</p>
+<p>我们来看一个<video>标签的例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;video controls id=&quot;myvideo&quot;&gt;</span><br><span class="line">    &lt;source src=&quot;somevideo.webm&quot;&gt;&lt;/source&gt;</span><br><span class="line">    &lt;source src=&quot;somevideo.mp4&quot;&gt;&lt;/source&gt;</span><br><span class="line">&lt;/video&gt;</span><br></pre></td></tr></table></figure></video></p>
+<p>我们可以使得视频通过如下方式进入全屏模式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var elem = document.getElementById(&quot;myvideo&quot;);</span><br><span class="line">if (elem.requestFullscreen) &#123;</span><br><span class="line">  elem.requestFullscreen();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>再来看个普通标签的例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;fullscreen&quot;&gt;</span><br><span class="line">    &lt;h1&gt;:fullscreen Demo&lt;/h1&gt;</span><br><span class="line">    &lt;p&gt;This text will become big and red when the browser is in fullscreen mode.&lt;/p&gt;</span><br><span class="line">    &lt;button id=&quot;fullscreen-button&quot;&gt;Enter Fullscreen&lt;/button&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">var fullscreenButton = document.getElementById(&quot;fullscreen-button&quot;);</span><br><span class="line">var fullscreenDiv    = document.getElementById(&quot;fullscreen&quot;);</span><br><span class="line">var fullscreenFunc   = fullscreenDiv.requestFullscreen;</span><br><span class="line">if (!fullscreenFunc) &#123;</span><br><span class="line">     [&apos;mozRequestFullScreen&apos;, &apos;msRequestFullscreen&apos;,&apos;webkitRequestFullScreen&apos;].forEach(function (req) &#123;</span><br><span class="line">        fullscreenFunc = fullscreenFunc || fullscreenDiv[req];</span><br><span class="line">     &#125;);</span><br><span class="line">&#125;  </span><br><span class="line">function enterFullscreen() &#123;</span><br><span class="line">    fullscreenFunc.call(fullscreenDiv);</span><br><span class="line">&#125; </span><br><span class="line">fullscreenButton.addEventListener(&apos;click&apos;, enterFullscreen);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>普通模式下是这样：很普通，:fullscreen伪元素未激活。<br><img src="https://user-images.githubusercontent.com/19262750/39688713-96c12ae0-5206-11e8-9ff2-06926e3dab33.png" alt="image"><br>全屏模式下是这样：很丰满，fullscreen伪元素的被激活。<br><img src="https://user-images.githubusercontent.com/19262750/39688677-66d2cd16-5206-11e8-8f1b-13e87b27bba5.png" alt="image"></p>
+<h3 id="8-说一下position的区别"><a href="#8-说一下position的区别" class="headerlink" title="8.说一下position的区别"></a>8.说一下position的区别</h3><p>值集合：<strong>static relative absolute fixed sticky</strong><br>关键词：<strong>正常文档流 占用页面空间 参照元素偏移 副作用 z-index堆叠上下文 margin边缘重叠</strong> </p>
+<ul>
+<li><strong>static</strong></li>
+</ul>
+<ol>
+<li>在正常文档流中</li>
+<li>占用页面layout空间</li>
+<li>top right bottom left不生效</li>
+<li>无副作用</li>
+<li>z-index属性不生效</li>
+</ol>
+<ul>
+<li><strong>relative</strong></li>
+</ul>
+<ol>
+<li>在正常文档流中</li>
+<li>页面上的空间与static一致</li>
+<li>根据top right bottom left 参考自身进行偏移</li>
+<li>偏移不影响其他元素的位置</li>
+<li>当z-index值不为auto时，这个值创建了一个新的堆叠上下文</li>
+<li>对table-*-group，table-row，table-column，table-cell和table-caption的影响未定义。</li>
+</ol>
+<ul>
+<li><strong>absolute</strong></li>
+</ul>
+<ol>
+<li>从正常文档流移除</li>
+<li>不占用当前页面布局空间</li>
+<li>根据top right bottom left，参考最近的已定位的上级元素偏移，如果没有，则向上查找到最高层级的初始化包含块</li>
+<li>偏移不影响其他元素的位置</li>
+<li>当z-index不为auto时，创建新的堆叠上下文</li>
+<li>绝对定位的盒子不会与其他元素发生边缘重叠</li>
+</ol>
+<ul>
+<li><strong>fixed</strong></li>
+</ul>
+<ol>
+<li>从正常文档流移除</li>
+<li>不占用当前页面布局空间</li>
+<li>根据top right bottom left，参考viewport偏移；当它的上级元素中有transform，perspective，filter属性，这个元素被作为参考的对象。</li>
+<li>偏移不影响其他元素的位置</li>
+<li>直接创建一个新的堆叠上下文<br>6.在打印文档中，元素在每一页的相同位置</li>
+</ol>
+<ul>
+<li><strong>sticky (实验性)</strong></li>
+</ul>
+<ol>
+<li>在正常文档流中</li>
+<li>不占用当前页面布局空间</li>
+<li>根据top right bottom left ，参考最近的scrolling祖先，包含块以及table类元素定位，或者是最近的粘性机制元素。注意粘性元素与最近的有滚动机制的元素粘在一起。(当overflow值为hidden,scroll,auto或者是overlay)，即使在上级元素不是最近的祖先元素。</li>
+<li>偏移不影响其他元素位置</li>
+<li>直接创建新的堆叠上下文</li>
+</ol>
+<p>通过<strong>关键词记忆</strong>的方式，对position区别记忆和理解的方式更佳。</p>
+<p>参考：<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/position</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/06/记一次简单的DOM XSS攻击实验/" rel="next" title="记一次简单的DOM XSS攻击实验">
+                <i class="fa fa-chevron-left"></i> 记一次简单的DOM XSS攻击实验
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/06/深入理解inline元素，block-level元素和display属性/" rel="prev" title="深入理解inline元素，block-level元素和display属性">
+                深入理解inline元素，block-level元素和display属性 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://avatars3.githubusercontent.com/u/19262750?s=460&v=4" alt="Frank Kai">
+            
+              <p class="site-author-name" itemprop="name">Frank Kai</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/FrankKai" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/cnhnq" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-globe"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/u/3899061925" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-globe"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/ting-zhao-wu-yue-tian-da-lan-qiu/activities" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://segmentfault.com/u/chennihuannianqing" target="_blank" title="segmentFault">
+                      
+                        <i class="fa fa-fw fa-globe"></i>segmentFault</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#8-说一下position的区别"><span class="nav-number">1.</span> <span class="nav-text">8.说一下position的区别</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Frank Kai</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

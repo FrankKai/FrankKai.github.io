@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="# 用中文怎么叫合适？相等？全等？其实并不合适，叫double equals 或者treble equals，或者叫不懂的人觉得比较不专业的双等或者三等操作符，是更加严谨和正确的叫法。为什么这么说？看完这篇博客你就明白了。 ####一、入门阶段：自我经验（一脚一坑）我的理解是：==是相等，值相等，返回true。===是全等，值相等，类型也相等，返回true。 上面的理解是错的，[]==false和">
+<meta property="og:type" content="article">
+<meta property="og:title" content="你真的理解==和===的区别吗？">
+<meta property="og:url" content="https://FrankKai.github.io/2019/05/06/你真的理解==和===的区别吗？/index.html">
+<meta property="og:site_name" content="趁你还年轻的博客">
+<meta property="og:description" content="# 用中文怎么叫合适？相等？全等？其实并不合适，叫double equals 或者treble equals，或者叫不懂的人觉得比较不专业的双等或者三等操作符，是更加严谨和正确的叫法。为什么这么说？看完这篇博客你就明白了。 ####一、入门阶段：自我经验（一脚一坑）我的理解是：==是相等，值相等，返回true。===是全等，值相等，类型也相等，返回true。 上面的理解是错的，[]==false和">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2976869-8bbcba1a013125ad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/512">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2976869-203b56e4f74d9b9b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2976869-af71b57c07a5c821.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2976869-882a7d066893faff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2976869-5163f4d95213a234.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-05-06T04:39:42.733Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="你真的理解==和===的区别吗？">
+<meta name="twitter:description" content="# 用中文怎么叫合适？相等？全等？其实并不合适，叫double equals 或者treble equals，或者叫不懂的人觉得比较不专业的双等或者三等操作符，是更加严谨和正确的叫法。为什么这么说？看完这篇博客你就明白了。 ####一、入门阶段：自我经验（一脚一坑）我的理解是：==是相等，值相等，返回true。===是全等，值相等，类型也相等，返回true。 上面的理解是错的，[]==false和">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2976869-8bbcba1a013125ad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/512">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://FrankKai.github.io/2019/05/06/你真的理解==和===的区别吗？/">
+
+
+
+
+
+  <title>你真的理解==和===的区别吗？ | 趁你还年轻的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">趁你还年轻的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://FrankKai.github.io/2019/05/06/你真的理解==和===的区别吗？/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Frank Kai">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/19262750?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="趁你还年轻的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">你真的理解==和===的区别吗？</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-06T12:39:42+08:00">
+                2019-05-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>#<img src="http://upload-images.jianshu.io/upload_images/2976869-8bbcba1a013125ad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/512" alt></p>
+<p>用中文怎么叫合适？<br>相等？全等？<br>其实并不合适，叫double equals 或者treble equals，或者叫不懂的人觉得比较不专业的双等或者三等操作符，是更加严谨和正确的叫法。<br>为什么这么说？看完这篇博客你就明白了。</p>
+<p>####<strong>一、入门阶段：自我经验（一脚一坑）</strong><br>我的理解是：<br>==是相等，值相等，返回true。<br>===是全等，值相等，类型也相等，返回true。</p>
+<p>上面的理解是错的，<code>[]==false</code>和<code>[1]===[1]</code>返回就可以推翻。<code>[]==false</code>，他们的值并不相等，但是返回true。[1]和[1]，值相等，类型也相等，返回为false。因此上面理解是错的。</p>
+<p>正确的理解是：</p>
+<blockquote>
+<p><strong>==是相等，先转换再比较，返回true。<br>===是全等，不转换就比较，返回true。</strong></p>
+</blockquote>
+<p><code>[]==false</code>，false是转换为0，[]强制转换成0(<strong>解释不清楚</strong>)，<code>0 == 0</code> ,返回为true。<br><code>[1] === [1]</code>，不转换就比较，<code>[1]===[1]</code>，左右的[1]指向内存中两个独立的，地址不同的数组，故返回false。</p>
+<p>看下最简单的例子：<br>①基础类型vs基础类型<br><code>1== true //true</code><br><code>1 === true //false</code><br>再看两个复杂的例子：<br>②对象vs基础类型*<br><code>[] == false //true</code><br><code>[] === false //false</code><br>③对象vs对象<br><code>{age:6} == {age:6} //false</code><br><code>{age:6} === {age:6} //false</code><br><code>[1] == [1] //false</code><br><code>[1] === [1] //false</code></p>
+<p>####<strong>二、初级阶段：参考书籍（勉强避雷）</strong><br>聪明的你会问了，<code>[] == false</code>和<code>false == []</code>的结果一致吗？<br>答案是一致的，因为无论再操作符左侧还是右侧，它们都是操作数，位置是没有关系的。</p>
+<p>为什么会出现上面的结果？</p>
+<p>为什么 <code>1 == true</code>和<code>[] == false</code>返回true？<br>因为type coercion的存在，高设翻译为强制转型。<br>为什么会出现强制转换类型？<br>强制转换了谁的类型？<br>转换成了什么类型？</p>
+<p>为什么<code>{age:6} == {age:6}</code>返回的是false?<br>他们看起来不是一样的吗，都是一个object，而且内部数据都是age:6，key-value值一模一样，为什么不返回true呢？</p>
+<p>如果再在操作数中加入<code>null</code>和<code>undefined</code>这两个神奇的类型呢？<br>问题就变的更复杂了…</p>
+<p>来看下《Javascript高级程序设计》关于==和===的规则</p>
+<blockquote>
+<p>1.如果有一个操作数是布尔值，则在比较前先将其转换为数值，true转换为1，false转换为0，例如false == 0，true == 1<br>2.如果一个操作数是字符串，另一个操作数是数值，先将字符串转换成数值，例如”1”==1,’’ ==0<br>3.如果一个操作数是对象，另一个操作数不是，则调用对象的valueOf()方法，用得到的基本类型按照前面的规则进行比较。<strong>(解释不清楚)</strong><br>4.null和undefined是相等的。<br>5.如果有一个数是NaN，则相等操作符返回false，而不想等操作符返回true。NaN == NaN返回为false，因为规则如此。<br>6.如果两个操作数是对象，则比较它们是不是同一个对象。如果两个操作数都指向同一个对象，则相等操作符返回true，否则返回false。<br>例如：var obj = {a:1};foo = obj;bar = obj;foo==bar;foo==bar返回为true，因为他们指向同一个对象，obj。</p>
+</blockquote>
+<p>===和==的规则类似，唯一少了转换的一步。<br>第6步中的foo===bar返回true，如果不明白为什么？请看第三部分。</p>
+<p>####<strong>三、高级阶段：参考规范（真正理解）</strong><br>真的如高设所说的那样吗？其实不然。<br>下面是ecma-262的规范，其中有对==和===的执行定义，把<strong>解释不清楚</strong>干掉。<br><a href="https://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf" target="_blank" rel="noopener">https://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf</a><br><strong>7.2.13 Abstract Equality Comparison</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">The comparison x == y, where x and y are values, produces true or false. Such a comparison is performed</span><br><span class="line">as follows:</span><br><span class="line">1. If Type(x) is the same as Type(y), then</span><br><span class="line">a. Return the result of performing Strict Equality Comparison x === y.</span><br><span class="line">2. If x is null and y is undefined, return true.</span><br><span class="line">3. If x is undefined and y is null, return true.</span><br><span class="line">4. If Type(x) is Number and Type(y) is String, return the result of the comparison x == ToNumber(y).</span><br><span class="line">5. If Type(x) is String and Type(y) is Number, return the result of the comparison ToNumber(x) == y.</span><br><span class="line">6. If Type(x) is Boolean, return the result of the comparison ToNumber(x) == y.</span><br><span class="line">7. If Type(y) is Boolean, return the result of the comparison x == ToNumber(y).</span><br><span class="line">8. If Type(x) is either String, Number, or Symbol and Type(y) is Object, return the result of the</span><br><span class="line">comparison x == ToPrimitive(y).</span><br><span class="line">9. If Type(x) is Object and Type(y) is either String, Number, or Symbol, return the result of the</span><br><span class="line">comparison ToPrimitive(x) == y.</span><br><span class="line">10. Return false.</span><br></pre></td></tr></table></figure></p>
+<p><strong>7.2.14 Strict Equality Comparison</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">The comparison x === y, where x and y are values, produces true or false. Such a comparison is performed</span><br><span class="line">as follows:</span><br><span class="line">1. If Type(x) is different from Type(y), return false.</span><br><span class="line">2. If Type(x) is Number, then</span><br><span class="line">a. If x is NaN, return false.</span><br><span class="line">b. If y is NaN, return false.</span><br><span class="line">c. If x is the same Number value as y, return true.</span><br><span class="line">d. If x is +0 and y is ‑0, return true.</span><br><span class="line">e. If x is ‑0 and y is +0, return true.</span><br><span class="line">f. Return false.</span><br><span class="line">3. Return SameValueNonNumber(x, y).</span><br><span class="line">NOTE This algorithm differs from the SameValue Algorithm in its treatment of signed zeroes and</span><br><span class="line">NaNs.</span><br></pre></td></tr></table></figure></p>
+<p><strong>1.[]==false</strong><br>来分析一个经典的例子：[]==false，看完彻底理解==的强制转换。<br>①[]==false→<strong>[]==0</strong></p>
+<blockquote>
+<p>7.If Type(y) is Boolean, return the result of the comparison x == ToNumber(y).</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/2976869-203b56e4f74d9b9b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>经过<code>ToNumber(false)</code>，false会被转换为0.<br>②[]==0→<strong>‘’==0</strong></p>
+<blockquote>
+<p>9.If Type(x) is Object and Type(y) is either String, Number, or Symbol, return the result of the<br>comparison ToPrimitive(x) == y</p>
+</blockquote>
+<p>这个时候就比较复杂了…</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2976869-af71b57c07a5c821.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2976869-882a7d066893faff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>按照规范，我们需要经过下面的一系列操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">→OrdinaryToPromitive([],default)</span><br><span class="line">→OrdinaryToPromitive([],number)</span><br><span class="line">→Get([],valueOf)</span><br><span class="line">→Call(valueOf,[])</span><br><span class="line">→Get([],toString)</span><br><span class="line">→Call(toString,[])</span><br><span class="line">→&apos;&apos;</span><br></pre></td></tr></table></figure></p>
+<p>不要慌，用Javascript来描述，还是很简单的：</p>
+<blockquote>
+<p>[].valueOf().toString()</p>
+</blockquote>
+<p>③’’==0→<strong>0==0</strong></p>
+<blockquote>
+<ol start="5">
+<li>If Type(x) is String and Type(y) is Number, return the result of the comparison ToNumber(x) == y.</li>
+</ol>
+</blockquote>
+<p><strong>2.[1]===[1]</strong><br>再来看下===操作符，其中有句话可以完美解释[1]===[1]返回false，但是var obj = {a:1};foo = obj;bar = obj;foo===bar中foo===bar返回为true的原因。</p>
+<blockquote>
+<ol start="3">
+<li>Return SameValueNonNumber(x, y).</li>
+</ol>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/2976869-5163f4d95213a234.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>由于[1]===[1]三等号左右的[1]，不是same Object，因此返回为false.<br>而foo===bar，三等号左右其实本质上都是指向obj这个对象，值相等更是必然，所以返回为true。</p>
+<p>我们由此可以举一反三，[1]==true返回true，而[1,2,3]==true返回false的原因也不足为奇了。</p>
+<p>如有错误欢迎指正说明，期待和你交流~<br>努力成为优秀的前端工程师~</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/06/前端领域的BEM到底是什么/" rel="next" title="前端领域的BEM到底是什么">
+                <i class="fa fa-chevron-left"></i> 前端领域的BEM到底是什么
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/06/从规范去看Function.prototype.call到底是怎么工作的？/" rel="prev" title="从规范去看Function.prototype.call到底是怎么工作的？">
+                从规范去看Function.prototype.call到底是怎么工作的？ <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://avatars3.githubusercontent.com/u/19262750?s=460&v=4" alt="Frank Kai">
+            
+              <p class="site-author-name" itemprop="name">Frank Kai</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/FrankKai" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/cnhnq" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-globe"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/u/3899061925" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-globe"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/ting-zhao-wu-yue-tian-da-lan-qiu/activities" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://segmentfault.com/u/chennihuannianqing" target="_blank" title="segmentFault">
+                      
+                        <i class="fa fa-fw fa-globe"></i>segmentFault</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Frank Kai</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

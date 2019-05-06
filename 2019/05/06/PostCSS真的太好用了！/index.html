@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="在PostCSS官网有着这样的对PostCSS特性介绍，箭头后面是对应功能的插件及其github地址。  increase code readability → Autoprefixer Use tomorrow’s CSS ,today! → postcss-cssnext The end of global CSS → postcss-modules Avoid errors in your">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PostCSS真的太好用了！">
+<meta property="og:url" content="https://FrankKai.github.io/2019/05/06/PostCSS真的太好用了！/index.html">
+<meta property="og:site_name" content="趁你还年轻的博客">
+<meta property="og:description" content="在PostCSS官网有着这样的对PostCSS特性介绍，箭头后面是对应功能的插件及其github地址。  increase code readability → Autoprefixer Use tomorrow’s CSS ,today! → postcss-cssnext The end of global CSS → postcss-modules Avoid errors in your">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://user-images.githubusercontent.com/19262750/39682933-3197f62e-51e5-11e8-87f8-e9fd5e645708.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/19262750/39757437-693166c2-52ff-11e8-8d3e-24ea70a90ffa.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/19262750/39757447-713e6770-52ff-11e8-9621-5560551ce383.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/19262750/39757518-ab15687c-52ff-11e8-918b-7cd715073849.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/19262750/39757867-b17b9a50-5300-11e8-9a95-655c05832e90.png">
+<meta property="og:updated_time" content="2019-05-06T04:39:42.731Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PostCSS真的太好用了！">
+<meta name="twitter:description" content="在PostCSS官网有着这样的对PostCSS特性介绍，箭头后面是对应功能的插件及其github地址。  increase code readability → Autoprefixer Use tomorrow’s CSS ,today! → postcss-cssnext The end of global CSS → postcss-modules Avoid errors in your">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/19262750/39682933-3197f62e-51e5-11e8-87f8-e9fd5e645708.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://FrankKai.github.io/2019/05/06/PostCSS真的太好用了！/">
+
+
+
+
+
+  <title>PostCSS真的太好用了！ | 趁你还年轻的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">趁你还年轻的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://FrankKai.github.io/2019/05/06/PostCSS真的太好用了！/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Frank Kai">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/19262750?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="趁你还年轻的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">PostCSS真的太好用了！</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-06T12:39:42+08:00">
+                2019-05-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在<a href="http://postcss.org/" target="_blank" rel="noopener">PostCSS官网</a>有着这样的对PostCSS特性介绍，箭头后面是对应功能的插件及其github地址。</p>
+<ul>
+<li>increase code readability → <a href="https://github.com/postcss/autoprefixer" target="_blank" rel="noopener">Autoprefixer</a></li>
+<li>Use tomorrow’s CSS ,today! → <a href="https://github.com/MoOx/postcss-cssnext/" target="_blank" rel="noopener">postcss-cssnext</a></li>
+<li>The end of global CSS → <a href="https://github.com/css-modules/postcss-modules" target="_blank" rel="noopener">postcss-modules</a></li>
+<li>Avoid errors in your CSS → <a href="https://github.com/stylelint/stylelint" target="_blank" rel="noopener">stylelint</a></li>
+<li>Powerful grid CSS → lost →<a href="https://github.com/peterramsing/lost" target="_blank" rel="noopener">lost</a></li>
+</ul>
+<p>PostCSS是一款使用插件去转换CSS的工具，有许多非常好用的插件，例如autoprefixer,cssnext以及CSS Modules。而上面列举出的这些特性，都是由对应的postcss插件去实现的。而使用PostCSS则需要与webpack或者parcel结合起来。<br>在Parcel中使用PostCSS的方法：添加配置文件.postcssrc(JSON),.postcssrc.js或者是postcss.config.js。<br>拿 .postcssrc 文件来举例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;modules&quot;: true,</span><br><span class="line">  &quot;plugins&quot;: &#123;</span><br><span class="line">    &quot;autoprefixer&quot;: &#123;</span><br><span class="line">      &quot;grid&quot;: true</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Plugins 在 plugins 对象中被指定为 key，并使用对象的值定义选项。如果插件没有选项，只需将其设置为 true 即可。<br>下面我将对根据官方readme的演示demo，对各个插件进行一一介绍，并添加一些隐藏在插件背后的知识点的说明。</p>
+<p><strong>1.什么是Autoprefixer？</strong><br>首先明确一点Autoprefixer是一个根据can i use解析css并且为其添加浏览器厂商前缀的PostCSS插件。<br>不加任何vender prefix的通常写法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">::placeholder &#123;</span><br><span class="line">    color: gray;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Autoprefixer将使用基于当前浏览器支持的特性和属性数据去为你添加前缀。你可以尝试下Autoprefixer的demo：<a href="http://autoprefixer.github.io/" target="_blank" rel="noopener">http://autoprefixer.github.io/</a><br><img src="https://user-images.githubusercontent.com/19262750/39682933-3197f62e-51e5-11e8-87f8-e9fd5e645708.png" alt="image"><br>由上图可以看出，像没有浏览器差异已经完全符合W3C标准的css2.1属性display，position等，Autoprefixer不会为其加前缀，而像css3属性transform就会为其加前缀，其中–webkit是chrome和safari前缀，–ms则是ie的前缀，像firefox由于已经实现了对transform的W3C标准化，因此使用transform即可。</p>
+<p>因此Autoprefixer是一个非常有用的加速前端开发的一个工具，但是它需要基于PostCSS去发挥作用。</p>
+<p>如果对vender prefix存疑，可以去看我的这篇博客：<a href="https://www.jianshu.com/p/998f0d6bb7ac" target="_blank" rel="noopener">rem / Vender Prefix / CSS extensions</a></p>
+<p><strong>2.什么是postcss-cssnext？</strong><br>postcss-cssnext语法input：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">:root &#123;</span><br><span class="line">  --fontSize: 1rem;</span><br><span class="line">  --mainColor: #12345678;</span><br><span class="line">  --centered: &#123;</span><br><span class="line">      display: flex;</span><br><span class="line">      align-items: center;</span><br><span class="line">      justify-content: center;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line">body &#123;</span><br><span class="line">    color: var(--mainColor);</span><br><span class="line">    font-size: var(--fontSize);</span><br><span class="line">    line-height: calc(var(--fontSize) * 1.5);</span><br><span class="line">    padding: calc((var(--fontSize) / 2) + 1px);</span><br><span class="line">&#125;</span><br><span class="line">.centered &#123;</span><br><span class="line">    @apply --centered;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>浏览器可用语法output:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">body &#123;</span><br><span class="line">    color: rgba(18, 52, 86, 0.47059);</span><br><span class="line">    font-size: 16px;</span><br><span class="line">    font-size: 1rem;</span><br><span class="line">    line-height: 24px;</span><br><span class="line">    line-height: 1.5rem;</span><br><span class="line">    padding: calc(0.5rem + 1px);</span><br><span class="line">&#125;</span><br><span class="line">.centered &#123;</span><br><span class="line">    display: -webkit-box;</span><br><span class="line">    display: -ms-flexbox;</span><br><span class="line">    display: flex;</span><br><span class="line">    -webkit-box-align: center;</span><br><span class="line">        -ms-flex-align: center;</span><br><span class="line">            align-items: center;</span><br><span class="line">    -webkit-box-pack: center;</span><br><span class="line">        -ms-flex-pack: center;</span><br><span class="line">            justify-content: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>粗略看了一遍演示demo，<a href="http://cssnext.io/playground/，感觉既好用又不好用。" target="_blank" rel="noopener">http://cssnext.io/playground/，感觉既好用又不好用。</a><br>好用的地方在于通过var()和calc()进行css属性值的计算，也有@apply这样的应用大段规则的写法，也可以借此去了解一些新的css草案特性；不好用的地方在于有一定的学习成本，而且在前期与webpack，gulp以及parcel进行结合时也需要花费一定时间，并且如果有新的前端组成员加入，必须要掌握这种cssnext的语法。<br>这样做有些似乎在尝试将css变为一种可以进行逻辑处理的语言，但是我个人认为这对于css这样的灵活的需要具象思维并且需要大量调试的语言来说，工作中使用cssnext不是一个很好的选择，但是工作之余可以作为一个学习新的css草案特性的一个入口，待到纳入标准再去使用。</p>
+<p>刚开始对自己的想法不确定，因此去看了下前辈们的想法，其中顾铁灵对cssnext的想法与我的想法如出一辙：</p>
+<blockquote>
+<p>CSS 的转译器（transpiler），根据目前仍处于草案阶段、未被浏览器实现的标准把代码转译成符合目前浏览器实现的 CSS。类似 ES6 的 Babel。<br>相比之下，Autoprefixer 更加具有实用价值，而 cssnext 实现的功能以后浏览器会怎么实现还存疑，感觉只能玩玩。</p>
+</blockquote>
+<p><strong>3.什么是postcss-modules？</strong><br>在看postcss-modules之前，首先要明确的是CSS Modules的这个概念，关于CSS Modules，可以阅读我翻译的一篇文章：<a href="https://github.com/FrankKai/FrankKai.github.io/issues/45" target="_blank" rel="noopener">【译】什么是CSS Modules ？我们为什么需要他们？</a></p>
+<p>postcss-modules则是CSS Modules在PostCSS上的实现插件，这里有一篇插件作者本人写的介绍postcss-modules的文章：<a href="https://evilmartians.com/chronicles/postcss-modules-make-css-great-again" target="_blank" rel="noopener">PostCSS-modules:make CSS great again!</a>。</p>
+<p>在我有限的开发经验中，只在react中使用过css modules，在vue和angularjs中都没用到过，而且在react中使用时，不会去用postcss-modules这个插件，而是使用<a href="https://github.com/gajus/react-css-modules" target="_blank" rel="noopener">react-css-modules</a>这个CSS Modules思想在react中的插件。</p>
+<p>下面将给出最简单的入门例子：<br>在React上下文中，CSS Modules可能像下面这样写：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import React from &apos;react&apos;;</span><br><span class="line">import styles from &apos;./table.css&apos;;</span><br><span class="line"></span><br><span class="line">export default class Table extends React.Component &#123;</span><br><span class="line">    render () &#123;</span><br><span class="line">        return &lt;div className=&#123;styles.table&#125;&gt;</span><br><span class="line">            &lt;div className=&#123;styles.row&#125;&gt;</span><br><span class="line">                &lt;div className=&#123;styles.cell&#125;&gt;A0&lt;/div&gt;</span><br><span class="line">                &lt;div className=&#123;styles.cell&#125;&gt;B0&lt;/div&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>最后渲染出的组件的标签会是如下形式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;table__table___32osj&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;table__row___2w27N&quot;&gt;</span><br><span class="line">        &lt;div class=&quot;table__cell___1oVw5&quot;&gt;A0&lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;table__cell___1oVw5&quot;&gt;B0&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<p>如果对为什么会把class名编译成table__table___32osj这样的形式存在疑惑，需要先把css modules搞清楚：<a href="https://github.com/FrankKai/FrankKai.github.io/issues/45" target="_blank" rel="noopener">【译】什么是CSS Modules ？我们为什么需要他们？</a></p>
+<p>如果需要在开发环境或者生产环境结合webpack去使用，那么可以阅读<a href="https://github.com/gajus/react-css-modules" target="_blank" rel="noopener">react-css-modules</a>的官方文档寻找答案。</p>
+<p>通过这次探索我们可以发现，前端开发在不同的生态，或者说框架体系下，同一个技术，例如CSS Modules这种将思想，会有对应的实现方式，而我们要掌握的，不仅仅是在某种框架下配置使用的方法，而是这种开发思想。因为学习的核心在于学习知识，而不是无休止的学习工具。</p>
+<p><strong>4.什么是stylelint？</strong><br>这是用来强制开发人员按照团队css规范写css样式的工具，类似eslint。<br>若想使用，只需要去启用规则即可。</p>
+<p>节选一段stylelint作者博文中的话：</p>
+<blockquote>
+<p>没错，你的团队可能在某个地方的某条纯文本wiki中记录了团队的代码样式规范。但是，不容忽视的是人的因素：人总是会犯错——总是在无意之间。<br>而且即使你很自律地执着遵循某个规范的代码风格，但是你没办法确保你的同事或是你的开源项目的贡献者能够像你一样。没有linter的帮助，你必须人工检查代码样式和错误。而机器存在的意义就是代替人来完成能够自动化实现的任务。linter就是这样的机器，有了linter，你不需要浪费时间检查代码风格，也不需要对每一个代码错误都写一大堆的注释，因此它能够极大程度地减少你花费在代码审阅上的时间。你无须检查代码究竟做了些什么，也无需关心它看起来什么样。</p>
+</blockquote>
+<p>事实与stylelint作者说的是一样的，即使团队有前端开发规范，也会不经意间写出不符合规范的代码，因为每次写css规则前都去规范check一遍不是谁都能做到的，如果团队再没有code review这一关的话，写出各种各样风格的css代码就是一件必然的事了，短期没有什么影响，当项目变得庞大起来，增加新功能或者重写旧功能将会是一件很痛苦的事。</p>
+<p>我们主要去关注<a href="https://github.com/stylelint/stylelint/blob/master/docs/user-guide/rules.md#possible-errors" target="_blank" rel="noopener">Rules部分</a>：<br>sytlelint的规则主要有3类，我将从每一类规则中挑一个拿出来作为示例。</p>
+<ul>
+<li>Possible errors(常见的错误写法，强烈推荐开启)</li>
+<li>Limit language features(弃用一些正确的写法，中等推荐开启)</li>
+<li><p>Stylistic issues(代码风格代码统一，普通建议开启)</p>
+</li>
+<li><p>Possible errors —— color-no-invalid-hex: 禁止无效的十六进制颜色<br>完全形式的十六进制颜色可以是6或者8（7，8位是透明度的值）个字符。同样他们的缩写可以是3或者4个字符。<br>options : true<br>下面的代码违反规则：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a &#123; color: #00; &#125;</span><br><span class="line">a &#123; color: #fff1az; &#125;</span><br><span class="line">a &#123; color: #12345aa; &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>下面的代码符合规则:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a &#123; color: #000; &#125;</span><br><span class="line">a &#123; color: #000f; &#125;</span><br><span class="line">a &#123; color: #fff1a0; &#125;</span><br><span class="line">a &#123; color: #123450aa; &#125;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>Limit language features —— color-no-hex:禁止使用十六进制颜色<br>options : true<br>十六进制的颜色违反规则：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a &#123; color: #000; &#125;</span><br><span class="line">a &#123; color: #fff1aa; &#125;</span><br><span class="line">a &#123; color: #123456aa; &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>无效的十六进制色同样违规：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a &#123; color: #foobar; &#125;</span><br><span class="line">a &#123; color: #0000000000000000; &#125;</span><br></pre></td></tr></table></figure></p>
+<p>下面的是符合规则的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a &#123; color: black; &#125;</span><br><span class="line">a &#123; color: rgb(0, 0, 0); &#125;</span><br><span class="line">a &#123; color: rgba(0, 0, 0, 1); &#125;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>Stylistic issues —— color-hex-case: 自动将十六进制色转换为大写或者小写<br>Options string: “lower”|”upper”<br>可以使用<code>stylelint &quot;foo/*.css&quot; --fix</code>实现同样的功能。<br>“小写”<br>下面的代码是违规的:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a &#123; color: #FFF; &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>下面的是符合规则的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a &#123; color: #000; &#125;</span><br><span class="line">a &#123; color: #fff; &#125;</span><br></pre></td></tr></table></figure></p>
+<p>“大写”<br>下面的代码是违规的:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a &#123; color: #fff; &#125;</span><br></pre></td></tr></table></figure></p>
+<p>下面的是符合规则的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a &#123; color: #000; &#125;</span><br><span class="line">a &#123; color: #FFF; &#125;</span><br></pre></td></tr></table></figure></p>
+<p>更多的stylelint的规则可以查阅：<a href="https://github.com/stylelint/stylelint/blob/master/docs/user-guide/rules.md#possible-errors" target="_blank" rel="noopener">https://github.com/stylelint/stylelint/blob/master/docs/user-guide/rules.md#possible-errors</a></p>
+<p><strong>5.什么是LostGrid？</strong><br>Lost Grid是一个强大的PostCSS网格系统，可与任何预处理器甚至是原生CSS一起使用。<br>在这里有非常好的demo展示：<a href="http://lostgrid.org/lostgrid-example.html" target="_blank" rel="noopener">http://lostgrid.org/lostgrid-example.html</a></p>
+<p>节选2个展示进行说明。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">.ColumnSection__grid div &#123;</span><br><span class="line">    lost-column: 1/1;</span><br><span class="line">&#125;</span><br><span class="line">@media (min-width: 400px) &#123;</span><br><span class="line">    .ColumnSection__grid div &#123;</span><br><span class="line">        lost-column: 1/3;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">@media (min-width: 900px) &#123;</span><br><span class="line">    .ColumnSection__grid div &#123;</span><br><span class="line">        lost-column: 1/6;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>大于900px时：<br><img src="https://user-images.githubusercontent.com/19262750/39757437-693166c2-52ff-11e8-8d3e-24ea70a90ffa.png" alt="image"><br>小于900px时：<br><img src="https://user-images.githubusercontent.com/19262750/39757447-713e6770-52ff-11e8-9621-5560551ce383.png" alt="image"><br>.NestingSection__grid {<br>    background: #8eb19d;<br>}</p>
+<p>.NestingSection__grid div {<br>    background: #7ba48d;<br>    lost-column: 1/3;<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.NestingSection__grid div div &#123;</span><br><span class="line">    background: #68977c;</span><br><span class="line">    lost-column: 1/2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://user-images.githubusercontent.com/19262750/39757518-ab15687c-52ff-11e8-918b-7cd715073849.png" alt="image"></p>
+<p>经过查看css样式我们发现，其实就是巧用了table布局，before/after伪元素，以及css选择器，以及border-box布局，但其实最最核心的地方还是在于很好的使用了css本身具有的流式布局以及BFC，针对各种情况，在插件内部使用了大量的样式进行约束。<br><img src="https://user-images.githubusercontent.com/19262750/39757867-b17b9a50-5300-11e8-9a95-655c05832e90.png" alt="image"></p>
+<p>在css3的flex布局和grid布局逐渐被浏览器所支持的今天，我个人建议不使用LostGrid插件。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/06/【译】ES8发布及主要新特性介绍/" rel="next" title="【译】ES8发布及主要新特性介绍">
+                <i class="fa fa-chevron-left"></i> 【译】ES8发布及主要新特性介绍
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/06/create-react-app如何使用less，sass和react-css-modules?/" rel="prev" title="create-react-app如何使用less，sass和react-css-modules?">
+                create-react-app如何使用less，sass和react-css-modules? <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://avatars3.githubusercontent.com/u/19262750?s=460&v=4" alt="Frank Kai">
+            
+              <p class="site-author-name" itemprop="name">Frank Kai</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/FrankKai" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/cnhnq" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-globe"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/u/3899061925" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-globe"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/ting-zhao-wu-yue-tian-da-lan-qiu/activities" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://segmentfault.com/u/chennihuannianqing" target="_blank" title="segmentFault">
+                      
+                        <i class="fa fa-fw fa-globe"></i>segmentFault</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Frank Kai</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

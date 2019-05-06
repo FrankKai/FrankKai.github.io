@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="问题链接：JavaScript 基础问题  js 中什么类型是引用传递, 什么类型是值传递? 如何将值类型的变量以引用的方式传递?  js 中， 0.1 + 0.2 === 0.3 是否为 true ? 在不知道浮点数位数时应该怎样判断两个浮点数之和与第三数是否相等？ const 定义的 Array 中间元素能否被修改? 如果可以, 那 const 修饰对象的意义是?  JavaScript 中不">
+<meta property="og:type" content="article">
+<meta property="og:title" content="饿了么大前端题目解析：JS基础问题">
+<meta property="og:url" content="https://FrankKai.github.io/2019/05/06/饿了么大前端题目解析：JS基础问题/index.html">
+<meta property="og:site_name" content="趁你还年轻的博客">
+<meta property="og:description" content="问题链接：JavaScript 基础问题  js 中什么类型是引用传递, 什么类型是值传递? 如何将值类型的变量以引用的方式传递?  js 中， 0.1 + 0.2 === 0.3 是否为 true ? 在不知道浮点数位数时应该怎样判断两个浮点数之和与第三数是否相等？ const 定义的 Array 中间元素能否被修改? 如果可以, 那 const 修饰对象的意义是?  JavaScript 中不">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://user-images.githubusercontent.com/19262750/39180472-892228b6-47e9-11e8-8662-51fa558439ec.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/19262750/39180482-90210628-47e9-11e8-830d-00dc3f5308ff.png">
+<meta property="og:updated_time" content="2019-05-06T04:39:42.736Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="饿了么大前端题目解析：JS基础问题">
+<meta name="twitter:description" content="问题链接：JavaScript 基础问题  js 中什么类型是引用传递, 什么类型是值传递? 如何将值类型的变量以引用的方式传递?  js 中， 0.1 + 0.2 === 0.3 是否为 true ? 在不知道浮点数位数时应该怎样判断两个浮点数之和与第三数是否相等？ const 定义的 Array 中间元素能否被修改? 如果可以, 那 const 修饰对象的意义是?  JavaScript 中不">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/19262750/39180472-892228b6-47e9-11e8-8662-51fa558439ec.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://FrankKai.github.io/2019/05/06/饿了么大前端题目解析：JS基础问题/">
+
+
+
+
+
+  <title>饿了么大前端题目解析：JS基础问题 | 趁你还年轻的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">趁你还年轻的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://FrankKai.github.io/2019/05/06/饿了么大前端题目解析：JS基础问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Frank Kai">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/19262750?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="趁你还年轻的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">饿了么大前端题目解析：JS基础问题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-06T12:39:42+08:00">
+                2019-05-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>问题链接：<a href="https://github.com/ElemeFE/node-interview/blob/master/sections/zh-cn/common.md" target="_blank" rel="noopener">JavaScript 基础问题</a></p>
+<ul>
+<li>js 中什么类型是引用传递, 什么类型是值传递? 如何将值类型的变量以引用的方式传递? </li>
+<li>js 中， 0.1 + 0.2 === 0.3 是否为 true ? 在不知道浮点数位数时应该怎样判断两个浮点数之和与第三数是否相等？</li>
+<li>const 定义的 Array 中间元素能否被修改? 如果可以, 那 const 修饰对象的意义是? </li>
+<li>JavaScript 中不同类型以及不同环境下变量的内存都是何时释放? </li>
+</ul>
+<p><strong>问：js中什么是引用传递，什么是值传递？如何将值类型的变量以引用的方式传递？</strong></p>
+<p>答：简单点说，对象是引用传递，基础类型是值传递，通过将基础类型boxing(包装)可以以引用方式传递。</p>
+<p>例1：对象数据属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var str = &apos;a,b,c&apos;</span><br><span class="line">var obj = &#123;&#125;</span><br><span class="line">obj.key = str</span><br><span class="line">var ref = obj</span><br><span class="line">ref.key = &quot;a&quot;</span><br><span class="line">console.log(obj)</span><br></pre></td></tr></table></figure>
+<p>注意：引用传递传递的是整个对象，而不是单一的对象属性。</p>
+<p>例2：函数闭包引用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">function Persion(name,age)&#123;</span><br><span class="line">    var n = name</span><br><span class="line">    var a = age</span><br><span class="line">    return &#123;</span><br><span class="line">        getName:function()&#123;</span><br><span class="line">            return n;</span><br><span class="line"></span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">        addAge:function()&#123;</span><br><span class="line"></span><br><span class="line">            return a++;</span><br><span class="line"></span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">        getAge:function()&#123;</span><br><span class="line"></span><br><span class="line">            return a</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">var Foo = new Persion(&quot;foo&quot;,23)</span><br><span class="line">Foo.addAge()</span><br><span class="line">Foo.getAge()</span><br></pre></td></tr></table></figure>
+<p><strong>问：js中，0.1+0.2 ===0.3是否为true？在不知道浮点数位数时应该怎样判断两个浮点数之和与第三数是否相等？</strong></p>
+<p>0.1+0.2 ===0.30000000000000004(17位小数)，返回为false。</p>
+<p>为什么0.1+0.2 ===0.30000000000000004？</p>
+<p>由此派生出两篇原创博客。</p>
+<p><a href="https://github.com/FrankKai/FrankKai.github.io/issues/7" target="_blank" rel="noopener">深度剖析0.1 +0.2===0.30000000000000004的原因</a></p>
+<p><a href="https://github.com/FrankKai/FrankKai.github.io/issues/11" target="_blank" rel="noopener">如何解决0.1 +0.2===0.30000000000000004类问题</a></p>
+<p><strong>问：const 定义的 Array 中间元素能否被修改? 如果可以, 那 const 修饰对象的意义是?</strong></p>
+<p>可以被修改。</p>
+<p>const arr = [1,2,3] arr[0] = “hello” → [‘hello’]</p>
+<p>const的意义：保证变量指向的内存地址不发生变化。</p>
+<p>对于值是基本类型的变量，具有完全不可变性，地址和数据均不可变；对于值是引用类型的变量，数据具有部分不可变性，内存地址不可变，数据可变。</p>
+<p>也就是说，使用const的定义的变量，牢牢地与value绑定在一起，而且这种绑定是不可解除的，但是这种绑定，指的是整体的绑定，也就是内存地址上的绑定。举例来说：const str = ‘foo’ ,‘str永远指向’foo’的内存地址；对于const obj ={name:’foo’}，obj永远指向{}的内存地址，指向内容不包含对象数据。</p>
+<p>做一个很形象的类比小故事：你的0岁到23岁</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//刚出生的你，父母给予了生命的同时，给予了你一个名字 Jack，落地1岁</span><br><span class="line">const you = &#123;&#125;</span><br><span class="line">you.name=&quot;Jack&quot;,</span><br><span class="line">you.age=1</span><br><span class="line">//7岁，你上了小学</span><br><span class="line">you.age = 7</span><br><span class="line">//13岁，小学毕业，开始读初中</span><br><span class="line">you.age  = 13 , you.primary = true</span><br><span class="line">//16岁，初中毕业。开始读高中</span><br><span class="line">you.age = 16 , you.junior = true</span><br><span class="line">//19岁，高中毕业，开始读大学</span><br><span class="line">you.age = 19 , you.high = true</span><br><span class="line">//23岁，大学毕业，开始工作</span><br><span class="line">you.age = 23 , you.university = true , you.salary = &quot;RMB 100 yuan&quot;</span><br></pre></td></tr></table></figure>
+<p>……故事还在继续<br>但是，你始终是你，你的父母始终是你的父母，即使到了66世纪，这是亘古不变的。但是在这一路上，你的age属性在发生变化，你解锁了小学，初中，高中，大学毕业证等一系列证书，工作后也新增了薪酬这个新属性，虽然只有可怜的100块。<br>或许有一天，you.girlfriend = ‘Rose’<br>又或许有一天，you.baby = little Jack”<br>回过头来分析下刚出生的你const you = {name:”Jack”,age:1}<br>const不能重新定义：试问一下，在这个世界，你还能重新出生一次吗？<br>const必须赋初始值: const you = {}是一个整体，谁都不能少，因为你本身是一个完整的整体，在{}.prototype你遗传了父母的基因。<br>const不能重新赋值：you = {name:’Tom’,age:18}，据我所致，目前还没有什么技术可以实现克隆人的复制粘贴。<br>const复杂类型可变：name和age这些属性，则是后期为你新增的新属性，这些数据是有限且可变的，例如age，salary等等。<br>但是在另外一个世界，也就是另外一个作用域（块作用域或函数局部作用域），you can reborn<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const a = 1</span><br><span class="line">if(a === 1)&#123;</span><br><span class="line"> const a = 2</span><br><span class="line">&#125;</span><br><span class="line">//all is well</span><br><span class="line">const b = 1</span><br><span class="line">function j()&#123;</span><br><span class="line"> const b = 1</span><br><span class="line">&#125;</span><br><span class="line">//all is well</span><br></pre></td></tr></table></figure></p>
+<p>因此，当有那么一个object或者array时，就像故事中的you一样，无论风吹雨打，本质（内存地址不变）亘古不变时，极大程度上确保变量不被完全重新赋值时，就可以用const来定义。</p>
+<p><strong>问：JavaScript中不同类型以及不同环境下变量的内存都是何时释放？</strong></p>
+<p>Javascritp中类型：值类型，引用类型</p>
+<p>环境：Browser Nodejs</p>
+<p>引用类型是在没有引用之后，通过V8的GC自动回收。值类型如果处于闭包的情况下，要等闭包没有引用才会被GC回收，非闭包的情况下，等待V8的新生代(new space)切换的时候回收。</p>
+<p>你需要了解哪些操作一定会导致内存泄露，或者可以崩掉内存。比如以下代码是否能爆掉V8的内存？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let arr = [];</span><br><span class="line">while(true) &#123;</span><br><span class="line">    arr.push\(1\);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>都会爆掉，因为超出了数组的最大长度，会自动结束异常。</p>
+<p>浏览器V8引擎崩溃：<br><img src="https://user-images.githubusercontent.com/19262750/39180472-892228b6-47e9-11e8-8662-51fa558439ec.png" alt="image"></p>
+<p>NodeV8引擎崩溃：<br><img src="https://user-images.githubusercontent.com/19262750/39180482-90210628-47e9-11e8-830d-00dc3f5308ff.png" alt="image"></p>
+<p>然后上述代码与下方的情况有什么区别?</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let arr = [];</span><br><span class="line">while(true)&#123;</span><br><span class="line">    arr.push\(\);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>死循环，不会爆掉V8内存，但是导致进程阻塞。</p>
+<p>有什么办法终止死循环？在任务管理器中强制结束进程，会出现上面的浏览器崩溃页面，或者Node环境下一直处于计算状态，ctrl+c强制终止。</p>
+<p>如果 push 的是 Buffer 情况又会有什么区别?</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let arr = [];</span><br><span class="line">while(true)</span><br><span class="line">arr.push(new Buffer(1000));</span><br></pre></td></tr></table></figure>
+<p>区别很大，内存泄露的速度比直接push Number类型的慢很多，因为ES定义的Number类型，实质上是遵循IEEE-2008的64位存储，也就是说，Number类型的1与buffer类型的1，完全不一样，前者在编译器中是00000000000000000000000000（63个0）1，占了64位；但是后者就只是1，只占了1位。</p>
+<p>当push buffer崩溃时…不存在的，push buffer不会崩溃，当内存顶到爆，也就是即将到达100%时，会自动垃圾回收，直观地讲，就是会瞬间降低内存，push工作继续，很是神奇。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/06/深入理解inline元素，block-level元素和display属性/" rel="next" title="深入理解inline元素，block-level元素和display属性">
+                <i class="fa fa-chevron-left"></i> 深入理解inline元素，block-level元素和display属性
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://avatars3.githubusercontent.com/u/19262750?s=460&v=4" alt="Frank Kai">
+            
+              <p class="site-author-name" itemprop="name">Frank Kai</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/FrankKai" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/cnhnq" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-globe"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/u/3899061925" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-globe"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/ting-zhao-wu-yue-tian-da-lan-qiu/activities" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://segmentfault.com/u/chennihuannianqing" target="_blank" title="segmentFault">
+                      
+                        <i class="fa fa-fw fa-globe"></i>segmentFault</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Frank Kai</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

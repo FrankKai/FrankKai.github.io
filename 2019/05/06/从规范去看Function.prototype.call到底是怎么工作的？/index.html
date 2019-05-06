@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="今天在学习前端工程化的过程中，遇到一个是实验中的css属性:fullscreen，有这样一个例子：fullscreen伪元素官方demo12345&amp;lt;div id=&amp;quot;fullscreen&amp;quot;&amp;gt;    &amp;lt;h1&amp;gt;:fullscreen Demo&amp;lt;/h1&amp;gt;    &amp;lt;p&amp;gt;This text will become big and red w">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从规范去看Function.prototype.call到底是怎么工作的？">
+<meta property="og:url" content="https://FrankKai.github.io/2019/05/06/从规范去看Function.prototype.call到底是怎么工作的？/index.html">
+<meta property="og:site_name" content="趁你还年轻的博客">
+<meta property="og:description" content="今天在学习前端工程化的过程中，遇到一个是实验中的css属性:fullscreen，有这样一个例子：fullscreen伪元素官方demo12345&amp;lt;div id=&amp;quot;fullscreen&amp;quot;&amp;gt;    &amp;lt;h1&amp;gt;:fullscreen Demo&amp;lt;/h1&amp;gt;    &amp;lt;p&amp;gt;This text will become big and red w">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2976869-1cd1f00d91b44363.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2976869-d5121abf1a88ac85.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-05-06T04:39:42.733Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="从规范去看Function.prototype.call到底是怎么工作的？">
+<meta name="twitter:description" content="今天在学习前端工程化的过程中，遇到一个是实验中的css属性:fullscreen，有这样一个例子：fullscreen伪元素官方demo12345&amp;lt;div id=&amp;quot;fullscreen&amp;quot;&amp;gt;    &amp;lt;h1&amp;gt;:fullscreen Demo&amp;lt;/h1&amp;gt;    &amp;lt;p&amp;gt;This text will become big and red w">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/2976869-1cd1f00d91b44363.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://FrankKai.github.io/2019/05/06/从规范去看Function.prototype.call到底是怎么工作的？/">
+
+
+
+
+
+  <title>从规范去看Function.prototype.call到底是怎么工作的？ | 趁你还年轻的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">趁你还年轻的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://FrankKai.github.io/2019/05/06/从规范去看Function.prototype.call到底是怎么工作的？/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Frank Kai">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/19262750?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="趁你还年轻的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">从规范去看Function.prototype.call到底是怎么工作的？</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-06T12:39:42+08:00">
+                2019-05-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://upload-images.jianshu.io/upload_images/2976869-1cd1f00d91b44363.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>今天在学习前端工程化的过程中，遇到一个是实验中的css属性<code>:fullscreen</code>，有这样一个例子：<a href="https://mdn.mozillademos.org/en-US/docs/Web/CSS/:fullscreen$samples/Example?revision=1342881" target="_blank" rel="noopener">fullscreen伪元素官方demo</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;fullscreen&quot;&gt;</span><br><span class="line">    &lt;h1&gt;:fullscreen Demo&lt;/h1&gt;</span><br><span class="line">    &lt;p&gt;This text will become big and red when the browser is in fullscreen mode.&lt;/p&gt;</span><br><span class="line">    &lt;button id=&quot;fullscreen-button&quot;&gt;Enter Fullscreen&lt;/button&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">var fullscreenButton = document.getElementById(&quot;fullscreen-button&quot;);</span><br><span class="line">var fullscreenDiv    = document.getElementById(&quot;fullscreen&quot;);</span><br><span class="line">var fullscreenFunc   = fullscreenDiv.requestFullscreen;</span><br><span class="line">if (!fullscreenFunc) &#123;</span><br><span class="line">     [&apos;mozRequestFullScreen&apos;, &apos;msRequestFullscreen&apos;,&apos;webkitRequestFullScreen&apos;].forEach(function (req) &#123;</span><br><span class="line">        fullscreenFunc = fullscreenFunc || fullscreenDiv[req];</span><br><span class="line">     &#125;);</span><br><span class="line">&#125;  </span><br><span class="line">function enterFullscreen() &#123;</span><br><span class="line">    fullscreenFunc.call(fullscreenDiv);</span><br><span class="line">&#125; </span><br><span class="line">fullscreenButton.addEventListener(&apos;click&apos;, enterFullscreen);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>其中有一段代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function enterFullscreen() &#123;</span><br><span class="line">    fullscreenFunc.call(fullscreenDiv);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>虽然结合上下文能看出来是为了兼容浏览器的fullscreen API，但是其中的Function.prototype.call()我自己其实没有特别深究过。</p>
+<p><strong>为什么不直接fullscreenFunc()，这样不能使得fullscreenDiv全屏吗?</strong></p>
+<p>大家都说call与apply都是为了动态改变this的，仅仅是传入参数的方式不同，call传入(this,foo,bar,baz)，而apply传入(this,[foo,bar,baz])那么事实真如大家所说的那样吗？既然apply能动态改变this，那么为什么还要多此一举开放一个call？<br>这其中肯定隐藏着一些秘密，那就是有些事情是apply做不到，而call可以胜任的。<br>继续我们的啃规范之旅，去深入到Function.prototype.call()的内部，彻底把它搞清楚。</p>
+<h3 id="19-2-3-4-Function-prototype-call-thisArg-…args"><a href="#19-2-3-4-Function-prototype-call-thisArg-…args" class="headerlink" title="19.2.3.4 Function.prototype.call (thisArg , …args)"></a><a href="https://www.ecma-international.org/ecma-262/6.0/#sec-function.prototype.constructor" title="link to this section" target="_blank" rel="noopener">19.2.3.4</a> Function.prototype.call (thisArg , …args)</h3><blockquote>
+<p>When the <code>call</code> method is called on an object func with argument, thisArg and zero or more args, the following steps are taken:</p>
+<ol>
+<li>If <a href="https://www.ecma-international.org/ecma-262/6.0/#sec-iscallable" target="_blank" rel="noopener">IsCallable</a>(<em>func</em>) is <strong>false</strong>, throw a <strong>TypeError</strong> exception.</li>
+<li>Let <em>argList</em> be an empty <a href="https://www.ecma-international.org/ecma-262/6.0/#sec-list-and-record-specification-type" target="_blank" rel="noopener">List</a>.</li>
+<li>If this method was called with more than one argument then in left to right order, starting with the second argument, append each argument as the last element of <em>argList</em>.</li>
+<li>Perform <a href="https://www.ecma-international.org/ecma-262/6.0/#sec-preparefortailcall" target="_blank" rel="noopener">PrepareForTailCall</a>().</li>
+<li>Return <a href="https://www.ecma-international.org/ecma-262/6.0/#sec-call" target="_blank" rel="noopener">Call</a>(<em>func</em>, <em>thisArg</em>, <em>argList</em>).</li>
+</ol>
+</blockquote>
+<p>The <code>length</code> property of the <code>call</code> method is <strong>1</strong>.</p>
+<p>当call方法在带参数的对象的方法上调用时，thisArg和零个或者对个参数，会进行如下的步骤：</p>
+<ol>
+<li>如果IsCallable(func)返回false，抛出TypeError异常。</li>
+<li>定义argList为一个空的列表。</li>
+<li>如果方法按照从左到右传入的参数个数不止一个，从第二个参数开始，依次将每个参数从尾部添加到argList数组。</li>
+<li>执行PrepareForTailCall()</li>
+<li>返回Call(func,thisArg,argList)</li>
+</ol>
+<p>有3个点看不懂：</p>
+<ul>
+<li>IsCallable(func)</li>
+<li>PrepareForTailCall()</li>
+<li>Call(func,thisArg,argList)</li>
+</ul>
+<p>这些同样在规范中有对应描述：</p>
+<h3 id="7-2-3IsCallable-argument"><a href="#7-2-3IsCallable-argument" class="headerlink" title="7.2.3IsCallable ( argument )"></a><a href="https://www.ecma-international.org/ecma-262/6.0/#sec-iscallable" title="link to this section" target="_blank" rel="noopener">7.2.3</a>IsCallable ( argument )</h3><p>The abstract operation IsCallable determines if argument, which must be an <a href="https://www.ecma-international.org/ecma-262/6.0/#sec-ecmascript-language-types" target="_blank" rel="noopener">ECMAScript language value</a>or a <a href="https://www.ecma-international.org/ecma-262/6.0/#sec-completion-record-specification-type" target="_blank" rel="noopener">Completion Record</a>, is a callable function with a [[Call]] internal method.</p>
+<p>重点在于is a callable function with a [[Call]] internal method.，也就是说执行isCallable(func)运算的func，如果函数内部有一个内在的[[Call]]方法，那么运算结果为true，也就是说这个函数是可调用的的。(callable)</p>
+<h3 id="14-6-3Runtime-Semantics-PrepareForTailCall"><a href="#14-6-3Runtime-Semantics-PrepareForTailCall" class="headerlink" title="14.6.3Runtime Semantics: PrepareForTailCall ( )"></a><a href="https://www.ecma-international.org/ecma-262/6.0/#sec-preparefortailcall" title="link to this section" target="_blank" rel="noopener">14.6.3</a>Runtime Semantics: PrepareForTailCall ( )</h3><p>The abstract operation PrepareForTailCall performs the following steps:</p>
+<ol>
+<li>Let <em>leafContext</em> be <a href="https://www.ecma-international.org/ecma-262/6.0/#sec-execution-contexts" target="_blank" rel="noopener">the running execution context</a>.</li>
+<li><a href="https://www.ecma-international.org/ecma-262/6.0/#sec-execution-contexts" target="_blank" rel="noopener">Suspend</a> <em>leafContext</em>.</li>
+<li>Pop <em>leafContext</em> from <a href="https://www.ecma-international.org/ecma-262/6.0/#sec-execution-contexts" target="_blank" rel="noopener">the execution context stack</a>. The <a href="https://www.ecma-international.org/ecma-262/6.0/#sec-execution-contexts" target="_blank" rel="noopener">execution context</a> now on the top of the stack becomes <a href="https://www.ecma-international.org/ecma-262/6.0/#sec-execution-contexts" target="_blank" rel="noopener">the running execution context</a>.</li>
+<li><a href="https://www.ecma-international.org/ecma-262/6.0/#sec-algorithm-conventions" target="_blank" rel="noopener">Assert</a>: <em>leafContext</em> has no further use. It will never be activated as <a href="https://www.ecma-international.org/ecma-262/6.0/#sec-execution-contexts" target="_blank" rel="noopener">the running execution context</a>.</li>
+</ol>
+<p>A tail position call must either release any transient internal resources associated with the currently executing function <a href="https://www.ecma-international.org/ecma-262/6.0/#sec-execution-contexts" target="_blank" rel="noopener">execution context</a> before invoking the target function or reuse those resources in support of the target function.</p>
+<ol>
+<li><a href="https://www.ecma-international.org/ecma-262/6.0/#sec-returnifabrupt" target="_blank" rel="noopener">ReturnIfAbrupt</a>(<em>argument</em>).</li>
+<li>If <a href="https://www.ecma-international.org/ecma-262/6.0/#sec-ecmascript-data-types-and-values" target="_blank" rel="noopener">Type</a>(<em>argument</em>) is not Object, return <strong>false</strong>.</li>
+<li>If <em>argument</em> has a [[Call]] internal method, return <strong>true</strong>.</li>
+<li>Return <strong>false</strong>.</li>
+</ol>
+<p>虽然看不懂，但还是得硬着头皮学习一波。<br>抽象操作PrepareForTailCall执行以下几个步骤：</p>
+<ol>
+<li>让叶子上下文成为运行中的执行上下文</li>
+<li>暂停叶子上下文</li>
+<li>顶叶子上下文来自执行上下文的堆。当前的在堆顶部的执行上下文成为运行中的执行上下文</li>
+<li>断言：叶子上下文没有其他作用。它再也不会作为运行中执行上下文被激活。</li>
+</ol>
+<p>在调用目标函数或者重用这些资源去支持目标函数之前，尾部位置调用必须释放与当前执行函数上下文相关的瞬态内部资源。</p>
+<ol>
+<li>ReturnIfAbrupt(argument).</li>
+<li>如果Type(argument)不是对象，返回false。</li>
+<li>如果argument含有[[call]]内部方法，返回true。</li>
+<li>返回 false</li>
+</ol>
+<p>看懂一个大概，是为了在函数调用栈的尾部调用当前函数做准备，其中的运行中执行上下文，正是我们所说的this动态改变的原因，因为本质上this改变并不仅仅是指向的对象发生变化，而是连带着与其相关的上下文都发生了变化。</p>
+<p>所以说，这一步是this动态改变的真正原因。</p>
+<h3 id="7-3-12Call-F-V-argumentsList"><a href="#7-3-12Call-F-V-argumentsList" class="headerlink" title="7.3.12Call(F, V, [argumentsList])"></a><a href="https://www.ecma-international.org/ecma-262/6.0/#sec-call" title="link to this section" target="_blank" rel="noopener">7.3.12</a>Call(F, V, [argumentsList])</h3><p>The abstract operation Call is used to call the [[Call]] internal method of a function object. The operation is called with arguments F, V , and optionally argumentsList where F is the function object, V is an <a href="https://www.ecma-international.org/ecma-262/6.0/#sec-ecmascript-language-types" target="_blank" rel="noopener">ECMAScript language value</a> that is the <strong>this</strong> value of the [[Call]], and argumentsList is the value passed to the corresponding argument of the internal method. If argumentsList is not present, an empty <a href="https://www.ecma-international.org/ecma-262/6.0/#sec-list-and-record-specification-type" target="_blank" rel="noopener">List</a> is used as its value. This abstract operation performs the following steps:</p>
+<ol>
+<li><a href="https://www.ecma-international.org/ecma-262/6.0/#sec-returnifabrupt" target="_blank" rel="noopener">ReturnIfAbrupt</a>(<em>F</em>).</li>
+<li>If <em>argumentsList</em> was not passed, let <em>argumentsList</em> be a new empty <a href="https://www.ecma-international.org/ecma-262/6.0/#sec-list-and-record-specification-type" target="_blank" rel="noopener">List</a>.</li>
+<li>If <a href="https://www.ecma-international.org/ecma-262/6.0/#sec-iscallable" target="_blank" rel="noopener">IsCallable</a>(<em>F</em>) is <strong>false</strong>, throw a <strong>TypeError</strong> exception.</li>
+<li>Return <em>F</em>.<a href="*V*, *argumentsList*">[Call]</a>.</li>
+</ol>
+<p>Call抽象操作是在调用函数对象的内部的[[Call]]方法。这个操作参数类型包括F,V以及可选的argumentList。F指的是调用函数，V指的是[[Call]]的this值，然后argumentsList是传入到[[Call]]内部方法相应参数的值。如果argumentList不存在，那么argumentList将被置为一个空数组。这个方法按照下列几步执行：</p>
+<ol>
+<li>ReturnIfAbrupt(F)</li>
+<li>如果没传入argumentList,那么argumentList将会被置为一个空数组。</li>
+<li>如果IsCallable(F)是false，返回TypeError异常。</li>
+<li>返回 <code>F.[[call]](V,argumentsList)</code>.</li>
+</ol>
+<p>所以Function.prototype.call(this,…args)执行过程现在很明了：</p>
+<ol>
+<li>判断传入的func是否有[[call]]属性，有[[call]]才意味着函数能被调用，否则抛出TypeError异常。</li>
+<li>定义argList为一个空的列表。</li>
+<li><strong>传参：如果方法按照从左到右传入的参数个数不止一个，从第二个参数开始，依次将每个参数从尾部添加到argList数组。</strong></li>
+<li><strong>切换this上下文：执行PrepareForTailCall()，为函数调用栈在尾部调用函数做准备，切换运行中执行上下文，实现this上下文的动态改变。</strong></li>
+<li>万事具备，执行Call(func,thisArg,argList)，调用函数即可。</li>
+</ol>
+<p>回到我们的例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fullscreenFunc.call(fullscreenDiv);</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>func为fullscreenDiv DOM 节点的方法：’requestFullscreen’ || ‘mozRequestFullScreen’ || ‘msRequestFullscreen’<br>|| ‘webkitRequestFullScreen’，由于是fullscreen API，所以isCallable(func)返回true。</li>
+<li>定义一个argList空数组用来传参。</li>
+<li><strong>传参：由于fullscreenFunc.call(fullscreenDiv);只有一个参数，所以直接传入argList空数组。</strong></li>
+<li><strong>切换this上下文：停止当前的this叶子上下文，也就是window，切换到fullscreenDiv的执行上下文。</strong></li>
+<li>由于当前浏览器为chrome，因此执行 <code>fullscreenDiv.webkitRequestFullscreen.[[call]](this,[])</code>。</li>
+</ol>
+<p>因此我们之前提的那个<strong>为什么不直接fullscreenFunc()，这样不能使得fullscreenDiv全屏吗?</strong>，答案就很清楚了？不能。<br>为什么呢？<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var fullscreenFunc   = fullscreenDiv.requestFullscreen;</span><br><span class="line">if (!fullscreenFunc) &#123;</span><br><span class="line">     [&apos;mozRequestFullScreen&apos;, &apos;msRequestFullscreen&apos;,&apos;webkitRequestFullScreen&apos;].forEach(function (req) &#123;</span><br><span class="line">        fullscreenFunc = fullscreenFunc || fullscreenDiv[req];</span><br><span class="line">     &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>下面的代码，仅仅是获得了fullscreenDiv对象的fullscreen request API的引用，而fullscreenFunc的作用域是全局的window对象，也就是this的当前指向为window。<br><img src="https://upload-images.jianshu.io/upload_images/2976869-d5121abf1a88ac85.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p><strong>而我们是想触发window的子对象fullscreenDiv的全屏方法，所以需要将this上下文切换为fullscreenDiv，这就是不直接调用fullscreenFunc()，需要fullscreenFunc.call(fullscreenDiv)的原因</strong>。</p>
+<p>最近在看龙书，第一章讲到动态语言与静态语言的区别，龙书中讲到”运行时决定作用域的语言是动态语言，在编译时指定作用域的预言是静态语言”。例子中的以function关键字定义的类，this运行中执行上下文的切换，恰恰证明了javascript是一门动态语言；再举个形象的静态语言的例子，java会使用class关键字构建类，在类内部使用private，public等关键字去指定作用域，编译时就会去约束其作用域，具有非常强的约束性，this始终指向当前类。</p>
+<p>刚才和一个java后端同事确认，java也有this关键字，但是仅能使用当前类中的方法，B类不能调用A类中的方法。</p>
+<p><strong>js中的this，是可以通过call或者apply进行动态切换从而去调用其他类中的方法的，B类不能调用A类中的方法。（注意：我们这里的类指的是以function关键字进行定义的类，暂时不考虑es6的class关键字构造类的方式）</strong></p>
+<p>说了这么多，我们再来强调下重点：</p>
+<p>加粗的部分是重点！<br>加粗的部分是重点！<br>加粗的部分是重点！</p>
+<p>抛开V8引擎内部执行call和apply的原理不说，二者最终实现的都是this上下文的动态切换，所以就像大家所说的那样，都是动态改变this。我们只要心里知道，其实二者在背后实现动态切换this的操作部分有很大的不同就可以了，当出现由于内部实现细节引起的问题时，我们可以快速定位。</p>
+<p>That’s it !</p>
+<blockquote>
+<p>期待和大家交流，共同进步，欢迎大家加入我创建的与前端开发密切相关的技术讨论小组：</p>
+<ul>
+<li>SegmentFault技术圈:<a href="https://segmentfault.com/g/1570000010695363" target="_blank" rel="noopener">ES新规范语法糖</a></li>
+<li>SegmentFault专栏：<a href="https://segmentfault.com/blog/chennihainianqing" target="_blank" rel="noopener">趁你还年轻，做个优秀的前端工程师</a></li>
+<li>知乎专栏：<a href="https://zhuanlan.zhihu.com/wyasy" target="_blank" rel="noopener">趁你还年轻，做个优秀的前端工程师</a></li>
+<li>Github博客: <a href="https://github.com/FrankKai/FrankKai.github.io" target="_blank" rel="noopener">趁你还年轻233的个人博客
+</a></li>
+<li>前端开发交流群：660634678</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>努力成为优秀前端工程师！</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/06/你真的理解==和===的区别吗？/" rel="next" title="你真的理解==和===的区别吗？">
+                <i class="fa fa-chevron-left"></i> 你真的理解==和===的区别吗？
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/06/前端开发神器之ngrok/" rel="prev" title="前端开发神器之ngrok">
+                前端开发神器之ngrok <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://avatars3.githubusercontent.com/u/19262750?s=460&v=4" alt="Frank Kai">
+            
+              <p class="site-author-name" itemprop="name">Frank Kai</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/FrankKai" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/cnhnq" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-globe"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/u/3899061925" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-globe"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/ting-zhao-wu-yue-tian-da-lan-qiu/activities" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://segmentfault.com/u/chennihuannianqing" target="_blank" title="segmentFault">
+                      
+                        <i class="fa fa-fw fa-globe"></i>segmentFault</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#19-2-3-4-Function-prototype-call-thisArg-…args"><span class="nav-number">1.</span> <span class="nav-text">19.2.3.4 Function.prototype.call (thisArg , …args)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-3IsCallable-argument"><span class="nav-number">2.</span> <span class="nav-text">7.2.3IsCallable ( argument )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-6-3Runtime-Semantics-PrepareForTailCall"><span class="nav-number">3.</span> <span class="nav-text">14.6.3Runtime Semantics: PrepareForTailCall ( )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-3-12Call-F-V-argumentsList"><span class="nav-number">4.</span> <span class="nav-text">7.3.12Call(F, V, [argumentsList])</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Frank Kai</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

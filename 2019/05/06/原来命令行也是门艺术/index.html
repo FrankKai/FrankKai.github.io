@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="curl -Lo ...这个命令是什么意思呢？通过curl –help 查到了下表。123-L, --location      Follow redirects (H)     --location-trusted  Like &amp;apos;--location&amp;apos;, and send auth to other hosts (H)     --login-options OPTIONS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="原来命令行也是门艺术">
+<meta property="og:url" content="https://FrankKai.github.io/2019/05/06/原来命令行也是门艺术/index.html">
+<meta property="og:site_name" content="趁你还年轻的博客">
+<meta property="og:description" content="curl -Lo ...这个命令是什么意思呢？通过curl –help 查到了下表。123-L, --location      Follow redirects (H)     --location-trusted  Like &amp;apos;--location&amp;apos;, and send auth to other hosts (H)     --login-options OPTIONS">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2976869-938971c73174b5e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-05-06T04:39:42.734Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="原来命令行也是门艺术">
+<meta name="twitter:description" content="curl -Lo ...这个命令是什么意思呢？通过curl –help 查到了下表。123-L, --location      Follow redirects (H)     --location-trusted  Like &amp;apos;--location&amp;apos;, and send auth to other hosts (H)     --login-options OPTIONS">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/2976869-938971c73174b5e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://FrankKai.github.io/2019/05/06/原来命令行也是门艺术/">
+
+
+
+
+
+  <title>原来命令行也是门艺术 | 趁你还年轻的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">趁你还年轻的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://FrankKai.github.io/2019/05/06/原来命令行也是门艺术/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Frank Kai">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/19262750?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="趁你还年轻的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">原来命令行也是门艺术</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-06T12:39:42+08:00">
+                2019-05-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://upload-images.jianshu.io/upload_images/2976869-938971c73174b5e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><code>curl -Lo ...</code><br>这个命令是什么意思呢？通过curl –help 查到了下表。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-L, --location      Follow redirects (H)</span><br><span class="line">     --location-trusted  Like &apos;--location&apos;, and send auth to other hosts (H)</span><br><span class="line">     --login-options OPTIONS  Server login options (IMAP, POP3, SMTP)</span><br></pre></td></tr></table></figure></p>
+<p>但是看不懂 -Lo是什么操作，印象中git也有。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">usage: git [--version] [--help] [-C &lt;path&gt;] [-c name=value]</span><br><span class="line">           [--exec-path[=&lt;path&gt;]] [--html-path] [--man-path] [--info-path]</span><br><span class="line">           [-p | --paginate | --no-pager] [--no-replace-objects] [--bare]</span><br><span class="line">           [--git-dir=&lt;path&gt;] [--work-tree=&lt;path&gt;] [--namespace=&lt;name&gt;]</span><br><span class="line">           &lt;command&gt; [&lt;args&gt;]</span><br></pre></td></tr></table></figure></p>
+<p>配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;姓名&quot;</span><br><span class="line">git config --global user.email &quot;邮箱&quot;</span><br></pre></td></tr></table></figure></p>
+<p>常用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m &quot;&quot;</span><br><span class="line">git pull</span><br><span class="line">git push</span><br></pre></td></tr></table></figure></p>
+<p>代码审计相关：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git pull --rebase origin 分支名</span><br><span class="line">git push origin HEAD:refs/for/分支名</span><br></pre></td></tr></table></figure></p>
+<p>从上面的git代码可以看出来，有些命令后面跟一个横线”-“，有的命令后 main跟两个横线”–”。</p>
+<p>那么一个横线参数，两个横线参数的区别什么呢？</p>
+<p><strong>难道”-“是”–”的父集？</strong></p>
+<p>这是一个由于读书少导致的主观错误臆测。</p>
+<p>通过度娘，我搜索到了这个好问题：<a href="https://segmentfault.com/q/1010000000757213" target="_blank" rel="noopener">linux中间有的命令是一个横杠，有的命令是两个横杠。请问这有什么区别吗？</a></p>
+<p>其中有一段非常好的回答：</p>
+<blockquote>
+<p>正好前段时间看<a href="http://book.douban.com/subject/5387401/" target="_blank" rel="noopener">《UNIX 编程艺术》</a>中 <a href="http://www.faqs.org/docs/artu/ch10s05.html" target="_blank" rel="noopener">10.5</a> 节提到，过来回答一下。</p>
+</blockquote>
+<p>Unix 程序的命令行选项有三种风格：Unix 风格、GNU 风格和 X toolkit 风格。</p>
+<h2 id="Unix-风格"><a href="#Unix-风格" class="headerlink" title="Unix 风格"></a>Unix 风格</h2><p>即题主说的 <code>-a</code> 这种。在选项需要加参数的时候，紧跟在选项后面即可（或者加空格）。比如登录 mysql server 的时候：</p>
+<pre><code>$ mysql -u root -p
+</code></pre><p>或者</p>
+<pre><code>$ mysql -uroot -p
+</code></pre><p>均可。这时，root 就是 u 的参数，表示使用 root 用户登录。另外加不加空格看程序怎么才处理了，没有明确的规定。</p>
+<h2 id="GNU-风格"><a href="#GNU-风格" class="headerlink" title="GNU 风格"></a>GNU 风格</h2><p>即题主说的 <code>--help</code> 这种，使用两个连字符加上关键词（而不是单个字符）。这种风格的出现是因为有一些复杂的 GNU 程序，仅仅 26 个字母（或者算上大小写 52 个）不够使用而发展出来的。另外一个有点是容易理解，因为出现的不再是缩写的字母。选项参数可以使用空格分割也可以使用”=”来分割。如：</p>
+<pre><code>$ ls --human-readable --sort=time
+</code></pre><p>如果使用 Unix 风格，那么上条命令则是</p>
+<pre><code>$ ls -ht
+</code></pre><p>是不是更加易读呢？</p>
+<h2 id="X-toolkit-风格"><a href="#X-toolkit-风格" class="headerlink" title="X toolkit 风格"></a>X toolkit 风格</h2><p>这是一种比较不常见的风格，使用单个连字符加上关键词。只有 X 相关的程序才使用这种风格，一般不建议使用。</p>
+<pre><code>$ xeyes -display joesws:0 -geometry 1000x1000+0+0
+</code></pre><p>看上去和 GNU 风格差不多，只是双连字符改成了单个连字符。</p>
+<p>这个回答已经很详尽了，但是还是需要去看《Unix编程艺术》，242页到248页讲得非常详尽，将三种命令行的来龙去脉都讲清楚了，而且还给出了一些常见的Unix命令参数表，非常值得一看。</p>
+<p>但是说到底，还是需要在实践中去不断学习各种命令行的使用，罗列下目前我所知道的提供命令行参数的应用程序。</p>
+<ul>
+<li>git</li>
+<li>node python java go</li>
+<li>npm yarn cnpm maven</li>
+<li>curl</li>
+<li>mongodb mysql</li>
+<li>docker kubectl</li>
+<li>brew</li>
+<li>choco</li>
+<li>mac／linux 系统命令</li>
+<li>windows 系统命令</li>
+</ul>
+<p>等等等等，还有很多，就不一一罗列了，每一种工具都需要大量的实践。</p>
+<p>有一个很好的查看帮助的方法，命令后面添加-h,–help或者help参数。比如foo -h，foo –help , foo help，可以直接在终端中去查看命令行的使用方法。</p>
+<p>That ‘ s it !</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/06/前端开发神器之ngrok/" rel="next" title="前端开发神器之ngrok">
+                <i class="fa fa-chevron-left"></i> 前端开发神器之ngrok
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/06/如何解决0.1 +0.2===0.30000000000000004类问题/" rel="prev" title="如何解决0.1 +0.2===0.30000000000000004类问题">
+                如何解决0.1 +0.2===0.30000000000000004类问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://avatars3.githubusercontent.com/u/19262750?s=460&v=4" alt="Frank Kai">
+            
+              <p class="site-author-name" itemprop="name">Frank Kai</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/FrankKai" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/cnhnq" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-globe"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/u/3899061925" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-globe"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/ting-zhao-wu-yue-tian-da-lan-qiu/activities" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://segmentfault.com/u/chennihuannianqing" target="_blank" title="segmentFault">
+                      
+                        <i class="fa fa-fw fa-globe"></i>segmentFault</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Unix-风格"><span class="nav-number">1.</span> <span class="nav-text">Unix 风格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GNU-风格"><span class="nav-number">2.</span> <span class="nav-text">GNU 风格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#X-toolkit-风格"><span class="nav-number">3.</span> <span class="nav-text">X toolkit 风格</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Frank Kai</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

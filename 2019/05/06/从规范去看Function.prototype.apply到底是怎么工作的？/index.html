@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="今天看element-react源码的时候，又看到了这张似曾相识却又异常陌生的老面孔，那就是Function.prototype.apply()…12345678910111213141516171819202122import React from &amp;apos;react&amp;apos;;import PropTypes from &amp;apos;prop-types&amp;apos;;import cla">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从规范去看Function.prototype.apply到底是怎么工作的？">
+<meta property="og:url" content="https://FrankKai.github.io/2019/05/06/从规范去看Function.prototype.apply到底是怎么工作的？/index.html">
+<meta property="og:site_name" content="趁你还年轻的博客">
+<meta property="og:description" content="今天看element-react源码的时候，又看到了这张似曾相识却又异常陌生的老面孔，那就是Function.prototype.apply()…12345678910111213141516171819202122import React from &amp;apos;react&amp;apos;;import PropTypes from &amp;apos;prop-types&amp;apos;;import cla">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2976869-3af17522c415306c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-05-06T04:39:42.733Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="从规范去看Function.prototype.apply到底是怎么工作的？">
+<meta name="twitter:description" content="今天看element-react源码的时候，又看到了这张似曾相识却又异常陌生的老面孔，那就是Function.prototype.apply()…12345678910111213141516171819202122import React from &amp;apos;react&amp;apos;;import PropTypes from &amp;apos;prop-types&amp;apos;;import cla">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2976869-3af17522c415306c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://FrankKai.github.io/2019/05/06/从规范去看Function.prototype.apply到底是怎么工作的？/">
+
+
+
+
+
+  <title>从规范去看Function.prototype.apply到底是怎么工作的？ | 趁你还年轻的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">趁你还年轻的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://FrankKai.github.io/2019/05/06/从规范去看Function.prototype.apply到底是怎么工作的？/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Frank Kai">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/19262750?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="趁你还年轻的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">从规范去看Function.prototype.apply到底是怎么工作的？</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-06T12:39:42+08:00">
+                2019-05-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://upload-images.jianshu.io/upload_images/2976869-3af17522c415306c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="圣诞节快乐.png"></p>
+<p>今天看element-react源码的时候，又看到了这张似曾相识却又异常陌生的老面孔，那就是Function.prototype.apply()…<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">import React from &apos;react&apos;;</span><br><span class="line">import PropTypes from &apos;prop-types&apos;;</span><br><span class="line">import classnames from &apos;classnames&apos;;</span><br><span class="line"></span><br><span class="line">export default class Component extends React.Component &#123;</span><br><span class="line">  classNames(...args) &#123;</span><br><span class="line">         return classnames(args);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  className(...args) &#123;</span><br><span class="line">         return this.classNames.apply(this, args.concat([this.props.className]));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  style(args) &#123;</span><br><span class="line">         return Object.assign(&#123;&#125;, args, this.props.style)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Component.propTypes = &#123;</span><br><span class="line">  className: PropTypes.string,</span><br><span class="line">  style: PropTypes.object</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>虽然高设，犀牛书以及你不知道的Javascrit都看过apply的原理，但依然没什么卵用，可能是缺少实践的原因，看完就忘。</p>
+<p>Q：<br>其中这句<code>this.classNames.apply(this, args.concat([this.props.className]))</code>，又把我搞得晕头转向，this到底是谁？没猜错的话应该是组件实例吧？<br>那为啥不直接 <code>this.classNames(args.concat([this.props.className]))</code>,直接传一个数组不就行了吗？<br>为什么一定要用<code>this.classNames.apply(this, args.concat([this.props.className]))</code>？<br>同理，印象中apply用来取数组最大最小值很方便，<code>Math.max.apply(null,[1,3,8,2])</code>,但是<code>Math.apply( [1,3,8,2] )</code>却返回传参类型错误？这又是为什么？</p>
+<p>带着这些问题，我又一次开始了啃规范之旅。</p>
+<blockquote>
+<p>Function.prototype.apply (thisArg, argArray)<br>The apply method takes two arguments, thisArg and argArray, and performs a function call using the [[Call]] property of the object. If the object does not have a [[Call]] property, a TypeError exception is thrown. If thisArg is null or undefined, the called function is passed the global object as the this value. Otherwise, the called function is passed ToObject(thisArg) as the this value. If argArray is null or undefined, the called function is passed no arguments. Otherwise, if argArray is neither an array nor an arguments object (see 10.1.8), a TypeError exception is thrown. If argArray is either an array or an arguments object, the function is passed the (ToUint32(argArray.length)) arguments argArray[0], argArray[1], …, argArray[ToUint32(argArray.length)–1].</p>
+</blockquote>
+<p>apply有2个方法，一个是thisArg，一个是argArray，然后再执行对象的[[call]]属性。如果对象没有call属性，一个TypeError会被扔出来。<br>如果thisArg是null或者undefined，会将global作为this值。否则，被调用的函数，进行ToObject(thisArg)转换后，作为this值。<br>如果argArray是null或者undefined，被调用函数不传入任何参数。否则，argArray如果既不是数组也不是arguments object（类数组对象），会报错TypeError.<br>如果 argArray是数组或者类数组对象，被调用函数传入ToUnit32(argArray.length) arguments argArray[0]，argArray[1]一直到argArray[ToUint32(argArray.length)–1].</p>
+<p><strong>ToObject内部怎么操作？这个不用管。</strong><br><strong>ToUnit32又怎么操作？这个很神奇。</strong></p>
+<blockquote>
+<p>ToUint32: (Unsigned 32 Bit Integer)<br>The operator ToUint32 converts its argument to one of 232 integer values in the range 0 through 232−1,<br>inclusive. This operator functions as follows:</p>
+<ol>
+<li>Call ToNumber on the input argument.</li>
+<li>If Result(1) is NaN, +0, −0, +∞, or −∞, return +0.</li>
+<li>Compute sign(Result(1)) * floor(abs(Result(1))).</li>
+<li>Compute Result(3) modulo 232; that is, a finite integer value k of Number type with positive sign and<br>less than 232 in magnitude such the mathematical difference of Result(3) and k is mathematically an<br>integer multiple of 232.</li>
+<li>Return Result(4).</li>
+</ol>
+</blockquote>
+<p>ToUnit32能转换它的参数为0到231总共232个整数中的一个，这个函数遵循以下规则。<br>1.对输入参数调用ToNumber()函数<br>2.如果Result(1)是 NaN, +0, −0, +∞, 或者 −∞, return +0<br>3.计算sign(Result(1)*floor(abs(Result(1))))<br>4.计算Result(3) modulo 232；就是说 一个无穷的正整数值k，大于0小于232，Result(3)与k的数学差异是232的整数倍。<br>5.返回Result(4)</p>
+<p>A1:<br>多说无益，举个例子实在：<br><strong>Math.max.apply(null,[1,3,2,””])</strong></p>
+<p>第一步：global值替换null，浏览器环境为window<br>Math.max.apply(window,[1,3,2,””])</p>
+<p>第二步：[1,3,2,””].length传入到ToUnit32()中<br>ToUnit32(4)</p>
+<p>第三步：计算ToUnit32(4)， 作为数组转换成arguments类数组对象的编号<br>1.ToNumber(4)→Result(1)=4<br>2.Not pass the condition<br>3.Math.sign(4*Math.floor(Math.abs(4))) →Result(3)=1<br>4.1 Mod 232 → Result(4) =1<br>5.return 1</p>
+<p>第四步：传入arguments到Math.max中<br>第三步会生成(1)arguments 类数组对象（是否为纯函数方式生成暂时未知），将这个arguments传入到Math.max中，与直接这样写Math.max(1,3,2,””)的效果一样，此时就会返回最大值3。</p>
+<p>这里有一个很重要的坑，为什么arguments传入，也可以像正常Math.max(1,3,2,””)一样？<br>其实这个坑是因为Math.max(1,3,2,””)这个例子中的实参，在函数内部的实参就是arguments，且这个arguments的长度为4，这和绝大多数的函数一样，除箭头函数外的所有函数，都有这个arguemnts实参array-like object。</p>
+<p>看完这个， Math.max.apply(null,[1,3,8,2])的内部原理应该也就清楚了吧。</p>
+<p>A2:<br>回到源代码中<code>this.classNames.apply(this, args.concat([this.props.className]))</code>。<br><strong>1.为什么直接传入[“foo”,”bar”]数组不行？</strong><br>因为当我们传入[“foo”,”bar”]到classNames时，此时return classnames(args);中的args会变成一个二维数组[[“foo”,”bar”]],与classnames模块的预期值类型一维数组相悖。<br><strong>2.为什么调用Function.prototype.apply后就可以？</strong><br>因为如规范中的第三步中所示， this.classNames.apply(this, args.concat([this.props.className]))中，在apply的内部算法中，会将args.concat([this.props.className])这个数组，转换为一个实参类数组对象arguments，跳过形参赋值步骤，直接深入到 this.classNames()内部，这样一来，就实现了一个一个传值的效果，其中的…args就会成为一个一个独立的参数，而args会作为实参数组传给classnames函数。</p>
+<p>说了这么多，总结起来其实就一句话：</p>
+<p>###<em>callObject.method.apply(thisArg,thisArray)，可以将thisArray转化为arguments，传入到callObject.method内部。</em></p>
+<p>加粗加斜的这句真的很重要！<br>加粗加斜的这句真的很重要！<br>加粗加斜的这句真的很重要！</p>
+<p>参考：<br>1.The mathematical function sign(x) yields 1 if x is positive and −1 if x is negative. The sign function is not<br>used in this standard for cases when x is zero<br>2.求模<br>对于整数a，b来说，取模运算或者求余运算的方法要分如下两步：<br>1.求整数商：c=a/b<br>2.计算模或者余数：r=a-(c*b)<br>求模运算和求余运算在第一步不同<br>取余运算在计算商值向正无穷方向舍弃小数位<br>取模运算在计算商值向负无穷方向舍弃小数位<br>例如：4/(-3)约等于-1.3<br>在取余运算时候商值向0方向舍弃小数位为-1<br>在取模运算时商值向负无穷方向舍弃小数位为-2<br>所以<br>4rem(-3)=1<br>4mod(-3)=-2<br>3.C和JS中%表示取余，python中表示取模<br>python中%表示取模，have a try 1 Mod 232 →1</p>
+<p>Merry Christmas ~<br>That’s it !</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/06/一些特别棒的面试题[0]/" rel="next" title="一些特别棒的面试题[0]">
+                <i class="fa fa-chevron-left"></i> 一些特别棒的面试题[0]
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/06/为什么typeof null→object ?/" rel="prev" title="为什么typeof null→object ?">
+                为什么typeof null→object ? <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://avatars3.githubusercontent.com/u/19262750?s=460&v=4" alt="Frank Kai">
+            
+              <p class="site-author-name" itemprop="name">Frank Kai</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/FrankKai" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/cnhnq" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-globe"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/u/3899061925" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-globe"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/ting-zhao-wu-yue-tian-da-lan-qiu/activities" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://segmentfault.com/u/chennihuannianqing" target="_blank" title="segmentFault">
+                      
+                        <i class="fa fa-fw fa-globe"></i>segmentFault</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Frank Kai</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="面试官经常会问一个问题：说一下你了解的盒模型小白：有2种盒模型，IE怪异盒模型和W3C标准盒模型，前者width包括padding和border，后者不包括。 上面的答案几近标准，但其实还有很多点没有答出来，也就是说，一个问题可以拆分成好几个问题回答。下面我就将”说一下你了解的盒模型”这个问题拆分成多小问题，去详尽的解释这个问题背后隐藏的故事。 ①两种盒模型之间有何异同？分为W3C标准盒模型和IE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="你真的理解浏览器盒模型吗？">
+<meta property="og:url" content="https://FrankKai.github.io/2019/05/06/你真的理解浏览器盒模型吗？/index.html">
+<meta property="og:site_name" content="趁你还年轻的博客">
+<meta property="og:description" content="面试官经常会问一个问题：说一下你了解的盒模型小白：有2种盒模型，IE怪异盒模型和W3C标准盒模型，前者width包括padding和border，后者不包括。 上面的答案几近标准，但其实还有很多点没有答出来，也就是说，一个问题可以拆分成好几个问题回答。下面我就将”说一下你了解的盒模型”这个问题拆分成多小问题，去详尽的解释这个问题背后隐藏的故事。 ①两种盒模型之间有何异同？分为W3C标准盒模型和IE">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://user-images.githubusercontent.com/19262750/39028684-733012a0-448a-11e8-8a2a-2b6d2c03959d.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/19262750/39027008-829bd448-4482-11e8-83a3-51f813b062a5.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/19262750/39026631-a6515bda-4480-11e8-99c5-301dea6925c5.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/19262750/39026649-c1417100-4480-11e8-892b-856039d3e349.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/19262750/39026654-c7733c48-4480-11e8-95ff-fd298825d670.png">
+<meta property="og:updated_time" content="2019-05-06T04:39:42.733Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="你真的理解浏览器盒模型吗？">
+<meta name="twitter:description" content="面试官经常会问一个问题：说一下你了解的盒模型小白：有2种盒模型，IE怪异盒模型和W3C标准盒模型，前者width包括padding和border，后者不包括。 上面的答案几近标准，但其实还有很多点没有答出来，也就是说，一个问题可以拆分成好几个问题回答。下面我就将”说一下你了解的盒模型”这个问题拆分成多小问题，去详尽的解释这个问题背后隐藏的故事。 ①两种盒模型之间有何异同？分为W3C标准盒模型和IE">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/19262750/39028684-733012a0-448a-11e8-8a2a-2b6d2c03959d.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://FrankKai.github.io/2019/05/06/你真的理解浏览器盒模型吗？/">
+
+
+
+
+
+  <title>你真的理解浏览器盒模型吗？ | 趁你还年轻的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">趁你还年轻的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://FrankKai.github.io/2019/05/06/你真的理解浏览器盒模型吗？/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Frank Kai">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/19262750?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="趁你还年轻的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">你真的理解浏览器盒模型吗？</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-06T12:39:42+08:00">
+                2019-05-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>面试官经常会问一个问题：<strong>说一下你了解的盒模型</strong><br>小白：有2种盒模型，IE怪异盒模型和W3C标准盒模型，前者width包括padding和border，后者不包括。</p>
+<p>上面的答案几近标准，但其实还有很多点没有答出来，也就是说，一个问题可以拆分成好几个问题回答。<br>下面我就将”说一下你了解的盒模型”这个问题拆分成多小问题，去详尽的解释这个问题背后隐藏的故事。</p>
+<p><strong>①两种盒模型之间有何异同？</strong><br>分为W3C标准盒模型和IE怪异盒模型，准确叫法应该是内容盒模型和边框盒模型，因为经过近日的一次实验，发现IE5+浏览器目前的默认盒模型也改为了content-box，无论是content-box和border-box，都是符合W3C标准的。<br><img src="https://user-images.githubusercontent.com/19262750/39028684-733012a0-448a-11e8-8a2a-2b6d2c03959d.png" alt></p>
+<p>二者都由四部分组成：content，padding，border，margin…<br>那么IE怪异盒模型与W3C标准盒模型到底哪里有差？）<br>W3C标准盒模型 vs IE怪异盒模型</p>
+<ul>
+<li>W3C标准盒模型下元素 css 宽度只应用于 content</li>
+<li>IE怪异盒模型元素 css 宽度包含 content + padding + border，主要体现在 IE 内核浏览器。<br>IE6 以上版本的浏览器只要正确声明 DOCTYPE 即渲染为标准盒模型，亲测，ie5确实是怪异模式（加上&lt;!DOCTYPE html&gt;依然怪异模式），参考：<br>Internet Explorer box model bug</li>
+</ul>
+<p><strong>②如何切换盒模型模式？</strong><br>使用 box-sizing: border-box 可切换为IE怪异盒模型，使用box-sizing:content-box可切换为W3C标准盒模型。</p>
+<p>W3C标准盒模型细节知识点：</p>
+<blockquote>
+<p>①box-sizing有2种：content-box（默认），border-box<br>②任何element都可以有min-widh，max-width等等<br>③有padding时，background会扩充到padding<br>④margin，top和bottom会存在margin collapsing现象，最后会选择较大的一个margin，原因是box之间margin区域定义不明确</p>
+</blockquote>
+<p>demo地址：<a href="https://github.com/FrankKai/Personal-Practice-2/tree/master/cssBoxModel" target="_blank" rel="noopener">https://github.com/FrankKai/Personal-Practice-2/tree/master/cssBoxModel</a></p>
+<p><strong>③如何在W3C标准盒模型和IE怪异盒模型间取舍？</strong><br>建议使用border-box，因为border-box的width会将padding和border包含在内，布局时更好控制，尤其是在响应式布局中。<br><img src="https://user-images.githubusercontent.com/19262750/39027008-829bd448-4482-11e8-83a3-51f813b062a5.png" alt="image"></p>
+<p>有一篇墙推IE怪异盒模型的文章：《把所有元素的box-sizing都设置成border-box吧！》<br><a href="https://css-tricks.com/international-box-sizing-awareness-day/" target="_blank" rel="noopener">https://css-tricks.com/international-box-sizing-awareness-day/</a></p>
+<p>有一种推荐而且很常见的做法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">    box-sizing:border-box;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这样做使得witdh包含padding和border，使用百分比布局时更好控制。</p>
+<p><strong>④文档的DOCTYPE类型对盒模型类型有影响吗？</strong><br>答案是：几乎没有，只有ie5及以下才会触发怪异模式。<br>IE的默认盒模型是怪异盒模型吗：不是！<br>windows10，windows7下亲测，在未声明<code>&lt;!DOCTYPE  html&gt;</code>的情况下，IE的默认盒模型也是W3C标准盒模型。<br>那么在声明了<code>&lt;!DOCTYPE html&gt;</code>的情况下，IE的默认盒模型是哪一个呢？<br>依旧是W3C标准盒模型，box-sizing值为content-box，但是不会在chrome devtools的computed中显示出来。</p>
+<p>DOCTYPE只是一种用来约定浏览器解析HTML文档时遵循哪种标准的方式，呈现模式分为以下三种：</p>
+<blockquote>
+<p>Standards(标准)模式：遵循最新标准。<br>Quirks（怪癖/兼容）模式：帮助处理所有奇怪的渲染和非浏览器兼容及不符合标准的网页。<br>Almost Standards（近似标准）模式：针对标准的某个老版本设计的网页。</p>
+</blockquote>
+<p>HTML规范的标准模式为<code>&lt;!DOCTYPE html&gt;</code>，这也是HTML5推荐的模式，在这个模式下，盒模型的默认值为content-box。</p>
+<p>如何查看当前文档的doctype？<br>无论是IE，Chrome还是FireFox，都可以直接到elements中看去html的头信息，就和C语言的.h头信息一样。<br>或者在IE和Chrome中，使用document.doctype查看文档模式，ff很怪异，document.doctype打印出一个对象，而且没说明到底是什么doctype。</p>
+<p>标准模式和怪异模式是否影响标准盒模型和怪异盒模型的实验：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> .box&#123;</span><br><span class="line">    width:100px;</span><br><span class="line">    padding:10px;</span><br><span class="line">    border:10px solid black;</span><br><span class="line">    height: 100px;</span><br><span class="line">    background: red</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>chrome:未声明doctype，width不包含padding和border，默认是W3C标准盒模型。<br><img src="https://user-images.githubusercontent.com/19262750/39026631-a6515bda-4480-11e8-99c5-301dea6925c5.png" alt="image"></p>
+<p>firefox:未声明doctype，width不包含padding和border，默认是W3C标准盒模型。<br><img src="https://user-images.githubusercontent.com/19262750/39026649-c1417100-4480-11e8-892b-856039d3e349.png" alt="image"></p>
+<p>ie： 未声明doctype，width不包含padding和border，默认是W3C标准盒模型。（11，10，9，8，7， 唯独ie5，是100px（开发工具不可完全信！）， 而且发现ie8及以下的rgba()是不支持的）</p>
+<p>ie5下的border会挤占content的空间，而不是从content外扩展出去。<br><img src="https://user-images.githubusercontent.com/19262750/39026654-c7733c48-4480-11e8-95ff-fd298825d670.png" alt="image"><br>demo地址：<a href="https://github.com/FrankKai/Personal-Practice-2/blob/master/cssBoxModel/cssBoxModelQuirks.html" target="_blank" rel="noopener">https://github.com/FrankKai/Personal-Practice-2/blob/master/cssBoxModel/cssBoxModelQuirks.html</a></p>
+<p>参考：<br><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model</a><br><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/06/前端性能优化之imagebase64/" rel="next" title="前端性能优化之imagebase64">
+                <i class="fa fa-chevron-left"></i> 前端性能优化之imagebase64
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/06/前端领域的BEM到底是什么/" rel="prev" title="前端领域的BEM到底是什么">
+                前端领域的BEM到底是什么 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://avatars3.githubusercontent.com/u/19262750?s=460&v=4" alt="Frank Kai">
+            
+              <p class="site-author-name" itemprop="name">Frank Kai</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/FrankKai" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/cnhnq" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-globe"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/u/3899061925" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-globe"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/ting-zhao-wu-yue-tian-da-lan-qiu/activities" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://segmentfault.com/u/chennihuannianqing" target="_blank" title="segmentFault">
+                      
+                        <i class="fa fa-fw fa-globe"></i>segmentFault</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Frank Kai</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

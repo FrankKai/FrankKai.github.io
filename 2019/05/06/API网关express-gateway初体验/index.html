@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="昨天朋友发来一个消息，问我express源码中的一个问题，我去看了一番源码以后，发现自己并不是很懂，只能看懂一些字面意思…不过在聊天过程中，了解到他们公司在用express做api网关，什么是api网关呢？ 我将以express-gateway为例，学习get started教程，对api网关进行探索。 安装①npm i -g express-gateway②创建一个express网关：eg ga">
+<meta property="og:type" content="article">
+<meta property="og:title" content="API网关express-gateway初体验">
+<meta property="og:url" content="https://FrankKai.github.io/2019/05/06/API网关express-gateway初体验/index.html">
+<meta property="og:site_name" content="趁你还年轻的博客">
+<meta property="og:description" content="昨天朋友发来一个消息，问我express源码中的一个问题，我去看了一番源码以后，发现自己并不是很懂，只能看懂一些字面意思…不过在聊天过程中，了解到他们公司在用express做api网关，什么是api网关呢？ 我将以express-gateway为例，学习get started教程，对api网关进行探索。 安装①npm i -g express-gateway②创建一个express网关：eg ga">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2976869-364a7c2ec54f3d15.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/256">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2976869-0eb969259d431a1a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/256">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2976869-82d680270dfe4574.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2976869-65f646655302ea62.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2976869-9aba088dbc885ec2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2976869-1e204f61e2c80052.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2976869-fe7ffed41afa9719.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2976869-b061cc3368634f83.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2976869-b9ca7b49de4a783f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-05-06T04:39:42.730Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="API网关express-gateway初体验">
+<meta name="twitter:description" content="昨天朋友发来一个消息，问我express源码中的一个问题，我去看了一番源码以后，发现自己并不是很懂，只能看懂一些字面意思…不过在聊天过程中，了解到他们公司在用express做api网关，什么是api网关呢？ 我将以express-gateway为例，学习get started教程，对api网关进行探索。 安装①npm i -g express-gateway②创建一个express网关：eg ga">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/2976869-364a7c2ec54f3d15.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/256">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://FrankKai.github.io/2019/05/06/API网关express-gateway初体验/">
+
+
+
+
+
+  <title>API网关express-gateway初体验 | 趁你还年轻的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">趁你还年轻的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://FrankKai.github.io/2019/05/06/API网关express-gateway初体验/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Frank Kai">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/19262750?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="趁你还年轻的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">API网关express-gateway初体验</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-06T12:39:42+08:00">
+                2019-05-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>昨天朋友发来一个消息，问我express源码中的一个问题，我去看了一番源码以后，发现自己并不是很懂，只能看懂一些字面意思…<br><img src="https://upload-images.jianshu.io/upload_images/2976869-364a7c2ec54f3d15.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/256" alt><br>不过在聊天过程中，了解到他们公司在用express做api网关，什么是api网关呢？<br><img src="https://upload-images.jianshu.io/upload_images/2976869-0eb969259d431a1a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/256" alt></p>
+<p>我将以express-gateway为例，学习<a href="https://www.express-gateway.io/getting-started/" target="_blank" rel="noopener">get started教程</a>，对api网关进行探索。</p>
+<p>安装<br>①npm i -g express-gateway<br>②创建一个express网关：eg gateway create<br>③根据提示选择server模板<br>④运行express网关：npm start</p>
+<p>5分钟入门教程<br>目标：<br>1.选择一个微服务并且作为一个api暴露出去<br>2.定义一个api的消费者<br>3.使用key认证保证api的安全性</p>
+<p>1.选择一个微服务并且作为一个api暴露出去<br>①直接访问微服务<br><code>curl http://httpbin.org/ip</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   &quot;origin&quot;: &quot;73.92.47.31&quot; # this will be your own IP address</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
+<p>②指定微服务<br><img src="https://upload-images.jianshu.io/upload_images/2976869-82d680270dfe4574.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>在express gateway的一个默认的管道中，服务将被分配到一个端口。一个管道指的是一个策略集合。Express Gateway有一个代理策略。在默认的管道中，会使用这个代理策略，网关现在挡在了<a href="https://httpbin.org/ip服务前面，并且并且路由其它请求到网关的端口。" target="_blank" rel="noopener">https://httpbin.org/ip服务前面，并且并且路由其它请求到网关的端口。</a></p>
+<p>在config/gateway.config.yml这个文件中，可以找到一个serviceEndpoints选项，这里定义了httpbin这个服务。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">serviceEndpoints:</span><br><span class="line">   httpbin:</span><br><span class="line">     url: &apos;https://httpbin.org&apos;</span><br></pre></td></tr></table></figure></p>
+<p>在默认管道的proxy选项的action中，可以找到serviceEndpoint: httpbin</p>
+<p>③以api的方式公开微服务<br><img src="https://upload-images.jianshu.io/upload_images/2976869-65f646655302ea62.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p> 通过Express Gateway，我们将暴露httpbin 服务到api端口。当通过api端口公开api后，外部可以访问到api。</p>
+<p>在config/gateway.config.yml这个文件中，可以找到apiEndpoints选项，这里定义了api。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">apiEndpoints:</span><br><span class="line">    api:</span><br><span class="line">      host: &apos;localhost&apos;</span><br><span class="line">      paths: &apos;/ip&apos;</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2976869-9aba088dbc885ec2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>现在我们有一个公共api浮出水面了，我们应该确保自己可以穿过express网关获取到service的权限。</p>
+<p>2.定义一个api网关的消费者<br>管理我们api的人，在这里我们称之为“Consumer”。<br><img src="https://upload-images.jianshu.io/upload_images/2976869-1e204f61e2c80052.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><code>eg users create</code></p>
+<p>3.使用key认证方式确保安全<br>①现在api暴露了出去，而且也获得了访问权限。我们现在将为其加上key安全认证。<br>在config/gateway.config.yml这个文件中，可以找到pipelines选项，这里定义了key-auth。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">pipelines:</span><br><span class="line">   - name: getting-started</span><br><span class="line">     apiEndpoints:</span><br><span class="line">       - api</span><br><span class="line">     policies:</span><br><span class="line">       - key-auth:</span><br><span class="line">       - proxy:</span><br><span class="line">           - action:</span><br><span class="line">               serviceEndpoint: httpbin</span><br><span class="line">               changeOrigin: true</span><br></pre></td></tr></table></figure></p>
+<p>②为Consumer Bob分配key。</p>
+<p><code>eg credentials create -c bob -t key-auth -q</code><br><img src="https://upload-images.jianshu.io/upload_images/2976869-fe7ffed41afa9719.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>③Bob没有加key直接访问。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl http://localhost:8080/ip</span><br><span class="line">    //Unauthorized</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2976869-b061cc3368634f83.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>④Bob加了key进行访问。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ curl -H &quot;Authorization: apiKey 0Er0Ldv5EHSUE364Dj9Gv:2Yzq1Pngs1JYaB2my9Ge4u&quot; http://localhost:8080/ip</span><br><span class="line">  &#123;</span><br><span class="line">    &quot;origin&quot;: &quot;73.92.47.31&quot;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2976869-b9ca7b49de4a783f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>That’s it!</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/06/IIFE(立即执行函数)那些事儿/" rel="prev" title="IIFE(立即执行函数)那些事儿">
+                IIFE(立即执行函数)那些事儿 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://avatars3.githubusercontent.com/u/19262750?s=460&v=4" alt="Frank Kai">
+            
+              <p class="site-author-name" itemprop="name">Frank Kai</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/FrankKai" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/cnhnq" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-globe"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/u/3899061925" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-globe"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/ting-zhao-wu-yue-tian-da-lan-qiu/activities" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://segmentfault.com/u/chennihuannianqing" target="_blank" title="segmentFault">
+                      
+                        <i class="fa fa-fw fa-globe"></i>segmentFault</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Frank Kai</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="这篇文章其实也可以叫做：使用create-react-app生成的项目如何配置代理服务器？  入职新公司以来，第一个月接手vue项目，第二个月接手angularjs项目，第三个月加入react重构项目。心生感叹：业务驱动式学习是一种高效率的学习方式，保持好奇心，在业务中快速成长！新项目中在package.json中有一个proxy字段，这是我从来没接触过的，因此就有了此文的诞生，我使用create">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何理解package.json中的proxy字段？">
+<meta property="og:url" content="https://FrankKai.github.io/2019/05/06/如何理解package.json中的proxy字段？/index.html">
+<meta property="og:site_name" content="趁你还年轻的博客">
+<meta property="og:description" content="这篇文章其实也可以叫做：使用create-react-app生成的项目如何配置代理服务器？  入职新公司以来，第一个月接手vue项目，第二个月接手angularjs项目，第三个月加入react重构项目。心生感叹：业务驱动式学习是一种高效率的学习方式，保持好奇心，在业务中快速成长！新项目中在package.json中有一个proxy字段，这是我从来没接触过的，因此就有了此文的诞生，我使用create">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://user-images.githubusercontent.com/19262750/40101099-ea4b20c6-5918-11e8-9090-3996f3f255fa.png">
+<meta property="og:updated_time" content="2019-05-06T04:39:42.734Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何理解package.json中的proxy字段？">
+<meta name="twitter:description" content="这篇文章其实也可以叫做：使用create-react-app生成的项目如何配置代理服务器？  入职新公司以来，第一个月接手vue项目，第二个月接手angularjs项目，第三个月加入react重构项目。心生感叹：业务驱动式学习是一种高效率的学习方式，保持好奇心，在业务中快速成长！新项目中在package.json中有一个proxy字段，这是我从来没接触过的，因此就有了此文的诞生，我使用create">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/19262750/40101099-ea4b20c6-5918-11e8-9090-3996f3f255fa.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://FrankKai.github.io/2019/05/06/如何理解package.json中的proxy字段？/">
+
+
+
+
+
+  <title>如何理解package.json中的proxy字段？ | 趁你还年轻的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">趁你还年轻的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://FrankKai.github.io/2019/05/06/如何理解package.json中的proxy字段？/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Frank Kai">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/19262750?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="趁你还年轻的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">如何理解package.json中的proxy字段？</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-06T12:39:42+08:00">
+                2019-05-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>这篇文章其实也可以叫做：<strong>使用create-react-app生成的项目如何配置代理服务器？</strong></p>
+<blockquote>
+<p>入职新公司以来，第一个月接手vue项目，第二个月接手angularjs项目，第三个月加入react重构项目。心生感叹：业务驱动式学习是一种高效率的学习方式，保持好奇心，在业务中快速成长！<br>新项目中在package.json中有一个proxy字段，这是我从来没接触过的，因此就有了此文的诞生，我使用create-react-app 新建了一个最原始状态的项目，对proxy字段与create-react-app之间的纠葛展开了学习。</p>
+</blockquote>
+<p>在npm-configuration中，有如下解释：</p>
+<blockquote>
+<p>默认值为null，类型为url，一个为了发送http请求的代理。如果HTTP__PROXY或者http_proxy环境变量已经设置好了，那么proxy设置将被底层的请求库实现。</p>
+</blockquote>
+<p>这个proxy字段目前我只了解到可以与create-react-app的react-scripts结合使用:Proxying API Requests in Development，react-scripts应该是基于HTTP_PROXY环境变量做了一些封装。</p>
+<p>阅读完本文，你将有一以下收获：</p>
+<ul>
+<li><strong>如何更优雅地为前端项目配置代理Proxy服务器</strong></li>
+<li><strong>复现之前啃《HTTP权威指南》代理相关的知识</strong></li>
+<li><strong>对easy-mock的使用限制有了新的认识</strong></li>
+<li><strong>对process.env可以直接在React层展示感到震惊</strong></li>
+<li><strong>了解到对process.env可以进行扩展的dotenv和expand-env两个库</strong></li>
+</ul>
+<p>主要分为3部分：</p>
+<ul>
+<li>开发过程中的Proxy API 请求设置</li>
+<li>手动配置proxy</li>
+<li>环境变量式配置Proxy<h3 id="开发过程中的Proxy-API-请求设置"><a href="#开发过程中的Proxy-API-请求设置" class="headerlink" title="开发过程中的Proxy API 请求设置"></a>开发过程中的Proxy API 请求设置</h3><blockquote>
+<p>注意：这个特性可以在<a href="mailto:react-scripts@2.3" target="_blank" rel="noopener">react-scripts@2.3</a>以及更高版本中使用。</p>
+</blockquote>
+</li>
+</ul>
+<p>人们通常从将服务于后端实现的host和port，同样也为前端react应用提供服务。<br>例如，在一个应用部署后，生产配置类似下面这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/                   -静态服务器返回React应用和index.html</span><br><span class="line">/todos         -静态服务器返回React应用和index.html</span><br><span class="line">/api/todos   -服务器会使用后端实现去处理所有/api/*的请求</span><br></pre></td></tr></table></figure></p>
+<p>但其实这样的设置不是必须的。然而，如果你确实有一个这样的设置，在不考虑重定向它们到其他的host和port开发环境下，那么写出像fetch(‘/api/todos’)这样的请求时正常的。</p>
+<p>为了告诉开发环境的服务器去代理任何开发环境中未知的请求到我们自己的api服务器，添加一个proxy到package.json的字段，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;proxy&quot;:&quot;http://localhost:4000&quot;</span><br></pre></td></tr></table></figure></p>
+<p>使用这种形式的话，当你在开发环境中使用fecth(‘api/todos’)的时候，开发环境的服务器将识别出这不是一个静态资源，然后将代理转发你的请求到<a href="http://localhost:4000/api/todos" target="_blank" rel="noopener">http://localhost:4000/api/todos</a> 作为一个回调。生产环境服务器只能代理没有text/html在Accept头中的请求。</p>
+<p>方便的是，这就避免了CORS问题以及类似像下面这样的错误信息。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Fetch API cannot load http://localhost:4000/api/todos. No &apos;Access-Control-Allow-Origin&apos; header is present on the requested resource. Origin &apos;http://localhost:3000&apos; is therefore not allowed access. If an opaque response serves your needs, set the request&apos;s mode to &apos;no-cors&apos; to fetch the resource with CORS disabled.</span><br></pre></td></tr></table></figure></p>
+<p>要知道proxy只有在开发环境中会有副作用，而且类似/api/todos 这样的URL在生产环境中是否指向正确取决于我们。你不需要使用/api前缀。任何没有text／html请求头的未识别的请求将会被代理到配置的服务器。</p>
+<p>proxy选项支持HTTP，HTTPS以及WebSocket连接。<br>如果proxy选项还不够灵活的话，你可以去做自定义：</p>
+<ul>
+<li><a href="https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#configuring-the-proxy-manually" target="_blank" rel="noopener">自己配置代理</a>（未实验）</li>
+<li>服务器端开启CORS（亲测，<a href="https://enable-cors.org/server_expressjs.html" target="_blank" rel="noopener">express</a>和koa均可实现，koa可以直接使用koa-cors）</li>
+<li><a href="https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-custom-environment-variables" target="_blank" rel="noopener">使用环境变量注入正确的服务器以及端口到应用</a>（未实验）</li>
+</ul>
+<p>工科男的执着：）<br>为了更好的说明问题，我们来做一次本地实验：</p>
+<ul>
+<li><p>启动服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npx creat-react-app my-app</span><br><span class="line">cd my-app</span><br><span class="line">npm run start</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>引入axios并发送请求</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i axios --save</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">componentDidMount()&#123;</span><br><span class="line">    axios.get(&apos;/foo&apos;)</span><br><span class="line">        .then(function (response) &#123;</span><br><span class="line">          console.log(response);</span><br><span class="line">        &#125;)</span><br><span class="line">        .catch(function (error) &#123;</span><br><span class="line">          console.log(error);</span><br><span class="line">        &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>请求发送：”<a href="http://localhost:3000/foo&quot;" target="_blank" rel="noopener">http://localhost:3000/foo&quot;</a><br>错误信息：404</p>
+<p>我们为package.json新增proxy服务器：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;proxy&quot;:&quot;http://0.0.0.89:7300&quot;</span><br></pre></td></tr></table></figure></p>
+<p>ctrl + s 热更新react代码后，没有生效，依旧报404的错误。</p>
+<p>npm run start 重启本地服务后，代理服务器生效，返回正常的数据。</p>
+<p>实现了自动将”<a href="http://localhost:3000&quot;" target="_blank" rel="noopener">http://localhost:3000&quot;</a> 请求转发到”<a href="http://0.0.0.89:7300&quot;" target="_blank" rel="noopener">http://0.0.0.89:7300&quot;</a> 的服务器。</p>
+<p>不知道聪明的你们发现没有，我们并没有遇到CORS问题，因为在浏览器眼里，我们还是将请求发送到”<a href="http://localhost:3000&quot;" target="_blank" rel="noopener">http://localhost:3000&quot;</a> 中的，它并不知道creat-react-app已经将请求转发到了”<a href="http://0.0.0.89:7300&quot;" target="_blank" rel="noopener">http://0.0.0.89:7300&quot;</a> 这个所谓的会触发浏览器CORS安全策略的其他Origin。</p>
+<p>天真的浏览器：<br><img src="https://user-images.githubusercontent.com/19262750/40101099-ea4b20c6-5918-11e8-9090-3996f3f255fa.png" alt="image"></p>
+<p>请求发送路径：<br>“<a href="http://localhost:3000&quot;" target="_blank" rel="noopener">http://localhost:3000&quot;</a> →”<a href="http://0.0.0.89:7300/foo&quot;" target="_blank" rel="noopener">http://0.0.0.89:7300/foo&quot;</a></p>
+<p>响应返回路径：<br>“<a href="http://0.0.0.89:7300/foo&quot;" target="_blank" rel="noopener">http://0.0.0.89:7300/foo&quot;</a> →”<a href="http://localhost:3000&quot;" target="_blank" rel="noopener">http://localhost:3000&quot;</a><br>备注：<br>1.此处需要重新运行npm run start 重启本地服务，否则在package.json中设置的proxy不会被检测到并生效。<br>2.此处的服务器可以是公司内网某台虚拟机上的启动的node服务，也可以是easy-mock等mock服务器（仅支持公司内网部署版，大搜车公网线上服务器不支持）。</p>
+<p>因此我们得出一个结论：</p>
+<blockquote>
+<p>creat-react-app脚手架可以结合package.json中的proxy实现请求转发。</p>
+</blockquote>
+<p>实验成功！</p>
+<h3 id="手动配置proxy"><a href="#手动配置proxy" class="headerlink" title="手动配置proxy"></a>手动配置proxy</h3><blockquote>
+<p>注意：这个特性可以在<a href="mailto:react-scripts@1.0.0" target="_blank" rel="noopener">react-scripts@1.0.0</a>以及更高版本中使用。</p>
+</blockquote>
+<p>如果proxy的默认配置不够灵活，可以在package.json自定义一个像下面这样形式的对象。<br>你也可以http-proxy-middleware或者http-proxy去实现。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    “proxy”:&#123;</span><br><span class="line">        &quot;/api&quot;:&#123;</span><br><span class="line">            &quot;target&quot;:&quot;&lt;url&gt;&quot;,</span><br><span class="line">            &quot;ws&quot;:true </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>所有与这个路径相互匹配的请求将被代理转发。这包括了text/html类型的请求，这种类型是标准proxy选项不支持的。</p>
+<p>如果你需要配置多个代理，你需要在定义几个入口。匹配规则还是那样，这样你才能使用正则匹配多个路径。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  // ...</span><br><span class="line">  &quot;proxy&quot;: &#123;</span><br><span class="line">    // Matches any request starting with /api</span><br><span class="line">    &quot;/api&quot;: &#123;</span><br><span class="line">      &quot;target&quot;: &quot;&lt;url_1&gt;&quot;,</span><br><span class="line">      &quot;ws&quot;: true</span><br><span class="line">      // ...</span><br><span class="line">    &#125;,</span><br><span class="line">    // Matches any request starting with /foo</span><br><span class="line">    &quot;/foo&quot;: &#123;</span><br><span class="line">      &quot;target&quot;: &quot;&lt;url_2&gt;&quot;,</span><br><span class="line">      &quot;ssl&quot;: true,</span><br><span class="line">      &quot;pathRewrite&quot;: &#123;</span><br><span class="line">        &quot;^/foo&quot;: &quot;/foo/beta&quot;</span><br><span class="line">      &#125;</span><br><span class="line">      // ...</span><br><span class="line">    &#125;,</span><br><span class="line">    // Matches /bar/abc.html but not /bar/sub/def.html</span><br><span class="line">    &quot;/bar/[^/]*[.]html&quot;: &#123;</span><br><span class="line">      &quot;target&quot;: &quot;&lt;url_3&gt;&quot;,</span><br><span class="line">      // ...</span><br><span class="line">    &#125;,</span><br><span class="line">    // Matches /baz/abc.html and /baz/sub/def.html</span><br><span class="line">    &quot;/baz/.*/.*[.]html&quot;: &#123;</span><br><span class="line">      &quot;target&quot;: &quot;&lt;url_4&gt;&quot;</span><br><span class="line">      // ...</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  // ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>工科男的执着，继续来做一个实验：</p>
+<p>依然使用上面的my-app项目，proxy配置如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&quot;proxy&quot;:&#123;</span><br><span class="line">    &quot;/api&quot;: &#123;</span><br><span class="line">      &quot;target&quot;: &quot;http://0.0.0.89:7300&quot;,</span><br><span class="line">      &quot;ws&quot;: true</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;/foo&quot;: &#123;</span><br><span class="line">      &quot;target&quot;: &quot;http://0.0.11.22:8848&quot;,</span><br><span class="line">      &quot;ws&quot;: true,</span><br><span class="line">      &quot;pathRewrite&quot;: &#123;</span><br><span class="line">        &quot;^/foo&quot;: &quot;/foo/beta&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">axios.get(&apos;/api&apos;)</span><br><span class="line">.then(function (response) &#123;</span><br><span class="line">  console.log(response);</span><br><span class="line">&#125;)</span><br><span class="line">.catch(function (error) &#123;</span><br><span class="line">  console.log(error);</span><br><span class="line">&#125;);</span><br><span class="line">axios.get(&apos;/foo&apos;)</span><br><span class="line">.then(function (response) &#123;</span><br><span class="line">  console.log(response);</span><br><span class="line">&#125;)</span><br><span class="line">.catch(function (error) &#123;</span><br><span class="line">  console.log(error);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>执行结果：<br>api接口和之前一致，我们这里主要看重定向的foo接口。</p>
+<p>请求发送路径：<br>“<a href="http://localhost:3000&quot;" target="_blank" rel="noopener">http://localhost:3000&quot;</a> →”<a href="http://0.0.11.22:8848/foo&quot;" target="_blank" rel="noopener">http://0.0.11.22:8848/foo&quot;</a> →”<a href="http://0.0.11.22:8848/foo/beta&quot;" target="_blank" rel="noopener">http://0.0.11.22:8848/foo/beta&quot;</a></p>
+<p>响应返回路径：<br>“<a href="http://0.0.11.22:8848/foo/beta&quot;" target="_blank" rel="noopener">http://0.0.11.22:8848/foo/beta&quot;</a> →”<a href="http://localhost:3000&quot;" target="_blank" rel="noopener">http://localhost:3000&quot;</a></p>
+<p>可以配置对个代理，我们此处使用的是”<a href="http://0.0.0.89:7300&quot;" target="_blank" rel="noopener">http://0.0.0.89:7300&quot;</a> 和”<a href="http://0.0.11.22:8848&quot;" target="_blank" rel="noopener">http://0.0.11.22:8848&quot;</a> 这个两台代理服务器，其中<br>“<a href="http://0.0.0.89:7300&quot;" target="_blank" rel="noopener">http://0.0.0.89:7300&quot;</a> 提供了api接口，”<a href="http://0.0.11.22:8848&quot;" target="_blank" rel="noopener">http://0.0.11.22:8848&quot;</a> 提供了foo接口。而且我们可以在代理服务器上重定向接口。</p>
+<p>因此我们得出一个结论：</p>
+<blockquote>
+<p>creat-react-app脚手架可以结合package.json中的proxy，可以配置对个代理，而且我们可以在代理服务器上重定向接口。</p>
+</blockquote>
+<p>实验成功！</p>
+<h3 id="环境变量式配置proxy"><a href="#环境变量式配置proxy" class="headerlink" title="环境变量式配置proxy"></a>环境变量式配置proxy</h3><blockquote>
+<p>这个功能在<a href="mailto:react-scripts@0.2.3" target="_blank" rel="noopener">react-scripts@0.2.3</a>及更高本版中适用。</p>
+</blockquote>
+<p>react的项目可以使用已经声明好的环境变量，这些变量就像是在你的js文件中定义的本地变量一样。默认情况下，已经有NODE_ENV默认环境变量，以及其他的以REACT_APP_为前缀的环境变量。</p>
+<p><strong>环境变量在构建期间是被嵌入进去的。</strong>因为Create React App提供了静态的HTML/CSS/JS打包，不能在runtime时被读取到。为了在runtime期间读取到环境变量，你需要还在HTML到服务器的内存，并且在运行时替换占位符，就像这里描述的这样：<a href="https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#injecting-data-from-the-server-into-the-page" target="_blank" rel="noopener">Injecting Data from the Server into the Page</a>。另外你可以在任何你更改他们的时间里重新构建应用。</p>
+<blockquote>
+<p>你需要使用REACT_APP_创建通用的环境变量。除了NODE_ENV之外的任何其他的变量将被忽略，这是为了避免<a href="https://github.com/facebook/create-react-app/issues/865#issuecomment-252199527" target="_blank" rel="noopener">exposing a private key on the machine that could have the same name</a>。运行期间，只要你修改了环境变量，就需要重启开发服务器。</p>
+</blockquote>
+<p>这些环境变量将被定义在process.env。例如，有一个名叫REACT_APP_SECRET_CODE的环境变量，它可以通过process.env.REACT_APP_SECRET_CODE暴露在我们的javascript文件中。</p>
+<p>我们这里同样也有一个内建的叫做NODE_ENV的环境变量。你可以通过process.env.NODE_ENV去读取它。当你运行npm start时，NODE_ENV的值是development，当你运行npm test时，NODE_ENV的值是test，而且当你运行npm run build构建生产环境的包的时候，它通常是production。<strong>你不能的手动覆盖NODE_ENV。</strong>这样可以预防开发者错把开发环境的代码部署到生产环境。</p>
+<p>这些环境变量可以用于根据项目的部署位置或使用超出版本控制的敏感数据来有条件地显示信息。</p>
+<p>首先，你需要一个已经定义的环境变量。例如，你想在form表单中控制一个secret变量。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">render()&#123;</span><br><span class="line">    return (</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">            &lt;small&gt;你的应用运行在&lt;b&gt;&#123;process.env.NODE_ENV&#125;&lt;/b&gt;模式。&lt;/small&gt;</span><br><span class="line">            &lt;form&gt;</span><br><span class="line">               &lt;input type=&quot;hidden&quot; defaultValue=&#123;process.env.REACT_APP_SECRET_CODE&#125; /&gt;</span><br><span class="line">            &lt;/form&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在构建期间，process.env.REACT_APP_SECRET_CODE将会被环境变量中的当前值替代。谨记NODE_ENV是自动设置的变量。</p>
+<p>当你在浏览器查看input时，它已经被设置成了abcde（或者是空）。<br>上面的表单从环境变量中搜索一个名叫REACT_APP_SECRET_CODE的变量。为了使用这个值，我们需要将其定义在环境中。使用两种方式可以做到，一种是在shell中定义，一种是.env文件中。</p>
+<p>可以通过NODE_ENV去对一些操作进行控制：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if(process.env.NODE_ENV !== &apos;production&apos;)&#123;</span><br><span class="line">   analytics.disable();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>当你使用npm run build编译app时，将会使文件变得更小。</p>
+<p>在HTML中引用环境变量：</p>
+<blockquote>
+<p>注意：这个特性在<a href="mailto:react-scripts@0.9.0" target="_blank" rel="noopener">react-scripts@0.9.0</a>以及更高版本中使用。</p>
+</blockquote>
+<p>你可以在public/index.html中获取到以REACT_APP_为前缀的环境变量。例如：</p>
+<title>%REACT_APP_WEBSITE_NAME%</title>
+
+<p>注意事项：</p>
+<ul>
+<li>除了内建变量(NODE_ENV和PUBLIC_URL)，变量名必须以REACT_APP_开头才能正常工作。</li>
+<li>构建期间环境变量可以被注入进去。如果你想在运行期间注入它们，采用这个方法：<a href="https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#generating-dynamic-meta-tags-on-the-server" target="_blank" rel="noopener">Generating Dynamic <meta> Tags on the Server</a></li>
+</ul>
+<p>在shell中添加临时的环境变量<br>对于不同的操作系统，环境变量的设置是不同的。但是更加需要注意的是，这是创建变量的方式仅仅是当前shell session窗口有效。</p>
+<p>Linux和macOS(Bash)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">REACT_APP_SECRECT_CODE=abcdef npm start</span><br></pre></td></tr></table></figure></p>
+<p>还有一种创建.env文件定义环境变量的方式。</p>
+<p>.env文件将被检如源代码控制。</p>
+<p>其他.env文件将怎么使用？</p>
+<blockquote>
+<p>这个特性仅在<a href="mailto:react-scripts@1.0.0" target="_blank" rel="noopener">react-scripts@1.0.0</a>及更高中使用<br>使用dotenv可以将.env中的值注入到process.env中。例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">require(&apos;dotenv&apos;).config()</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p><strong>在项目的根目录定义一个.env文件并键入如下内容</strong>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">DB_HOST=localhost</span><br><span class="line">DB_USER=root</span><br><span class="line">DB_PASS=s1mpl3</span><br></pre></td></tr></table></figure></p>
+<p>然后就可以在process.env中访问到了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const db = require(&apos;db&apos;)</span><br><span class="line">db.connect(&#123;</span><br><span class="line">  host: process.env.DB_HOST,</span><br><span class="line">  username: process.env.DB_USER,</span><br><span class="line">  password: process.env.DB_PASS</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.env: Default.</span><br><span class="line">.env.local: Local overrides. 加载除了test之外的环境变量。</span><br><span class="line">.env.development, .env.test, .env.production: 公用的环境变量。</span><br><span class="line">.env.development.local, .env.test.local, .env.production.local:本地的环境变量。</span><br></pre></td></tr></table></figure>
+<p>左边的比右边的优先级高：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm start: .env.development.local, .env.development, .env.local, .env</span><br><span class="line">npm run build: .env.production.local, .env.production, .env.local, .env</span><br><span class="line">npm test: .env.test.local, .env.test, .env (note .env.local is missing)</span><br></pre></td></tr></table></figure></p>
+<p>如何将系统环境变量扩展到我们项目下的.env文件使用：</p>
+<p>使用dotenv-expand<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">REACT_APP_VERSION=$npm_package_version</span><br><span class="line"># also works:</span><br><span class="line"># REACT_APP_VERSION=$&#123;npm_package_version&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在.env文件内部也可以使用变量：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">DOMAIN=www.example.com</span><br><span class="line">REACT_APP_FOO=$DOMAIN/foo</span><br><span class="line">REACT_APP_BAR=$DOMAIN/bar</span><br></pre></td></tr></table></figure></p>
+<p>工科男的执着：）<br>简单做个实验：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">touch .env</span><br><span class="line">code .env</span><br></pre></td></tr></table></figure></p>
+<p>键入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">DB_HOST=localhost</span><br><span class="line">DB_USER=root</span><br><span class="line">DB_PASS=s1mpl3</span><br></pre></td></tr></table></figure></p>
+<p>代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(&quot;process.env.DB_HOST--&gt;%s,process.env.DB_USER--&gt;%s,process.env.DB_PASS--&gt;%s&quot;,process.env.DB_HOST,process.env.DB_USER,process.env.DB_PASS)</span><br></pre></td></tr></table></figure></p>
+<p>实验结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">process.env.DB_HOST--&gt;undefined,process.env.DB_USER--&gt;undefined,process.env.DB_PASS--&gt;undefined</span><br></pre></td></tr></table></figure></p>
+<p>实验结果并不总是令人满意，问题在于不知道在何处require(‘dotenv’).config()，可能需要在node层引入，也可能需要借助webpack之类的工具，使得view层能访问到。</p>
+<p>实验失败。<br>做一下总结：</p>
+<ul>
+<li>开发过程中的Proxy API 请求设置(默认选型，满足大多数情况下需求)</li>
+<li>手动配置Proxy （可实现多代理，重定向）</li>
+<li>环境变量式配置Proxy (临时变量方式简单易用，.env方式较为复杂，可以使用配置文件代替)</li>
+</ul>
+<p>充实的一天！</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/06/字符串base64编解码的多种语言实现/" rel="next" title="字符串base64编解码的多种语言实现">
+                <i class="fa fa-chevron-left"></i> 字符串base64编解码的多种语言实现
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/06/搭建个人博客，迎接新生活/" rel="prev" title="搭建个人博客，迎接新生活">
+                搭建个人博客，迎接新生活 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://avatars3.githubusercontent.com/u/19262750?s=460&v=4" alt="Frank Kai">
+            
+              <p class="site-author-name" itemprop="name">Frank Kai</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/FrankKai" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/cnhnq" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-globe"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/u/3899061925" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-globe"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/ting-zhao-wu-yue-tian-da-lan-qiu/activities" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://segmentfault.com/u/chennihuannianqing" target="_blank" title="segmentFault">
+                      
+                        <i class="fa fa-fw fa-globe"></i>segmentFault</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#开发过程中的Proxy-API-请求设置"><span class="nav-number">1.</span> <span class="nav-text">开发过程中的Proxy API 请求设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#手动配置proxy"><span class="nav-number">2.</span> <span class="nav-text">手动配置proxy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#环境变量式配置proxy"><span class="nav-number">3.</span> <span class="nav-text">环境变量式配置proxy</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Frank Kai</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

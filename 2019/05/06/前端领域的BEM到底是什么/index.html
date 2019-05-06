@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="在这篇【译】什么是CSS Modules ？我们为什么需要他们？的结尾处，明确指出CSS Modules不需要BEM，那么BEM到底是什么呢？ 下面我将把BEM官网的教程翻译出来，带领大家搞清楚前端领域的BEM到底是什么。 BEM - Block Element Modfier（块元素编辑器）是一个很有用的方法，它可以帮助你创建出可以复用的前端组件和前端代码 它有如下3个特性：  易用性 如果想使">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端领域的BEM到底是什么">
+<meta property="og:url" content="https://FrankKai.github.io/2019/05/06/前端领域的BEM到底是什么/index.html">
+<meta property="og:site_name" content="趁你还年轻的博客">
+<meta property="og:description" content="在这篇【译】什么是CSS Modules ？我们为什么需要他们？的结尾处，明确指出CSS Modules不需要BEM，那么BEM到底是什么呢？ 下面我将把BEM官网的教程翻译出来，带领大家搞清楚前端领域的BEM到底是什么。 BEM - Block Element Modfier（块元素编辑器）是一个很有用的方法，它可以帮助你创建出可以复用的前端组件和前端代码 它有如下3个特性：  易用性 如果想使">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://user-images.githubusercontent.com/19262750/39481143-03c820e4-4d9d-11e8-85c7-f4bc755ebd7a.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/19262750/39479716-a730d6cc-4d98-11e8-9478-a924babe2f21.png">
+<meta property="og:updated_time" content="2019-05-06T04:39:42.734Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端领域的BEM到底是什么">
+<meta name="twitter:description" content="在这篇【译】什么是CSS Modules ？我们为什么需要他们？的结尾处，明确指出CSS Modules不需要BEM，那么BEM到底是什么呢？ 下面我将把BEM官网的教程翻译出来，带领大家搞清楚前端领域的BEM到底是什么。 BEM - Block Element Modfier（块元素编辑器）是一个很有用的方法，它可以帮助你创建出可以复用的前端组件和前端代码 它有如下3个特性：  易用性 如果想使">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/19262750/39481143-03c820e4-4d9d-11e8-85c7-f4bc755ebd7a.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://FrankKai.github.io/2019/05/06/前端领域的BEM到底是什么/">
+
+
+
+
+
+  <title>前端领域的BEM到底是什么 | 趁你还年轻的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">趁你还年轻的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://FrankKai.github.io/2019/05/06/前端领域的BEM到底是什么/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Frank Kai">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/19262750?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="趁你还年轻的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">前端领域的BEM到底是什么</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-06T12:39:42+08:00">
+                2019-05-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在这篇<a href="https://github.com/FrankKai/FrankKai.github.io/issues/45" target="_blank" rel="noopener">【译】什么是CSS Modules ？我们为什么需要他们？</a>的结尾处，明确指出CSS Modules不需要BEM，那么BEM到底是什么呢？</p>
+<p>下面我将把<a href="http://getbem.com/" target="_blank" rel="noopener">BEM官网</a>的教程翻译出来，带领大家搞清楚前端领域的BEM到底是什么。</p>
+<p>BEM - Block Element Modfier（块元素编辑器）是一个很有用的方法，它可以帮助你创建出可以复用的前端组件和前端代码</p>
+<p>它有如下3个特性：</p>
+<ul>
+<li>易用性 如果想使用BEM，你只需要采用BEM命名规范即可</li>
+<li>单元性 独立的块和CSS选择器，可以使得你的代码可重用和单元化</li>
+<li>灵活性 使用BEM之后，方法和工具可以按照你喜欢的方式去组织和配置</li>
+</ul>
+<p>下面将从3个方面来分析BEM到底是什么？</p>
+<ul>
+<li>介绍<br>BEM是一个高可用的，强大的，而且简单的命名规范，它可以使得你的前端代码更加易读和理解，容易与他人协作，容易扩展，更加强壮和明确，关键是更加严谨。</li>
+<li>命名<br>BEM的方法，可以确保参与网站开发的每一个人，都能够使用一个代码库并且使用同一种语言。使用BEM格式的命名规范，可以从容应对需求变更。</li>
+<li>FAQ<ul>
+<li>为什么不适用语义化的标签而是直接去使用为块元素添加CSS class呢？</li>
+<li>我可以像button.button的方式去组合标签和class到同一个选择器中吗？</li>
+</ul>
+</li>
+</ul>
+<p>还要更多的疑惑，可以查看FAQ列表！</p>
+<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>在小型手册网站上，如何组织你的风格通常不是一个大问题。你进入那里，写一些CSS，或者甚至是一些SASS。用SASS的生产设置将它编译成一个样式表，然后将它聚合到一起，将模块中的所有样式表都变成一个很好的整洁包。</p>
+<p>但是，当涉及到更大，更复杂的项目时，组织代码的方式至少有以下三种方式是提高效率的关键：它影响编写代码需要多长时间，需要多少代码写和你的浏览器将不得不做多少加载。当你与团队合作并且高性能是必不可少的时候，这变得尤为重要。</p>
+<p>这对于使用遗留代码的长期项目也是如此（请参阅“如何使用Sass和SMACSS来扩展和维护传统CSS” - 一些不错的SMACSS和BEM混合）。</p>
+<p>方法<br>目前有很多方法可以减少CSS占用空间，组织程序员之间的合作以及维护大型CSS代码库。这在Twitter，Facebook和Github等大型项目中很明显，但其他项目通常会很快成长为“巨大的CSS文件”状态。</p>
+<ul>
+<li>OOCSS  用CSS“对象”分隔容器和内容</li>
+<li>SMACSS 风格指南为您的CSS编写CSS规则的五个类别</li>
+<li>SUITCSS 结构化类名和有意义的连字符</li>
+<li>原子 将样式分解为原子或不可分割的部分<br>为什么BEM比其他人更好？<br>无论您选择在项目中使用哪种方法，您都将受益于更多结构化CSS和UI的优势。一些风格不那么严格和更灵活，而另一些则更容易理解和适应团队。</li>
+</ul>
+<blockquote>
+<p>我选择BEM而不采用其他方法的原因归结为：它比其他方法（即SMACSS）更容易混淆，但仍为我们提供了我们想要的良好体系结构（即OOCSS）以及可识别的术语。<br>Mark McDonnell，BEM可维护的CSS</p>
+</blockquote>
+<p>Blocks，Element和Modifier<br>听到BEM是方法论的关键元素 - Block，Element和Modifier的缩写，您一定不会感到惊讶。BEM严格的命名规则可以在这里找到。</p>
+<ul>
+<li>块 <ul>
+<li>独立的实体，它本身是有意义的。</li>
+<li>例子 header，container，menu，checkbox，input</li>
+</ul>
+</li>
+<li>元件<ul>
+<li>块的一部分，没有独立的含义，并且在语义上与其块相关联。</li>
+<li>例子 menu item，list item，checkbox caption，header title</li>
+</ul>
+</li>
+<li>修改<ul>
+<li>块或元素上的标志。用它们来改变外观或行为。</li>
+<li>例子 disabled，highlighted，checked，fixed，size big，color yellow<br><img src="https://user-images.githubusercontent.com/19262750/39481143-03c820e4-4d9d-11e8-85c7-f4bc755ebd7a.png" alt="image"></li>
+</ul>
+</li>
+</ul>
+<p>深入理解<br>我们现在来看一个使用BEM的元素，是Github的button：<br><img src="https://user-images.githubusercontent.com/19262750/39479716-a730d6cc-4d98-11e8-9478-a924babe2f21.png" alt="image"></p>
+<p>我们可以使用一个普通按钮应对普通情况 ，再使用两种不同的应对不同情况。因为我们使用BEM的方式为Block 绑定了class，我们可以用任何想使用的标签去实现。（button，a 甚至是div）。但是命名规则告诉我们需要使用block-modifier-value的语法。<br>HTML:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;button class=&quot;button&quot;&gt;</span><br><span class="line">	Normal button</span><br><span class="line">&lt;/button&gt;</span><br><span class="line">&lt;button class=&quot;button button--state-success&quot;&gt;</span><br><span class="line">	Success button</span><br><span class="line">&lt;/button&gt;</span><br><span class="line">&lt;button class=&quot;button button--state-danger&quot;&gt;</span><br><span class="line">	Danger button</span><br><span class="line">&lt;/button&gt;</span><br></pre></td></tr></table></figure></p>
+<p>CSS:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">.button &#123;</span><br><span class="line">	display: inline-block;</span><br><span class="line">	border-radius: 3px;</span><br><span class="line">	padding: 7px 12px;</span><br><span class="line">	border: 1px solid #D5D5D5;</span><br><span class="line">	background-image: linear-gradient(#EEE, #DDD);</span><br><span class="line">	font: 700 13px/18px Helvetica, arial;</span><br><span class="line">&#125;</span><br><span class="line">.button--state-success &#123;</span><br><span class="line">	color: #FFF;</span><br><span class="line">	background: #569E3D linear-gradient(#79D858, #569E3D) repeat-x;</span><br><span class="line">	border-color: #4A993E;</span><br><span class="line">&#125;</span><br><span class="line">.button--state-danger &#123;</span><br><span class="line">	color: #900;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>优点：</p>
+<ul>
+<li>单元性<br>块的样式从来不依赖同页面其它的元素，所以你永远不会遇到级联问题。您还可以将完成的项目中的块转移到新项目中。</li>
+<li>重用性<br>不同方式组织独立的块，并智能地重用它们，可以减少必须维护的CSS代码量。通过一系列风格指南，您可以构建一个块库，使您的CSS超级有效。</li>
+<li>结构化<br>BEM方法可以使得你的CSS代码结构性很好，从而更加容易理解。</li>
+</ul>
+<p>拓展阅读<br>‘Why BEM?’ in a nutshell<br>MindBEMding — getting your head ’round BEM syntax<br>CSS guidelines<br>BEM methodology for small projects<br>BEM It! for Brandwatch<br>Used and Abused — CSS Inheritance and Our Misuse of the Cascade.<br>Objects in Space — A style-guide for modular SASS development using SMACSS and BEM<br>How to Scale and Maintain Legacy CSS with Sass and SMACSS<br>Building a modular My Health Skills with BEM and Sass<br>Building My Health Skills — Part 3</p>
+<p>案例分析：<br>我们希望尽快撰写“如何将现有项目迁移到BEM”。与此同时，您可以观看Nicole Sullivan的精彩演讲 - “<a href="https://www.youtube.com/watch?v=0NDyopLKE1w" target="_blank" rel="noopener">CSS预处理器性能</a>”。她很好地概述了她在大多数网站遇到的问题，并提供了跟踪和处理这些问题的方法。</p>
+<h3 id="命名"><a href="#命名" class="headerlink" title="命名"></a>命名</h3><blockquote>
+<p>在计算机科学领域，只有2个非常难解决的问题：一个是缓存失效，而另一个则是命名。-Phil Karlton</p>
+</blockquote>
+<p>有一个好的样式指导手册将会显著提高开发的速度，debug的速度，以及在原有代码上完成新功能的效率。然而不幸的是，大多数的CSS 代码在开发过程中毫无任何结构和命名的规范。从长远角度来看，这会导致最后产生的CSS代码库很难维护。</p>
+<p>BEM方法确保每一个参加了同一网站开发项目的人，基于一套代码规范去开发，这样非常有利于团队成员理解彼此的代码，而且对于后续接手项目的同学来说，也是一件好事。</p>
+<p><strong>Block</strong></p>
+<ul>
+<li>封装一个只对自己有意义的实体。当blocks能够被嵌套而且彼此之间可以交互的时候，语义上他们是等价的；没有层级关系。没有DOM表示的整体实体。（例如控制器和模型也可以是块）</li>
+<li>Naming Block的名字包含拉丁字母，数字和句号。当组合一个完整CSS class的时候，可以增加一个短的前缀：.block</li>
+<li>HTML 任何DOM节点可以作为一个Block，只要它接受一个class名。<code>&lt;div class=&quot;block&quot;&gt;...&lt;/div&gt;</code></li>
+<li>CSS <ul>
+<li>只使用class名选择器</li>
+<li>没有标签名和或者id</li>
+<li>同一页面里，不依赖其它的block或者element</li>
+<li>例如<code>.block {color:#042;}</code></li>
+</ul>
+</li>
+</ul>
+<p><strong>Element</strong></p>
+<ul>
+<li>Block的一部分，当把它独立取出来时，没有任何实际意义。任何元素在语义上都是它自己的block紧密相连的。</li>
+<li>Naming Element的名字可能包含拉丁字母，数字，句号以及下划线。CSS class名由block名成加两个下划线再加element的名字，最后组织成一个块名。</li>
+<li><p>HTML 任何的在Block中的DOM节点，都是一个element。在一个已知的block中，所有的element在语义上都是相等的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;block&quot;&gt;</span><br><span class="line">    &lt;span class=&quot;block__name&quot;&gt;&lt;/span&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>CSS </p>
+<ul>
+<li>只选择class名字作为选择器</li>
+<li>没有标签名或者id</li>
+<li>不依赖当前页面的其它block或者element<br>Good<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.block__elem&#123;color:#042&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<p>Bad<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.block .block__elem &#123;color:#042;&#125;</span><br><span class="line">div.block__elem &#123;color:#042;&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Modifier</strong></p>
+<ul>
+<li>block或者element的flag。使用他们可以改变样式，行为或者是状态。</li>
+<li>Naming Modifier的名字可以包含拉丁字母，数字，句号以及下划线。CSS的class可以由block或者element名称后面加–组成，例如.block–mod或者.block__elem–mod，以及.block–color-black .block–color-red。复杂的modifier里由短线替代空格。<br>-HTML Modifier是一个额外的加在block或者element class名之后一个class 名。只为他们负责修改的blocks或者elements添加class，然后保持原有的class不变。<br>Good<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;block block--mod&quot;&gt;...&lt;/div&gt;</span><br><span class="line">&lt;div class=&quot;block block--size-big block--shadow-yes&quot;&gt;...&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>Bad<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;block--mod&quot;&gt;...&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<p>CSS</p>
+<ul>
+<li>使用modifier类名作为选择器 .block–hidden { }</li>
+<li>基于block级的modifier修改元素 .block–mod .block__elem { }</li>
+<li>元素修改器 .block__elem–mod { }</li>
+</ul>
+<p>例子：<br>假设你的form Block由modifier：theme:”xmas” 以及simple:true 以及element:input 和submit，submit自己的modifier是disabled:true。<br>HTML:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;form class=&quot;form form--them-xmas form--simple&quot;</span><br><span class="line">    &lt;input class=&quot;form__input&quot; type=&quot;text&quot; /&gt;</span><br><span class="line">    &lt;input class=&quot;form__submit form__submit--disabled&quot; type=&quot;submit&quot; /&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure></p>
+<p>CSS:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.form &#123;&#125;</span><br><span class="line">.form--theme-xmas &#123;&#125;</span><br><span class="line">.form--simple &#123;&#125;</span><br><span class="line">.form__input &#123;&#125;</span><br><span class="line">.form__submit &#123;&#125;</span><br><span class="line">.form__submit--disabled &#123;&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/06/你真的理解浏览器盒模型吗？/" rel="next" title="你真的理解浏览器盒模型吗？">
+                <i class="fa fa-chevron-left"></i> 你真的理解浏览器盒模型吗？
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/06/你真的理解==和===的区别吗？/" rel="prev" title="你真的理解==和===的区别吗？">
+                你真的理解==和===的区别吗？ <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://avatars3.githubusercontent.com/u/19262750?s=460&v=4" alt="Frank Kai">
+            
+              <p class="site-author-name" itemprop="name">Frank Kai</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/FrankKai" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/cnhnq" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-globe"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/u/3899061925" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-globe"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/ting-zhao-wu-yue-tian-da-lan-qiu/activities" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://segmentfault.com/u/chennihuannianqing" target="_blank" title="segmentFault">
+                      
+                        <i class="fa fa-fw fa-globe"></i>segmentFault</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命名"><span class="nav-number">2.</span> <span class="nav-text">命名</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Frank Kai</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

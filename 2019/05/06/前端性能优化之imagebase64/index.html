@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="先来看一段将图片转换为base64字符的nodejs代码：1234567891011const fs = require(&amp;apos;fs&amp;apos;);let files = fs.readdirSync(&amp;apos;.&amp;apos;);let dist = fs.openSync(&amp;apos;./base.txt&amp;apos;, &amp;apos;a&amp;apos;);let buf = &amp;apos;&amp;ap">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端性能优化之imagebase64">
+<meta property="og:url" content="https://FrankKai.github.io/2019/05/06/前端性能优化之imagebase64/index.html">
+<meta property="og:site_name" content="趁你还年轻的博客">
+<meta property="og:description" content="先来看一段将图片转换为base64字符的nodejs代码：1234567891011const fs = require(&amp;apos;fs&amp;apos;);let files = fs.readdirSync(&amp;apos;.&amp;apos;);let dist = fs.openSync(&amp;apos;./base.txt&amp;apos;, &amp;apos;a&amp;apos;);let buf = &amp;apos;&amp;ap">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2976869-1e7e593001df5535.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-05-06T04:39:42.733Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端性能优化之imagebase64">
+<meta name="twitter:description" content="先来看一段将图片转换为base64字符的nodejs代码：1234567891011const fs = require(&amp;apos;fs&amp;apos;);let files = fs.readdirSync(&amp;apos;.&amp;apos;);let dist = fs.openSync(&amp;apos;./base.txt&amp;apos;, &amp;apos;a&amp;apos;);let buf = &amp;apos;&amp;ap">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2976869-1e7e593001df5535.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://FrankKai.github.io/2019/05/06/前端性能优化之imagebase64/">
+
+
+
+
+
+  <title>前端性能优化之imagebase64 | 趁你还年轻的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">趁你还年轻的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://FrankKai.github.io/2019/05/06/前端性能优化之imagebase64/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Frank Kai">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/19262750?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="趁你还年轻的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">前端性能优化之imagebase64</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-06T12:39:42+08:00">
+                2019-05-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>先来看一段将图片转换为base64字符的nodejs代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const fs = require(&apos;fs&apos;);</span><br><span class="line">let files = fs.readdirSync(&apos;.&apos;);</span><br><span class="line">let dist = fs.openSync(&apos;./base.txt&apos;, &apos;a&apos;);</span><br><span class="line">let buf = &apos;&apos;;</span><br><span class="line">for (let i =0; i&lt;files.length; i++) &#123;</span><br><span class="line">    let content =  fs.readFileSync(files[i]);</span><br><span class="line">    </span><br><span class="line">    buf += files[i] + &apos;--&gt;: data:image/&apos; + files[i].split(&apos;.&apos;).slice(-1) + &apos;;base64,&apos;+ content.toString(&apos;base64&apos;) + &apos;\r\n&apos;;</span><br><span class="line">&#125;</span><br><span class="line">fs.writeSync(dist, buf);</span><br><span class="line">fs.close(dist)</span><br></pre></td></tr></table></figure></p>
+<p>用法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">把这个文件移动到图片文件夹里面</span><br><span class="line">打开控制台 cmd</span><br><span class="line">cd 到放文件的目录</span><br><span class="line">node image2base64.js</span><br><span class="line">生成一个txt文件</span><br><span class="line">打开文件选择你要的内容</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>解析：</p>
+<blockquote>
+<p>1.获取fs模块并且赋值给声明的常量变量fs<br>2.读取目录，返回一个所包含所有文件的数组，赋值给块作用域本地变量files<br>3.创建base.txt文件。以追加模式打开base.txt文件。如果文件不存在，则会被创建<br>4.定义空buffer字符串<br>5.遍历读取所有数组中所有文件<br>6.读取结果保存在content变量中<br>7.判断图片格式类型，并且将读取结果转换成base64格式，回车换行<br>buf=buf+tia.png+’–&gt;:data:image/‘+’tia.png’.split(‘.’).slice(-1)+’;base64,’+content.toString(‘base64’)+’\r\n’<br>8.异步的 close(2)。 完成回调只有一个可能的异常参数</p>
+</blockquote>
+<p>有几个问题值得思考？</p>
+<blockquote>
+<p>1.base64编码的原理是什么？<br>2.base64对图片编码的原理是什么，为什么不采用原先的256位编码，而采用64位编码？<br>3.base64一定比直接加载图片快吗？<br>4.base64编码的应用场景是什么？<br>5.除了base64编码，还有没有别的编码提速方案？</p>
+</blockquote>
+<p>先来看第一个问题<br><strong>1.base64对字符进行编码</strong><br>wiki的［例子］（<a href="https://zh.wikipedia.org/wiki/Base64）说明了的base64的编码原理" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/Base64）说明了的base64的编码原理</a><br>　　这和通信原理中的编码非常相近，所以理解起来也相对容易。<br>　　说白了就是把256位的字符，采用base64算法，编码成64位算法，前者是2的8次方，后者是2的6次方，因此前者的一个字符是8位二进制码，后者是6位二进制码，前者从ASCII码表中匹配，后者从base64位表中匹配。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2976869-1e7e593001df5535.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br><strong>2.base64压缩了文件大小</strong>　<br> 　　一般应用比较广泛的是png8图，每一张“png8”图像，都最多只能展示256（2的8次方）种颜色，8位的png其实支持不透明、索引透明、alpha透明。所以“png8”格式更适合那些颜色比较单一的图像，例如纯色、logo、图标等；因为颜色数量少，所以图片的体积也会更小。<br>举个例子来说：<br>　　比如love.png，文件大小是2KB，其实是2×1024byte，也就是2048字节，也就是2048个8位二进制序列，按照ASCII转换的话，就是2048个字符，也就是类似SaqeqWEQwQ871…这个的2048个字符。<br>　　采用base64算法将其转换成base64格式后，这个图片会转换成2048×8/6==2734，即2734个6位二进制序列，按照Base64表转换的话，就是2048个字符，也就是类psadSaqeqWEQ1231171…这个的2734个字符。<br>　　聪明的你也许会问？2734个字符比2048个字符多，为什么反而更加快速了呢？<br>　　抛开别的不谈，我们只谈当前问题本身，从数据库思维去思考，从一张256索引表中查找2048个字符串，与从64索引表中查找2734个字符串，哪个成本更低一点，显然256×2048远大于64×2734。<br>　　也就是说，在一定范围内，base64解析速度更快。<br><strong>3.不一定</strong><br>　　图片的 base64 编码就是可以将一副图片数据编码成一串字符串，使用该字符串代替图像地址。<br>　　这样做有什么意义呢？我们知道，我们所看到的网页上的每一个图片，都是需要消耗一个 http 请求下载而来的（所有才有了 csssprites 技术的应运而生，但是 csssprites 有自身的局限性，下文会提到）。<br>　　没错，不管如何，图片的下载始终都要向服务器发出请求，要是图片的下载不用向服务器发出请求，而可以随着 HTML 的下载同时下载到本地那就太好了，而 base64 正好能解决这个问题。<br>　　所以，在这里要明确使用 base64 的一个前提，那就是被 base64 编码的图片足够尺寸小<br>　　使用 Base64 的好处是能够减少一个图片的 HTTP 请求，然而，与之同时付出的代价则是 CSS 文件体积的增大。<br>　　Base64 跟 CSS 混在一起，大大增加了浏览器需要解析CSS树的耗时。其实解析CSS树的过程是很快的，一般在几十微妙到几毫秒之间。<br><strong>4.base64的应用场景</strong><br>无额外请求<br>对于极小或者极简单图片<br>可像单独图片一样使用，比如背景图片重复使用等<br>没有跨域问题，无需考虑缓存、文件头或者cookies问题<br><strong>5.其他编码提速方案</strong><br>为什么不是base128？base256？base32？base16？<br>　　因为这128个字符中的<strong>一些是不可打印的</strong>（主要是那些位于代码点0x20之下的字符）。因此，它们不能被可靠地以线的方式传输。而且，如果你去上面的代码点128，你可能会遇到编码问题，因为在<strong>系统</strong>之间使用不同的编码。<br>　　因为Base64编码 比十六进制编码更节省磁盘容量，所以一般较大的数据需要进行 ASCII 编码多采用 Base64；而较小的数据，则使用易于人工识别十六进制（用纸笔就能解码出来）。<br>参考：<br><a href="https://zh.wikipedia.org/wiki/Base64" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/Base64</a><br><a href="http://celeron633.blog.sohu.com/263502449.html" target="_blank" rel="noopener">http://celeron633.blog.sohu.com/263502449.html</a><br><a href="http://www.cnblogs.com/coco1s/p/4375774.html" target="_blank" rel="noopener">http://www.cnblogs.com/coco1s/p/4375774.html</a><br><a href="https://stackoverflow.com/questions/6008047/why-dont-people-use-base128" target="_blank" rel="noopener">https://stackoverflow.com/questions/6008047/why-dont-people-use-base128</a><br><a href="https://segmentfault.com/q/1010000000801988" target="_blank" rel="noopener">https://segmentfault.com/q/1010000000801988</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/06/一些特别棒的面试题[2]/" rel="next" title="一些特别棒的面试题[2]">
+                <i class="fa fa-chevron-left"></i> 一些特别棒的面试题[2]
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/06/你真的理解浏览器盒模型吗？/" rel="prev" title="你真的理解浏览器盒模型吗？">
+                你真的理解浏览器盒模型吗？ <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://avatars3.githubusercontent.com/u/19262750?s=460&v=4" alt="Frank Kai">
+            
+              <p class="site-author-name" itemprop="name">Frank Kai</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/FrankKai" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/cnhnq" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-globe"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/u/3899061925" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-globe"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/ting-zhao-wu-yue-tian-da-lan-qiu/activities" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://segmentfault.com/u/chennihuannianqing" target="_blank" title="segmentFault">
+                      
+                        <i class="fa fa-fw fa-globe"></i>segmentFault</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Frank Kai</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

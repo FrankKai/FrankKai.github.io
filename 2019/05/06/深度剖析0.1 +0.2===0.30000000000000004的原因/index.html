@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="用一句话概括就是：EcmaScrpt规范定义Number的类型遵循了IEEE754-2008中的64位浮点数规则定义的小数后的有效位数至多为52位导致计算出现精度丢失问题！  如果你看不懂这句话，仔细阅读本篇博客就对了！ 首先看下10进制转换为2进制的方法。 数字逻辑电路上的算法是 (0.1)10  = （0.0）2。 吐槽一句，大二的专业课数字逻辑电路终于用在工作上了。 0.1*2 = 0.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深度剖析0.1 +0.2===0.30000000000000004的原因">
+<meta property="og:url" content="https://FrankKai.github.io/2019/05/06/深度剖析0.1 +0.2===0.30000000000000004的原因/index.html">
+<meta property="og:site_name" content="趁你还年轻的博客">
+<meta property="og:description" content="用一句话概括就是：EcmaScrpt规范定义Number的类型遵循了IEEE754-2008中的64位浮点数规则定义的小数后的有效位数至多为52位导致计算出现精度丢失问题！  如果你看不懂这句话，仔细阅读本篇博客就对了！ 首先看下10进制转换为2进制的方法。 数字逻辑电路上的算法是 (0.1)10  = （0.0）2。 吐槽一句，大二的专业课数字逻辑电路终于用在工作上了。 0.1*2 = 0.">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2976869-9de958ecc2ae2898.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2976869-4dd04f07ad5a0250.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2976869-48589fcf744fceae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2976869-ad7adc3c018365fc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/768">
+<meta property="og:updated_time" content="2019-05-06T04:39:42.735Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深度剖析0.1 +0.2===0.30000000000000004的原因">
+<meta name="twitter:description" content="用一句话概括就是：EcmaScrpt规范定义Number的类型遵循了IEEE754-2008中的64位浮点数规则定义的小数后的有效位数至多为52位导致计算出现精度丢失问题！  如果你看不懂这句话，仔细阅读本篇博客就对了！ 首先看下10进制转换为2进制的方法。 数字逻辑电路上的算法是 (0.1)10  = （0.0）2。 吐槽一句，大二的专业课数字逻辑电路终于用在工作上了。 0.1*2 = 0.">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2976869-9de958ecc2ae2898.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://FrankKai.github.io/2019/05/06/深度剖析0.1 +0.2===0.30000000000000004的原因/">
+
+
+
+
+
+  <title>深度剖析0.1 +0.2===0.30000000000000004的原因 | 趁你还年轻的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">趁你还年轻的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://FrankKai.github.io/2019/05/06/深度剖析0.1 +0.2===0.30000000000000004的原因/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Frank Kai">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/19262750?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="趁你还年轻的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">深度剖析0.1 +0.2===0.30000000000000004的原因</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-06T12:39:42+08:00">
+                2019-05-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://upload-images.jianshu.io/upload_images/2976869-9de958ecc2ae2898.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<blockquote>
+<p>用一句话概括就是：<br>EcmaScrpt规范定义Number的类型遵循了IEEE754-2008中的64位浮点数规则定义的小数后的有效位数至多为52位导致计算出现精度丢失问题！</p>
+</blockquote>
+<p>如果你看不懂这句话，仔细阅读本篇博客就对了！</p>
+<p>首先看下10进制转换为2进制的方法。</p>
+<p>数字逻辑电路上的算法是 (0.1)10  = （0.0）2。</p>
+<p>吐槽一句，大二的专业课数字逻辑电路终于用在工作上了。</p>
+<p>0.1*2 = 0.2 ，整数位为0，且精度只到十分位，因此是0.0。</p>
+<p><strong>如果是不限精度的话，转换后的二进制数应该是：0.000110011001100110011（0011）无限循环。</strong></p>
+<p>如果表示成一个奇怪的形式，则是<code>(-1)^0*1.100110011(0011)* 2^-4</code></p>
+<p>上述式子可类比十进制科学计数法公式。</p>
+<p>0.0001234567 = 1.234567 * 10^-4 </p>
+<p>为什么要这样表示?</p>
+<p>-1的0次幂又是什么意思？</p>
+<p><strong>这是国际标准组织IEEE754对于浮点数表示方式的一种定义。</strong></p>
+<p>格式为;</p>
+<blockquote>
+<p>(-1)^S x Mx 2^E</p>
+</blockquote>
+<blockquote>
+<p>各符号的意思如下：<br>S，是符号位，决定正负，0时为正数，1时为负数。<br>M，是指有效位数，大于1小于2。　<br>E，是指数位。</p>
+</blockquote>
+<p>因此才有了下面的形式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(-1)^0*1.100110011(无限循环0011) * 2^-4</span><br><span class="line">S = 0，M = 1.100110011(无限循环0011)，E =-4</span><br></pre></td></tr></table></figure></p>
+<p>对应的0.2为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(-1)^0*1.100110011(无限循环0011) * 2^-3</span><br><span class="line">S = 0 ，M = 1.100110011(无限循环0011)，E =-3</span><br></pre></td></tr></table></figure></p>
+<p><strong>那么这和javascript有什么关系呢？</strong></p>
+<p>因为IEEE754标准里，还有两种特殊的定义。</p>
+<p>IEEE 754规定，对于32位的浮点数，最高的1位是符号位S，接着的8位是指数E，剩下的23位为有效数字M。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2976869-4dd04f07ad5a0250.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>对于64位的浮点数，最高的1位是符号位S，接着的11位是指数E，剩下的52位为有效数字M。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2976869-48589fcf744fceae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><strong>问题还是一样，这和我们的javascript有什么关系呢？</strong></p>
+<p><strong>因为javascript中Number类型，就是严格按照IEEE754标准来定义的。下面给出了最新版的ecma-262版本中关于Number类型的定义。</strong></p>
+<blockquote>
+<p>*6.1.6<br>The Number Type<strong><br>The Number type has exactly 18437736874454810627 (that is, ) values, representing the </strong>double-precision 64-bit format IEEE 754-2008** values as specified in the IEEE Standard for Binary Floating-Point Arithmetic, except that the 9007199254740990 (that is, ) distinct “Not-a-Number” values of the IEEE Standard are represented in ECMAScript as a single special  value.</p>
+</blockquote>
+<p>再看一下wiki百科给出的IEEE754标准：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2976869-ad7adc3c018365fc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/768" alt></p>
+<p>因此，javascript的Number类型， 最高的1位是符号位S，接着的11位是指数E，剩下的52位为有效数字M。</p>
+<p>拿0.1举例来说：</p>
+<p>(-1)^0<em>1.100110011(无限循环0011) </em> 2^-4</p>
+<p>S = 0，M = 1.100110011(无限循环0011)，E =-4</p>
+<p><strong>这里的无限循环就有限了，循环位数最多只能有52位.</strong></p>
+<p><strong>JS中的0.1，在引擎中运算时，实质上会编译成：</strong></p>
+<p><code>1.1001100110011001100110011001100110011001100110011001*2^-4</code></p>
+<p><strong>0.2同理，会编译成：</strong></p>
+<p><code>1.1001100110011001100110011001100110011001100110011001*2^- 3</code></p>
+<p>拿出关键的指数部分和有效位部分：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">-4  0.1001100110011001100110011001100110011001100110011001 ①</span><br><span class="line"></span><br><span class="line">-3  0.1001100110011001100110011001100110011001100110011001 ②·</span><br></pre></td></tr></table></figure></p>
+<p>①式转化为纯小数，小数最低位的1001被高位的0000挤出有效范围，得到③式</p>
+<p>②式转化为纯小数，小数最低位的001被高位的000挤出有效范围，得到④式</p>
+<p>原因是什么？</p>
+<p><strong>原因就是JS中的Number类型，二进制小数的有效位数只有52位，从0到51位（包括边界）。</strong></p>
+<p>在chrome控制台输入<code>(0.1).toString(&#39;2&#39;)</code>并打印结果为：<code>&quot;0.0001100110011001100110011001100110011001100110011001101&quot;</code></p>
+<p>不多不少，小数部分刚好52位，与规范以及我们的猜想完全契合。</p>
+<p>回到0.1+0.2===0.30000000000000004这个经典问题。</p>
+<p>在EcmaScript中，无关Browser环境，还是Nodejs环境，0.1+0.2的实际计算过程如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">     0.0000100110011001100110011001100110011001100110011001 ③</span><br><span class="line"></span><br><span class="line">    +0.0001001100110011001100110011001100110011001100110011 ④</span><br><span class="line"></span><br><span class="line">---------------------------------------------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">    =0.0100110011001100110011001100110011001100110011001100 ⑤</span><br></pre></td></tr></table></figure></p>
+<p>最后得到的⑤式其实0.300000000000000004（17位十进制数）的二进制形式。</p>
+<p>这就是0.1+0.2 ===0.300000000000000004的原因。</p>
+<p>虽然我们期望的理想结果是返回0.3，恰恰印证了现实往往很骨感的说法。</p>
+<p>有没有让0.1+02返回为0.3的办法呢？</p>
+<p>因为不只是这一个精度丢失特例，还有很多情况都会造成精度丢失，比如： </p>
+<p>0.3 / 0.1===2.9999999999999996以及0.7 * 180==125.99999999998等等。</p>
+<p>那么有没有办法解决这个问题呢？</p>
+<p>移步下一篇博客：<a href="https://segmentfault.com/a/1190000011913127?_ea=2804668" target="_blank" rel="noopener">如何解决0.1 +0.2===0.30000000000000004类问题</a></p>
+<p>鸣谢单位：</p>
+<p><a href="https://segmentfault.com/a/1190000005022170" target="_blank" rel="noopener">https://segmentfault.com/a/1190000005022170</a></p>
+<p><a href="http://demon.tw/copy-paste/javascript-precision.html" target="_blank" rel="noopener">http://demon.tw/copy-paste/javascript-precision.html</a></p>
+<p><a href="http://www.ruanyifeng.com/blog/2010/06/ieee_floating-point_representation.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2010/06/ieee_floating-point_representation.html</a></p>
+<p><a href="http://www.css88.com/archives/7340#more-7340" target="_blank" rel="noopener">http://www.css88.com/archives/7340#more-7340</a></p>
+<p><a href="http://www.ecma-international.org/ecma-262/8.0/index.html" target="_blank" rel="noopener">http://www.ecma-international.org/ecma-262/8.0/index.html</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Floating-point_arithmetic#Internal_representation" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Floating-point_arithmetic#Internal_representation</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/06/搭建个人博客，迎接新生活/" rel="next" title="搭建个人博客，迎接新生活">
+                <i class="fa fa-chevron-left"></i> 搭建个人博客，迎接新生活
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/06/网站防嵌套猜想及实验验证/" rel="prev" title="网站防嵌套猜想及实验验证">
+                网站防嵌套猜想及实验验证 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://avatars3.githubusercontent.com/u/19262750?s=460&v=4" alt="Frank Kai">
+            
+              <p class="site-author-name" itemprop="name">Frank Kai</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/FrankKai" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/cnhnq" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-globe"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/u/3899061925" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-globe"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/ting-zhao-wu-yue-tian-da-lan-qiu/activities" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://segmentfault.com/u/chennihuannianqing" target="_blank" title="segmentFault">
+                      
+                        <i class="fa fa-fw fa-globe"></i>segmentFault</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Frank Kai</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

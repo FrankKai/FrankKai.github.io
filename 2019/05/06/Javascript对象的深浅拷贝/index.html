@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="开门见山，有人叫对象的复制为深复制浅复制，也有人叫深拷贝浅拷贝。其实都是copy。 深拷贝(递归复制，复制所有层级，独立副本，一个完全和原来对象属性无关的副本)返回对象：一个。传入对象：一个。条件：JSON安全的对象，可以序列化为JSON字符串，并且可以解析为新的字符串。深拷贝算法：123456789101112131415161718function deepCopy(data)&amp;#123;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Javascript对象的深浅拷贝">
+<meta property="og:url" content="https://FrankKai.github.io/2019/05/06/Javascript对象的深浅拷贝/index.html">
+<meta property="og:site_name" content="趁你还年轻的博客">
+<meta property="og:description" content="开门见山，有人叫对象的复制为深复制浅复制，也有人叫深拷贝浅拷贝。其实都是copy。 深拷贝(递归复制，复制所有层级，独立副本，一个完全和原来对象属性无关的副本)返回对象：一个。传入对象：一个。条件：JSON安全的对象，可以序列化为JSON字符串，并且可以解析为新的字符串。深拷贝算法：123456789101112131415161718function deepCopy(data)&amp;#123;">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://user-images.githubusercontent.com/19262750/38594811-bf9e7ad0-3d7a-11e8-886c-9d803064536f.png">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2976869-a365a396abb3cfaa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/512">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2976869-973aa14f7f608a13.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/512">
+<meta property="og:updated_time" content="2019-05-06T04:39:42.731Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Javascript对象的深浅拷贝">
+<meta name="twitter:description" content="开门见山，有人叫对象的复制为深复制浅复制，也有人叫深拷贝浅拷贝。其实都是copy。 深拷贝(递归复制，复制所有层级，独立副本，一个完全和原来对象属性无关的副本)返回对象：一个。传入对象：一个。条件：JSON安全的对象，可以序列化为JSON字符串，并且可以解析为新的字符串。深拷贝算法：123456789101112131415161718function deepCopy(data)&amp;#123;">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/19262750/38594811-bf9e7ad0-3d7a-11e8-886c-9d803064536f.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://FrankKai.github.io/2019/05/06/Javascript对象的深浅拷贝/">
+
+
+
+
+
+  <title>Javascript对象的深浅拷贝 | 趁你还年轻的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">趁你还年轻的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://FrankKai.github.io/2019/05/06/Javascript对象的深浅拷贝/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Frank Kai">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/19262750?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="趁你还年轻的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Javascript对象的深浅拷贝</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-06T12:39:42+08:00">
+                2019-05-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://user-images.githubusercontent.com/19262750/38594811-bf9e7ad0-3d7a-11e8-886c-9d803064536f.png" alt></p>
+<p>开门见山，有人叫对象的复制为深复制浅复制，也有人叫深拷贝浅拷贝。<br>其实都是copy。</p>
+<p><strong>深拷贝(递归复制，复制所有层级，独立副本，一个完全和原来对象属性无关的副本)</strong><br>返回对象：一个。<br>传入对象：一个。<br>条件：JSON安全的对象，可以序列化为JSON字符串，并且可以解析为新的字符串。<br>深拷贝算法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">function deepCopy(data)&#123;</span><br><span class="line">    let memory = null;</span><br><span class="line">    const type = Object.prototype.toString.call(data);</span><br><span class="line">    if (type === &quot;[object Array]&quot;)&#123;</span><br><span class="line">        memory = []</span><br><span class="line">        for (let i=0 ;i&lt;data.length;i++)&#123;</span><br><span class="line">            memory.push(deepCopy(data[i]))</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;else if (type === &quot;[object Object]&quot;)&#123;</span><br><span class="line">        memory = &#123;&#125;</span><br><span class="line">        Object.keys[data].forEach((key)=&gt;&#123;</span><br><span class="line">            memory[key] = data[key]</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        return data;</span><br><span class="line">    &#125;</span><br><span class="line">    return memory;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>jQuery深拷贝:<br><code>var copiedObject = jQuery.extend(true, {}, originalObject)</code></p>
+<p>es6深拷贝：<br><code>var copiedObject= JSON.parse(JSON.stringify(originalObject));</code></p>
+<p>深拷贝是递归复制，新复制的对象与原对象是完全独立的两个对象，它们指向不同的内存地址，做set不会影响到对方。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2976869-a365a396abb3cfaa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/512" alt></p>
+<p><strong>浅拷贝（单次复制，复制最高层级，引用副本，一个基于对原对象属性引用的副本）</strong><br>返回对象：一个。<br>传入对象：一个或多个。<br>条件：无。</p>
+<p>jQuery浅拷贝：<br><code>var copiedObject = jQuery.extend({}, originalObject)</code></p>
+<p>es6浅拷贝：<br><code>var copiedObject = Object.assign({},originalObject)</code></p>
+<p>es7浅拷贝：<br><code>var copiedObject = {...originalObject}</code></p>
+<p>浅拷贝算法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> function shallowCopyObj(original)&#123;</span><br><span class="line">       let copy = &#123;&#125;</span><br><span class="line">       Object.keys(original).forEach(key=&gt;&#123;</span><br><span class="line">           copy[key] = original[key]</span><br><span class="line">       &#125;)</span><br><span class="line">       return copy</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>由于javascript的对象是存地址的，所以浅复制的对象与原对象，都指向同一个内存地址，属于引用复制，做set会影响到对方。<br><img src="https://upload-images.jianshu.io/upload_images/2976869-973aa14f7f608a13.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/512" alt></p>
+<p>实验：<br><strong>①普通属性修改：深拷贝和浅拷贝都可以满足对象的复制。</strong><br>普通属性是指value值为非Array，Object类型的数据类型，也就是Number，String，Boolean等基本数据类型。<br>原因：基本数据类型属于值传递。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;foo:1&#125;;</span><br><span class="line">var deepCopyObj = JSON.parse(JSON.stringify(obj));</span><br><span class="line">deepCopyObj.foo = 2;</span><br><span class="line">console.log(&quot;obj.foo:&quot;,obj.foo);//1</span><br><span class="line">console.log(&quot;deepCopyObj.foo:&quot;,deepCopyObj.foo);//2</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;foo:1&#125;;</span><br><span class="line">var shallowCopyObj = Object.assign(&#123;&#125;,obj);</span><br><span class="line">shallowCopyObj.foo = 2;</span><br><span class="line">console.log(&quot;obj.foo:&quot;,obj.foo);//1</span><br><span class="line">console.log(&quot;shallowCopyObj.foo:&quot;,shallowCopyObj.foo);//2</span><br></pre></td></tr></table></figure>
+<p><strong>②高级属性修改：深拷贝满足对象的复制，浅拷贝影响原数组。</strong><br>高级属性是指Array，Object数据类型。<br>原因：基本数据类型属于引用传递。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;foo:1,bar:&#123;baz:1&#125;&#125;;</span><br><span class="line">var deepCopyObj = JSON.parse(JSON.stringify(obj));</span><br><span class="line">deepCopyObj.bar.baz = 2;</span><br><span class="line">console.log(&quot;obj.bar.baz:&quot;,obj.bar.baz);//1</span><br><span class="line">console.log(&quot;deepCopyObj.bar.baz:&quot;,deepCopyObj.bar.baz);//2</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;foo:1,bar:&#123;baz:1&#125;&#125;;</span><br><span class="line">var shallowCopyObj = Object.assign(&#123;&#125;,obj);</span><br><span class="line">shallowCopyObj.bar.baz = 2;</span><br><span class="line">console.log(&quot;obj.bar.baz:&quot;,obj.bar.baz);//2 Attention！</span><br><span class="line">console.log(&quot;shallowCopyObj.bar.baz:&quot;,shallowCopyObj.bar.baz);//2</span><br></pre></td></tr></table></figure>
+<p>印象中const也是保持变量地址不变的操作，那么es6中的let和const对于对象的深浅拷贝有影响吗？</p>
+<p>也就是将上面代码中的var替换为let和const。</p>
+<p>实验结果是let和const不会影响深浅拷贝的结果，因为let强调块作用域，而const强调变量整体地址空间的不变性。</p>
+<p>关于对象的深浅拷贝，暂且探索到这里，后续有新发现再进行补充。</p>
+<p>谢谢您的阅读～</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/06/CSS3动画卡顿性能优化解决方案/" rel="next" title="CSS3动画卡顿性能优化解决方案">
+                <i class="fa fa-chevron-left"></i> CSS3动画卡顿性能优化解决方案
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/06/koa2如何设置和清除cookie/" rel="prev" title="koa2如何设置和清除cookie">
+                koa2如何设置和清除cookie <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://avatars3.githubusercontent.com/u/19262750?s=460&v=4" alt="Frank Kai">
+            
+              <p class="site-author-name" itemprop="name">Frank Kai</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/FrankKai" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/cnhnq" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-globe"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/u/3899061925" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-globe"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/ting-zhao-wu-yue-tian-da-lan-qiu/activities" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://segmentfault.com/u/chennihuannianqing" target="_blank" title="segmentFault">
+                      
+                        <i class="fa fa-fw fa-globe"></i>segmentFault</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Frank Kai</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

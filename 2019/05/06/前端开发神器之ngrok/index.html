@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="ngrok能做什么，为什么是前端开发神器？ 内网穿透，映射本地开发环境到公网，模拟多终端线上环境。 结合一个很简单的PWA demo，举个简单的例子 ####1.克隆demo到本地clonelink1234![](http://upload-images.jianshu.io/upload_images/2976869-e3064819f017b349.png?imageMogr2/auto-or">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端开发神器之ngrok">
+<meta property="og:url" content="https://FrankKai.github.io/2019/05/06/前端开发神器之ngrok/index.html">
+<meta property="og:site_name" content="趁你还年轻的博客">
+<meta property="og:description" content="ngrok能做什么，为什么是前端开发神器？ 内网穿透，映射本地开发环境到公网，模拟多终端线上环境。 结合一个很简单的PWA demo，举个简单的例子 ####1.克隆demo到本地clonelink1234![](http://upload-images.jianshu.io/upload_images/2976869-e3064819f017b349.png?imageMogr2/auto-or">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2976869-231baadfce53e28e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/762">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2976869-bcf9c1879a7bc220.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/512">
+<meta property="og:updated_time" content="2019-05-06T04:39:42.733Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端开发神器之ngrok">
+<meta name="twitter:description" content="ngrok能做什么，为什么是前端开发神器？ 内网穿透，映射本地开发环境到公网，模拟多终端线上环境。 结合一个很简单的PWA demo，举个简单的例子 ####1.克隆demo到本地clonelink1234![](http://upload-images.jianshu.io/upload_images/2976869-e3064819f017b349.png?imageMogr2/auto-or">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2976869-231baadfce53e28e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/762">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://FrankKai.github.io/2019/05/06/前端开发神器之ngrok/">
+
+
+
+
+
+  <title>前端开发神器之ngrok | 趁你还年轻的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">趁你还年轻的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://FrankKai.github.io/2019/05/06/前端开发神器之ngrok/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Frank Kai">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/19262750?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="趁你还年轻的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">前端开发神器之ngrok</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-06T12:39:42+08:00">
+                2019-05-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>ngrok能做什么，为什么是前端开发神器？</p>
+<p><strong>内网穿透，映射本地开发环境到公网，模拟多终端线上环境。</strong></p>
+<p>结合一个很简单的<a href="https://github.com/minimal-xyz/minimal-pwa" target="_blank" rel="noopener">PWA demo</a>，举个简单的例子</p>
+<p>####1.克隆demo到本地<br><figure class="highlight plain"><figcaption><span>clone</span><a href="https://github.com/minimal-xyz/minimal-pwa.git```" target="_blank" rel="noopener">link</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">![](http://upload-images.jianshu.io/upload_images/2976869-e3064819f017b349.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/762)</span><br><span class="line"></span><br><span class="line">####2.本地8080端口运行demo</span><br></pre></td></tr></table></figure></p>
+<p>cnpm i http-server -g<br>http-server -c-1<br>chrome <a href="http://localhost:8080" target="_blank" rel="noopener">http://localhost:8080</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">![](http://upload-images.jianshu.io/upload_images/2976869-06cf0595adc86695.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/762)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">####3.ngrok内网穿透到公网</span><br></pre></td></tr></table></figure></p>
+<p>ngrok http 8080<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">####4.查看公网地址</span><br></pre></td></tr></table></figure></p>
+<p>chrome <a href="http://127.0.0.1:4040/inspect/http" target="_blank" rel="noopener">http://127.0.0.1:4040/inspect/http</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">![](http://upload-images.jianshu.io/upload_images/2976869-2f3174848bb56026.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/762)</span><br><span class="line">####5.公网多终端访问</span><br><span class="line">①使用另外一台或本机desktop</span><br></pre></td></tr></table></figure></p>
+<p>chrome <a href="http://733a1ad2.ngrok.io" target="_blank" rel="noopener">http://733a1ad2.ngrok.io</a><br><code>`</code></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2976869-231baadfce53e28e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/762" alt></p>
+<p>②使用android，safari mobile，ff mobile等mobile phones<br>地址栏手动输入<a href="http://733a1ad2.ngrok.io" target="_blank" rel="noopener">http://733a1ad2.ngrok.io</a></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2976869-bcf9c1879a7bc220.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/512" alt></p>
+<p>####优点：<br>1.一条url甩产品脸上<br>2.内网穿透多终端测试<br>3.监控请求和响应</p>
+<p>####缺点：<br>1.响应时间较长<br>2.安全性不保证</p>
+<p>####tips:<br>1.ngrok下载地址：<a href="https://ngrok.com/download" target="_blank" rel="noopener">https://ngrok.com/download</a><br>2.环境:git，node，cnpm，ngrok，Chrome<br>3.chrome和ngrok命令需设置环境变量<br>4.以上命令在终端中运行即可<br>5.协议选择https和http都行</p>
+<p>题外话：<br>　　今天MDN官方宣布say goodbye to firebug，<strong>say hello to pwa and view sources</strong>，最后说了很多煽情的话。我只在很久以前用过一次firebug改dom装逼，所以对这些煽情的话无感，倒是对pwa和view source有了很深的兴趣。<br>　　于是借这个大好的加班前夜，学了下PWA，学习链接附上：<strong><a href="https://zhuanlan.zhihu.com/p/25459319" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/25459319</a></strong>，他们家的各种教程不能太好，无论前端还是nodejs，真心不错，以后外卖我只吃饿了么。<br>　　无意中发现ngrok这个神器，一开始以为这家伙只能做内网穿透，后来发现既然公网地址提供出来了，手机上也可以访问啊，一下子有些兴奋，因为第一家实习时学到的移动端前端测试，需要手动配置本地localhost开发环境，而且需要连接到360免费wifi，较为麻烦。<br>　　其实ngrok还有很多其他的功能，有兴趣的同学可以到<a href="https://ngrok.com/product查看。" target="_blank" rel="noopener">https://ngrok.com/product查看。</a></p>
+<p>努力成为优秀的前端开发工程师！</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/06/从规范去看Function.prototype.call到底是怎么工作的？/" rel="next" title="从规范去看Function.prototype.call到底是怎么工作的？">
+                <i class="fa fa-chevron-left"></i> 从规范去看Function.prototype.call到底是怎么工作的？
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/06/原来命令行也是门艺术/" rel="prev" title="原来命令行也是门艺术">
+                原来命令行也是门艺术 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://avatars3.githubusercontent.com/u/19262750?s=460&v=4" alt="Frank Kai">
+            
+              <p class="site-author-name" itemprop="name">Frank Kai</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/FrankKai" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/cnhnq" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-globe"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/u/3899061925" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-globe"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/ting-zhao-wu-yue-tian-da-lan-qiu/activities" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://segmentfault.com/u/chennihuannianqing" target="_blank" title="segmentFault">
+                      
+                        <i class="fa fa-fw fa-globe"></i>segmentFault</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Frank Kai</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
