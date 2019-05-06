@@ -101,6 +101,12 @@ sidebar:
 
 avatar: https://avatars3.githubusercontent.com/u/19262750?s=460&v=4
 
+social:
+    GitHub: https://github.com/FrankKai
+    Twitter: https://twitter.com/cnhnq
+    微博: https://weibo.com/u/3899061925
+    知乎: https://www.zhihu.com/people/ting-zhao-wu-yue-tian-da-lan-qiu/activities
+    segmentFault: https://segmentfault.com/u/chennihuannianqing
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
