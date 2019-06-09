@@ -4,6 +4,9 @@
 
 除了下列列出的文章之外，目前在简书，segmentFault和gitbook会有一些其他内容的博客，后续我会陆续迁移到这里。
 
+Leetcode:
+- [[Leetcode 622]设计循环队列](https://github.com/FrankKai/leetcode-js/blob/master/src/datastructure/queue_circular.js)
+
 FrontEnd：
 - HTML
   - [[译]HTML进阶之Data attributes](https://github.com/FrankKai/FrankKai.github.io/issues/72)
