@@ -128,3 +128,4 @@ Others:
   - [伸缩APP-运行多个APP实例](https://github.com/FrankKai/FrankKai.github.io/issues/25)
   - [更新APP-执行滚动更新](https://github.com/FrankKai/FrankKai.github.io/issues/26)
   - [持续集成工具Jenkins初体验](https://github.com/FrankKai/FrankKai.github.io/issues/28)
+  - [[译]Soft and Hard links in Unxi/Linux](https://github.com/FrankKai/FrankKai.github.io/issues/159)
