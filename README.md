@@ -34,6 +34,9 @@ FrontEnd：
   - [es6+ 常用语法](https://github.com/FrankKai/FrankKai.github.io/issues/76)
   - [es6必会之let && const](https://github.com/FrankKai/FrankKai.github.io/issues/108)
   - [es2015引入的元编程是什么](https://github.com/FrankKai/FrankKai.github.io/issues/157)
+  - [前端String那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/163)
+  - [JavaScript之typed arrays那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/164)
+  - [ResizeObserver是什么？](https://github.com/FrankKai/FrankKai.github.io/issues/166)
 
 - 前端通信机制
   - [什么是resquest／response拦截器？](https://github.com/FrankKai/FrankKai.github.io/issues/18)
@@ -54,6 +57,7 @@ FrontEnd：
   - [web安全之敏感数据格式HAR](https://github.com/FrankKai/FrankKai.github.io/issues/54)
   - [一些想不到的前端安全知识点](https://github.com/FrankKai/FrankKai.github.io/issues/98)
   - [前端cookie总结](https://github.com/FrankKai/FrankKai.github.io/issues/154)
+  - [前端唯一标识那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/162)
 
 - 前端框架
   - [大厂前端技术栈探索和思考](https://github.com/FrankKai/FrankKai.github.io/issues/15)
@@ -100,6 +104,7 @@ FrontEnd：
   - [chrome控制台常用高级console指令](https://github.com/FrankKai/FrankKai.github.io/issues/84)
   - [如何使用Chrome DevTools花式打断点](https://github.com/FrankKai/FrankKai.github.io/issues/101)
   - [如何引入阿里云ARMS前端监控？](https://github.com/FrankKai/FrankKai.github.io/issues/102)
+  - [nginx入门](https://github.com/FrankKai/FrankKai.github.io/issues/165)
 
 - Canvas
   - [Canvas小册](https://github.com/FrankKai/FrankKai.github.io/issues/80)
@@ -129,3 +134,4 @@ Others:
   - [更新APP-执行滚动更新](https://github.com/FrankKai/FrankKai.github.io/issues/26)
   - [持续集成工具Jenkins初体验](https://github.com/FrankKai/FrankKai.github.io/issues/28)
   - [[译]Soft and Hard links in Unxi/Linux](https://github.com/FrankKai/FrankKai.github.io/issues/159)
+  - [环境变量那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/161)
