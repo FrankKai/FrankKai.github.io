@@ -74,6 +74,7 @@ FrontEnd：
   - [Vuex那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/106)
   - [TypeScript入门](https://github.com/FrankKai/FrankKai.github.io/issues/105)
   - [深入理解slot算法和shadow DOM](https://github.com/FrankKai/FrankKai.github.io/issues/125)
+  - [如何理解vue中的key？](https://github.com/FrankKai/FrankKai.github.io/issues/167)
 
 - 前端面试
   - [一些特别棒的面试题[0]](https://github.com/FrankKai/FrankKai.github.io/issues/3)
