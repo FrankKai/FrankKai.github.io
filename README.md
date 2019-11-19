@@ -45,6 +45,7 @@ FrontEnd：
   - [HTTP小册](https://github.com/FrankKai/FrankKai.github.io/issues/79)
   - [那些闻所未闻的前端通信API](https://github.com/FrankKai/FrankKai.github.io/issues/87)
   - [blob URL那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/138)
+  - [ServiceWorkers那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/131)
 
 - Git
   - [关于Git那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/39)
