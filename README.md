@@ -122,6 +122,7 @@ NodeJS:
 - [API网关express-gateway初体验](https://github.com/FrankKai/FrankKai.github.io/issues/20)
 - [node 标准库常用语法](https://github.com/FrankKai/FrankKai.github.io/issues/77)
 - [[译]Introduction to JSON Web Tokens](https://github.com/FrankKai/FrankKai.github.io/issues/170)
+- [[译]md5的salt是什么](https://github.com/FrankKai/FrankKai.github.io/issues/171)
 
 Others:
   - [常用shell命令集](https://github.com/FrankKai/FrankKai.github.io/issues/42)
