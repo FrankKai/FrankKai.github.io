@@ -145,6 +145,16 @@ Others:
   - [[译]Soft and Hard links in Unxi/Linux](https://github.com/FrankKai/FrankKai.github.io/issues/159)
   - [环境变量那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/161)
 
+>期待和大家交流，共同进步，欢迎大家加入我创建的与前端开发密切相关的技术讨论小组：
+> - SegmentFault技术圈:[ES新规范语法糖](https://segmentfault.com/g/1570000010695363)
+> - SegmentFault专栏：[趁你还年轻，做个优秀的前端工程师](https://segmentfault.com/blog/chennihainianqing)
+>- 知乎专栏：[趁你还年轻，做个优秀的前端工程师](https://zhuanlan.zhihu.com/wyasy)
+>- Github博客: [趁你还年轻233的个人博客](https://github.com/FrankKai/FrankKai.github.io)
+>- 前端开发QQ群：660634678
+>- 微信公众号： 人兽鬼 / excellent_developers
+<img src="https://user-gold-cdn.xitu.io/2020/1/3/16f697328370a431?w=1240&h=452&f=png&s=167410" width="300">
+
+>努力成为优秀前端工程师！
 
 ### 创作不易，请我喝一杯☕️吗？
 <img src="https://user-images.githubusercontent.com/19262750/71613534-10a3e080-2be2-11ea-82b9-cd6b252a960f.png" width="300">
