@@ -151,7 +151,9 @@ Others:
 >- 知乎专栏：[趁你还年轻，做个优秀的前端工程师](https://zhuanlan.zhihu.com/wyasy)
 >- Github博客: [趁你还年轻233的个人博客](https://github.com/FrankKai/FrankKai.github.io)
 >- 前端开发QQ群：660634678
->- 微信公众号： 人兽鬼 / excellent_developers
+
+
+### 微信公众号： 人兽鬼 / excellent_developers
 <img src="https://user-gold-cdn.xitu.io/2020/1/3/16f697328370a431?w=1240&h=452&f=png&s=167410" width="300">
 
 >努力成为优秀前端工程师！
