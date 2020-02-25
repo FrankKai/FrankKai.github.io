@@ -16,10 +16,12 @@ FrontEnd：
   - [一些低调的浏览器事件](https://github.com/FrankKai/FrankKai.github.io/issues/96)
   - [如何理解语义(semantic)化？](https://github.com/FrankKai/FrankKai.github.io/issues/126)
   - [[译]如何隐藏DOM元素？](https://github.com/FrankKai/FrankKai.github.io/issues/142)
+  - [如何为DOM创建自定义事件？](https://github.com/FrankKai/FrankKai.github.io/issues/178)
 - CSS
   - [你真的理解浏览器盒模型吗？](https://github.com/FrankKai/FrankKai.github.io/issues/38)
   - [我不知道的CSS，你知道吗？](https://github.com/FrankKai/FrankKai.github.io/issues/6)
   - [简单理解CSS layout和Flex布局](https://github.com/FrankKai/FrankKai.github.io/issues/132)
+  - [Scoped CSS是什么？](https://github.com/FrankKai/FrankKai.github.io/issues/176)
 
 - EcmaScript
   - [你真的理解==和===的区别吗？](https://github.com/FrankKai/FrankKai.github.io/issues/10)
@@ -126,6 +128,8 @@ NodeJS:
 - [node 标准库常用语法](https://github.com/FrankKai/FrankKai.github.io/issues/77)
 - [[译]Introduction to JSON Web Tokens](https://github.com/FrankKai/FrankKai.github.io/issues/170)
 - [[译]md5的salt是什么](https://github.com/FrankKai/FrankKai.github.io/issues/171)
+- [module.exports和exports shortcut](https://github.com/FrankKai/FrankKai.github.io/issues/177)
+- [Nodejs之流程控制](https://github.com/FrankKai/FrankKai.github.io/issues/175)
 
 Others:
   - [常用shell命令集](https://github.com/FrankKai/FrankKai.github.io/issues/42)
