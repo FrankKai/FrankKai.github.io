@@ -6,17 +6,14 @@
 
 FrontEnd：
 - HTML
-  - [[译]HTML进阶之Data attributes](https://github.com/FrankKai/FrankKai.github.io/issues/72)
-  - [[译]HTML进阶之Content categories](https://github.com/FrankKai/FrankKai.github.io/issues/73)
-  - [[译]HTML进阶之HTML5 Content Editable](https://github.com/FrankKai/FrankKai.github.io/issues/74)
-  - [[译]HTML Timers](https://github.com/FrankKai/FrankKai.github.io/issues/67)
   - [深入理解inline元素，block-level元素和display属性](https://github.com/FrankKai/FrankKai.github.io/issues/75)
   - [一些低调的HTML5标签](https://github.com/FrankKai/FrankKai.github.io/issues/83)
   - [一些低调的HTML5属性](https://github.com/FrankKai/FrankKai.github.io/issues/81)
   - [一些低调的浏览器事件](https://github.com/FrankKai/FrankKai.github.io/issues/96)
   - [如何理解语义(semantic)化？](https://github.com/FrankKai/FrankKai.github.io/issues/126)
-  - [[译]如何隐藏DOM元素？](https://github.com/FrankKai/FrankKai.github.io/issues/142)
   - [如何为DOM创建自定义事件？](https://github.com/FrankKai/FrankKai.github.io/issues/178)
+  - [[译]HTML进阶之Data attributes](https://github.com/FrankKai/FrankKai.github.io/issues/72)
+  - [[译]如何隐藏DOM元素？](https://github.com/FrankKai/FrankKai.github.io/issues/142)
 - CSS
   - [你真的理解浏览器盒模型吗？](https://github.com/FrankKai/FrankKai.github.io/issues/38)
   - [我不知道的CSS，你知道吗？](https://github.com/FrankKai/FrankKai.github.io/issues/6)
@@ -30,7 +27,6 @@ FrontEnd：
   - [从规范去看Function.prototype.apply到底是怎么工作的？](https://github.com/FrankKai/FrankKai.github.io/issues/1)
   - [从规范去看Function.prototype.call到底是怎么工作的？](https://github.com/FrankKai/FrankKai.github.io/issues/59)
   - [Javascript对象的深浅拷贝](https://github.com/FrankKai/FrankKai.github.io/issues/19)
-  - [【译】ES8发布及主要新特性介绍](https://github.com/FrankKai/FrankKai.github.io/issues/14)
   - [为什么typeof null→"object" ?](https://github.com/FrankKai/FrankKai.github.io/issues/34)
   - [IIFE(立即执行函数)那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/69)
   - [es6+ 常用语法](https://github.com/FrankKai/FrankKai.github.io/issues/76)
@@ -42,6 +38,7 @@ FrontEnd：
   - [IntersectionObserver是什么?](https://github.com/FrankKai/FrankKai.github.io/issues/169)
   - [MutationObserver是什么？](https://github.com/FrankKai/FrankKai.github.io/issues/173)
   - [es6之rest parameters和spread syntax](https://github.com/FrankKai/FrankKai.github.io/issues/174)
+  - [【译】ES8发布及主要新特性介绍](https://github.com/FrankKai/FrankKai.github.io/issues/14)
 
 - 前端通信机制
   - [什么是resquest／response拦截器？](https://github.com/FrankKai/FrankKai.github.io/issues/18)
@@ -68,7 +65,6 @@ FrontEnd：
 
 - 前端框架
   - [大厂前端技术栈探索和思考](https://github.com/FrankKai/FrankKai.github.io/issues/15)
-  - [【译】Presentational and Container Components](https://github.com/FrankKai/FrankKai.github.io/issues/13)
   - [react-redux api 中文翻译](https://github.com/FrankKai/FrankKai.github.io/issues/2)
   - [异步优先队列$nextTick的踩坑](https://github.com/FrankKai/FrankKai.github.io/issues/30)
   - [Vue踩坑记录](https://github.com/FrankKai/FrankKai.github.io/issues/31)
@@ -82,6 +78,7 @@ FrontEnd：
   - [TypeScript入门](https://github.com/FrankKai/FrankKai.github.io/issues/105)
   - [深入理解slot算法和shadow DOM](https://github.com/FrankKai/FrankKai.github.io/issues/125)
   - [如何理解vue中的key？](https://github.com/FrankKai/FrankKai.github.io/issues/167)
+  - [【译】Presentational and Container Components](https://github.com/FrankKai/FrankKai.github.io/issues/13)
 
 - 前端面试
   - [一些特别棒的面试题[0]](https://github.com/FrankKai/FrankKai.github.io/issues/3)
@@ -104,7 +101,6 @@ FrontEnd：
   - [webhook到底是个啥](https://github.com/FrankKai/FrankKai.github.io/issues/90)
   - [前端工程师必会之ssh命令](https://github.com/FrankKai/FrankKai.github.io/issues/91)
   - [Jenkins前端项目持续部署](https://github.com/FrankKai/FrankKai.github.io/issues/92)
-  - [【译】什么是CSS Modules ？我们为什么需要他们？](https://github.com/FrankKai/FrankKai.github.io/issues/45)
   - [前端领域的BEM到底是什么](https://github.com/FrankKai/FrankKai.github.io/issues/46)
   - [前端开发神器之ngrok](https://github.com/FrankKai/FrankKai.github.io/issues/32)
   - [如何优雅地使用webpack的devtool进行debug？](https://github.com/FrankKai/FrankKai.github.io/issues/58)
@@ -114,6 +110,7 @@ FrontEnd：
   - [如何使用Chrome DevTools花式打断点](https://github.com/FrankKai/FrankKai.github.io/issues/101)
   - [如何引入阿里云ARMS前端监控？](https://github.com/FrankKai/FrankKai.github.io/issues/102)
   - [nginx入门](https://github.com/FrankKai/FrankKai.github.io/issues/165)
+  - [【译】什么是CSS Modules ？我们为什么需要他们？](https://github.com/FrankKai/FrankKai.github.io/issues/45)
 
 - Canvas
   - [Canvas小册](https://github.com/FrankKai/FrankKai.github.io/issues/80)
@@ -127,12 +124,13 @@ NodeJS:
 - [koa2如何设置和清除cookie](https://github.com/FrankKai/FrankKai.github.io/issues/29)
 - [API网关express-gateway初体验](https://github.com/FrankKai/FrankKai.github.io/issues/20)
 - [node 标准库常用语法](https://github.com/FrankKai/FrankKai.github.io/issues/77)
-- [[译]Introduction to JSON Web Tokens](https://github.com/FrankKai/FrankKai.github.io/issues/170)
-- [[译]md5的salt是什么](https://github.com/FrankKai/FrankKai.github.io/issues/171)
 - [module.exports和exports shortcut](https://github.com/FrankKai/FrankKai.github.io/issues/177)
 - [Nodejs之流程控制](https://github.com/FrankKai/FrankKai.github.io/issues/175)
+- [[译]Introduction to JSON Web Tokens](https://github.com/FrankKai/FrankKai.github.io/issues/170)
+- [[译]md5的salt是什么](https://github.com/FrankKai/FrankKai.github.io/issues/171)
 
 Others:
+  - [环境变量那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/161)
   - [常用shell命令集](https://github.com/FrankKai/FrankKai.github.io/issues/42)
   - [shell终端快捷键](https://github.com/FrankKai/FrankKai.github.io/issues/118)
   - [如何理解scrum？](https://github.com/FrankKai/FrankKai.github.io/issues/120)
@@ -149,7 +147,7 @@ Others:
   - [更新APP-执行滚动更新](https://github.com/FrankKai/FrankKai.github.io/issues/26)
   - [持续集成工具Jenkins初体验](https://github.com/FrankKai/FrankKai.github.io/issues/28)
   - [[译]Soft and Hard links in Unxi/Linux](https://github.com/FrankKai/FrankKai.github.io/issues/159)
-  - [环境变量那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/161)
+  
 
 >期待和大家交流，共同进步，欢迎大家加入我创建的与前端开发密切相关的技术讨论小组：
 > - SegmentFault技术圈:[ES新规范语法糖](https://segmentfault.com/g/1570000010695363)
