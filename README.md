@@ -2,9 +2,29 @@
 
 博客主站由于更新博客操作比较繁琐，因此采用issues的形式展示博客。
 
-除了下列列出的文章之外，目前在简书，segmentFault和gitbook会有一些其他内容的博客，后续我会陆续迁移到这里。
+- 前端
+  - HTML
+  - CSS
+  - JavaScript
+  - 前端通信
+  - 前端安全
+  - 前端框架
+  - 前端面试
+  - 前端性能
+  - 前端工程化
+  - 前端多媒体
+- NodeJS
+  - node基础
+  - node框架
+  - 安全
+  - 数据库
+- 运维
+  - Git
+  - Linux
+  - CI/CD
+- 随想
 
-## FrontEnd
+## 前端技术
 ### HTML
   - [深入理解inline元素，block-level元素和display属性](https://github.com/FrankKai/FrankKai.github.io/issues/75)
   - [一些低调的HTML5标签](https://github.com/FrankKai/FrankKai.github.io/issues/83)
@@ -20,7 +40,7 @@
   - [简单理解CSS layout和Flex布局](https://github.com/FrankKai/FrankKai.github.io/issues/132)
   - [Scoped CSS是什么？](https://github.com/FrankKai/FrankKai.github.io/issues/176)
 
-### EcmaScript
+### JavaScript
   - [你真的理解==和===的区别吗？](https://github.com/FrankKai/FrankKai.github.io/issues/10)
   - [深度剖析0.1 +0.2===0.30000000000000004的原因](https://github.com/FrankKai/FrankKai.github.io/issues/7)
   - [如何解决0.1 +0.2===0.30000000000000004类问题](https://github.com/FrankKai/FrankKai.github.io/issues/11)
@@ -40,7 +60,7 @@
   - [es6之rest parameters和spread syntax](https://github.com/FrankKai/FrankKai.github.io/issues/174)
   - [【译】ES8发布及主要新特性介绍](https://github.com/FrankKai/FrankKai.github.io/issues/14)
 
-### 前端通信机制
+### 前端通信
   - [什么是resquest／response拦截器？](https://github.com/FrankKai/FrankKai.github.io/issues/18)
   - [什么是Web Workers?](https://github.com/FrankKai/FrankKai.github.io/issues/17)
   - [协议小册](https://github.com/FrankKai/FrankKai.github.io/issues/82)
@@ -48,12 +68,6 @@
   - [那些闻所未闻的前端通信API](https://github.com/FrankKai/FrankKai.github.io/issues/87)
   - [blob URL那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/138)
   - [ServiceWorkers那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/131)
-
-### Git
-  - [关于Git那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/39)
-  - [Git与ssh秘钥之间的那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/12)
-  - [如何理解git rebase？](https://github.com/FrankKai/FrankKai.github.io/issues/112)
-  - [如何理解git cherry pick？](https://github.com/FrankKai/FrankKai.github.io/issues/172)
 
 ### 前端安全
   - [记一次简单的DOM XSS攻击实验](https://github.com/FrankKai/FrankKai.github.io/issues/9)
@@ -112,41 +126,55 @@
   - [nginx入门](https://github.com/FrankKai/FrankKai.github.io/issues/165)
   - [【译】什么是CSS Modules ？我们为什么需要他们？](https://github.com/FrankKai/FrankKai.github.io/issues/45)
 
-### Canvas
+### 前端多媒体
   - [Canvas小册](https://github.com/FrankKai/FrankKai.github.io/issues/80)
-### Web RTC
   - [[译]Web Audio API基本概念](https://github.com/FrankKai/FrankKai.github.io/issues/168)
 
-### NodeJS
+## NodeJS
+### node基础
 - [关于npm那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/41)
 - [如何理解package.json中的proxy字段？](https://github.com/FrankKai/FrankKai.github.io/issues/60)
 - [饿了么大前端题目解析：JS基础问题](https://github.com/FrankKai/FrankKai.github.io/issues/40)
-- [koa2如何设置和清除cookie](https://github.com/FrankKai/FrankKai.github.io/issues/29)
-- [API网关express-gateway初体验](https://github.com/FrankKai/FrankKai.github.io/issues/20)
 - [node 标准库常用语法](https://github.com/FrankKai/FrankKai.github.io/issues/77)
 - [module.exports和exports shortcut](https://github.com/FrankKai/FrankKai.github.io/issues/177)
 - [Nodejs之流程控制](https://github.com/FrankKai/FrankKai.github.io/issues/175)
+
+### node框架
+- [API网关express-gateway初体验](https://github.com/FrankKai/FrankKai.github.io/issues/20)
+- [koa2如何设置和清除cookie](https://github.com/FrankKai/FrankKai.github.io/issues/29)
+### 安全
 - [[译]Introduction to JSON Web Tokens](https://github.com/FrankKai/FrankKai.github.io/issues/170)
 - [[译]md5的salt是什么](https://github.com/FrankKai/FrankKai.github.io/issues/171)
+### 数据库
+- [关于MongoDB那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/43)
 
-### Others
+## 运维
+### Git
+  - [关于Git那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/39)
+  - [Git与ssh秘钥之间的那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/12)
+  - [如何理解git rebase？](https://github.com/FrankKai/FrankKai.github.io/issues/112)
+  - [如何理解git cherry pick？](https://github.com/FrankKai/FrankKai.github.io/issues/172)
+  
+### Linux
   - [环境变量那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/161)
   - [常用shell命令集](https://github.com/FrankKai/FrankKai.github.io/issues/42)
   - [shell终端快捷键](https://github.com/FrankKai/FrankKai.github.io/issues/118)
-  - [如何理解scrum？](https://github.com/FrankKai/FrankKai.github.io/issues/120)
   - [vim 编辑器必知必会](https://github.com/FrankKai/FrankKai.github.io/issues/117)
   - [原来命令行也是门艺术](https://github.com/FrankKai/FrankKai.github.io/issues/27)
-  - [关于MongoDB那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/43)
-  - [Something more important than code](https://github.com/FrankKai/FrankKai.github.io/issues/16)
-  - [字符串base64编解码的多种语言实现](https://github.com/FrankKai/FrankKai.github.io/issues/4)
+  - [[译]Soft and Hard links in Unxi/Linux](https://github.com/FrankKai/FrankKai.github.io/issues/159)
+  
+### CI/CD
+  - [持续集成工具Jenkins初体验](https://github.com/FrankKai/FrankKai.github.io/issues/28)
   - [创建集群-使用Minikube建立一个集群](https://github.com/FrankKai/FrankKai.github.io/issues/21)
   - [部署APP-使用kubectl创建一个部署](https://github.com/FrankKai/FrankKai.github.io/issues/22)
   - [探索App-查看Pods和Nodes](https://github.com/FrankKai/FrankKai.github.io/issues/23)
   - [公开APP-使用Service来公开你的应用](https://github.com/FrankKai/FrankKai.github.io/issues/24)
   - [伸缩APP-运行多个APP实例](https://github.com/FrankKai/FrankKai.github.io/issues/25)
   - [更新APP-执行滚动更新](https://github.com/FrankKai/FrankKai.github.io/issues/26)
-  - [持续集成工具Jenkins初体验](https://github.com/FrankKai/FrankKai.github.io/issues/28)
-  - [[译]Soft and Hard links in Unxi/Linux](https://github.com/FrankKai/FrankKai.github.io/issues/159)
+## 随想
+  - [字符串base64编解码的多种语言实现](https://github.com/FrankKai/FrankKai.github.io/issues/4)
+  - [Something more important than code](https://github.com/FrankKai/FrankKai.github.io/issues/16)
+  - [如何理解scrum？](https://github.com/FrankKai/FrankKai.github.io/issues/120)
   
 
 >期待和大家交流，共同进步，欢迎大家加入我创建的与前端开发密切相关的技术讨论小组：
