@@ -6,6 +6,7 @@
   - HTML
   - CSS
   - JavaScript
+  - 前端存储
   - 前端通信
   - 前端安全
   - 前端框架
@@ -13,6 +14,7 @@
   - 前端性能
   - 前端工程化
   - 前端多媒体
+  - 前端架构
 - NodeJS
   - node基础
   - node框架
@@ -59,14 +61,15 @@
   - [MutationObserver是什么？](https://github.com/FrankKai/FrankKai.github.io/issues/173)
   - [es6之rest parameters和spread syntax](https://github.com/FrankKai/FrankKai.github.io/issues/174)
   - [【译】ES8发布及主要新特性介绍](https://github.com/FrankKai/FrankKai.github.io/issues/14)
-
+### 前端存储
+- [blob URL那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/138)
+- [localStorage，sessionStorage存储限制是多大？](https://github.com/FrankKai/FrankKai.github.io/issues/179)
 ### 前端通信
   - [什么是resquest／response拦截器？](https://github.com/FrankKai/FrankKai.github.io/issues/18)
   - [什么是Web Workers?](https://github.com/FrankKai/FrankKai.github.io/issues/17)
   - [协议小册](https://github.com/FrankKai/FrankKai.github.io/issues/82)
   - [HTTP小册](https://github.com/FrankKai/FrankKai.github.io/issues/79)
   - [那些闻所未闻的前端通信API](https://github.com/FrankKai/FrankKai.github.io/issues/87)
-  - [blob URL那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/138)
   - [ServiceWorkers那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/131)
 
 ### 前端安全
@@ -78,8 +81,6 @@
   - [前端唯一标识那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/162)
 
 ### 前端框架
-  - [大厂前端技术栈探索和思考](https://github.com/FrankKai/FrankKai.github.io/issues/15)
-  - [react-redux api 中文翻译](https://github.com/FrankKai/FrankKai.github.io/issues/2)
   - [异步优先队列$nextTick的踩坑](https://github.com/FrankKai/FrankKai.github.io/issues/30)
   - [Vue踩坑记录](https://github.com/FrankKai/FrankKai.github.io/issues/31)
   - [AngularJS踩坑记录](https://github.com/FrankKai/FrankKai.github.io/issues/47)
@@ -107,7 +108,6 @@
   - [前端性能优化之imagebase64](https://github.com/FrankKai/FrankKai.github.io/issues/37)
   - [如何理解debounce和throttle](https://github.com/FrankKai/FrankKai.github.io/issues/133)
   - [前端内存泄露浅析](https://github.com/FrankKai/FrankKai.github.io/issues/158)
-  - [localStorage，sessionStorage存储限制是多大？](https://github.com/FrankKai/FrankKai.github.io/issues/179)
 
 
 ### 前端工程化
@@ -172,6 +172,7 @@
   - [伸缩APP-运行多个APP实例](https://github.com/FrankKai/FrankKai.github.io/issues/25)
   - [更新APP-执行滚动更新](https://github.com/FrankKai/FrankKai.github.io/issues/26)
 ## 随想
+  - [大厂前端技术栈探索和思考](https://github.com/FrankKai/FrankKai.github.io/issues/15)
   - [字符串base64编解码的多种语言实现](https://github.com/FrankKai/FrankKai.github.io/issues/4)
   - [Something more important than code](https://github.com/FrankKai/FrankKai.github.io/issues/16)
   - [如何理解scrum？](https://github.com/FrankKai/FrankKai.github.io/issues/120)
