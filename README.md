@@ -107,6 +107,7 @@
   - [前端性能优化之imagebase64](https://github.com/FrankKai/FrankKai.github.io/issues/37)
   - [如何理解debounce和throttle](https://github.com/FrankKai/FrankKai.github.io/issues/133)
   - [前端内存泄露浅析](https://github.com/FrankKai/FrankKai.github.io/issues/158)
+  - [一次失败的用web worker提升速度的实践](https://github.com/FrankKai/FrankKai.github.io/issues/181)
 
 
 ### 前端工程化
