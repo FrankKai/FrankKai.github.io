@@ -59,7 +59,7 @@
   - [IntersectionObserver是什么?](https://github.com/FrankKai/FrankKai.github.io/issues/169)
   - [MutationObserver是什么？](https://github.com/FrankKai/FrankKai.github.io/issues/173)
   - [es6之rest parameters和spread syntax](https://github.com/FrankKai/FrankKai.github.io/issues/174)
-  - [【译】ES8发布及主要新特性介绍](https://github.com/FrankKai/FrankKai.github.io/issues/14)
+  - [[译]ES8发布及主要新特性介绍](https://github.com/FrankKai/FrankKai.github.io/issues/14)
 ### 前端存储
 - [blob URL那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/138)
 - [localStorage，sessionStorage存储限制是多大？](https://github.com/FrankKai/FrankKai.github.io/issues/179)
@@ -92,7 +92,7 @@
   - [TypeScript入门](https://github.com/FrankKai/FrankKai.github.io/issues/105)
   - [深入理解slot算法和shadow DOM](https://github.com/FrankKai/FrankKai.github.io/issues/125)
   - [如何理解vue中的key？](https://github.com/FrankKai/FrankKai.github.io/issues/167)
-  - [【译】Presentational and Container Components](https://github.com/FrankKai/FrankKai.github.io/issues/13)
+  - [[译]Presentational and Container Components](https://github.com/FrankKai/FrankKai.github.io/issues/13)
 
 ### 前端面试
   - [一些特别棒的面试题[0]](https://github.com/FrankKai/FrankKai.github.io/issues/3)
@@ -124,7 +124,7 @@
   - [如何使用Chrome DevTools花式打断点](https://github.com/FrankKai/FrankKai.github.io/issues/101)
   - [如何引入阿里云ARMS前端监控？](https://github.com/FrankKai/FrankKai.github.io/issues/102)
   - [nginx入门](https://github.com/FrankKai/FrankKai.github.io/issues/165)
-  - [【译】什么是CSS Modules ？我们为什么需要他们？](https://github.com/FrankKai/FrankKai.github.io/issues/45)
+  - [[译]什么是CSS Modules ？我们为什么需要他们？](https://github.com/FrankKai/FrankKai.github.io/issues/45)
 
 ### 前端多媒体
   - [Canvas小册](https://github.com/FrankKai/FrankKai.github.io/issues/80)
