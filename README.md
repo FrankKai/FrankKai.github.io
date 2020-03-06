@@ -190,6 +190,3 @@
 <img src="https://user-gold-cdn.xitu.io/2020/1/3/16f697328370a431?w=1240&h=452&f=png&s=167410" width="300">
 
 >努力成为优秀前端工程师！
-
-### 创作不易，请我喝一杯☕️吗？
-<img src="https://user-images.githubusercontent.com/19262750/71613534-10a3e080-2be2-11ea-82b9-cd6b252a960f.png" width="300">
