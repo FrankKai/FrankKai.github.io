@@ -65,12 +65,15 @@
 - [blob URL那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/138)
 - [localStorage，sessionStorage存储限制是多大？](https://github.com/FrankKai/FrankKai.github.io/issues/179)
 ### 前端通信
+  - [请求串行控制和并行控制 ](https://github.com/FrankKai/FrankKai.github.io/issues/175)
+  - [前端URL那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/146)
   - [什么是resquest／response拦截器？](https://github.com/FrankKai/FrankKai.github.io/issues/18)
   - [什么是Web Workers?](https://github.com/FrankKai/FrankKai.github.io/issues/17)
-  - [协议小册](https://github.com/FrankKai/FrankKai.github.io/issues/82)
-  - [HTTP小册](https://github.com/FrankKai/FrankKai.github.io/issues/79)
+  - [一次失败的用web worker提升速度的实践](https://github.com/FrankKai/FrankKai.github.io/issues/181)
   - [那些闻所未闻的前端通信API](https://github.com/FrankKai/FrankKai.github.io/issues/87)
   - [ServiceWorkers那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/131)
+  - [协议小册](https://github.com/FrankKai/FrankKai.github.io/issues/82)
+  - [HTTP小册](https://github.com/FrankKai/FrankKai.github.io/issues/79)
 
 ### 前端安全
   - [记一次简单的DOM XSS攻击实验](https://github.com/FrankKai/FrankKai.github.io/issues/9)
@@ -108,7 +111,6 @@
   - [前端性能优化之imagebase64](https://github.com/FrankKai/FrankKai.github.io/issues/37)
   - [如何理解debounce和throttle](https://github.com/FrankKai/FrankKai.github.io/issues/133)
   - [前端内存泄露浅析](https://github.com/FrankKai/FrankKai.github.io/issues/158)
-  - [一次失败的用web worker提升速度的实践](https://github.com/FrankKai/FrankKai.github.io/issues/181)
 
 
 ### 前端工程化
@@ -138,7 +140,6 @@
 - [饿了么大前端题目解析：JS基础问题](https://github.com/FrankKai/FrankKai.github.io/issues/40)
 - [node 标准库常用语法](https://github.com/FrankKai/FrankKai.github.io/issues/77)
 - [module.exports和exports shortcut](https://github.com/FrankKai/FrankKai.github.io/issues/177)
-- [Nodejs之流程控制](https://github.com/FrankKai/FrankKai.github.io/issues/175)
 
 ### node框架
 - [API网关express-gateway初体验](https://github.com/FrankKai/FrankKai.github.io/issues/20)
