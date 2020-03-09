@@ -35,15 +35,22 @@
   - [如何理解语义(semantic)化？](https://github.com/FrankKai/FrankKai.github.io/issues/126)
   - [如何为DOM创建自定义事件？](https://github.com/FrankKai/FrankKai.github.io/issues/178)
   - [一次简单的Virtual DOM实验](https://github.com/FrankKai/FrankKai.github.io/issues/88)
+  - [富文本编辑器复制拖拽图片](https://github.com/FrankKai/FrankKai.github.io/issues/114)
+  - [DOM那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/78)
   - [深入理解slot算法和shadow DOM](https://github.com/FrankKai/FrankKai.github.io/issues/125)
   - [一些好用的模板引擎库](https://github.com/FrankKai/FrankKai.github.io/issues/143)
+  - [如何理解Range和Selection对象？](https://github.com/FrankKai/FrankKai.github.io/issues/140)
+  - [关于WAI-ARIA那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/127)
   - [[译]HTML进阶之Data attributes](https://github.com/FrankKai/FrankKai.github.io/issues/72)
   - [[译]如何隐藏DOM元素？](https://github.com/FrankKai/FrankKai.github.io/issues/142)
+  - [[译]HTML Timers](https://github.com/FrankKai/FrankKai.github.io/issues/67)
 ### CSS
   - [你真的理解浏览器盒模型吗？](https://github.com/FrankKai/FrankKai.github.io/issues/38)
   - [我不知道的CSS，你知道吗？](https://github.com/FrankKai/FrankKai.github.io/issues/6)
   - [简单理解CSS layout和Flex布局](https://github.com/FrankKai/FrankKai.github.io/issues/132)
   - [Scoped CSS是什么？](https://github.com/FrankKai/FrankKai.github.io/issues/176)
+  - [CSS动画之timing functions](https://github.com/FrankKai/FrankKai.github.io/issues/183)
+  - [Sass的父选择器&](https://github.com/FrankKai/FrankKai.github.io/issues/182)
 
 ### JavaScript
   - [你真的理解==和===的区别吗？](https://github.com/FrankKai/FrankKai.github.io/issues/10)
@@ -82,6 +89,7 @@
   - [如何理解same-origin policy？](https://github.com/FrankKai/FrankKai.github.io/issues/144)
   - [协议小册](https://github.com/FrankKai/FrankKai.github.io/issues/82)
   - [HTTP小册](https://github.com/FrankKai/FrankKai.github.io/issues/79)
+  - [精读趣谈网络协议](https://github.com/FrankKai/FrankKai.github.io/issues/93)
 
 ### 前端安全
   - [记一次简单的DOM XSS攻击实验](https://github.com/FrankKai/FrankKai.github.io/issues/9)
@@ -115,9 +123,11 @@
   - [前端性能优化之imagebase64](https://github.com/FrankKai/FrankKai.github.io/issues/37)
   - [如何理解debounce和throttle](https://github.com/FrankKai/FrankKai.github.io/issues/133)
   - [前端内存泄露浅析](https://github.com/FrankKai/FrankKai.github.io/issues/158)
+  - [javascript内存分配 ](https://github.com/FrankKai/FrankKai.github.io/issues/89)
 
 ### 前端测试
   - [记一次简单的vue组件单元测试](https://github.com/FrankKai/FrankKai.github.io/issues/122)
+  - [[译]单元测试,TDD和BDD之间的区别是什么](https://github.com/FrankKai/FrankKai.github.io/issues/123)
 
 ### 前端工程化
   - [Webpack Plugin那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/94)
@@ -148,6 +158,7 @@
 - [饿了么大前端题目解析：JS基础问题](https://github.com/FrankKai/FrankKai.github.io/issues/40)
 - [node 标准库常用语法](https://github.com/FrankKai/FrankKai.github.io/issues/77)
 - [module.exports和exports shortcut](https://github.com/FrankKai/FrankKai.github.io/issues/177)
+- [[译]Node.js Event Loop, Timers 和 process.nextTick()](https://github.com/FrankKai/FrankKai.github.io/issues/145)
 
 ### node框架
 - [API网关express-gateway初体验](https://github.com/FrankKai/FrankKai.github.io/issues/20)
@@ -172,6 +183,7 @@
   - [shell终端快捷键](https://github.com/FrankKai/FrankKai.github.io/issues/118)
   - [vim 编辑器必知必会](https://github.com/FrankKai/FrankKai.github.io/issues/117)
   - [原来命令行也是门艺术](https://github.com/FrankKai/FrankKai.github.io/issues/27)
+  - [一些Linux知识点](https://github.com/FrankKai/FrankKai.github.io/issues/116)
   - [[译]Soft and Hard links in Unxi/Linux](https://github.com/FrankKai/FrankKai.github.io/issues/159)
   
 ### CI/CD
@@ -190,7 +202,20 @@
   - [如何理解scrum？](https://github.com/FrankKai/FrankKai.github.io/issues/120)
   - [注释那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/62)
   - [UML那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/151)
+  - [告别2018喜迎2019](https://github.com/FrankKai/FrankKai.github.io/issues/136)
+  - [一直被忽略的zen-coding](https://github.com/FrankKai/FrankKai.github.io/issues/128)
+  - [如何参与开源项目？](https://github.com/FrankKai/FrankKai.github.io/issues/111)
+  - [Chrome Devtool小技巧](https://github.com/FrankKai/FrankKai.github.io/issues/107)
+  - [趁你还年轻的个人简历](https://github.com/FrankKai/FrankKai.github.io/issues/63)
   
+ ## working
+ - [[译]HTML5 安全备忘单](https://github.com/FrankKai/FrankKai.github.io/issues/180)
+ - [正则表达式](https://github.com/FrankKai/FrankKai.github.io/issues/156)
+ - [Secure Context是什么？](https://github.com/FrankKai/FrankKai.github.io/issues/153)
+ - [离线应用那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/149)
+ - [SVG入门](https://github.com/FrankKai/FrankKai.github.io/issues/137)
+ - [掘金小册《前端性能优化原理与实践》知识盲区](https://github.com/FrankKai/FrankKai.github.io/issues/129)
+ - [一些有趣的浏览器装逼神器](https://github.com/FrankKai/FrankKai.github.io/issues/115)
 
 >期待和大家交流，共同进步，欢迎大家加入我创建的与前端开发密切相关的技术讨论小组：
 > - SegmentFault技术圈:[ES新规范语法糖](https://segmentfault.com/g/1570000010695363)
