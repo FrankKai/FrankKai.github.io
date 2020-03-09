@@ -12,6 +12,7 @@
   - 前端框架
   - 前端面试
   - 前端性能
+  - 前端测试
   - 前端工程化
   - 前端多媒体
 - NodeJS
@@ -33,6 +34,9 @@
   - [一些低调的浏览器事件](https://github.com/FrankKai/FrankKai.github.io/issues/96)
   - [如何理解语义(semantic)化？](https://github.com/FrankKai/FrankKai.github.io/issues/126)
   - [如何为DOM创建自定义事件？](https://github.com/FrankKai/FrankKai.github.io/issues/178)
+  - [一次简单的Virtual DOM实验](https://github.com/FrankKai/FrankKai.github.io/issues/88)
+  - [深入理解slot算法和shadow DOM](https://github.com/FrankKai/FrankKai.github.io/issues/125)
+  - [一些好用的模板引擎库](https://github.com/FrankKai/FrankKai.github.io/issues/143)
   - [[译]HTML进阶之Data attributes](https://github.com/FrankKai/FrankKai.github.io/issues/72)
   - [[译]如何隐藏DOM元素？](https://github.com/FrankKai/FrankKai.github.io/issues/142)
 ### CSS
@@ -61,6 +65,8 @@
   - [es6之rest parameters和spread syntax](https://github.com/FrankKai/FrankKai.github.io/issues/174)
   - [[译]ES8发布及主要新特性介绍](https://github.com/FrankKai/FrankKai.github.io/issues/14)
   - [Javascript中的Map类](https://github.com/FrankKai/FrankKai.github.io/issues/155)
+  - [es6必会之arrow functions](https://github.com/FrankKai/FrankKai.github.io/issues/109)
+  - [TypeScript入门](https://github.com/FrankKai/FrankKai.github.io/issues/105)
 ### 前端存储
 - [浅析前端上传](https://github.com/FrankKai/FrankKai.github.io/issues/152)
 - [blob URL那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/138)
@@ -73,6 +79,7 @@
   - [一次失败的用web worker提升速度的实践](https://github.com/FrankKai/FrankKai.github.io/issues/181)
   - [那些闻所未闻的前端通信API](https://github.com/FrankKai/FrankKai.github.io/issues/87)
   - [ServiceWorkers那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/131)
+  - [如何理解same-origin policy？](https://github.com/FrankKai/FrankKai.github.io/issues/144)
   - [协议小册](https://github.com/FrankKai/FrankKai.github.io/issues/82)
   - [HTTP小册](https://github.com/FrankKai/FrankKai.github.io/issues/79)
 
@@ -85,18 +92,14 @@
   - [前端唯一标识那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/162)
 
 ### 前端框架
-  - [异步优先队列$nextTick的踩坑](https://github.com/FrankKai/FrankKai.github.io/issues/30)
   - [Vue踩坑记录](https://github.com/FrankKai/FrankKai.github.io/issues/31)
+  - [如何理解vue中的key？](https://github.com/FrankKai/FrankKai.github.io/issues/167)
+  - [Vuex那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/106)
+  - [vue的重中之重之h(createElement)函数](https://github.com/FrankKai/FrankKai.github.io/issues/57)
+  - [vue源码中"好的写法"](https://github.com/FrankKai/FrankKai.github.io/issues/86)
   - [AngularJS踩坑记录](https://github.com/FrankKai/FrankKai.github.io/issues/47)
   - [React踩坑记录](https://github.com/FrankKai/FrankKai.github.io/issues/53)
-  - [vue的重中之重之h(createElement)函数](https://github.com/FrankKai/FrankKai.github.io/issues/57)
-  - [一次简单的Virtual DOM实验](https://github.com/FrankKai/FrankKai.github.io/issues/88)
-  - [vue源码中"好的写法"](https://github.com/FrankKai/FrankKai.github.io/issues/86)
-  - [前端单元测试那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/85)
-  - [Vuex那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/106)
-  - [TypeScript入门](https://github.com/FrankKai/FrankKai.github.io/issues/105)
-  - [深入理解slot算法和shadow DOM](https://github.com/FrankKai/FrankKai.github.io/issues/125)
-  - [如何理解vue中的key？](https://github.com/FrankKai/FrankKai.github.io/issues/167)
+  - [异步优先队列$nextTick的踩坑](https://github.com/FrankKai/FrankKai.github.io/issues/30)
   - [[译]Presentational and Container Components](https://github.com/FrankKai/FrankKai.github.io/issues/13)
 
 ### 前端面试
@@ -113,6 +116,8 @@
   - [如何理解debounce和throttle](https://github.com/FrankKai/FrankKai.github.io/issues/133)
   - [前端内存泄露浅析](https://github.com/FrankKai/FrankKai.github.io/issues/158)
 
+### 前端测试
+  - [记一次简单的vue组件单元测试](https://github.com/FrankKai/FrankKai.github.io/issues/122)
 
 ### 前端工程化
   - [Webpack Plugin那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/94)
@@ -128,6 +133,7 @@
   - [如何使用Chrome DevTools花式打断点](https://github.com/FrankKai/FrankKai.github.io/issues/101)
   - [如何引入阿里云ARMS前端监控？](https://github.com/FrankKai/FrankKai.github.io/issues/102)
   - [nginx入门](https://github.com/FrankKai/FrankKai.github.io/issues/165)
+  - [Webpack那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/130)
   - [[译]什么是CSS Modules ？我们为什么需要他们？](https://github.com/FrankKai/FrankKai.github.io/issues/45)
 
 ### 前端多媒体
@@ -137,6 +143,7 @@
 ## NodeJS
 ### node基础
 - [关于npm那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/41)
+- [yarn那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/71)
 - [如何理解package.json中的proxy字段？](https://github.com/FrankKai/FrankKai.github.io/issues/60)
 - [饿了么大前端题目解析：JS基础问题](https://github.com/FrankKai/FrankKai.github.io/issues/40)
 - [node 标准库常用语法](https://github.com/FrankKai/FrankKai.github.io/issues/77)
@@ -145,6 +152,7 @@
 ### node框架
 - [API网关express-gateway初体验](https://github.com/FrankKai/FrankKai.github.io/issues/20)
 - [koa2如何设置和清除cookie](https://github.com/FrankKai/FrankKai.github.io/issues/29)
+- [GraphQL入门](https://github.com/FrankKai/FrankKai.github.io/issues/147)
 ### 安全
 - [[译]Introduction to JSON Web Tokens](https://github.com/FrankKai/FrankKai.github.io/issues/170)
 - [[译]md5的salt是什么](https://github.com/FrankKai/FrankKai.github.io/issues/171)
@@ -167,6 +175,7 @@
   - [[译]Soft and Hard links in Unxi/Linux](https://github.com/FrankKai/FrankKai.github.io/issues/159)
   
 ### CI/CD
+  - [docker入门](https://github.com/FrankKai/FrankKai.github.io/issues/139)
   - [持续集成工具Jenkins初体验](https://github.com/FrankKai/FrankKai.github.io/issues/28)
   - [创建集群-使用Minikube建立一个集群](https://github.com/FrankKai/FrankKai.github.io/issues/21)
   - [部署APP-使用kubectl创建一个部署](https://github.com/FrankKai/FrankKai.github.io/issues/22)
@@ -179,6 +188,8 @@
   - [字符串base64编解码的多种语言实现](https://github.com/FrankKai/FrankKai.github.io/issues/4)
   - [Something more important than code](https://github.com/FrankKai/FrankKai.github.io/issues/16)
   - [如何理解scrum？](https://github.com/FrankKai/FrankKai.github.io/issues/120)
+  - [注释那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/62)
+  - [UML那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/151)
   
 
 >期待和大家交流，共同进步，欢迎大家加入我创建的与前端开发密切相关的技术讨论小组：
