@@ -62,6 +62,7 @@
   - [[译]ES8发布及主要新特性介绍](https://github.com/FrankKai/FrankKai.github.io/issues/14)
   - [Javascript中的Map类](https://github.com/FrankKai/FrankKai.github.io/issues/155)
 ### 前端存储
+- [浅析前端上传](https://github.com/FrankKai/FrankKai.github.io/issues/152)
 - [blob URL那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/138)
 - [localStorage，sessionStorage存储限制是多大？](https://github.com/FrankKai/FrankKai.github.io/issues/179)
 ### 前端通信
