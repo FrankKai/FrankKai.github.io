@@ -109,6 +109,7 @@
 ### 前端框架
   - [Vue踩坑记录](https://github.com/FrankKai/FrankKai.github.io/issues/31)
   - [如何理解vue中的key？](https://github.com/FrankKai/FrankKai.github.io/issues/167)
+  - [如何理解vue中的v-model？](https://github.com/FrankKai/FrankKai.github.io/issues/187)
   - [Vuex那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/106)
   - [vue的重中之重之h(createElement)函数](https://github.com/FrankKai/FrankKai.github.io/issues/57)
   - [vue源码中"好的写法"](https://github.com/FrankKai/FrankKai.github.io/issues/86)
