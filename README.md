@@ -41,6 +41,8 @@
   - [一些好用的模板引擎库](https://github.com/FrankKai/FrankKai.github.io/issues/143)
   - [如何理解Range和Selection对象？](https://github.com/FrankKai/FrankKai.github.io/issues/140)
   - [关于WAI-ARIA那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/127)
+  - [DOM进阶之EventTarget](https://github.com/FrankKai/FrankKai.github.io/issues/188)
+  - [DOM进阶之Node](https://github.com/FrankKai/FrankKai.github.io/issues/189)
   - [[译]HTML进阶之Content categories](https://github.com/FrankKai/FrankKai.github.io/issues/73)
   - [[译]HTML进阶之Data attributes](https://github.com/FrankKai/FrankKai.github.io/issues/72)
   - [[译]如何隐藏DOM元素？](https://github.com/FrankKai/FrankKai.github.io/issues/142)
