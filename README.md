@@ -38,6 +38,7 @@
   - [DOM进阶之EventTarget](https://github.com/FrankKai/FrankKai.github.io/issues/188)
   - [DOM进阶之Node](https://github.com/FrankKai/FrankKai.github.io/issues/189)
   - [DOM进阶之Element和NodeList](https://github.com/FrankKai/FrankKai.github.io/issues/190)
+  - [DOM进阶之querySelector和querySelectorAll](https://github.com/FrankKai/FrankKai.github.io/issues/191)
   - [一次简单的Virtual DOM实验](https://github.com/FrankKai/FrankKai.github.io/issues/88)
   - [富文本编辑器复制拖拽图片](https://github.com/FrankKai/FrankKai.github.io/issues/114)
   - [深入理解slot算法和shadow DOM](https://github.com/FrankKai/FrankKai.github.io/issues/125)
