@@ -96,6 +96,7 @@
   - [什么是resquest／response拦截器？](https://github.com/FrankKai/FrankKai.github.io/issues/18)
   - [什么是Web Workers?](https://github.com/FrankKai/FrankKai.github.io/issues/17)
   - [一次失败的用web worker提升速度的实践](https://github.com/FrankKai/FrankKai.github.io/issues/181)
+  - [如何处理浏览器的断网情况?](https://github.com/FrankKai/FrankKai.github.io/issues/194)
   - [那些闻所未闻的前端通信API](https://github.com/FrankKai/FrankKai.github.io/issues/87)
   - [ServiceWorkers那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/131)
   - [如何理解same-origin policy？](https://github.com/FrankKai/FrankKai.github.io/issues/144)
