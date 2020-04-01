@@ -140,6 +140,12 @@
   - [如何理解debounce和throttle](https://github.com/FrankKai/FrankKai.github.io/issues/133)
   - [前端内存泄露浅析](https://github.com/FrankKai/FrankKai.github.io/issues/158)
   - [javascript内存分配 ](https://github.com/FrankKai/FrankKai.github.io/issues/89)
+  - [[译]渲染性能优化之渲染的5个阶段(JS->Style->Layout->Paint->Composite)](https://github.com/FrankKai/FrankKai.github.io/issues/195)
+  - [[译]渲染性能优化之JS篇](https://github.com/FrankKai/FrankKai.github.io/issues/196)
+  - [[译]渲染性能优化之Style篇](https://github.com/FrankKai/css-level-up/issues/197)
+  - [[译]渲染性能优化之Layout篇](https://github.com/FrankKai/css-level-up/issues/198)
+  - [[译]渲染性能优化之Paint篇](https://github.com/FrankKai/css-level-up/issues/199)
+  - [[译]渲染性能优化之Composite篇](https://github.com/FrankKai/css-level-up/issues/200)
 
 ### 前端测试
   - [记一次简单的vue组件单元测试](https://github.com/FrankKai/FrankKai.github.io/issues/122)
