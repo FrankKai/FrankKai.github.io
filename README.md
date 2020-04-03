@@ -84,6 +84,7 @@
   - [js中的of和in那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/184)
   - [TypeScript入门](https://github.com/FrankKai/FrankKai.github.io/issues/105)
   - [es6 class 之 static](https://github.com/FrankKai/FrankKai.github.io/issues/201)
+  - [es6 class 之 super](https://github.com/FrankKai/FrankKai.github.io/issues/202)
 
 ### 前端存储
 - [浅析前端上传](https://github.com/FrankKai/FrankKai.github.io/issues/152)
