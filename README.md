@@ -30,7 +30,7 @@
   - CI/CD
 - 随想
 
-## 前端技术
+## 前端
 ### HTML
   - [深入理解inline元素，block-level元素和display属性](https://github.com/FrankKai/FrankKai.github.io/issues/75)
   - [一些低调的HTML标签](https://github.com/FrankKai/FrankKai.github.io/issues/83)
