@@ -177,13 +177,13 @@
 
 ## NodeJS
 ### node基础
+- [强大的异步专家process.nextTick()](https://github.com/FrankKai/FrankKai.github.io/issues/205)
 - [关于npm那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/41)
 - [yarn那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/71)
 - [如何理解package.json中的proxy字段？](https://github.com/FrankKai/FrankKai.github.io/issues/60)
 - [饿了么大前端题目解析：JS基础问题](https://github.com/FrankKai/FrankKai.github.io/issues/40)
 - [node 标准库常用语法](https://github.com/FrankKai/FrankKai.github.io/issues/77)
 - [module.exports和exports shortcut](https://github.com/FrankKai/FrankKai.github.io/issues/177)
-- [[译]Node.js Event Loop, Timers 和 process.nextTick()](https://github.com/FrankKai/FrankKai.github.io/issues/145)
 
 ### node框架
 - [API网关express-gateway初体验](https://github.com/FrankKai/FrankKai.github.io/issues/20)
