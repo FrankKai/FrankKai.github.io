@@ -1,4 +1,4 @@
-<img src="https://i.imgur.com/Abpd4NL.png"/>
+<img src="https://i.imgur.com/Abpd4NL.png" style="transform: translate(50%, 0);" />
 
 ## 趁你还年轻的博客
 
