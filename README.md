@@ -204,6 +204,7 @@
 - [关于MongoDB那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/43)
 
 ## 数据结构和算法
+leetcode javascript repo：(leetcode-js)[https://github.com/FrankKai/leetcode-js]
 ### 数据结构
 - [发现数据结构的美-栈](https://github.com/FrankKai/FrankKai.github.io/issues/208)
 ### 算法
