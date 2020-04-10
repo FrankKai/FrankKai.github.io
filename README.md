@@ -210,7 +210,7 @@ leetcode javascript repo：[leetcode-js](https://github.com/FrankKai/leetcode-js
 ### 算法
 - 暴力遍历
 - 递归
-- 快慢指针
+- 双指针（快慢指针、对撞指针）
 - 动态规划法
 - 贪心算法
 
