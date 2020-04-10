@@ -205,7 +205,11 @@
 
 ## 数据结构和算法
 ### 数据结构
+- [发现数据结构的美-栈](https://github.com/FrankKai/FrankKai.github.io/issues/208)
 ### 算法
+- 暴力遍历
+- 递归
+- 快慢指针
 
 ## 运维
 ### Git
