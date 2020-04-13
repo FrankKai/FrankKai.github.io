@@ -19,12 +19,12 @@
   - 前端测试
   - 前端工程化
   - 前端多媒体
+- 数据结构和算法
 - NodeJS
   - node基础
   - node框架
   - 安全
   - 数据库
-- 数据结构和算法
 - 运维
   - Git
   - Linux
@@ -181,6 +181,18 @@
   - [Canvas小册](https://github.com/FrankKai/FrankKai.github.io/issues/80)
   - [[译]Web Audio API基本概念](https://github.com/FrankKai/FrankKai.github.io/issues/168)
 
+## 数据结构和算法
+leetcode javascript repo：[leetcode-js](https://github.com/FrankKai/leetcode-js)
+### 数据结构
+- [发现数据结构之美-栈](https://github.com/FrankKai/FrankKai.github.io/issues/208)
+### 算法
+- [发现算法之美-双指针之对撞指针](https://github.com/FrankKai/FrankKai.github.io/issues/209)
+- 暴力遍历
+- 递归
+- 双指针（快慢指针、对撞指针）
+- 动态规划法
+- 贪心算法
+
 ## NodeJS
 ### node基础
 - [强大的异步专家process.nextTick()](https://github.com/FrankKai/FrankKai.github.io/issues/205)
@@ -202,18 +214,6 @@
 
 ### 数据库
 - [关于MongoDB那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/43)
-
-## 数据结构和算法
-leetcode javascript repo：[leetcode-js](https://github.com/FrankKai/leetcode-js)
-### 数据结构
-- [发现数据结构的美-栈](https://github.com/FrankKai/FrankKai.github.io/issues/208)
-### 算法
-- [发现算法之美-双指针之对撞指针](https://github.com/FrankKai/FrankKai.github.io/issues/209)
-- 暴力遍历
-- 递归
-- 双指针（快慢指针、对撞指针）
-- 动态规划法
-- 贪心算法
 
 ## 运维
 ### Git
