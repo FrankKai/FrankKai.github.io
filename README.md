@@ -189,6 +189,7 @@ leetcode javascript repo：[leetcode-js](https://github.com/FrankKai/leetcode-js
 ### 算法
 - [发现算法之美-时间复杂度](https://github.com/FrankKai/FrankKai.github.io/issues/211)
 - [发现算法之美-双指针之对撞指针](https://github.com/FrankKai/FrankKai.github.io/issues/209)
+- 排序（快速排序、归并排序、Timsort、堆排序、冒泡排序、插入排序、选择排序、树排序、希尔排序、桶排序、基数排序、计数排序、立方体排序）
 - 暴力遍历
 - 递归
 - 双指针（快慢指针、对撞指针）
