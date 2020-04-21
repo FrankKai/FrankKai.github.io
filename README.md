@@ -193,6 +193,7 @@ leetcode javascript repo：[leetcode-js](https://github.com/FrankKai/leetcode-js
 - 暴力遍历
 - 递归
 - 双指针（快慢指针、对撞指针）
+- 二分查找法
 - 动态规划法
 - 贪心算法
 
