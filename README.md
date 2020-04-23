@@ -178,8 +178,11 @@
   - [Jenkins前端项目持续部署](https://github.com/FrankKai/FrankKai.github.io/issues/92)
   - [[译]什么是CSS Modules ？我们为什么需要他们？](https://github.com/FrankKai/FrankKai.github.io/issues/45)
 
-### 前端多媒体
-  - [Canvas小册](https://github.com/FrankKai/FrankKai.github.io/issues/80)
+### 前端可视化
+  - [Canvas那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/80)
+  - [如何理解data URL？](https://github.com/FrankKai/FrankKai.github.io/issues/212)
+  
+### 前端音视频
   - [[译]Web Audio API基本概念](https://github.com/FrankKai/FrankKai.github.io/issues/168)
 
 ## 数据结构和算法
