@@ -164,6 +164,7 @@
 
 ### 前端工程化
   - [实用webpack插件之DefinePlugin](https://github.com/FrankKai/FrankKai.github.io/issues/206)
+  - [实用webpack插件之ProvidePlugin](https://github.com/FrankKai/FrankKai.github.io/issues/214)
   - [实用webpack插件之webpack-chain](https://github.com/FrankKai/FrankKai.github.io/issues/207)
   - [Webpack那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/130)
   - [webhook到底是个啥](https://github.com/FrankKai/FrankKai.github.io/issues/90)
