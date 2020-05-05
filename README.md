@@ -93,6 +93,7 @@
   - [深入理解JSON.stringify()](https://github.com/FrankKai/FrankKai.github.io/issues/203)
   - [js数组高级函数之reduce()](https://github.com/FrankKai/FrankKai.github.io/issues/210)
   - [如何理解Object.defineProperty()](https://github.com/FrankKai/FrankKai.github.io/issues/215)
+  - [如何理解并发模型(concurrency model)和事件循环(event loop)？](https://github.com/FrankKai/FrankKai.github.io/issues/216)
 
 ### 前端存储
 - [浅析前端上传](https://github.com/FrankKai/FrankKai.github.io/issues/152)
