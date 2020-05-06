@@ -94,7 +94,9 @@
   - [js数组高级函数之reduce()](https://github.com/FrankKai/FrankKai.github.io/issues/210)
   - [如何理解Object.defineProperty()](https://github.com/FrankKai/FrankKai.github.io/issues/215)
   - [[译]如何理解并发模型(concurrency model)和事件循环(event loop)？](https://github.com/FrankKai/FrankKai.github.io/issues/216)
+  - [[译]如何理解任务(task)和微任务(microtask)？](https://github.com/FrankKai/FrankKai.github.io/issues/218)
   - [[译]异步JavaScript之通用异步编程概念](https://github.com/FrankKai/FrankKai.github.io/issues/217)
+  
 
 ### 前端存储
 - [浅析前端上传](https://github.com/FrankKai/FrankKai.github.io/issues/152)
