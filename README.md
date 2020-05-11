@@ -276,7 +276,6 @@ leetcode javascript repo：[leetcode-js](https://github.com/FrankKai/leetcode-js
  - [Secure Context是什么？](https://github.com/FrankKai/FrankKai.github.io/issues/153)
  - [离线应用那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/149)
  - [SVG入门](https://github.com/FrankKai/FrankKai.github.io/issues/137)
- - [掘金小册《前端性能优化原理与实践》知识盲区](https://github.com/FrankKai/FrankKai.github.io/issues/129)
  - [一些有趣的浏览器装逼神器](https://github.com/FrankKai/FrankKai.github.io/issues/115)
 
 >期待和大家交流，共同进步，欢迎大家加入我创建的与前端开发密切相关的技术讨论小组：
