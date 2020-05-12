@@ -104,6 +104,7 @@
 - [localStorage，sessionStorage存储限制是多大？](https://github.com/FrankKai/FrankKai.github.io/issues/179)
 
 ### 前端通信
+  - [HTTP之强缓存和协商缓存](https://github.com/FrankKai/FrankKai.github.io/issues/219)
   - [物联网宠儿mqtt.js那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/204)
   - [前端通信那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/98)
   - [请求串行控制和并行控制 ](https://github.com/FrankKai/FrankKai.github.io/issues/175)
