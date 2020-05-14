@@ -169,6 +169,7 @@
   - [[译]单元测试,TDD和BDD之间的区别是什么](https://github.com/FrankKai/FrankKai.github.io/issues/123)
 
 ### 前端工程化
+  - [ES6之使用import()做按需引入](https://github.com/FrankKai/FrankKai.github.io/issues/220)
   - [实用webpack插件之DefinePlugin](https://github.com/FrankKai/FrankKai.github.io/issues/206)
   - [实用webpack插件之ProvidePlugin](https://github.com/FrankKai/FrankKai.github.io/issues/214)
   - [实用webpack插件之webpack-chain](https://github.com/FrankKai/FrankKai.github.io/issues/207)
