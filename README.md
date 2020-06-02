@@ -203,12 +203,12 @@ leetcode javascript repo：[leetcode-js](https://github.com/FrankKai/leetcode-js
 - [发现数据结构之美-栈](https://github.com/FrankKai/FrankKai.github.io/issues/208)
 ### 算法
 - [发现算法之美-时间复杂度](https://github.com/FrankKai/FrankKai.github.io/issues/211)
-- 暴力遍历
-- 递归
-- 二分查找法
+- [发现算法之美-暴力遍历](https://github.com/FrankKai/FrankKai.github.io/issues/224)
 - [发现算法之美-双指针之对撞指针](https://github.com/FrankKai/FrankKai.github.io/issues/209)
 - 双指针之快慢指针
 - 排序（快速排序、归并排序、Timsort、堆排序、冒泡排序、插入排序、选择排序、树排序、希尔排序、桶排序、基数排序、计数排序、立方体排序）
+- 递归
+- 二分查找法
 - 动态规划法
 - 贪心算法
 ### 手写Array.prototye系列
