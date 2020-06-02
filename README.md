@@ -212,7 +212,7 @@ leetcode javascript repo：[leetcode-js](https://github.com/FrankKai/leetcode-js
 - 动态规划法
 - 贪心算法
 ### 手写系列
-- 手写Array.prototype.filter
+- [手写Array.prototype.filter](https://github.com/FrankKai/FrankKai.github.io/issues/225)
 
 ## NodeJS
 ### node基础
