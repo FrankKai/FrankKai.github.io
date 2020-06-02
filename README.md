@@ -211,7 +211,7 @@ leetcode javascript repo：[leetcode-js](https://github.com/FrankKai/leetcode-js
 - 二分查找法
 - 动态规划法
 - 贪心算法
-### 手写Array.prototye系列
+### 手写系列
 - 手写Array.prototype.filter
 
 ## NodeJS
