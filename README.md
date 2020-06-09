@@ -64,6 +64,7 @@
   - [CSS动画之transition](https://github.com/FrankKai/FrankKai.github.io/issues/185)
   - [CSS进阶之CSS变量](https://github.com/FrankKai/FrankKai.github.io/issues/186)
   - [CSS进阶之getComputedStyle()](https://github.com/FrankKai/FrankKai.github.io/issues/192)
+  - [[译]CSSOM（CSS Object Model）介绍和指南](https://github.com/FrankKai/FrankKai.github.io/issues/227)
 
 ### JavaScript
   - [你真的理解==和===的区别吗？](https://github.com/FrankKai/FrankKai.github.io/issues/10)
