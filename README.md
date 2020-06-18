@@ -96,6 +96,7 @@
   - [如何理解Object.defineProperty()](https://github.com/FrankKai/FrankKai.github.io/issues/215)
   - [JavaScript实际使用中的细节记录](https://github.com/FrankKai/FrankKai.github.io/issues/223)
   - [浅谈浏览器架构、单线程js、事件循环、消息队列、宏任务和微任务](https://github.com/FrankKai/FrankKai.github.io/issues/228)
+  - [深入理解Array.prototype.sort()](https://github.com/FrankKai/FrankKai.github.io/issues/229)
   - [[译]如何理解并发模型(concurrency model)和事件循环(event loop)？](https://github.com/FrankKai/FrankKai.github.io/issues/216)
   - [[译]如何理解任务(task)和微任务(microtask)？](https://github.com/FrankKai/FrankKai.github.io/issues/218)
   - [[译]异步JavaScript之通用异步编程概念](https://github.com/FrankKai/FrankKai.github.io/issues/217)
