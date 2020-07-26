@@ -130,9 +130,10 @@
   - [记一次简单的DOM XSS攻击实验](https://github.com/FrankKai/FrankKai.github.io/issues/9)
   - [网站防嵌套猜想及实验验证](https://github.com/FrankKai/FrankKai.github.io/issues/33)
   - [web安全之敏感数据格式HAR](https://github.com/FrankKai/FrankKai.github.io/issues/54)
-  - [一些想不到的前端安全知识点](https://github.com/FrankKai/FrankKai.github.io/issues/98)
   - [前端cookie总结](https://github.com/FrankKai/FrankKai.github.io/issues/154)
   - [前端唯一标识那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/162)
+  - [[译]Introduction to JSON Web Tokens](https://github.com/FrankKai/FrankKai.github.io/issues/232)
+  - [[译]md5的salt是什么？](https://github.com/FrankKai/FrankKai.github.io/issues/233)
 
 ### 前端框架
   - [如何理解vue中的key？](https://github.com/FrankKai/FrankKai.github.io/issues/167)
