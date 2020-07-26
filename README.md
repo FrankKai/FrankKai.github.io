@@ -132,8 +132,9 @@
   - [web安全之敏感数据格式HAR](https://github.com/FrankKai/FrankKai.github.io/issues/54)
   - [前端cookie总结](https://github.com/FrankKai/FrankKai.github.io/issues/154)
   - [前端唯一标识那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/162)
-  - [[译]Introduction to JSON Web Tokens](https://github.com/FrankKai/FrankKai.github.io/issues/232)
-  - [[译]md5的salt是什么？](https://github.com/FrankKai/FrankKai.github.io/issues/233)
+  - [[译]Introduction to JSON Web Tokens](https://github.com/FrankKai/FrankKai.github.io/issues/170)
+  - [[译]md5的salt是什么](https://github.com/FrankKai/FrankKai.github.io/issues/171)
+
 
 ### 前端框架
   - [如何理解vue中的key？](https://github.com/FrankKai/FrankKai.github.io/issues/167)
@@ -233,10 +234,6 @@ leetcode javascript repo：[leetcode-js](https://github.com/FrankKai/leetcode-js
 - [API网关express-gateway初体验](https://github.com/FrankKai/FrankKai.github.io/issues/20)
 - [koa2如何设置和清除cookie](https://github.com/FrankKai/FrankKai.github.io/issues/29)
 - [GraphQL入门](https://github.com/FrankKai/FrankKai.github.io/issues/147)
-
-### 安全
-- [[译]Introduction to JSON Web Tokens](https://github.com/FrankKai/FrankKai.github.io/issues/170)
-- [[译]md5的salt是什么](https://github.com/FrankKai/FrankKai.github.io/issues/171)
 
 ### 数据库
 - [关于MongoDB那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/43)
