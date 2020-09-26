@@ -255,6 +255,7 @@ leetcode javascript repo：[leetcode-js](https://github.com/FrankKai/leetcode-js
   - [[译]Soft and Hard links in Unxi/Linux](https://github.com/FrankKai/FrankKai.github.io/issues/159)
   
 ### CI/CD
+  - [常用pm2、docker、k8s命令](https://github.com/FrankKai/FrankKai.github.io/issues/234)
   - [docker入门](https://github.com/FrankKai/FrankKai.github.io/issues/139)
   - [持续集成工具Jenkins初体验](https://github.com/FrankKai/FrankKai.github.io/issues/28)
   - [创建集群-使用Minikube建立一个集群](https://github.com/FrankKai/FrankKai.github.io/issues/21)
