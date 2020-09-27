@@ -248,6 +248,7 @@ leetcode javascript repo：[leetcode-js](https://github.com/FrankKai/leetcode-js
   - [vim 编辑器必知必会](https://github.com/FrankKai/FrankKai.github.io/issues/117)
   - [原来命令行也是门艺术](https://github.com/FrankKai/FrankKai.github.io/issues/27)
   - [一些Linux知识点](https://github.com/FrankKai/FrankKai.github.io/issues/116)
+  - [centos入门](https://github.com/FrankKai/FrankKai.github.io/issues/235)
   - [[译]Soft and Hard links in Unxi/Linux](https://github.com/FrankKai/FrankKai.github.io/issues/159)
   
 ### CI/CD
