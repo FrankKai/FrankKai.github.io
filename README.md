@@ -230,6 +230,7 @@ leetcode javascript repo：[leetcode-js](https://github.com/FrankKai/leetcode-js
 - [API网关express-gateway初体验](https://github.com/FrankKai/FrankKai.github.io/issues/20)
 - [koa2如何设置和清除cookie](https://github.com/FrankKai/FrankKai.github.io/issues/29)
 - [GraphQL入门](https://github.com/FrankKai/FrankKai.github.io/issues/147)
+- [express中间件原理connect](https://github.com/FrankKai/FrankKai.github.io/issues/236)
 
 ### 数据库
 - [关于MongoDB那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/43)
