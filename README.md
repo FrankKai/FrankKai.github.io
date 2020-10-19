@@ -265,6 +265,7 @@ leetcode javascript repo：[leetcode-js](https://github.com/FrankKai/leetcode-js
   - [更新APP-执行滚动更新](https://github.com/FrankKai/FrankKai.github.io/issues/26)
   
 ## 程序员
+  - [正则表达式](https://github.com/FrankKai/FrankKai.github.io/issues/156)
   - [字符串base64编解码的多种语言实现](https://github.com/FrankKai/FrankKai.github.io/issues/4)
   - [Something more important than code](https://github.com/FrankKai/FrankKai.github.io/issues/16)、
   - [注释那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/62)
@@ -273,6 +274,7 @@ leetcode javascript repo：[leetcode-js](https://github.com/FrankKai/leetcode-js
   - [如何参与开源项目？](https://github.com/FrankKai/FrankKai.github.io/issues/111)
   - [如何理解scrum？](https://github.com/FrankKai/FrankKai.github.io/issues/120)
   - [Chrome Devtool小技巧](https://github.com/FrankKai/FrankKai.github.io/issues/107)
+  - [一些有趣的浏览器装逼神器](https://github.com/FrankKai/FrankKai.github.io/issues/115)
   
 ## 随想
   - [大厂前端技术栈探索和思考](https://github.com/FrankKai/FrankKai.github.io/issues/15)
@@ -281,11 +283,8 @@ leetcode javascript repo：[leetcode-js](https://github.com/FrankKai/leetcode-js
   
  ## working
  - [[译]HTML5 安全备忘单](https://github.com/FrankKai/FrankKai.github.io/issues/180)
- - [正则表达式](https://github.com/FrankKai/FrankKai.github.io/issues/156)
- - [Secure Context是什么？](https://github.com/FrankKai/FrankKai.github.io/issues/153)
- - [离线应用那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/149)
  - [SVG入门](https://github.com/FrankKai/FrankKai.github.io/issues/137)
- - [一些有趣的浏览器装逼神器](https://github.com/FrankKai/FrankKai.github.io/issues/115)
+
 
 >期待和大家交流，共同进步，欢迎大家加入我创建的与前端开发密切相关的技术讨论小组：
 > - SegmentFault技术圈:[ES新规范语法糖](https://segmentfault.com/g/1570000010695363)
