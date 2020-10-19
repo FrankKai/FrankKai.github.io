@@ -29,6 +29,7 @@
   - Git
   - Linux
   - CI/CD
+- 程序员
 - 随想
 
 ## 前端
@@ -263,17 +264,19 @@ leetcode javascript repo：[leetcode-js](https://github.com/FrankKai/leetcode-js
   - [伸缩APP-运行多个APP实例](https://github.com/FrankKai/FrankKai.github.io/issues/25)
   - [更新APP-执行滚动更新](https://github.com/FrankKai/FrankKai.github.io/issues/26)
   
-## 随想
-  - [大厂前端技术栈探索和思考](https://github.com/FrankKai/FrankKai.github.io/issues/15)
+## 程序员
   - [字符串base64编解码的多种语言实现](https://github.com/FrankKai/FrankKai.github.io/issues/4)
-  - [Something more important than code](https://github.com/FrankKai/FrankKai.github.io/issues/16)
-  - [如何理解scrum？](https://github.com/FrankKai/FrankKai.github.io/issues/120)
+  - [Something more important than code](https://github.com/FrankKai/FrankKai.github.io/issues/16)、
   - [注释那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/62)
   - [UML那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/151)
-  - [告别2018喜迎2019](https://github.com/FrankKai/FrankKai.github.io/issues/136)
   - [一直被忽略的zen-coding](https://github.com/FrankKai/FrankKai.github.io/issues/128)
   - [如何参与开源项目？](https://github.com/FrankKai/FrankKai.github.io/issues/111)
+  - [如何理解scrum？](https://github.com/FrankKai/FrankKai.github.io/issues/120)
   - [Chrome Devtool小技巧](https://github.com/FrankKai/FrankKai.github.io/issues/107)
+  
+## 随想
+  - [大厂前端技术栈探索和思考](https://github.com/FrankKai/FrankKai.github.io/issues/15)
+  - [告别2018喜迎2019](https://github.com/FrankKai/FrankKai.github.io/issues/136)
   - [趁你还年轻的个人简历](https://github.com/FrankKai/FrankKai.github.io/issues/63)
   
  ## working
