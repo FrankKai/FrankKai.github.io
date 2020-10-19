@@ -6,8 +6,6 @@
 
 主要包括前端，NodeJS，运维和随想。文章在issues。目前主要从事前端开发工作。
 
-- 前端
-
 <details>
   <summary><b>前端</b></summary>
   <pre>
