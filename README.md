@@ -141,7 +141,7 @@
   - [如何理解same-origin policy？](https://github.com/FrankKai/FrankKai.github.io/issues/144)
   - [协议小册](https://github.com/FrankKai/FrankKai.github.io/issues/82)
   - [HTTP小册](https://github.com/FrankKai/FrankKai.github.io/issues/79)
-  - [精读趣谈网络协议](https://github.com/FrankKai/FrankKai.github.io/issues/93)
+  - [如何理解HTTP请求方法POST？](https://github.com/FrankKai/FrankKai.github.io/issues/241)
   - [如何理解HTTP方法的安全性，幂等性和缓存性？](https://github.com/FrankKai/FrankKai.github.io/issues/238)
   - [HTTP缓存之Cache-Control](https://github.com/FrankKai/FrankKai.github.io/issues/240)
   - [HTTP缓存之ETag](https://github.com/FrankKai/FrankKai.github.io/issues/239)
