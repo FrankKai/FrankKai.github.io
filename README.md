@@ -154,6 +154,7 @@
   - [前端唯一标识那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/162)
   - [[译]Introduction to JSON Web Tokens](https://github.com/FrankKai/FrankKai.github.io/issues/170)
   - [[译]md5的salt是什么](https://github.com/FrankKai/FrankKai.github.io/issues/171)
+  - [【译】Cross Site Request Forgery（CSRF](https://github.com/FrankKai/FrankKai.github.io/issues/242)
 
 
 ### 前端框架
