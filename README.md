@@ -301,10 +301,6 @@ leetcode javascript repo：[leetcode-js](https://github.com/FrankKai/leetcode-js
   - [大厂前端技术栈探索和思考](https://github.com/FrankKai/FrankKai.github.io/issues/15)
   - [告别2018喜迎2019](https://github.com/FrankKai/FrankKai.github.io/issues/136)
   - [趁你还年轻的个人简历](https://github.com/FrankKai/FrankKai.github.io/issues/63)
-  
- ## working
- - [[译]HTML5 安全备忘单](https://github.com/FrankKai/FrankKai.github.io/issues/180)
- - [SVG入门](https://github.com/FrankKai/FrankKai.github.io/issues/137)
 
 >期待和大家交流，共同进步，欢迎大家加入我创建的与前端开发密切相关的技术讨论小组：
 >- 微信公众号： 生活在浏览器里的我们 / excellent_developers
