@@ -152,6 +152,7 @@
   - [web安全之敏感数据格式HAR](https://github.com/FrankKai/FrankKai.github.io/issues/54)
   - [前端cookie总结](https://github.com/FrankKai/FrankKai.github.io/issues/154)
   - [前端唯一标识那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/162)
+  - [前端安全笔记](https://github.com/FrankKai/FrankKai.github.io/issues/243)
   - [[译]Introduction to JSON Web Tokens](https://github.com/FrankKai/FrankKai.github.io/issues/170)
   - [[译]md5的salt是什么](https://github.com/FrankKai/FrankKai.github.io/issues/171)
   - [【译】Cross Site Request Forgery（CSRF)](https://github.com/FrankKai/FrankKai.github.io/issues/242)
