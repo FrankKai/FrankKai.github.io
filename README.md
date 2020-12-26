@@ -177,6 +177,7 @@
   - [一些特别棒的面试题[1]](https://github.com/FrankKai/FrankKai.github.io/issues/5)
   - [一些特别棒的面试题[2]](https://github.com/FrankKai/FrankKai.github.io/issues/66)
   - [一些特别棒的面试题[3]](https://github.com/FrankKai/FrankKai.github.io/issues/141)
+  - [一些特别棒的面试题[4]](https://github.com/FrankKai/FrankKai.github.io/issues/245)
 
 ### 前端性能
   - [CSS3动画卡顿性能优化解决方案](https://github.com/FrankKai/FrankKai.github.io/issues/8)
