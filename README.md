@@ -308,7 +308,6 @@ leetcode javascript repo：[leetcode-js](https://github.com/FrankKai/leetcode-js
 >- 微信公众号： 生活在浏览器里的我们 / excellent_developers
 >- Github博客: [趁你还年轻233的个人博客](https://github.com/FrankKai/FrankKai.github.io)
 > - SegmentFault专栏：[趁你还年轻，做个优秀的前端工程师](https://segmentfault.com/blog/chennihainianqing)
-> - SegmentFault技术圈:[ES新规范语法糖](https://segmentfault.com/g/1570000010695363)
 >- 知乎专栏：[趁你还年轻，做个优秀的前端工程师](https://zhuanlan.zhihu.com/wyasy)
 
 ### 微信公众号： 生活在浏览器里的我们 / excellent_developers
