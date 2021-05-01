@@ -6,47 +6,6 @@
 
 趁你还年轻的技术博客，主要包括前端，node，运维和随想，文章在issues。目前主要从事前端开发工作。
 
-<details>
-  <summary><b>前端</b></summary>
-  <pre>
-- HTML
-- CSS
-- JavaScript
-- 前端存储
-- 前端通信
-- 前端安全
-- 前端框架
-- 前端面试
-- 前端性能
-- 前端测试
-- 前端工程化
-- 前端多媒体
-  </pre>
-</details>
-
-<p><b>数据结构和算法</b></p>
-
-<details>
-  <summary><b>NodeJS</b></summary>
-  <pre>
-- node基础
-- node框架
-- 安全
-- 数据库
-  </pre>
-</details>
-
-<details>
-  <summary><b>运维</b></summary>
-  <pre>
-- Git
-- Linux
-- CI/CD
-  </pre>
-</details>
-  
-<p><b>程序员</b></p>
-<p><b>随想</b></p>
 
 ## 前端
 ### HTML
