@@ -186,7 +186,8 @@
   - [[译]Web Audio API基本概念](https://github.com/FrankKai/FrankKai.github.io/issues/168)
 
 ## 数据结构和算法
-leetcode javascript repo：[leetcode-js](https://github.com/FrankKai/leetcode-js)
+
+### [leetcode js题解](https://github.com/FrankKai/leetcode-js)
 ### 数据结构
 - [发现数据结构之美-栈](https://github.com/FrankKai/FrankKai.github.io/issues/208)
 ### 算法
@@ -195,7 +196,7 @@ leetcode javascript repo：[leetcode-js](https://github.com/FrankKai/leetcode-js
 - [发现算法之美-双指针之对撞指针](https://github.com/FrankKai/FrankKai.github.io/issues/209)
 - [发现算法之美-排序(冒泡排序、选择排序、插入排序、归并排序、快速排序)](https://github.com/FrankKai/FrankKai.github.io/issues/226)
 ### 手写系列
-- [手写Array.prototype.*](https://github.com/FrankKai/FrankKai.github.io/issues/225)
+- [手写Array/Map/Set](https://github.com/FrankKai/handwritten-js)
 
 ## NodeJS
 ### node基础
@@ -237,12 +238,6 @@ leetcode javascript repo：[leetcode-js](https://github.com/FrankKai/leetcode-js
   - [常用pm2、docker、k8s命令](https://github.com/FrankKai/FrankKai.github.io/issues/234)
   - [docker入门](https://github.com/FrankKai/FrankKai.github.io/issues/139)
   - [持续集成工具Jenkins初体验](https://github.com/FrankKai/FrankKai.github.io/issues/28)
-  - [创建集群-使用Minikube建立一个集群](https://github.com/FrankKai/FrankKai.github.io/issues/21)
-  - [部署APP-使用kubectl创建一个部署](https://github.com/FrankKai/FrankKai.github.io/issues/22)
-  - [探索App-查看Pods和Nodes](https://github.com/FrankKai/FrankKai.github.io/issues/23)
-  - [公开APP-使用Service来公开你的应用](https://github.com/FrankKai/FrankKai.github.io/issues/24)
-  - [伸缩APP-运行多个APP实例](https://github.com/FrankKai/FrankKai.github.io/issues/25)
-  - [更新APP-执行滚动更新](https://github.com/FrankKai/FrankKai.github.io/issues/26)
   
 ## 程序员
   - [正则表达式](https://github.com/FrankKai/FrankKai.github.io/issues/156)
