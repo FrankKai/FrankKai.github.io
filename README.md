@@ -126,7 +126,8 @@
   - [Vuex那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/106)
   - [vue的重中之重之h(createElement)函数](https://github.com/FrankKai/FrankKai.github.io/issues/57)
   - [AngularJS踩坑记录](https://github.com/FrankKai/FrankKai.github.io/issues/47)
-  - [React踩坑记录](https://github.com/FrankKai/FrankKai.github.io/issues/53)
+  - [React那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/247)
+  - [React hooks那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/248)
   - [异步优先队列$nextTick的踩坑](https://github.com/FrankKai/FrankKai.github.io/issues/30)
   - [[译]Presentational and Container Components](https://github.com/FrankKai/FrankKai.github.io/issues/13)
 
