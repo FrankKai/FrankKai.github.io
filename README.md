@@ -208,6 +208,7 @@
 - [饿了么大前端题目解析：JS基础问题](https://github.com/FrankKai/FrankKai.github.io/issues/40)
 - [node 标准库常用语法](https://github.com/FrankKai/FrankKai.github.io/issues/77)
 - [module.exports和exports shortcut](https://github.com/FrankKai/FrankKai.github.io/issues/177)
+- [nodejs创建进程的4种方式](https://github.com/FrankKai/FrankKai.github.io/issues/249)
 
 ### node框架
 - [API网关express-gateway初体验](https://github.com/FrankKai/FrankKai.github.io/issues/20)
