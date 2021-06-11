@@ -45,6 +45,7 @@
   - [[译]CSSOM（CSS Object Model）介绍和指南](https://github.com/FrankKai/FrankKai.github.io/issues/227)
 
 ### JavaScript
+  - [如何理解WeakMap?](https://github.com/FrankKai/FrankKai.github.io/issues/251)
   - [你真的理解==和===的区别吗？](https://github.com/FrankKai/FrankKai.github.io/issues/10)
   - [深度剖析0.1 +0.2===0.30000000000000004的原因](https://github.com/FrankKai/FrankKai.github.io/issues/7)
   - [如何解决0.1 +0.2===0.30000000000000004类问题](https://github.com/FrankKai/FrankKai.github.io/issues/11)
