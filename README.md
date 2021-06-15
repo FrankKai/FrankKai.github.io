@@ -36,6 +36,7 @@
   - [简单理解CSS layout和Flex布局](https://github.com/FrankKai/FrankKai.github.io/issues/132)
   - [CSS进阶之Grid布局](https://github.com/FrankKai/FrankKai.github.io/issues/231)
   - [Scoped CSS是什么？](https://github.com/FrankKai/FrankKai.github.io/issues/176)
+  - [如何理解用于组件样式覆盖的:global?](https://github.com/FrankKai/FrankKai.github.io/issues/253)
   - [Sass的父选择器&](https://github.com/FrankKai/FrankKai.github.io/issues/182)
   - [CSS动画之timing functions](https://github.com/FrankKai/FrankKai.github.io/issues/183)
   - [CSS动画之transition](https://github.com/FrankKai/FrankKai.github.io/issues/185)
