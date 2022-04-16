@@ -209,6 +209,9 @@
 - [手写Array/Map/Set](https://github.com/FrankKai/handwritten-js)
 
 ## NodeJS
+### VSCode
+- [VSCode插件开发踩坑](https://github.com/FrankKai/FrankKai.github.io/issues/257)
+
 ### node基础
 - [强大的异步专家process.nextTick()](https://github.com/FrankKai/FrankKai.github.io/issues/205)
 - [关于npm那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/41)
