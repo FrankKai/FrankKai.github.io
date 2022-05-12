@@ -168,6 +168,8 @@
   - [记一次简单的vue组件单元测试](https://github.com/FrankKai/FrankKai.github.io/issues/122)
   - [[译]单元测试,TDD和BDD之间的区别是什么](https://github.com/FrankKai/FrankKai.github.io/issues/123)
 
+### WebComponent
+
 ### 前端工程化
   - [一次webpack3升级为webpack4的实践](https://github.com/FrankKai/FrankKai.github.io/issues/222)
   - [前端webpack构建优化](https://github.com/FrankKai/FrankKai.github.io/issues/221)
@@ -182,6 +184,7 @@
   - [前端开发神器之ngrok](https://github.com/FrankKai/FrankKai.github.io/issues/32)
   - [前端工程师必会之ssh命令](https://github.com/FrankKai/FrankKai.github.io/issues/91)
   - [nginx入门](https://github.com/FrankKai/FrankKai.github.io/issues/165)
+  - [WebComponents那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/259)
   - [create-react-app如何使用less/sass和react-css-modules?](https://github.com/FrankKai/FrankKai.github.io/issues/61)
   - [chrome控制台常用高级console指令](https://github.com/FrankKai/FrankKai.github.io/issues/84)
   - [如何使用Chrome DevTools花式打断点](https://github.com/FrankKai/FrankKai.github.io/issues/101)
