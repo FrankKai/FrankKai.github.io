@@ -197,6 +197,7 @@
   - [如何理解data URL？](https://github.com/FrankKai/FrankKai.github.io/issues/212)
   
 ### 前端音视频
+  - [前端语音转文字实践总结](https://github.com/FrankKai/FrankKai.github.io/issues/260)
   - [[译]Web Audio API基本概念](https://github.com/FrankKai/FrankKai.github.io/issues/168)
 
 ## 数据结构和算法
