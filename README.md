@@ -275,6 +275,7 @@
 ## 随想
   - [大厂前端技术栈探索和思考](https://github.com/FrankKai/FrankKai.github.io/issues/15)
   - [告别2018喜迎2019](https://github.com/FrankKai/FrankKai.github.io/issues/136)
+  - [白驹过隙，人生如梦](https://github.com/FrankKai/FrankKai.github.io/issues/261)
 
 >期待和大家交流，共同进步，欢迎大家加入我创建的与前端开发密切相关的技术讨论小组：
 >- 微信公众号： 生活在浏览器里的我们 / excellent_developers
