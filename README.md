@@ -71,7 +71,6 @@
   - [Javascript中的Map类](https://github.com/FrankKai/FrankKai.github.io/issues/155)
   - [es6必会之arrow functions](https://github.com/FrankKai/FrankKai.github.io/issues/109)
   - [js中的of和in那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/184)
-  - [TypeScript入门](https://github.com/FrankKai/FrankKai.github.io/issues/105)
   - [es6 class 之 static](https://github.com/FrankKai/FrankKai.github.io/issues/201)
   - [es6 class 之 super](https://github.com/FrankKai/FrankKai.github.io/issues/202)
   - [深入理解JSON.stringify()](https://github.com/FrankKai/FrankKai.github.io/issues/203)
@@ -83,7 +82,9 @@
   - [[译]如何理解任务(task)和微任务(microtask)？](https://github.com/FrankKai/FrankKai.github.io/issues/218)
   - [[译]异步JavaScript之通用异步编程概念](https://github.com/FrankKai/FrankKai.github.io/issues/217)
 
-  
+### TypeScript
+  - [TypeScript入门](https://github.com/FrankKai/FrankKai.github.io/issues/105)
+  - [TypeScript类型体操手写]((https://github.com/FrankKai/FrankKai.github.io/issues/105)
 
 ### 前端存储
 - [浅析前端上传](https://github.com/FrankKai/FrankKai.github.io/issues/152)
