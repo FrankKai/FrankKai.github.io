@@ -83,8 +83,7 @@
   - [[译]异步JavaScript之通用异步编程概念](https://github.com/FrankKai/FrankKai.github.io/issues/217)
 
 ### TypeScript
-  - [TypeScript入门](https://github.com/FrankKai/FrankKai.github.io/issues/105)
-  - [TypeScript类型体操手写]((https://github.com/FrankKai/FrankKai.github.io/issues/105)
+  - [TypeScript必知必会](https://github.com/FrankKai/FrankKai.github.io/issues/105)
 
 ### 前端存储
 - [浅析前端上传](https://github.com/FrankKai/FrankKai.github.io/issues/152)
