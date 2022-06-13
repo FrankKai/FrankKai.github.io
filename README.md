@@ -84,6 +84,7 @@
 
 ### TypeScript
   - [TypeScript必知必会](https://github.com/FrankKai/FrankKai.github.io/issues/105)
+  - [TypeScript类型体操](https://github.com/FrankKai/FrankKai.github.io/issues/262)
 
 ### 前端存储
 - [浅析前端上传](https://github.com/FrankKai/FrankKai.github.io/issues/152)
