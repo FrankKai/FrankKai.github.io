@@ -181,6 +181,7 @@
   - [实用webpack插件之webpack-chain](https://github.com/FrankKai/FrankKai.github.io/issues/207)
   - [Webpack那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/130)
   - [[译]如何写一个webpack Loader？](https://github.com/FrankKai/FrankKai.github.io/issues/263)
+  - [[译]如何写一个webpack plugin？](https://github.com/FrankKai/FrankKai.github.io/issues/264)
   - [webhook到底是个啥](https://github.com/FrankKai/FrankKai.github.io/issues/90)
   - [PostCSS真的太好用了！](https://github.com/FrankKai/FrankKai.github.io/issues/44)
   - [如何优雅地使用webpack的devtool进行debug？](https://github.com/FrankKai/FrankKai.github.io/issues/58)
