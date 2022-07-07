@@ -4,7 +4,7 @@
 
 ## 趁你还年轻的博客
 
-前端技术博客，微信公众号叫大大大前端
+前端技术博客
 
 
 ## 前端
@@ -281,13 +281,13 @@
   - [告别2018喜迎2019](https://github.com/FrankKai/FrankKai.github.io/issues/136)
   - [白驹过隙，人生如梦](https://github.com/FrankKai/FrankKai.github.io/issues/261)
 
->期待和大家交流，共同进步，欢迎大家加入我创建的与前端开发密切相关的技术讨论小组：
->- 微信公众号： 生活在浏览器里的我们 / excellent_developers
+>期待和大家交流，共同进步
+>- 微信公众号：大大大前端 / excellent_developers
 >- Github博客: [趁你还年轻233的个人博客](https://github.com/FrankKai/FrankKai.github.io)
-> - SegmentFault专栏：[趁你还年轻，做个优秀的前端工程师](https://segmentfault.com/blog/chennihainianqing)
+>- SegmentFault专栏：[趁你还年轻，做个优秀的前端工程师](https://segmentfault.com/blog/chennihainianqing)
 >- 知乎专栏：[趁你还年轻，做个优秀的前端工程师](https://zhuanlan.zhihu.com/wyasy)
 
-### 微信公众号： 生活在浏览器里的我们 / excellent_developers
+### 微信公众号： 大大大前端 / excellent_developers
 <img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5229b0a4e79a4f4fae8237ed832ee7d6~tplv-k3u1fbpfcp-zoom-1.image" width="300">
 
 >努力成为优秀的前端工程师！
