@@ -167,7 +167,6 @@
   - [实用webpack插件之ProvidePlugin](https://github.com/FrankKai/FrankKai.github.io/issues/214)
   - [实用webpack插件之webpack-chain](https://github.com/FrankKai/FrankKai.github.io/issues/207)
   - [Webpack那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/130)
-
   - [webhook到底是个啥](https://github.com/FrankKai/FrankKai.github.io/issues/90)
   - [PostCSS真的太好用了！](https://github.com/FrankKai/FrankKai.github.io/issues/44)
   - [如何优雅地使用webpack的devtool进行debug？](https://github.com/FrankKai/FrankKai.github.io/issues/58)
@@ -186,7 +185,7 @@
   
 ### 前端音视频
   - [前端语音转文字实践总结](https://github.com/FrankKai/FrankKai.github.io/issues/260)
-  - [[译]Web Audio API基本概念](https://github.com/FrankKai/FrankKai.github.io/issues/168)
+
 
 ## 数据结构和算法
 
@@ -276,7 +275,7 @@
   - [[译]异步JavaScript之通用异步编程概念](https://github.com/FrankKai/FrankKai.github.io/issues/217)
   - [[译]Introduction to JSON Web Tokens](https://github.com/FrankKai/FrankKai.github.io/issues/170)
   - [[译]md5的salt是什么](https://github.com/FrankKai/FrankKai.github.io/issues/171)
-  - [【译】Cross Site Request Forgery（CSRF)](https://github.com/FrankKai/FrankKai.github.io/issues/242)
+  - [[译]Cross Site Request Forgery（CSRF)](https://github.com/FrankKai/FrankKai.github.io/issues/242)
   - [[译]渲染性能优化之渲染的5个阶段(JS->Style->Layout->Paint->Composite)](https://github.com/FrankKai/FrankKai.github.io/issues/195)
   - [[译]渲染性能优化之JS篇](https://github.com/FrankKai/FrankKai.github.io/issues/196)
   - [[译]渲染性能优化之Style篇](https://github.com/FrankKai/css-level-up/issues/197)
@@ -288,6 +287,7 @@
   - [[译]如何写一个webpack plugin？](https://github.com/FrankKai/FrankKai.github.io/issues/264)
   - [[译]什么是CSS Modules ？我们为什么需要他们？](https://github.com/FrankKai/FrankKai.github.io/issues/45)
   - [[译]Soft and Hard links in Unxi/Linux](https://github.com/FrankKai/FrankKai.github.io/issues/159)
+  - [[译]Web Audio API基本概念](https://github.com/FrankKai/FrankKai.github.io/issues/168)
 
 >期待和大家交流，共同进步
 >- 微信公众号：大大大前端 / excellent_developers
