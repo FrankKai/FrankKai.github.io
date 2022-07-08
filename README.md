@@ -85,7 +85,7 @@
 ### TypeScript
   - [TypeScript必知必会](https://github.com/FrankKai/FrankKai.github.io/issues/105)
   - [TypeScript类型体操](https://github.com/FrankKai/FrankKai.github.io/issues/262)
-  - [tsc打包的npm包，如何既支持cjs又支持esm？](https://github.com/FrankKai/FrankKai.github.io/issues/265)
+  - [tsconfig.json的esModuleInterop使用场景是怎样的？](https://github.com/FrankKai/FrankKai.github.io/issues/265)
 
 ### 前端存储
 - [浅析前端上传](https://github.com/FrankKai/FrankKai.github.io/issues/152)
