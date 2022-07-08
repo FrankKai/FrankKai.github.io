@@ -295,7 +295,4 @@
 >- SegmentFault专栏：[趁你还年轻，做个优秀的前端工程师](https://segmentfault.com/blog/chennihainianqing)
 >- 知乎专栏：[趁你还年轻，做个优秀的前端工程师](https://zhuanlan.zhihu.com/wyasy)
 
-### 微信公众号： 大大大前端 / excellent_developers
-<img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5229b0a4e79a4f4fae8237ed832ee7d6~tplv-k3u1fbpfcp-zoom-1.image" width="300">
-
 >努力成为优秀的前端工程师！
