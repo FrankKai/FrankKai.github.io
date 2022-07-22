@@ -160,6 +160,7 @@
   - [WebComponents那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/259)
 
 ### 前端工程化
+  - [如何打一个既支持cjs，又支持esm的npm包？](https://github.com/FrankKai/FrankKai.github.io/issues/266)
   - [一次webpack3升级为webpack4的实践](https://github.com/FrankKai/FrankKai.github.io/issues/222)
   - [前端webpack构建优化](https://github.com/FrankKai/FrankKai.github.io/issues/221)
   - [ES6之使用import()做按需引入](https://github.com/FrankKai/FrankKai.github.io/issues/220)
@@ -179,11 +180,9 @@
   - [如何引入阿里云ARMS前端监控？](https://github.com/FrankKai/FrankKai.github.io/issues/102)
   - [Jenkins前端项目持续部署](https://github.com/FrankKai/FrankKai.github.io/issues/92)
 
-### 前端可视化
+### 前端多媒体
   - [Canvas那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/80)
   - [如何理解data URL？](https://github.com/FrankKai/FrankKai.github.io/issues/212)
-  
-### 前端音视频
   - [前端语音转文字实践总结](https://github.com/FrankKai/FrankKai.github.io/issues/260)
 
 
