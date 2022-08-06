@@ -164,6 +164,7 @@
   - [一次webpack3升级为webpack4的实践](https://github.com/FrankKai/FrankKai.github.io/issues/222)
   - [前端webpack构建优化](https://github.com/FrankKai/FrankKai.github.io/issues/221)
   - [ES6之使用import()做按需引入](https://github.com/FrankKai/FrankKai.github.io/issues/220)
+  - [webpack插件开发](https://github.com/FrankKai/FrankKai.github.io/issues/267)
   - [实用webpack插件之DefinePlugin](https://github.com/FrankKai/FrankKai.github.io/issues/206)
   - [实用webpack插件之ProvidePlugin](https://github.com/FrankKai/FrankKai.github.io/issues/214)
   - [实用webpack插件之webpack-chain](https://github.com/FrankKai/FrankKai.github.io/issues/207)
