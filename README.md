@@ -2,18 +2,17 @@
   <img src="https://i.imgur.com/Abpd4NL.png" />
 </p> -->
 
+
+## 趁你还年轻的博客
+
+趁你还年轻的前端博客，包括HTML系列，CSS系列，JavaScript系列，TypeScript系列，前端存储系列，前端通信系列，前端安全系列，React系列，Vue系列，前端面试系列，前端性能系列，前端工程化系列，前端多媒体系列，数据结构和算法系列，nodejs系列，程序员通识系列
+
 ```
 期待和大家交流，共同进步，努力成为优秀的前端工程师！
 微信公众号：大大大前端
 知乎专栏：https://zhuanlan.zhihu.com/wyasy
 ```
 
-## 趁你还年轻的博客
-
-趁你还年轻的前端博客，包括HTML系列，CSS系列，JavaScript系列，TypeScript系列，前端存储系列，前端通信系列，前端安全系列，React系列，Vue系列，前端面试系列，前端性能系列，前端工程化系列，前端多媒体系列，数据结构和算法系列，nodejs系列，程序员通识系列
-
-
-## 前端
 ### HTML系列
   - [深入理解inline元素，block-level元素和display属性](https://github.com/FrankKai/FrankKai.github.io/issues/75)
   - [一些低调的HTML标签](https://github.com/FrankKai/FrankKai.github.io/issues/83)
