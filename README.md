@@ -240,34 +240,9 @@
   - [Chrome Devtool小技巧](https://github.com/FrankKai/FrankKai.github.io/issues/107)
   - [一些有趣的浏览器装逼神器](https://github.com/FrankKai/FrankKai.github.io/issues/115)
   
-### 随想系列
+### 随想
   - [大厂前端技术栈探索和思考](https://github.com/FrankKai/FrankKai.github.io/issues/15)
   - [告别2018喜迎2019](https://github.com/FrankKai/FrankKai.github.io/issues/136)
   - [白驹过隙，人生如梦](https://github.com/FrankKai/FrankKai.github.io/issues/261)
-### 翻译
-  - [[译]HTML进阶之Content categories](https://github.com/FrankKai/FrankKai.github.io/issues/73)
-  - [[译]HTML进阶之Data attributes](https://github.com/FrankKai/FrankKai.github.io/issues/72)
-  - [[译]如何隐藏DOM元素？](https://github.com/FrankKai/FrankKai.github.io/issues/142)
-  - [[译]HTML Timers](https://github.com/FrankKai/FrankKai.github.io/issues/67)
-  - [[译]CSSOM（CSS Object Model）介绍和指南](https://github.com/FrankKai/FrankKai.github.io/issues/227)
-  - [[译]ES8发布及主要新特性介绍](https://github.com/FrankKai/FrankKai.github.io/issues/14)
-  - [[译]如何理解并发模型(concurrency model)和事件循环(event loop)？](https://github.com/FrankKai/FrankKai.github.io/issues/216)
-  - [[译]如何理解任务(task)和微任务(microtask)？](https://github.com/FrankKai/FrankKai.github.io/issues/218)
-  - [[译]异步JavaScript之通用异步编程概念](https://github.com/FrankKai/FrankKai.github.io/issues/217)
-  - [[译]Introduction to JSON Web Tokens](https://github.com/FrankKai/FrankKai.github.io/issues/170)
-  - [[译]md5的salt是什么](https://github.com/FrankKai/FrankKai.github.io/issues/171)
-  - [[译]Cross Site Request Forgery（CSRF)](https://github.com/FrankKai/FrankKai.github.io/issues/242)
-  - [[译]渲染性能优化之渲染的5个阶段(JS->Style->Layout->Paint->Composite)](https://github.com/FrankKai/FrankKai.github.io/issues/195)
-  - [[译]渲染性能优化之JS篇](https://github.com/FrankKai/FrankKai.github.io/issues/196)
-  - [[译]渲染性能优化之Style篇](https://github.com/FrankKai/css-level-up/issues/197)
-  - [[译]渲染性能优化之Layout篇](https://github.com/FrankKai/css-level-up/issues/198)
-  - [[译]渲染性能优化之Paint篇](https://github.com/FrankKai/css-level-up/issues/199)
-  - [[译]渲染性能优化之Composite篇](https://github.com/FrankKai/css-level-up/issues/200)
-  - [[译]单元测试,TDD和BDD之间的区别是什么](https://github.com/FrankKai/FrankKai.github.io/issues/123)
-  - [[译]如何写一个webpack Loader？](https://github.com/FrankKai/FrankKai.github.io/issues/263)
-  - [[译]如何写一个webpack plugin？](https://github.com/FrankKai/FrankKai.github.io/issues/264)
-  - [[译]什么是CSS Modules ？我们为什么需要他们？](https://github.com/FrankKai/FrankKai.github.io/issues/45)
-  - [[译]Soft and Hard links in Unxi/Linux](https://github.com/FrankKai/FrankKai.github.io/issues/159)
-  - [[译]Web Audio API基本概念](https://github.com/FrankKai/FrankKai.github.io/issues/168)
 
 
