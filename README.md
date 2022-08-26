@@ -2,9 +2,11 @@
   <img src="https://i.imgur.com/Abpd4NL.png" />
 </p> -->
 
->期待和大家交流，共同进步,努力成为优秀的前端工程师！
->- 微信公众号：大大大前端 / excellent_developers
->- 知乎专栏：[趁你还年轻，做个优秀的前端工程师](https://zhuanlan.zhihu.com/wyasy)
+```
+期待和大家交流，共同进步，努力成为优秀的前端工程师！
+微信公众号：大大大前端
+知乎专栏：https://zhuanlan.zhihu.com/wyasy
+```
 
 ## 趁你还年轻的博客
 
