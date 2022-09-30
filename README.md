@@ -214,6 +214,7 @@
 - [关于MongoDB那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/43)
 
 ### 程序员通识系列
+  - [如何用mermaid绘制时序图](https://github.com/FrankKai/FrankKai.github.io/issues/269)
   - [关于Git那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/39)
   - [Git与ssh秘钥之间的那些事儿](https://github.com/FrankKai/FrankKai.github.io/issues/12)
   - [如何理解git rebase？](https://github.com/FrankKai/FrankKai.github.io/issues/112)
