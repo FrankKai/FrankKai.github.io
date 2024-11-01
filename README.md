@@ -242,7 +242,6 @@
   - [一些有趣的浏览器装逼神器](https://github.com/FrankKai/FrankKai.github.io/issues/115)
   
 ### 随想
-  - [大厂前端技术栈探索和思考](https://github.com/FrankKai/FrankKai.github.io/issues/15)
   - [浅谈业务中台前端设计](https://github.com/FrankKai/FrankKai.github.io/issues/270)
 
 
