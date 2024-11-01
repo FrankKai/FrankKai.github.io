@@ -243,8 +243,6 @@
   
 ### 随想
   - [大厂前端技术栈探索和思考](https://github.com/FrankKai/FrankKai.github.io/issues/15)
-  - [告别2018喜迎2019](https://github.com/FrankKai/FrankKai.github.io/issues/136)
-  - [白驹过隙，人生如梦](https://github.com/FrankKai/FrankKai.github.io/issues/261)
   - [浅谈业务中台前端设计](https://github.com/FrankKai/FrankKai.github.io/issues/270)
 
 
