@@ -243,5 +243,6 @@
   
 ### 随想
   - [浅谈业务中台前端设计](https://github.com/FrankKai/FrankKai.github.io/issues/270)
+  - [重拾前端热情](https://github.com/FrankKai/FrankKai.github.io/issues/271)
 
 
