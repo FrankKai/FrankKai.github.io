@@ -244,5 +244,6 @@
 ### 随想
   - [浅谈业务中台前端设计](https://github.com/FrankKai/FrankKai.github.io/issues/270)
   - [重拾前端热情](https://github.com/FrankKai/FrankKai.github.io/issues/271)
+  - [轻松在本地搭建DeepSeek：Ollama + deepseek-r1:7b + anythingLLM](https://github.com/FrankKai/FrankKai.github.io/issues/272)
 
 
